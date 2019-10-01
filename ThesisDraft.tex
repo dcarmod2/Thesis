@@ -1,0 +1,2561 @@
+\documentclass[10pt]{amsart}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,amsopn,mathrsfs,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage[all]{xy}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{tabulary}
+\usepackage{cite}
+\usepackage[normalem]{ulem}
+\usepackage{aliascnt}
+\usepackage{todonotes}
+\setlength{\marginparwidth}{2cm}
+\hypersetup{colorlinks=true,linktoc=all,linkcolor=blue}
+
+
+
+
+
+\newcommand{\Z}{\mathbb Z}
+
+\newcommand{\mbb}{\mathbb}
+\newcommand{\mc}{\mathcal}
+\newcommand{\dual}{\,\check{}}
+\newcommand{\RGr}{\mathbb R\mathrm{Gr}}
+\newcommand{\hRGr}{\mathbb R\mathscr{G}{\mathrm{r}}}
+\newcommand{\Set}{\mathbf{Set}}
+\newcommand{\Sm}[1]{\mathbf{Sm}_{#1}}
+\newcommand{\Gpd}{\mathbf{Gpd}}
+\newcommand{\BigVB}[1]{\mathbf{BigVB}({#1})}
+\newcommand{\Cat}{\mathbf{Cat}}
+\newcommand{\Iso}{\mathrm{Iso}}
+\newcommand{\St}{\mathrm{St}}
+\newcommand{\Span}{\mathrm{Span}}
+
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator*{\holim}{holim}
+\DeclareMathOperator*{\hocolim}{hocolim}
+\DeclareMathOperator*{\colim}{colim}
+\DeclareMathOperator*{\im}{im}
+\DeclareMathOperator*{\coker}{coker}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator*{\Mor}{Mor}
+\DeclareMathOperator{\PreSm}{Pre_{Sm_S^{C_2}}}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\tr}{tr}
+
+%%%%%%%%%%%%%% Diagrams
+
+\newcommand{\commsq}[4]{\xymatrix{{#1} \ar[r]\ar[d] & {#2} \ar[d] \\
+    {#3} \ar[r] & {#4}}}
+
+%%%%%%%%%%%%%% Theorem Environments
+\theoremstyle{plain}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[lemma]{Proposition}
+\theoremstyle{definition}
+\newtheorem{corollary}[lemma]{Corollary}
+\newtheorem{example}[lemma]{Example}
+\newtheorem{definition}[lemma]{Definition}
+\newtheorem{notation}[lemma]{Notation}
+
+\newtheorem{remark}[lemma]{Remark}
+\newtheorem{question}{Question}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{construction}{Construction}
+
+
+\begin{document}
+
+\tableofcontents
+
+\section{Introduction}
+
+\section{Equivariant Topologies}
+
+\todo{Add things about the equivariant Nisnevich topology}
+\begin{notation}
+Throughout this section, $G$ will be either a finite group or the
+group scheme over $S$ associated to a finite group. Recall that to pass between
+finite groups and group schemes over $S$, we form the scheme
+$\coprod_G S$ with multiplication (using that fiber products commute
+with coproducts in $Sch/S$):
+\[
+\coprod_G S \times_S \coprod_G S \cong \coprod_{(g_1,g_2)\in G \times
+  G} S \xrightarrow{\mu} \coprod_G S. 
+\]
+
+Whenever we write down a pullback square involving schemes, we'll
+tacitly be thinking of $G$ as a group scheme, and $X \times Y$ will
+really mean $X \times_S Y$.
+\end{notation}
+
+
+\begin{definition}
+For a $G$-scheme $X$, the isotropy group scheme is a group scheme
+$G_X$ over $X$ defined by the cartesian square
+\[
+\xymatrix{G_X \ar[r] \ar[d] & G \times X \ar[d]^{(\mu_X,id_X)} \\ X
+  \ar[r]^{\Delta_X} & X \times X}.
+\]
+\end{definition}
+
+\begin{definition}
+Let $X$ be a $G$-scheme. The scheme-theoretic stabilizer of a point
+$x$ in $X$ is the pullback
+\[
+\xymatrix{G_x \ar[r] \ar[d] & G_X \ar[d]\\ \Spec k(x) \ar[r] & X.}
+\]
+
+By the pasting lemma, this is the same as the pullback
+\[
+\xymatrix{G_x \ar[r] \ar[d] & G \times X \ar[d]\\ \Spec k(x) \ar[r] &
+  X \times X.}
+\]
+\end{definition}
+
+\begin{definition}
+Let $X$ be a $G$-scheme, and define the \emph{set-theoretic}
+stabilizer $S_x$ of $x \in X$ to be $\{g \in G
+\mid gx = x\}$ where we think of $G$ as a finite group. 
+\end{definition}
+
+\begin{remark}
+With notation as above, the underlying set of the scheme-theoretic
+stabilizer $G_x$ can be described as
+\[
+G_x = \{g \in S_x \mid \text{ the induced morphism $g : k(x)
+  \rightarrow k(x)$ equals } id_{k(x)}\}.
+\]
+\end{remark}
+
+
+
+The example below shows that set-theoretic and scheme-theoretic
+stabilizers need not agree.
+
+\begin{example} (Herrmann \cite{GrpSchHerr})
+Let $k$ be a field, and consider the $k$-scheme given by a finite
+Galois extension $k \hookrightarrow L$. Let $G = Gal(L/k)$ be the
+Galois group. The set-theoretic stabilizer of the unique point in
+$\Spec L$ is $G$ itself, while the scheme-theoretic stabilzer is
+$\{e\} \subset G$. 
+\end{example}
+
+\begin{remark}
+Recall that if $Z \rightarrow X$ is a monomorphism of schemes, then
+the forgetful functor from schemes to sets preserves any pullback $Z
+\times_X Y$. The canonical examples of monomorphisms in schemes are
+closed embeddings, open immersions, and maps induced by localization. 
+
+Recall as well that the forgetful functor $GSch/S \rightarrow Sch/S$
+is a right adjoint, hence preserves pullbacks.
+
+Since the inclusion of a point $\Spec k(x) \hookrightarrow X \times_S X$
+will be a closed embedding for any separated scheme, the difference
+between the set-theoretic and scheme-theoretic stabilizers is given by
+the fact that the underlying space of $X \times_S X$ is not
+necessarily the fiber product of the underlying spaces. Indeed, in the
+example above, $\Spec L \times_k \Spec L \cong \coprod_{g \in G} \Spec
+k$, whereas the pullback in spaces is just a single point. 
+\end{remark}
+
+\subsection{The equivariant \'Etale topology}
+
+\begin{notation}
+Let $S$ be a  $G$-scheme. The equivariant \'etale topology on $Sm_S$
+will denote the site whose covers are \'etale covers whose component
+morphisms are equivariant.
+\end{notation}
+
+\begin{definition} (Thomason)
+An equivariant map $f : Y \rightarrow X$ is said to be
+\emph{isovariant} if it induces an isomorphism $G_Y \cong G_X \times_X
+Y$. A collection $\{f_i : X_i \rightarrow X\}_{i \in I}$ of
+equivariant maps called an isovariant etale cover if it is an
+equivariant etale cover such that each $f_i$ is isovariant. 
+\end{definition}
+
+\begin{remark}
+The isovariant topology is equivalent to the topology whose covers are
+equivariant, stabilizer preserving, \'etale maps. We'll use this
+notion more often in computations. 
+\end{remark}
+
+\begin{remark}
+The points in the isovariant \'etale topology are schemes of the form
+$G \times^{G_x} \Spec(\mc O^h_{X,\overline x})$ where $\overline x
+\rightarrow x \rightarrow X$ is a geometric point, and $(-)^h$ denotes
+strict henselization. 
+\end{remark}
+
+\begin{remark}
+If $G = C_2$, then $G_x = \{e\}$ or $G_x = C_2$ for all $x \in X$. If
+$G_x = \{e\}$, then $G \times^{G_x} \Spec(\mc O^h_{X,\overline x})
+\cong C_2 \times \Spec(\mc O^h_{X,\overline x}) \cong \Spec(\mc
+O^h_{X,\overline x})\coprod \Spec(\mc O^h_{X,\overline x})$ with a
+free action. If $G_x = C_2$, then $G \times^{G_x} \Spec(\mc
+O^h_{X,\overline x}) = \Spec(\mc
+O^h_{X,\overline x})$.
+\end{remark}
+
+The following example shows that there are equivariant \'etale covers
+which are not isovariant:
+
+\begin{example}
+Fix a scheme $X$ with trivial $C_2$-action, and consider the scheme $X \coprod X$ with the
+switch action. The map $X \coprod X \rightarrow X$ is an equivariant
+\'etale cover, but it is not stabilizer preserving. Indeed, the switch
+action on $X \coprod X$ is free, and the set-theoretic (hence
+scheme-theoretic) stabilizers are all trivial. On the other hand, the
+scheme theoretic stabilizers of the trivial action are all $C_2$.
+\end{example}
+
+
+% \begin{lemma} (Sketchy...)
+% Fix a scheme $X$ with $G$-action and consider the quotient stack $S = [X/G]$. The
+% \'etale site on $Sm_S$ is equivalent to the isovariant \'etale site on $Sm^G_X$.
+% \end{lemma}
+
+% \begin{proof} (Idea only)
+
+
+% An object $Y \rightarrow S$ in $Sm_S$ consists of a $Y$-torsor $T
+% \rightarrow Y$ and an equivariant map $T \rightarrow X$. Upon taking
+% quotients, we get a (hopefully still \'etale, need to check Deligne's notes) map $Y \cong T/G \rightarrow X/G$, where $X/G$ is
+% an algebraic space. By a theorem of Thomason, the \'etale site over
+% the algebraic space $X/G$ is equivalent to the isovariant \'etale site
+% on $Sm^G_X$. Thus given an \'etale map $Y \rightarrow X/G$, we get an
+% isovariant \'etale map $Y \rightarrow X$. From this we get a diagram
+% $Y \leftarrow Y \times G \rightarrow X$ representing a map $Y
+% \rightarrow S$.
+% \end{proof}
+
+
+\begin{lemma}
+Fix a ring $R$, and fix an ideal $I \subset R$, $J \subset R[x]$. Let
+$B = R[x]/J$. Then $B/IB \cong (R/I)[x]/\overline J$.
+\end{lemma}
+
+\begin{proof}
+First, recall that $R[x]/IR[x] \cong (R/I)[x]$ by the obvious map
+reducing the coefficients of a polynomial. Then $B/IB \cong
+R[x]/(IR[x]+J) \cong (R[x]/IR[x])/J \cong (R/I)[x]/\overline J$.
+\end{proof}
+
+\begin{example}
+Let $R$ be a commutative ring with 2 invertible and involution $- : R
+\rightarrow R$. Let $a \in R^\times$. Then $\Spec
+R[\sqrt{a},\sqrt{\overline a}] \rightarrow \Spec R$ is an equivariant \'etale cover. 
+\end{example}
+
+\begin{proof}
+First, note that if $a$ has a square root in $R$, so does $\overline
+a$, and the result is trivial. Assume that this is not the case. Give
+the ring $R[\sqrt{a},\sqrt{\overline a}]$ an action by $r_0 +
+r_1\sqrt{a} + r_2\sqrt{\overline a} \mapsto \overline r_0 + \overline
+r_1\sqrt{\overline a} + \overline r_2 \sqrt{a}$. The map $R
+\rightarrow R[\sqrt{a},\sqrt{\overline a}]$ is clearly equivariant, so
+we need only check that it's an \'etale cover.
+
+First, note that it is indeed a cover: because
+$R[\sqrt{a},\sqrt{\overline a}]$ is a module-finite extension of $R$
+(hence integral),
+surjectivity after taking $\Spec$ follows from the injectivity of the
+map of rings by the lying over property for integral extensions. 
+
+Now, we claim that the map is \'etale. We'll prove that it's the
+composite of two \'etale maps, $R \rightarrow R[\sqrt{a}] \rightarrow
+R[\sqrt{a},\sqrt{\overline a}]$. Since $\overline a$ must also be a
+unit, it's enough to show that $R \rightarrow R[\sqrt{a}]$ is \'etale. It's clearly flat because
+$R[\sqrt{a}]$ is a free module over $R$, so we just
+have to check that it's unramified. Let $B =
+R[\sqrt{a}]$. Fix a maximal ideal $m \subset
+B$, and let $I = R \cap m$. By the lemma above,
+\[
+\frac{B}{IB} \cong (R/I)[x]/(x^2 - a) \cong (R/I)[\sqrt{a}].
+\]
+
+Now if $a \neq 0$ in $R/I$, then $x^2-a$ will be a separable polynomial. But because $a$ is a unit, it's not contained in any prime
+ideal, and hence not contained in $I$.
+
+An easy consequence of the going up theorem (recall that we have
+an integral extension), is that $I$ is a maximal ideal in $R$; hence,
+$(R/I)[\sqrt{a},\sqrt{\overline a}]$ is a finite separable field
+extension of $R/I$. Since localization commutes with taking quotients,
+it follows that the map is unramified. 
+\end{proof}
+
+\begin{example}
+A similar argument shows that $\Spec R[\sqrt{a}] \coprod \Spec
+R[\sqrt{\overline a}] \rightarrow \Spec R$ is an equivariant \'etale cover.
+\end{example}
+
+\begin{lemma}
+With notation as above, assume that $a$ is a fixed point of the
+involution $- : R \rightarrow R$. There's an induced action on $ R[\sqrt{a}]$
+which fixes $\sqrt{a}$, and the map $\Spec R[\sqrt{a}] \rightarrow
+\Spec R$ is stabilizer preserving w.r.t. this action.
+\end{lemma}
+
+\begin{proof}
+Let $p \subset
+R[\sqrt{a}]$ be a prime ideal such that $\overline p = p$. Let $g$ denote the
+non-trivial element of $C_2$. The induced map on stalks is (by abuse
+of notation) the
+inclusion $f : k(p \cap R) \hookrightarrow k(p \cap R)[\sqrt{a}]$. By equivariance,
+we have a commutative diagram
+\[
+\xymatrix{k(p \cap R) \ar[r]^f \ar[d]^{\widetilde g} & k(p \cap R)[\sqrt{a}] \ar[d]^g \\
+  k(p \cap R) \ar[r]^f & k(p)[\sqrt{a}].}
+\]
+
+Now if $g$ induces the identity map $k(p \cap R) \rightarrow k(p \cap
+R)$, and hence is an element of the scheme-theoretic stabilizer, then
+$\widetilde g$ is an element of $Gal(k(p \cap R)[\sqrt{a}]/k(p \cap
+R)$. In other words, $\widetilde g$ is either the identity map, or is
+the map which sends $\sqrt{a} \rightarrow -\sqrt{a}$. By construction,
+the involution on $R[\sqrt{a}]$ sends $\sqrt{a} \mapsto \sqrt{a}$, so
+that $G_p = G_{f(p)}$.
+
+If $g$ doesn't fix $k(p \cap R)$, then since $f$ is a monomorphism, clearly $\widetilde g$ can't
+fix $k(p \cap R)[\sqrt{a}]$, and again we have $G_p = G_{f(p)}$. It
+follows that $f$ is an isovariant map. 
+\end{proof}
+
+
+
+
+
+% For the next lemma, we'll use the following result of Rydh
+
+% \begin{proposition} (Rydh)
+% Let $f : X \rightarrow Y$ be an equivariant \'etale map. The subset
+% $X_0 \subseteq X$ of points at which $f$ is stabilizer preserving is
+% an invariant open subset. 
+% \end{proposition}
+
+\begin{lemma}
+With notation as above, say $a - 
+\overline a \in R^*$. The equivariant \'etale cover $f : \Spec R[\sqrt{a}] \coprod \Spec
+R[\sqrt{\overline a}] \rightarrow \Spec R$ is stabilizer preserving.
+\end{lemma}
+
+\begin{proof}
+The action on $ \Spec R[\sqrt{a}] \coprod \Spec
+R[\sqrt{\overline a}] \rightarrow \Spec R$ is free, so that all the
+set-theoretic (and hence scheme-theoretic) stabilizers are trivial. 
+
+The assumption that $a - \overline a$ is not in any prime ideal implies that
+if $p$ is a fixed point of the involution, $i : R_p/pR_p \rightarrow
+R_p/pR_p$ is not the identity map, so that the scheme-theoretic
+stabilizers of the action on $\Spec R$ are all trivial.
+\end{proof}
+
+\begin{example}
+Even if $a$ is a unit, it's certainly not true in general that
+$ a - \overline a \in R^*$. Consider the ring $R = \Z[t,t^{-1}]$ with
+involution given by $t \mapsto -t$. Then $t - \overline t = 2t \not
+\in R^*$. Furthermore, $(2t) = (2)$ is a prime ideal in $R$ fixed by
+the involution. It's contained in the maximal ideal $(2,t-1)$. Note
+that this ideal is also fixed by the involution: $t - 1 \mapsto -t-1$
+and $-t-1 = 1-t -2 \in (2,t-1)$. The residue field at this maximal
+ideal is $\Z/2$. The only nonzero ring map of this field is the
+identity, so that the scheme-theoretic stabilizer of $(2,t-1)$ is
+$C_2$.
+
+Note that if we wanted an example for a ring with 2 invertible, we
+could take $R=\Z[\frac{1}{2}][t,t^{-1}]$, and consider the element
+$\frac{3}{2}t$ and the maximal ideal $(3,t-\frac{3}{2})$. One also has
+to note that the induced map on the residue field $\Z/3$ is the
+identity, which follows simply because the involution is unital (and
+because it gives a well-defined map on the residue field!).
+\end{example}
+
+\subsection{The equivariant Nisnevich topology}
+
+Similarly to the non-equivariant case, the equivariant Nisnevich
+topology is defined a particularly nice cd-structure. While there are
+a few different definitions of this topology in the literature which
+can give non-Quillen equivalent model structures, we use the
+definition from \cite{GrpSchHell}.
+
+
+
+\begin{definition}
+A distinguished equivariant Nisnevich square is a cartesian square in
+$\Sm{S}^G$
+\[
+\xymatrix{B \ar[r]\ar[d] & Y \ar[d]^p \\ A \ar@{^{(}->}[r]^i & X}
+\]
+where $j$ is an open immersion, $p$ is \'etale, and
+$(Y-B)_{\mathrm{red}} \rightarrow (X-A)_{\mathrm{red}}$ is an
+isomorphism. 
+\end{definition}
+
+\begin{definition}
+The equivariant Nisnevich $cd$-structure on $\Sm{S}^G$ is the
+collection of distinguished equivariant Nisnevich squares in $\Sm{S}^G$.
+\end{definition}
+
+\begin{remark}
+For finite groups $G$, any smooth $G$-scheme is Nisnevich-locally
+affine. 
+\end{remark}
+
+\subsection{Computations with Equivariant Spheres}
+
+Because we'll be using equivariant spheres to index our spectra, we'll
+record some of their basic properties here. Though there are exotic
+elements of the Picard group even in non-equivariant stable motivic
+homotopy theory, we'll be concerned with the four building blocks
+$S^1, S^\sigma = \colim ((C_2)_+ \rightarrow S^0), \mbb G_m, \mbb
+G_m^{\sigma}$.
+
+\begin{lemma}
+Let $\mbb P^\sigma$ denote $\mbb P^1$ with the action defined by $[x:y] \mapsto
+[y:x]$. There is an equivariant Nisnevich square
+\[
+\xymatrix{C_2\times \mbb G_m^\sigma \ar[r]\ar[d]^{\pi_2} & \mbb P^1 -
+  \{0\} \coprod \mbb P^1 - \{\infty\} \ar[d]^f \\ G_m^\sigma \ar[r]^i & \mbb P^\sigma}
+\]
+\end{lemma} 
+
+\begin{proof}
+Here, we identify $\mbb G_m^\sigma$ with $\mbb P^\sigma -
+\{0,\infty\}$. The map $i$ is clearly an open immersion. Its
+complement is $\mbb \{0,\infty\}$, and $f$ maps
+$\pi^{-1}(\{0,\infty\})$ isomorphically onto
+$\{0,\infty\}$. Furthermore, $f$ is a disjoint union of open
+immersions, and hence is (in particular) etale. 
+\end{proof}
+
+\begin{lemma}
+The following square is a homotopy pushout square:
+
+\[
+\xymatrix{(C_2)_+\wedge \mbb (G_m^\sigma)_+ \ar[r]\ar[d]^{\pi_2} &
+  (C_2)_+ \ar[d]^f \\ (G_m^\sigma)_+ \ar[r]^i & \mbb P_+^1}
+\]
+\end{lemma}
+
+\begin{proof}
+The above square is equivalent to the square
+
+\[
+\xymatrix{(C_2)_+\wedge \mbb (G_m^\sigma)_+ \ar[r]\ar[d]^{\pi_2} &
+  (C_2)_+ \wedge \mbb A^1_+ \ar[d]^f \\ (G_m^\sigma)_+ \ar[r]^i & \mbb P_+^1}.
+\] 
+
+By the lemma above, 
+
+\[
+\xymatrix{(C_2\times \mbb G_m^\sigma)_+ \ar[r]\ar[d]^{\pi_2} & (C_2
+  \times \mbb A^1)_+\ar[d]^f \\ (G_m^\sigma)_+ \ar[r]^i & \mbb P_+^1}
+\]
+is a homotopy pushout square. But adding a disjoint basepoint is a
+monoidal functor, so $X_+ \wedge Y_+ \cong (X \times Y)_+$ and this
+square is equivalent to the desired square.
+\end{proof}
+
+\begin{lemma}
+$\mbb P^\sigma \approx S^\sigma \wedge \mbb G_m^\sigma$.
+\end{lemma}
+
+\begin{proof}
+Let $Q$ denote the homotopy cofiber of $(C_2 \times \mbb G_m^\sigma)_+
+\rightarrow (\mbb G_m^\sigma)_+$, and $\widetilde Q$ denote the homotopy
+cofiber of $(C_2 \times \mbb A^1)_+ \rightarrow \mbb P^\sigma_+$. Then the
+lemma above implies that $Q \approx \widetilde Q$. 
+
+$Q$ is the homotopy cofiber of $
+(C_2)_+ \wedge \mbb (G_m^\sigma)_+ \rightarrow S^0 \wedge \mbb
+(G_m^\sigma)_+$, which is just $S^\sigma \wedge \mbb
+(G_m^\sigma)_+$. Recall that $\colim(* \leftarrow X \rightarrow X
+\wedge Y_+) \cong X \wedge Y$ since this is $X \wedge \colim(*
+\leftarrow S^0 \rightarrow Y_+)$. Thus the cofiber of $S^\sigma
+\rightarrow Q$ is $S^\sigma \wedge \mbb G_m^\sigma$.
+
+The diagram below in which the horizontal rows are cofiber sequences
+\[
+\xymatrix{(C_2)_+ \ar[r]\ar[d]^{id} & S^0 \ar[d] \ar[r]& S^\sigma
+  \ar[d] \\(C_2)_+ \ar[r]\ar[d] & \ar[r]\ar[d] \mbb P^\sigma_+ & \widetilde
+  Q \ar[d] \\ \star \ar[r] & \mbb P^\sigma \ar[r] & T }
+\]
+
+implies that the cofiber of $S^\sigma \rightarrow \widetilde Q$ is
+$\mbb P^\sigma$. 
+
+The result now follows from the commutativity of the following diagram
+and homotopy invariance of homotopy cofiber:
+\[
+\xymatrix{S^\sigma \ar[r]^{id}\ar[d] & S^\sigma \ar[d] \\ Q \ar[r]^{\sim} \ar[d]&
+\widetilde Q \ar[d]\\ S^\sigma \wedge \mbb G_m^\sigma \ar[r] & \mbb P^\sigma}.
+\]
+
+\end{proof}
+
+\section{Hermitian Forms on Schemes}
+
+\subsection{Definitions}
+
+\begin{definition}
+Let $R$ be a ring with involution $- : R \rightarrow R$. A \emph{hermitian
+module over $R$} is a finitely generated projective module-$R$, $M$, together
+with a map
+\[
+b : M \otimes_{\Z} M \rightarrow R
+\]  
+
+such that, for all $a \in R$,
+\begin{enumerate}
+\item $b(xa,y) = \overline a b(x,y)$,
+\item $b(x,ya) = b(x,y) a$,
+\item $b(x,y) = \overline{b(y,x)}$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+Let $R$ be a ring with involution $-$. Given a right $R$-module $M$, define
+a left $R$-module, denoted $\overline M$ as follows: $\overline M$ has the same underlying abelian
+group as $M$, and the action is given by $r \cdot m = m \cdot \overline r$. If $R$ is
+commutative, we can define an $R$-bimodule by $m \cdot r =
+m \overline r$ and $r \cdot m = m \overline r$. 
+\end{definition}
+
+\begin{remark}
+Let $R$ be a commutative ring. Given an involution $\sigma : R \rightarrow R$, and an $R-R$-bimodule
+$M$ as above, we can identify $\overline M$ with $\sigma_*M$. Indeed,
+$\sigma_*M$ is an $R-R$-bimodule via the rule $r \cdot \overline m =
+\sigma(r)\overline M$, and since $R$ is commutative, we can view this
+either as a left or right $R$-module. 
+\end{remark}
+
+\begin{remark}
+Another way to define a Hermitian form over a ring $R$ with involution
+$\sigma$ is to give a finitely generated projective mod-$R$ $M$ together
+with an $R-R$-bimodule map  
+\[
+b :  M \otimes_{\Z}  M \rightarrow R
+\]
+where we view $R$ as a
+bimodule over itself just by $r_1 \cdot r \cdot r_2 = r_1rr_2$, $M$ as
+a left $R$-module via the involution, and such that $b(x,y) = \sigma(b(y,x))$. If we remove the final
+condition, we obtain a sesquilinear form. 
+\end{remark}
+
+By the usual duality, we have a third definition:
+
+\begin{definition}
+A
+hermitian module over a ring $R$ with involution is a finitely
+generated projective $R$-module $M$ together with an $R$-linear map $b : M
+\rightarrow \overline{M}\dual = M^*$ such that $b = b^*can_M$, where
+$b^* : M^{**} \rightarrow M^*$ is given by $(b(f))(m) = f(b(m))$.
+\end{definition}
+
+Now, we generalize the above definitions to schemes.
+
+\begin{definition}
+Let $X$ be a scheme, and $M$ a quasi-coherent (locally of finite presentation) $\mc O_X$-module. Define $\mc O_X\dual
+= \uline{Hom}(M,\mc O_X)$.
+\end{definition}
+
+\begin{definition}
+Let $X$ be a scheme with involution $\sigma$, and $M$ a right $\mc
+O_X$-module. Note that there's an induced map $\sigma^{\#} : \mc O_X
+\rightarrow \sigma_*\mc O_X$. Define the right (note that we're
+working with sheaves of commutative rings, so we can do this) $\mc O_X$-module $\overline
+M$ to be $\sigma_*M$ with $\mc O_X$ action induced by the map
+$\sigma^{\#}$. That is, if $m \in \sigma_*M(U)$, and $c \in \mc
+O_X(U)$, then $m \cdot c = m \cdot \sigma^{\#}(c)$. Note that this
+last product is defined, because $m \in \sigma_*M(U) =
+M(\sigma^{-1}(U))$, $c \in \sigma_*\mc O_X(U) = \mc
+O_X(\sigma^{-1}(U))$, and $M$ is a right $\mc O_X$-module. 
+
+\end{definition}
+
+\begin{remark}
+We have two choices for the definition of the dual $M^*$. We can
+either define $M^* = Hom_{mod-\mc O_X}(\sigma_*M,\mc O_X)$, or we can
+define $M^* = \sigma_*Hom_{mod-\mc O_X}(M,\mc O_X)$. We claim that
+these two choices of dual are naturally isomorphic. 
+\end{remark}
+
+\begin{proof}
+Let $f : \sigma_*M|_U \rightarrow \mc O_X|_U$ be a map of right $\mc
+O_X|_U$-modules. Post-composing with the map $\mc O_X|_U \rightarrow
+\sigma_* \mc O_X|_U$ yields a map $\overline f : \sigma_*M|_U
+\rightarrow \sigma_*\mc O_X|_U$, a.k.a. a map $M|_{\sigma^{-1}U}
+\rightarrow \mc O_X|_{\sigma^{-1}U}$. Note that $\sigma_*Hom_{mod-\mc
+  O_X}(M,\mc O_X)(U) = Hom_{mod-\mc
+  O_X}(M,\mc O_X)(\sigma^{-1}U)$, so that $\overline f \in \sigma_*Hom_{mod-\mc
+  O_X}(M,\mc O_X)(U)$.
+
+On the other hand, given $g \in \sigma_*Hom_{mod-\mc O_X}(M,\mc
+O_X)(U)$, so that $g : \sigma_*M|_U
+\rightarrow \sigma_*\mc O_X|_U$, we can postcompose with
+$\sigma_*(\sigma^\#)$ to get a map $\widetilde g : \sigma_*M|_*
+\rightarrow \sigma_*\sigma_*\mc O_X|_U = \mc O_X|_U$. Since $\sigma^2
+= id$, this is clearly the inverse to the map above. 
+
+It's clear that these assignments are natural, since they're just
+postcomposition with a natural transformation. 
+\end{proof}
+
+\begin{definition}
+Define the adjoint module $M^*$ to be $Hom_{mod-\mc O_X}(\sigma_*M,\mc
+O_X)$. By the remark above, it doesn't really matter which of the two
+possible definitions we choose here. 
+\end{definition}
+
+\begin{definition}
+Let $X$ be a scheme with involution $- : X \rightarrow X$. A
+\emph{hermitian vector bundle over $X$} is a locally free right $\mc
+O_X$-module $V$ with an $\mc O_X$-module map $V \rightarrow V^*$.
+\end{definition}
+
+\begin{remark}
+  Recall that there's an equivalence of categories between locally
+  free coherent sheaves on $X$ and geometric vector bundles given by
+  $M \mapsto \mathbf{Spec}Sym(M\dual)$ in one direction and the sheaf
+  of sections in the other. For locally free sheaves, we have $M\dual
+  \otimes N\dual \cong (M \otimes N)\dual$ so that the functor is
+  monoidal. We will use this to think of a hermitian
+  form as a map of schemes $V \otimes V \rightarrow \mbb A^1$.
+\end{remark}
+
+Below we give the key example of a hermitian vector bundle.
+
+\begin{example}
+
+Define (diagonal) hyperbolic $n$-space over a scheme $(S,-)$ with involution to be $\mbb A^{2n}_S$
+with the hermitian form $(x_1,\dots,x_{2n},y_1,\dots,y_{2n}) \mapsto
+\sum_{i=1}^n  \overline x_{2i-1} y_{2i-1} -  \overline x_{2i}
+y_{2i}$. Denote this hermitian form by $h_{\mathrm{diag}}$.
+
+As defined this way, the matrix of this hermitian form is
+\[
+\begin{bmatrix}
+1 & 0 & \cdots \\
+0 & -1 & 0 & \cdots \\
+\vdots & \vdots & \vdots \\
+0 & \cdots & \cdots & \cdots & -1
+\end{bmatrix}
+\]
+the diagonal matrix diag$(1,-1,1,\dots,-1)$. For this definition to
+give a hermitian space isometric to other standard definitions of the
+hyperbolic form, it's crucial that 2 be invertible. 
+
+The isometries of $\mbb H_{\mbb R}$ (where we give it the hyperbolic
+form above) have the form
+\[
+\begin{bmatrix}
+a & b\\
+\pm b & \pm a
+\end{bmatrix}
+\]
+with $a = \pm\sqrt{1 + b^2}, b \in \mbb R$ (or $a^2 - b^2 = 1$). The
+usual identification with $\mbb R^\times \rtimes C_2$ follows by
+considering the decomposition $a^2 - b^2 = 1 \iff (a+b)(a-b) = 1$.
+\end{example}
+
+\begin{example}
+Similarly to above, we can define a hyperbolic form $h$ by the matrix
+\[
+\begin{bmatrix}
+0 & I\\
+I & 0
+\end{bmatrix}.
+\]
+
+This form is isometric to the above form, and we'll use both forms below.
+\end{example}
+
+\subsubsection{Properties}
+
+\begin{lemma}
+Given a map of schemes with involution $f : (Y,i_Y) \rightarrow (X,i_X)$
+and a (non-degenerate) hermitian vector bundle $(V,\omega)$ on $X$, $f^*(V)$ is
+a (non-degenerate) hermitian
+vector bundle on $Y$.
+\end{lemma}
+
+
+\begin{proof}
+The pullback of a locally free $\mc O_X$-module is a locally free $\mc
+O_Y$-module, so we just need to check that it's hermitian. Given the
+map $\omega : V \rightarrow V^*$, we get an induced map $f^*V
+\rightarrow f^*(V^*)$ which is an isomorphism if $\omega$ is. Thus we
+just need to check that $f^*(V^*) \cong (f^*V)^*$. But pullback
+commutes with sheaf dual for locally free sheaves of finite rank, so
+we just need to check that changing the module structure via the
+involution commutes with pullback; that is, we need to check that
+$f^*(\overline V) = \overline{f^*(V)}$. However, this is clear since
+the structure map on $f^*(\overline V)$ is given by
+
+%Recall that pullback commutes with product because
+%product of sheaves of abelian groups agrees with direct sum,
+%and pullback (of sheaves of abelian groups) is a left adjoint.
+\[
+O_Y \times f^*V \cong f^* \mc O_X \times f^*V \xrightarrow{f^*(-) \times id} f^*\mc(O_X) \times f^*(V)
+\rightarrow f^*(V).
+\]
+\end{proof}
+
+\begin{theorem} (Knus \cite{HermKnus} 6.2.4)
+Let $(M,b)$ be an $\epsilon$-hermitian space over a division ring
+$D$. Then $(M,b)$ has an orthogonal basis in the following cases:
+\begin{enumerate}
+\item the involution of $D$ is not trivial
+\item the involution of $D$ is trivial, the form is symmetric, and
+  char $D \neq 2$.
+\end{enumerate}
+\end{theorem}
+
+\begin{lemma} (Knus)
+Let $(M,b)$ be a hermitian module, and $(U,b|_U)$ be a non-degenerate
+f.g. projective Hermitian submodule. Then $M = U \oplus U^\perp$.
+\end{lemma}
+
+\begin{proof}
+Since $b|_U : U \rightarrow U^*$ is an isomorphism, given an $m \in
+M$, there exists $u \in U$ s.t. $b(m,-)|_U = b(u,-)|_U$. But then
+$b(m-u,-)|_U = 0$, so that $m-u \in U^\perp$, and $m = u + m-u$. Thus
+$M = U + U^\perp$. Since $\phi|_U$ is non-degenerate, $U \cap U^\perp
+= 0$, so we're done. 
+\end{proof}
+
+\subsection{Hermitian Forms on Semilocal Rings}
+
+\begin{theorem}
+Let $R$ be a ring, and let $E$ be a hermitian module over
+$R$. Let $I \subset Jac(R)$ be an ideal. For every orthogonal decomposition $\overline E = \overline F
+\perp \overline G$ of $\overline E = E/IE$ over $R/I$, where $\overline
+F$ is a free non-singular subspace of $\overline E$, there exists an
+orthogonal decomposition $E = F \perp G$ of $E$ with $F$ free and
+non-singular, and $F/IF = \overline F, G/IG = \overline G$.
+\end{theorem}
+
+\begin{proof}
+Write $\overline F = \langle \overline x_1 \rangle \oplus \dots \oplus
+\langle \overline x_n \rangle$ with $\overline x_i \in \overline F$
+and $\det(\overline b(\overline x_i,\overline x_j)) \in (R/I)^*$. Choose
+representatives $x_i \in E$ of $\overline x_i$, and let $F = Rx_1 +
+\dots + Rx_n$. We claim that the $x_i$ are independent, so that $F$ is
+free: indeed, if $\lambda_1x_1 + \dots + \lambda_nx_n = 0$, then we
+get $n$ equations $\lambda_1b(x_1,x_i) + \dots + \lambda_nb(x_n,x_i) =
+0$. But we know that $\det(b(x_i,x_j)) = t\in R^*$, since $1-st \in I$
+for some $s$ by assumption, but then $st$ cannot be contained in any
+maximal ideal, so $st \in R^*
+\implies t \in R^*$. It follows that the $\lambda_i$ are zero, so that
+the $x_i$ are independent as desired. The determinant fact also shows
+that $F$ is regular, so by the lemma above, it has an orthogonal
+summand $G$. By construction $F/I = \overline F$, so that $\overline G
+= (\overline
+F)^{\perp} = (F/I)^{\perp} = F^{\perp}/I = G/I$.
+\end{proof}
+
+\begin{lemma}
+Hermitian forms over $R_1 \times R_2$ (with trivial involution) are in bijection with $Herm(R_1)
+\times Herm(R_2)$.
+\end{lemma}
+
+\begin{proof}
+First, recall that modules over $R_1 \times R_2$ correspond to a
+module over $R_1$ and a module over $R_2$. Indeed, consider the
+standard idempotents $(1,0) = e_1, (0,1) = e_2$. Fix a module $M$ over
+$R_1 \times R_2$. Then $M = e_1M \oplus e_2M$. Indeed, any $m \in M$
+can be written as $e_1m + e_2m = (e_1+e_2)m = m$. Furthermore, if
+$e_1m_1 = e_2m_2$, then $e_2e_1m_1=e_2e_2m_2 \implies 0 = e_2m_2$. 
+
+Now, a hermitian form $M \otimes M \rightarrow R_1 \times R_2$ is
+determined by two maps $M \otimes M \rightarrow R_1$ and $M \otimes M
+\rightarrow R_2$. Writing $M = e_1M \oplus e_2M$, we note that, by
+linearity, it must be the case that $e_1M \otimes e_2M \rightarrow R_1
+\times R_2$ is the zero map; to wit, $b(e_1m_1,e_2m_2) =
+e_1e_2b(m_1,m_2) = 0$. Thus this hermitian form is determined
+completely by the maps $e_1M \otimes e_1M \rightarrow R_1 \times R_2$
+and $e_2M \otimes e_2M \rightarrow R_1 \times R_2$. Finally, note
+that, again by linearity, we see that $e_1M \otimes e_1M \rightarrow
+R_2$ is the zero map: $b(e_1m_1,e_1m_2) = b(e_1^2m_1,e_1m_2) =
+e_1b(e_1m_1,e_1m_2)$, and $e_1R_2 = 0$. Similarly for the other
+map. Hence, at the end of the day, the hermitian form is completely
+determined by the maps $e_1M \otimes e_1M \rightarrow R_1$ and $e_2M
+\otimes e_2M \rightarrow R_2$. 
+\end{proof}
+
+\begin{corollary}
+Free hermitian modules diagonalize over rings with finitely many maximal
+ideals (semi-local rings).
+\end{corollary}
+
+\begin{proof}
+By the Chinese Remainder Theorem, $R/(m_1 \cap \dots \cap m_n) \cong
+R/m_1 \times \cdots \times R/m_n = F_1 \times \dots \times F_n$. We
+claim that Hermitian forms over finite products of fields
+diagonalize, and then the result will follow from the above theorem. By induction and the lemma above, a hermitian module $M$
+is determined by hermitian modules $M_i$ over $F_i$, $i =
+1,\dots,n$ as $M = M_1 \oplus M_2 \oplus \cdots \oplus M_n$ with
+action $(f_1,\dots,f_n) \cdot (m_1,\cdots,m_n) =
+(f_1m_1,\dots,f_nm_n)$. Each $M_i$ can be diagonalized into $M_i = \langle a_{1,i}
+\rangle \perp \dots \perp \langle a_{m,i}\rangle$ (it's important to
+note here that since $M$ is free, the rank of each $M_i$ is the same). Thus a
+diagonalization of $M$ is given by $\langle (a_{1,1},\dots,a_{1,n})
+\rangle \perp \dots \perp \langle (a_{1,m},
+\dots,a_{m,n})\rangle$. 
+\end{proof}
+
+Now, let $R$ be a ring with involution, and $I \subseteq Jac(R)$ and
+ideal. Then $C_2\cdot I \subseteq Jac(R)$ is an ideal fixed by the
+involution. 
+
+The following corollary has the same proof as the theorem above, the
+only subtlety is that we need the quotient ring to inherit the
+involution to make sense of an induced hermitian module.
+
+\begin{corollary}
+Let $R$ be a ring with involution, and let $E$ be a hermitian module over
+$R$. Let $I \subset Jac(R)$ be an ideal fixed by the involution. For every orthogonal decomposition $\overline E = \overline F
+\perp \overline G$ of $\overline E = E/IE$ over $R/I$, where $\overline
+F$ is a free non-singular subspace of $\overline E$, there exists an
+orthogonal decomposition $E = F \perp G$ of $E$ with $F$ free and
+non-singular, and $F/IF = \overline F, G/IG = \overline G$.
+\end{corollary}
+
+\begin{corollary}
+Let $R$ be a local ring with involution (necessarily a map of local
+rings). Then any Hermitian module (which is necessarily free)
+over $R$ diagonalizes. 
+\end{corollary}
+
+\begin{lemma} 
+Let $R$ be a ring, and consider the ring $R \times R$ with the
+involution that switches factors. Then any module $M$ can be
+written as $e_1M \oplus e_2M$ as above. A non-degenerate hermitian form on this
+module is determined by a map $e_1M \otimes e_2M \rightarrow R \times
+R$, i.e. as a matrix it has the form
+\[
+\begin{bmatrix}
+0 & A \\
+\overline{A}^t & 0
+\end{bmatrix}.
+\]
+
+where $A$ is invertible. 
+\end{lemma}
+
+\begin{proof}
+The first claim is just that $b(e_1x,e_1y) = 0 = b(e_2x,e_2y)$ for any
+$x,y \in M$. This follows because $b(e_1x,e_1y) = b(e_1^2x,e_1^2y) =
+\overline{e_1}e_1b(e_1x,e_1y) = e_2e_1b(e_1x,e_1y) = 0$. Similarly for
+$b(e_2x,e_2y)$. The statement about the matrix follows by identifying
+the map $M \otimes \overline M \rightarrow R \times R$ with an isomorphism $M
+\rightarrow \overline M^*$ and using the direct sum decomposition. 
+\end{proof}
+
+\begin{corollary} \label{HermFormsOverSwitch} 
+Let $R$ be as in the lemma additionally with 2 invertible. Then $M \cong H(e_1M)$, where $H$ denotes
+the hyperbolic space functor. 
+\end{corollary}
+
+\begin{proof}
+The assumption that 2 is invertible implies that $M$ is an even
+hermitian space in the notation of Knus. Now by the corollary above
+$b|_{e_1M} = 0$, so $M$ has a direct summand such that $e_1M =
+e_1M^{\perp}$. Now corollary 3.7.3 in Knus applies to finish the proof.
+\end{proof}
+
+\begin{corollary}
+Let $R$ be a semi-local ring with involution. Then any hermitian
+module over $R$ diagonalizes.
+\end{corollary}
+
+\begin{proof}
+Using the theorem above and reducing modulo the Jacobson radical
+(which is always stable under the involution), it
+suffices to prove the corollary for $R$ a finite product of
+fields. Then $R = F_1 \times \dots \times F_n$ is semi-simple, and
+hence we can index the fields in a particularly nice way (proof is by
+considering idempotents), writing $R = A_1 \times \dots \times A_m \times B_1 \times
+\dots B_{n-m}$ such that $A_i$ is fixed by the involution, and
+$\sigma(B_{2i}) = B_{2i+1}$, $\sigma(B_{2i+1}) = B_{2i}$. Now, any
+finitely generated module $M$ can be written as a direct sum $M =
+\bigoplus_{i=1}^m M_i \bigoplus_{i=1}^{\frac{n-m}{2}} N_{2i} \oplus
+N_{2i-1}$. By the two lemmas above, the form when restricted to each
+$M_i$ or $N_{2i} \oplus N_{2i-1}$ is diagonalizable, so the form is
+diagonalizable (see the proof of the non-involution case).   
+\end{proof}
+
+
+\begin{corollary}
+Hermitian vector bundles are locally hyperbolic in the isovariant \'etale topology.
+\end{corollary}
+
+\begin{proof}
+The points in the isovariant \'etale topology are either strictly
+henselian local rings with
+trivial involution or a product of two such rings with switch
+involution. If the ring is a local ring, the fact that all non-degenerate hermitian
+forms are trivial is well-known, since we have square roots. If the
+ring is hyperbolic, then all non-degenerate hermitian forms over the
+ring are hyperbolic by the corollary above.
+\end{proof}
+
+
+\begin{corollary}
+Let $R \times R$ be a ring with the involution which switches
+factors. Fix a hermitian module $M$ over $R$, and let $N = e_1M$ (see
+above for notation). Then
+$O(M) \cong GL(N)$.
+\end{corollary}
+
+\begin{proof}
+In corollary \ref{HermFormsOverSwitch} above, we identified
+non-degenerate hermitian
+forms over such rings as hyperbolic. Thus it suffices to prove the
+statement for forms of the form 
+\[
+\begin{pmatrix}
+0 & 1\\
+can & 0
+\end{pmatrix}
+\]
+\end{proof}
+
+\begin{lemma}
+Let $(R,i)$ be a ring with involution with 2 invertible, and let
+$(M,b)$ be a non-degenerate hermitian module over $R$. There exists an equivariant
+\'etale cover $\{U_i \rightarrow \Spec R\}$ of $\Spec R$ such that
+$(M,b)|_{U_i}$ is trivial.
+\end{lemma}
+
+\begin{proof}
+For a fixed prime $p$, consider the semilocal ring $R_{(p)} \times
+R_{i(p)}$. By the universal property of localization, there's an induced involution $i$ on  $R_{(p)} \times
+R_{i(p)}$ given by $(f_1,f_2) \mapsto (i(f_2),i(f_1))$. The
+restriction of $M$ to this ring has a diagonalization $v(p)^*bv(p) =
+D$. Choose a greatest common denominator $(f_1,f_2)$ for the entries of $v(p)^*$
+and $v(p)$. By finding a common denominator and inverting the
+determinant, there's an element $(g_1,g_2) \in R-p_1 \times R-p_2$
+s.t. $v(p)^*bv(p) = D$ is an equality in $R[g_1^{-1},i(g_2)^{-1}] \times
+R[i(g_1)^{-1},g_2^{-1}]$. By construction, the set of $g$ s.t. we
+have such a diagonalization is not contained in any maximal
+ideal. Thus there exist $(g_1,g_2),\dots,(g_{n-1}.g_n)$ s.t. $b$
+diagonalizes over $R[g_i^{-1},i(g_{i+1})^{-1}] \times
+R[i(g_i)^{-1},g_{i+1}^{-1}]$ and s.t. $\prod R[g_i^{-1},i(g_{i+1})^{-1}] \times
+R[i(g_i)^{-1},g_{i+1}^{-1}] \rightarrow R$ is an equivariant Zariski
+cover. Now by adjoining square roots of the units corresponding to the
+diagonalization in each $R[g_i^{-1},i(g_{i+1})^{-1}] \times
+R[i(g_i)^{-1},g_{i+1}^{-1}]$ (and their images under the
+involution), if necessary, we obtain an \'etale cover $E_1 \times
+\dots \times E_n$ of $\Spec R$ s.t. $(M,b)$ is trivial when pulled
+back to each $E_i$. 
+\end{proof}
+
+\begin{lemma}\label{lem:perp_pullback}
+Let $(V,\phi)$ be a non-degenerate hermitian vector bundle over a
+scheme with trivial involution $X$, and let $(M,\phi|_M)$ be a (possibly degenerate)
+sub-bundle. Given a map of schemes $g : Y \rightarrow X$, there is a
+canonical isomorphism
+$g^*(M^\perp) \cong (g^*M)^\perp$.
+\end{lemma}
+
+\begin{proof}
+Recall that, by definition, $M^\perp = \ker(V \xrightarrow{\phi} V^*
+\rightarrow M^*)$. Equivalently, $M^\perp$
+is defined by the exact sequence
+\[
+0 \rightarrow M^\perp \rightarrow V \rightarrow M^* \rightarrow 0.
+\] 
+
+It follows that the composite map $g^*(M^\perp) \rightarrow g^*V
+\rightarrow g^*(M^*)$ is zero, and hence by universal property of kernel there's a canonical map
+\[
+g^*(M^\perp) \rightarrow \ker(g^*V \rightarrow g^*(M^*) \cong (g^*(M))^*) = (g^*(M))^\perp
+\]
+ where we've used the canonical isomorphism $g^*(M^*) \cong
+ (g^*(M))^*$ for locally free sheaves.
+
+We claim that this map is an isomorphism. It suffices to check on
+stalks, where the map can be identified with a map 
+\[
+M^\perp_{g(y)} \otimes \mc O_{Y,y} \rightarrow \ker(V_{g(y)} \otimes
+\mc O_{Y,y} \rightarrow M^*_{g(y)} \otimes \mc O_{Y,y}).
+\]
+
+But $V_{g(y)} \cong M^\perp_{g(y)} \oplus M^*_{g(y)}$, so the sequence
+\[
+0 \rightarrow M^\perp_{g(y)} \otimes \mc O_{Y,y}\rightarrow V_{g(y)}
+\otimes \mc O_{Y,y} \rightarrow M^*_{g(y)} \otimes \mc O_{Y,y}
+\rightarrow 0
+\]
+is split exact, and the canonical map is an isomorphism. 
+\end{proof}
+
+
+
+\section{Hermitian Grassmannians}
+
+Fix a separated base scheme $S$ with trivial involution. The goal of
+this section is to define a sheaf on $\Sm{S}^{C_2}$, denoted $\RGr_V$, which represents
+non-degenerate sub-bundles of a given hermitian vector bundle $V$. 
+
+\subsection{The definition of $\RGr$}
+
+\begin{lemma}\label{lem:action_presheaf}
+Let $\mc F$ be a presheaf on $\Sm{S}$ and let $a : \mc F \implies
+\mc F$ be a natural transformation s.t. $a \circ a = id_{\mc F}$. Then
+there's an associated presheaf on $\Sm{S}^{C_2}$ defined by the formula
+$(X,\sigma : X \rightarrow X) \mapsto \mc F(X)^{C_2}$ where the action
+of $C_2$ on $\mc F(X)$ is defined by $f \mapsto  a_X\mc F(\sigma)(f)$.
+\end{lemma}
+
+\begin{proof}
+Note that this is indeed a $C_2$-action, since $a_X \mc F(\sigma)(
+a_X\mc F(\sigma)(f)) = \mc F(\sigma) a_X(a_X \mc F(\sigma)(f)) = \mc
+F(\sigma)(\mc F(\sigma)(f)) = f$ using naturality. 
+\end{proof}
+
+Fix a (possibly degenerate) hermitian vector bundle $(V,\phi)$ over the base scheme $S$
+(which has trivial involution). 
+
+We'll define a presheaf $\RGr : (\Sm{S}^{C_2})^{op} \rightarrow \Set$
+by first defining a presheaf on $\Sm{S}$, showing that it's
+representable, equipping with an action, then taking the corresponding
+representable functor on $\Sm{S}^{C_2}$.
+
+\begin{itemize}
+\item On objects, $\RGr(V)(f: X \rightarrow S)$ for an $S$-scheme $f :
+  X \rightarrow S$ is a split surjection $(p,s)$
+\[
+\xymatrix{f^*V \ar@{>>}[r]_p & \ar@/_1.0pc/@{-->}[l]_sW},
+\]
+
+where $W$ is locally free. 
+
+Here by an isomorphism of split surjections we mean a diagram
+\[
+\xymatrix{f^*V \ar@{>>}[r]_p \ar@{=}[d]& \ar@/_1.0pc/@{-->}[l]_sW \ar[d]^\phi\\
+f^*V \ar@{>>}[r]_{p'} & \ar@/_1.0pc/@{-->}[l]_{s'}W'}
+\]
+
+such that $\phi$ is an isomorphism satisfying $\phi \circ p = p'$ and $s = s'\circ \phi$.
+
+\item Given a morphism 
+\[
+\xymatrix{Y\ar[dr]_h \ar[rr]^g &&X\ar[dl]^f\\& S&}
+\]
+over $S$, define
+\[
+\RGr_V(g)(\xymatrix{f^*V \ar@{>>}[r]_p & \ar@/_1.0pc/@{-->}[l]^sW}) = 
+\xymatrix{h^*V \ar[r]^{can} & g^*f^*V \ar@{>>}[r]_{g^*p} &
+  \ar@/_1.0pc/@{-->}[l]_{g^*s} g^*W}.
+\]
+\end{itemize}
+There's a natural action of $C_2$, on $\RGr_V$, whose non-trivial
+natural transformation will be denoted $\eta$. Define $\eta$ as
+follows: 
+
+ Fix an object $X \in \Sm{S}$. Define
+\[
+\eta_X(\xymatrix{f^*V \ar@{>>}[r]_p & \ar@/_1.0pc/@{-->}[l]_sW}) =
+\xymatrix{f^*V \ar@{>>}[r]_q & \ar@/_1.0pc/@{-->}[l]_t(\ker p)^\perp}.
+\]
+
+We claim that this is well-defined. % First, the map
+% \[
+% \xymatrix{f^*V \ar@{>>}[r]_p & \ar@/_1.0pc/@{-->}[l]_sW} \mapsto \xymatrix{f^*V \ar@{>>}[r]_p & \ar@/_1.0pc/@{-->}[l]_s\ker(p)}
+% \]
+% is well defined by the splitting lemma for abelian categories. We'll show that the $\perp$
+% map is also well-defined, and $\eta_X$ is the composite of these maps.
+
+Recall that 
+\[
+W^\perp = \ker(f^*V \xrightarrow{f^*\phi} f^*(V^*) \xrightarrow{can}
+(f^*V)^* \xrightarrow{s^*} W^*).
+\]
+
+
+
+Leaving out the $can$ map for convenience, we get a split exact sequence 
+\[
+\xymatrix{0 \ar[r] & W^\perp \ar[r] & f^*V \ar[r]_{s^*}& \ar@/_1.0pc/[l]_{p^*} W^*
+\ar[r] & 0}.
+\]
+
+By the splitting lemma for abelian categories, $f^*V \cong W^\perp
+\oplus W^*$, and hence there's a split surjection $f^*V
+\twoheadrightarrow W^\perp$ with $W^\perp$ locally free. 
+
+Given an isomorphism 
+
+\[
+\xymatrix{f^*V \ar@{>>}[r]_p \ar@{=}[d]& \ar@/_1.0pc/@{-->}[l]_sW \ar[d]^\psi\\
+f^*V \ar@{>>}[r]_{p'} & \ar@/_1.0pc/@{-->}[l]_{s'}W'}
+\]
+we get an isomorphism of (split) diagrams
+\[
+\xymatrix{f^*V \ar[r]^{f^*\phi}\ar@{=}[d] &(f^*V)^*\ar[r]^{s^*} \ar@{=}[d] & W^* \ar[d]^{(\psi^{-1})^*}\\
+f^*V \ar[r]^{f^*\phi} & (f^*V)^* \ar[r]_{(s')^* }& (W')^*}
+\]
+and hence an isomorphism of split surjections
+\[
+\xymatrix{f^*V \ar@{>>}[r]_q \ar@{=}[d]& \ar@/_1.0pc/@{-->}[l]_tW^\perp \ar[d]^\delta\\
+f^*V \ar@{>>}[r]_{q'} & \ar@/_1.0pc/@{-->}[l]_{t'}(W')^\perp},
+\]
+
+so that $\eta_X$ is a well-defined map of sets. Given a map of schemes
+$g : Y \rightarrow X$, such that $f\circ g = h$ and an element 
+\[
+\xymatrix{f^*V \ar@{>>}[r]_p & \ar@/_1.0pc/@{-->}[l]_sW}
+\]
+
+in $\RGr_V(X)$, 
+\begin{align*}
+\RGr(g) \circ \eta_X(\xymatrix{f^*V \ar@{>>}[r]_p &
+  \ar@/_1.0pc/@{-->}[l]_sW}) = & \RGr(g)( \xymatrix{f^*V \ar@{>>}[r]_q
+  & \ar@/_1.0pc/@{-->}[l]_t(\ker p)^\perp})\\
+ = & \xymatrix{h^*V \ar[r]^{can} & g^*f^*V \ar@{>>}[r]_{g^*q} &
+  \ar@/_1.0pc/@{-->}[l]_{g^*t} g^*((\ker(p))^\perp)}
+\end{align*}
+
+while
+\begin{align*}
+\eta_Y\circ\RGr(g)(\xymatrix{f^*V \ar@{>>}[r]_p &
+  \ar@/_1.0pc/@{-->}[l]_sW})) = \xymatrix{h^*V \ar[r]^{can} & g^*f^*V \ar@{>>}[r]_{q'} &
+  \ar@/_1.0pc/@{-->}[l]_{t'} (g^*(\ker(p)))^\perp}
+\end{align*}
+
+By Lemma \ref{lem:perp_pullback}, there's a canonical isomorphism
+$g^*((\ker(p)^\perp)) \rightarrow (g^*(\ker(p)))^\perp$, and under
+this isomorphism $q'$ and $t'$ correspond to $g^*q$, and $g^*t$,
+respectively. This concludes the check of naturality.
+
+
+Now by Lemma \ref{lem:action_presheaf}, there's a presheaf $\RGr :
+\Sm{S}^{C_2} \rightarrow \Set$. To determine its values on a
+$C_2$-scheme $(X,\sigma)$, we note that a fixed point of the action of Lemma
+\ref{lem:action_presheaf} is determined by an isomorphism of split
+surjections
+
+\[
+\xymatrix{f^*V \ar@{>>}[r]_q \ar@{=}[d]& \ar@/_1.0pc/@{-->}[l]_t\sigma^*(\ker(p)^\perp) \ar[d]^\psi\\
+f^*V \ar@{>>}[r]_{p} & \ar@/_1.0pc/@{-->}[l]_{s}\ker(p)}
+\]
+
+Note that because $\sigma$ is an involution, for any $\mc O_X$-module
+$M$, there's a canonical isomorphism of $\mc O_X$-modules $\sigma_*M \cong
+\sigma^*M$. Thus there's a natural isomorphism 
+\[
+\Hom_{mod-\mc
+  O_X}(\sigma_*f^*V,-) \cong \Hom_{mod-\mc O_X}(\sigma^*f^*V,-) \cong
+\Hom_{mod-\mc O_X}(f^*V,-).
+\]
+
+It follows that any Hermitian form
+\[
+\phi : f^*V \rightarrow \Hom_{mod-\mc O_X}(f^*V,\mc O_X)
+\]
+can be promoted to a Hermitian form
+\[
+\widetilde\phi : f^*V \rightarrow \Hom_{mod-\mc O_X}(\sigma_*f^*V,\mc O_X)
+\]
+compatible with an involution $\sigma$ on $X$.
+
+Let $(M,\phi|_M)$ be a hermitian sub-bundle of $f^*V$ over the scheme $X$ with
+trivial involution. We claim that $\sigma^*(M^\perp)$ is the
+orthogonal complement of $M$ viewed as a hermitian sub-bundle of
+$f^*V$ with the promoted form $\widetilde \phi$. Said differently, we
+claim that
+\[
+\sigma^*(\ker(f^*V \xrightarrow{\phi|_M} \Hom(M,\mc O_X)) \cong \ker(f^*V
+\xrightarrow{\widetilde \phi|_M} \Hom(\sigma_*M,\mc O_X)).
+\]
+
+But using the natural isomorphism between $\sigma^*$ and $\sigma_*$,
+together with the natural isomorphisms $\sigma^*\Hom(M,\mc O_x) \cong
+\Hom(M,\mc O_X)$ and $\sigma^*f^*V \cong f^*V$, this becomes a question
+of whether $\sigma^*$ is left exact. In general it isn't, but because
+it's naturally isomorphic to $\sigma_*$, and $\sigma_*$ is left exact, the claim
+follows. 
+
+% First note that $\sigma^{-1}M(U) = M(\sigma(U))$. Thus
+% $\sigma^*M(U) = M(\sigma(U)) \otimes_{\mc O_X(\sigma(U))} \mc O_X(U)$
+% with module structure via the map on the right. On the other hand,  $\sigma_*M(U) = M(\sigma^{-1}(U)) = M(\sigma(U))$,
+
+
+\subsection{Representability of $\RGr$}
+
+
+Fix a hermitian vector bundle $(V,\phi)$ over $S$ where $\dim(V) = n$
+and $S$ is a scheme with
+trivial involution. Then the underlying scheme of $\RGr(V)$ is the
+pullback 
+\[
+\xymatrix{\RGr(V) \ar[r]\ar[d] & \uline{\Hom}_{\mc O_S}(V,V) \times
+  \uline{\Hom}_{\mc O_S}(V,V) \ar[d]^{\circ, id} \\ \uline{\Hom}_{\mc
+    O_S}(V,V) \ar[r]^-\Delta & \uline{\Hom}_{\mc O_S}(V,V) \times \uline{\Hom}_{\mc O_S}(V,V)}
+\]
+
+where the right vertical map sends $p \mapsto (p \circ p, p)$. In
+other words, the underlying scheme is the scheme of idempotent
+endomorphisms of $V$. The action corresponds to the map $p \mapsto
+p^\dagger$, where $p^\dagger$ is the adjoint of $p$ with respect to
+the form $\phi$. 
+
+Note that using this description, an equivariant map $(X,\sigma) \rightarrow
+\RGr(V)$ corresponds to an idempotent $p : V_X \rightarrow V_X$ such
+that $\phi^{-1}(\gamma^{-1}(\sigma^*p)\gamma)^*\phi = p$, where we're being cavalier
+and using $\ast$ to denote both dual (on the outside) and pullback (by
+$\sigma$). Here $\gamma$ is the canonical isomorphism $V_X
+\xrightarrow{\gamma} \sigma^*V_X$; if the structure map of $X$ is $f :
+X \rightarrow S$, then $\gamma$ arises from the equality $\sigma \circ f = f$.
+
+Note that the form on $V_{(X,\sigma)}$ is by definition the composite
+
+\[
+\widetilde \phi : V_X \xrightarrow{\phi} V_X^* \xrightarrow{(\gamma^*)^{-1}} \sigma^*V_X^*
+\xrightarrow{(\eta^*)^{-1}} \sigma_*V_X^*,
+\]
+and the adjoint of $p$ is given by $\widetilde \phi^{-1} (\sigma_*p)^*
+\widetilde \phi$. Expanding, this is
+
+\[
+\phi^{-1}(\gamma^*)(\eta^*)(\eta^*)^{-1}(\sigma^*p)^*(\eta^*)(\eta^*)^{-1}(\gamma^*)^{-1}\phi
+= \phi^{-1}(\gamma^{-1}(\sigma^*p)\gamma)^*\phi,
+\]
+
+and so we recover the condition that $p^\dagger  =  p$, which
+corresponds to the fact that $V_X = \ker p \perp \im p$, and hence the
+restriction of the form on $V_X$ to $\im p$ (and $\ker p$) is
+non-degenerate. 
+
+To summarize, the underlying scheme of $\RGr(V)$ represents
+idempotents, and equivariant maps pick out those idempotents which
+correspond to orthogonal projections. 
+
+\begin{remark}
+
+Now fix a dimension $d$ and a non-degenerate hermitian vector bundle
+$(V,\phi)$ over $S$.  Recalling that the trace of an idempotent
+coincides with the rank of the image, define $\RGr_d(V)$ to be the closed
+subscheme of $\RGr(V)$ cut out by $\tr(p) = d$, where $\tr$ is the
+trace of an endomorphism. In other words, $\RGr_d(V)$ is the pullback
+\[
+\xymatrix{\RGr_d(V) \ar[r]\ar[d] & \RGr(V) \ar[d]^{\tr} \\ \{d\}
+  \ar[r] & \Z}
+\]
+
+where $\Z$ is the locally constant sheaf on $\Sm{S}^{C_2}$. The
+requirement that $V$ be non-degenerate is necessary so that the action
+on $\RGr(V)$ sends rank $d$ subspaces to rank $d$ subspaces and hence
+induces an action on $\RGr_d(V)$.
+\end{remark}
+
+\subsection{The universal idempotent}
+
+Denote by $g : \RGr_d(V) \rightarrow S$ the structure map of
+$\RGr_d(V)$.  Because $\RGr_d(V)$ is representable by a $C_2$-scheme, there's an
+idempotent $g^*(V) \rightarrow g^*(V)$ corresponding to the identity map $id: \RGr_d(V) \rightarrow
+\RGr_d(V)$. This idempotent is simply the idempotent which over a
+point of $\RGr_d(V)$ represented by an idempotent $p : V \rightarrow
+V$ restricts to $p$. There's an action $\sigma$ on $\RGr_d(V) \times_S V$
+induced by the action on $\RGr_d(V)$, and using the fact that $\sigma
+p \sigma = p^\dagger$ one can see that this idempotent is
+non-degenerate with respect to the promoted hermitian form on $g^*(V)$
+compatible with the involution on $\RGr_d(V)$.
+
+\begin{remark}
+Since we've shown that $\RGr(V)$ represents non-degenerate hermitian
+subbundles of $V$, at this point we'll move away from explicitly
+referring to split surjections and just represent the sections of
+$\RGr(V)$ by non-degenerate subbundles. 
+\end{remark}
+
+\begin{definition}
+Let $\mbb H_S$ denote the hyperbolic plane. For $V \in \mbb H^\infty$
+a constant rank non-degenerate subbundle,
+let $|V|$ denote the rank of $V$. Order such subbundles of $\mbb
+H^\infty$ by inclusion, and denote the resulting poset $P$. Given an inclusion $V \hookrightarrow V'$
+of non-degenerate subbundles, denote by $V'-V$ the complement of $V$
+in $V'$. Let $\mc H : P \rightarrow \mathrm{Fun}(\Sm{S}^{C_2,
+  op},Set)$ be the functor which on objects sends a subbundle $V$ to $
+\RGr_{|V|} (V \perp \mbb H^\infty)$. Given an inclusion $V \hookrightarrow V'$, the induced map
+$\RGr_{|V|}(V \perp \mbb H^\infty) \rightarrow \RGr_{|V'|}(V' \perp
+\mbb H^\infty)$ is given by $E \mapsto E \perp (V'-V)$. Note that
+because $V$ is non-degenerate, $V \perp (V'-V) = V'$. Define
+\[
+\RGr_\infty = \colim \mc H.
+\]
+
+\end{definition}
+
+
+
+% We claim that $\RGr(\mc O^{n}_S,\phi)$ is representable by a
+% $C_2$-scheme over $S$. To prove this, it suffices to show that the
+% underlying functor without the natural action is
+% representable. Following the usual strategy for showing the
+% Grassmannan is representable, let $I$ be the set of subsets of
+% $\{1,\dots,n\}$. For fixed $i$ with $|i| = n-k$, there's a unique
+% order preserving map
+% $\overline i : \{1,\dots,n-k\} \rightarrow \{1,\dots,n\}$ with image $i$. Let
+% \[
+% s_{i,k} : \mc O^{n-k} \rightarrow \mc O^n
+% \]
+% be the inclusion represented by the matrix $[s_{kt}]$ where $s_{kt} =
+% \delta_{k\overline i(t)}$. 
+
+% Let $F_{i,k}(f: X \rightarrow S)$ be the collection of split surjections
+% \[
+% \xymatrix{f^*\mc O^n_S \ar@{>>}[r]_p & \ar@/_1.0pc/@{-->}[l]_sW}
+% \]
+
+% such that $p\circ s_i$ is surjective. 
+
+% We claim that $F_i$ is representable. Because $p \circ s_i$ is a surjection
+% between locally free modules of the same rank, it's an
+% isomorphism. Assume WLOG $i = \{1,\dots,n-k\}$. Then using $\psi$ to
+% identify $W$ with $f^*\mc O^n_S$, the diagram above is a split surjection
+% \[
+% \xymatrix{f^*\mc O^n_S \ar@{>>}[r]_{(p\circ s_i)^{-1}\circ p} & \ar@/_1.0pc/@{-->}[l]_{s\circ p \circ s_i} f^*\mc O^{n-k}_S}.
+% \]
+% Letting $e_1,\dots,e_n$ denote the standard basis of $\Gamma(f^*\mc
+% O^n_S)$, it's clear that $p$ is determined by the images of
+% $e_{n-k+1},\dots,e_n$, and that $p$ has a canonical splitting. If we
+% denote by $G_i$ the sheaf obtained by sectionwise forgetting the data
+% of the section $s$,  $G_i$ is the
+% usual representable subsheaf of the ordinary Grassmannian which sends 
+% \[
+% G_i(f:X \rightarrow S) = \mapsto Hom(f^*\mc O^k_S,f^*\mc O^{n-k}_S)
+% \]
+% which is just the space of matrices $\mbb A^{k(n-k)}$. The sheaf $F_i$ is a pullback 
+% \[
+% \xymatrix{F_i \ar[r]\ar[d] & \Hom(\mc O^{n-k},\mc O^n) \times
+%   \Hom(\mc O^k,\mc O^{n-k}) \ar[d] \\ Q_i \ar[r]\ar[d] & \Hom(\mc
+%   O^{n-k},\mc O^n) \times \Hom(\mc O^n,\mc O^{n-k}) \ar[d] \\ \{id\}
+%   \ar[r] & \Hom(\mc O^{n-k},\mc O^{n-k})}
+% \]
+% and thus is representable.
+
+
+
+
+% To give intuition for the idea, we
+% first define the pseudo-presheaf $\mc F_{(V,\phi)} : \Sm{S} \rightarrow \Set$ by 
+% \[
+% \mc F_{(V,\phi)}(f: X \rightarrow S) = \{(W,H) \mid W,H \subseteq V_X, \ W \oplus H = V\}.
+% \]
+
+% Here $V_x = f^*(V,\phi)$. On morphisms, we would like to define
+% \[
+% \mc F_{(V,\phi)}(g : X \rightarrow Y)((W,H) \in \mc F_{(V,\phi)}(Y)) =
+% (g^*W,g^*H) \in  \mc F_{(V,\phi)}(X),
+% \]
+
+% but we run into the standard problem with composition of pullbacks. To make this into an honest presheaf, we recall the strictification
+% via a slight modification of Grayson's category of big vector bundles.
+
+% \begin{definition}
+% Fix $(V,\phi)$ as above. Let $\mc A$ be a small category equivalent to $(\Sm{S})_{/X}$. A big
+% hermitian vector bundle over $X$ is a family 
+% \[
+% \{(W,H)_Y\}_{(f : Y \rightarrow X) \in \Ob(\mc A)}
+% \]
+% of pairs as above indexed over $\mc A$ together with a choice of compatible isometries
+% \[
+% \{\psi_g : g^*(V_Z)\rightarrow V_Y\mid (g : Y \rightarrow Z) \in
+% \Mor(\mc A)\}.
+% \]
+
+% Note that such a family of isometries induces isometries
+% $(g^*W_Z,g^*H_Z) \rightarrow (W_Y,H_Y)$ by restriction.
+
+% Given two big vector bundles $\{(W,H)_Y\}, \{(K,L)_Y\}$ over $X$, a morphism
+% between them is given by a family of morphisms $\{h_{Y} : (W,H)_Y
+% \rightarrow (K,L)_Y  \}_{(Y \rightarrow X) \in \mc A}$ compatible with the
+% chosen pullback isometries.
+
+% Denote the groupoid of big hermitian vector bundles over $X$ by $\BigVB{X}$.
+% \end{definition}
+
+% \begin{lemma}
+% The assignment $X \mapsto \BigVB{X}$ defines a presheaf of groupoids
+% $\BigVB{-}$ on $\Sm{S}$. By applying $\pi_0$, we obtain a presheaf of sets.
+% \end{lemma}
+
+% \begin{proof}
+% ...
+% \end{proof}
+
+% \begin{lemma}
+% There's a natural action on $\BigVB{-}$ by sending a big hermitian
+% vector bundle $\{(W,H)_Y\}$ on $X$ to the big hermitian vector bundle
+% $\{(H^\perp,W^\perp)_Y\}$. 
+% \end{lemma}
+
+% \begin{proof}
+% We need to check that if $W \oplus H = V$, then $W^\perp \oplus
+% H^\perp = V$. There's a map $W^\perp \oplus H^\perp \rightarrow V$
+% given by 
+% \[
+% W^\perp \oplus H^\perp \rightarrow V \oplus V \xrightarrow{+} V
+% \]
+% where the first map is the sum of the maps in the exact sequences
+% defining $W^\perp,H^\perp$. Locally, because $V$ is non-degenerate,
+% this map is an isomorphism, thus it's an
+% isomorphism. 
+
+% Given a compatible family of
+% isometries on $\{(W,H)_Y\}$
+% \[
+% \{\psi_g : g^*V_Z \rightarrow V_Y \mid (g : Y \rightarrow Z) \in
+% \Mor(\mc A)\},
+% \]
+
+% we can use the same family of isometries for $\{(H^\perp,W^\perp)_Y\}$
+% \todo{Check naturality}.
+% \end{proof}
+
+% Now by lemma \ref{lem:action_presheaf}, we get a presheaf of groupoids $\BigVB{-}$
+% on $\Sm{S}^{C_2}$. We claim that this presheaf represents
+% non-degenerate Hermitian sub-bundles of $(V,\phi)$.
+
+% \begin{lemma}
+% Given $X \in \Sm{S}^{C_2}$
+% \[
+% \Hom(X,\BigVB{-}) \cong \{\text{Groupoid of non-degenerate Hermitian vector bundles
+%   over $X$}\}.
+% \]
+% \end{lemma}
+
+% \begin{proof}
+% By construction, 
+% \[
+% \Hom_{\PreSm}(X,\BigVB{-})
+% \]
+
+% is precisely the fixed points of the action $f \mapsto
+% a_X(\BigVB{-}(\sigma)(f)$ defined in lemma \ref{lem:action_presheaf}. 
+% Such a fixed point is given by
+% a big vector bundle $\{(W,H)_Y\}$ such that $\{(W,H)_Y\} =
+% \{\sigma_*(H^\perp,W^\perp)\}$, so that $W = \sigma_*(H^\perp)$. Now
+% if we forget the module structure, then $\sigma_*(H^\perp) = H^\perp$,
+% so that, again forgetting the module structure, $W^\perp = H$. It
+% follows that $W$ is complemented, and hence non-degenerate as a
+% sub-bundle of $V_X$. 
+
+% \end{proof}
+
+\subsection{The \'Etale Classifying Space}
+
+Fix a scheme $S$ with trivial involution and 2 invertible, and let $(V,\phi)$ be a
+(possibly degenerate) hermitian vector bundle over $S$. For a
+$C_2$-scheme $f : X \rightarrow S$, let
+\[
+\mc S(V,\phi)(X)
+\]
+be the category of non-degenerate hermitian sub-bundles of $f^*V$. A
+morphism in this category from $E_0$ to $E_1$ is an isometry not
+necessarily compatible with the embeddings $E_0,E_1 \subseteq
+V$. Using pullbacks of quasi-coherent modules, we turn $\mc S$ into a presheaf of categories on
+$\Sm{S}^{C_2}$. For integer $d \geq 0$, define
+\[
+\mc S_d(V,\phi)  \subset \mc S(V,\phi)
+\]
+to be the presheaf which on a $C_2$-scheme $f : X \rightarrow S$
+assigns the full subcategory of non-degenerate hermitian sub-bundles
+of $(f^*V,f^*\phi)$ which have constant rank $d$. The associated
+presheaf of objects is $\RGr_d(V,\phi)$.
+
+Note that the object $V = (V,0) \in \mc S_{|V|}(V \perp H^\infty)$ has
+automorphism group $O(V)$. Thus we get an inclusion $O(V,\phi)
+\rightarrow \mc S_{|V|}(V \perp H^\infty) $, where $O(V)$ is the
+isometry group considered as a category on one object. After isovariant \'etale
+sheafification, this inclusion becomes an equivalence; this follows
+from our remarks above that on the points in the isovariant \'etale
+topology, hermitian vector bundles are isomorphic to $\mbb H^n(P)$ for
+some $n$, where $P$ is a hermitian vector bundle over a strictly
+henselian local ring. Since all hermitian vector bundles over strictly
+henselian local rings (with 2 invertible) are trivial, hermitian vector bundles over the
+points in the isovariant \'etale topology are completely determined by
+rank. 
+
+Upon applying the nerve, we get maps of simplicial presheaves $BO(V)
+\rightarrow B\mc S_{|V|}(V\perp \mbb H^\infty)$ which is a weak
+equivalence in the isovariant \'etale topology. Abusing notation, let $B_{isoEt}O(V)$
+denote a global fibrant replacement of $B\mc S_{|V|}(V\perp \mbb H^\infty)$ in the isovariant
+\'etale topology so that we get a sequence of weak equivalences
+\[
+BO(V) \rightarrow B\mc S_{|V|}(V\perp \mbb H^\infty) \rightarrow B_{isoEt}O(V).
+\]
+
+\begin{lemma} \label{weqaff}
+Let $(V,\phi)$ be a non-degenerate hermitian vector bundle over a
+scheme $S$ with trivial involution and $\frac{1}{2} \in \Gamma(S,\mc
+O_S)$. Then for any affine $C_2$-scheme over $S$, $\Spec R$, the map
+\[
+B\mc S_{|V|}(V\perp \mbb H^\infty)(R) \rightarrow B_{isoEt}O(V)(R)
+\]
+is a weak equivalence of simplicial sets. In particular, the map
+\[
+B\mc S_{|V|}(V\perp \mbb H^\infty) \rightarrow B_{isoEt}O(V)
+\]
+is a weak equivalence in the equivariant Nisnevich topology, and hence an
+equivalence after $C_2$ motivic localization. 
+\end{lemma}
+
+\begin{proof}
+% Counterexample: Let $S = \Z[1/2]$ and $R = \mbb R$. Then $O(\mbb H_S)$
+% is represented by the $C_2$-scheme $GL_{2}$ with inverse adjoint
+% action. It follows that $O(\mbb H_S)$ is an isovariant \'etale sheaf of groups,
+% and hence $BO(\mbb H_s)$ is fibrant in the isovariant \'etale
+% topology. If the map
+% \[
+% B\mc S_{|V|}(V\perp \mbb H^\infty)(R) \rightarrow B_{isoEt}O(V)(R)
+% \]
+% is an equivalence of simplicial sets, then because the composite
+% \[
+% BO(V) \rightarrow B\mc S_{|V|}(V\perp \mbb H^\infty) \rightarrow B_{isoEt}O(V)
+% \]
+% is a weak equivalence of fibrant objects, it's a global
+% equivalence. It would follow by 2-3 that the map 
+% \[
+% BO(V)(R) \rightarrow B\mc S_{|V|}(V\perp \mbb H^\infty)(R)
+% \]
+% is a weak equivalence of simplicial sets. This is false as it fails to
+% be surjective on $\pi_0$.
+
+
+
+
+Each Hermitian vector bundle $W  \in S_{|V|}(V\perp \mbb H^\infty)(R)$
+gives rise to an $ O(V)$-torsor via $W \mapsto Isom(V,W)$. Note
+that this is an $O(V)$-torsor because etale locally, $W \cong V$,
+so that etale locally $Isom(V,W) \cong Isom(V,V) \cong 
+O(V)$. Because hermitian vectors bundles are isovariant etale locally
+determined by rank, the same proof as the vector bundle case shows
+that the category of $\mc O(V)$ torsors is equivalent to the category
+of Hermitian vector bundles. Because over an affine scheme, every
+hermitian vector bundle is a summand of a hyperbolic module, it
+follows that $S_{|V|}(V\perp \mbb H^\infty)(R)$ is equivalent to the
+category of (etale) $\mc O(V)$ torsors. 
+
+Let $\mc F : \Sm{S}^{C_2} \rightarrow Gpd$ be the sheaf which assigns
+to $f : X \rightarrow S$ the groupoid of $ O(f^*V)$-torsors. The
+construction $W \mapsto Isom(f^*V,W)$ described above defines a
+functor $S_{|V|}(V\perp \mbb H^\infty) \rightarrow \mc F$ which is an
+equivalence when evaluated at affine $C_2$-schemes. It follows that
+there's a sequence
+\[
+B S_{|V|}(V\perp \mbb H^\infty) \rightarrow B\mc F \rightarrow B_{isoEt}O(V)
+\]
+
+where the first map is a weak equivalence of simplicial sets when
+evaluated at affine $C_2$-schemes, and by \cite{Jar01} theorem 6, the second map is a
+weak equivalence of simplicial sets when evaluated at any
+$C_2$-scheme. 
+\end{proof}
+
+
+\begin{definition}
+Following \cite{SchTri}, let
+\[
+\mc S_\bullet = \colim_{V \subset \mbb H^\infty_S} \mc S_{|V|}(V \perp
+\mbb H^\infty)
+\]
+where similarly to the definition of $\RGr$, for $V \subset V'$ the
+functor 
+\[
+\mc S_{|V|}(V \perp
+\mbb H^\infty) \rightarrow \mc S_{|V'|}(V' \perp
+\mbb H^\infty)
+\]
+is defined on objects by $E \mapsto E \perp V'-V$ and on morphisms by
+$f \mapsto f \perp 1_{V'-V}$. 
+\end{definition}
+
+\begin{definition}
+Define
+\[
+O = \colim_{W \subseteq \mbb H^\infty_S} O(W).
+\]
+Because the nerve construction commutes with filtered colimits, and
+because filtered colimits of globally fibrant objects are globally
+fibrant (follows from the fact that filtered colimits of Kan complexes
+are Kan complexes), define by abuse of notation
+\[
+B_{isoEt}O = \colim_{W \subseteq \mbb H^\infty_S} B_{isoEt}O(W).
+\]
+\end{definition}
+% Inclusion of discrete categories defines a functor
+% \[
+% \RGr_{|V|}(V \perp \mbb H^\infty) \rightarrow \mc S_{|V|}(V \perp \mbb H^\infty)
+% \]
+% and after applying the nerve we get a sequence
+% of maps
+% \[
+% B\RGr_{|V|}(V \perp \mbb H^\infty) \rightarrow B\mc S_{|V|}(V \perp
+% \mbb H^\infty) \rightarrow B_{isoEt}O(V)
+% \]
+% where the second map is a weak equivalence on affine schemes by Lemma
+% \ref{weqaff}. Let
+% \[
+% O = \colim_{V \subset \mbb H^\infty} O(V)
+% \]
+% and note that this colimit can be computed either in the category of
+% groups or the category of small categories (where $O(V)$ is embedded
+% as a one object category). Since the nerve construction commutes with
+% filtered colimits, we
+% have
+% \[
+% BO(V) \cong \colim_{V \subset \mbb H^\infty} BO(V)
+% \]
+% and 
+
+\begin{theorem}
+Let $R$ be a regular noetherian ring with involution which is either connected or
+hyperbolic. Then there's an equivalence of simplicial sets
+\[
+B\RGr_\bullet(\Delta R) \rightarrow |B \mc S_\bullet (\Delta R)|
+\]
+where $\Delta R$ denotes the simplicial ring with involution $[n] \mapsto
+R[x_0,\dots,x_n]/(\sum x_i -1)$. 
+\end{theorem}
+
+
+\begin{lemma}
+Let $\Iso_d(R)$ denote the set of isometry classes of finitely-generated, non-degenerate
+hermitian vector bundles over $R$. The map
+\[
+\colim_{V \subset \mbb H^\infty_R} \Iso_{|V|}(R) = \coprod_{V \subset
+  \mbb H^\infty} \Iso_{|V|}/\sim \cong \widetilde{GW}_{[0]}(R)
+\]
+sending $(V,W) \in \Iso_{|V|}$ to $[V] - [W]$ is an isomorphism. 
+Here $\widetilde{GW}_{[0]}(R)$ is the kernel of the rank map $GW_0(R)
+\rightarrow \Z$.
+\end{lemma}
+
+\begin{proof}
+First, note that the map is well-defined. If there's an inclusion $V
+\hookrightarrow T \hookrightarrow \mbb H^\infty_R$, then 
+\[
+(T,W \perp (T-V)) \mapsto [T] - [W + T - V] = [V] - [W].
+\]
+Furthermore, by definition if $W \in \Iso_{|V|}(R)$, then $\rk(V) =
+\rk(W)$ and hence $[V]-[W] \in \ker(\rk) : GW_0(R) \rightarrow \Z$. 
+
+If $[V] - [W] = 0$ in $GW_0$, then there's a non-degenerate bundle
+$[K]$ such that $V \perp K \cong W \perp K$. It follows that $(V,W) \in
+\Iso_{|V|}(R) \sim (V \perp K, W \perp K) = (V \perp K, V \perp K)
+\sim (0,0\in \Iso_{|0|}(R))$ so that the map is
+injective. Surjectivity is clear because over a ring, every bundle is,
+up to isometry, a sub-bundle of $\mbb H^\infty_R$.
+\end{proof}
+
+Now, note that there are maps of sets
+\[
+\RGr_d(V \perp \mbb H^\infty_R) \rightarrow \Iso_d(R): E \mapsto [E]
+\]
+and (considering a set as a discrete category) maps of categories
+\[
+\mc S_d(V \perp \mbb H^\infty_R) \rightarrow \Iso_d(R) : E \mapsto [E].
+\]
+
+These maps fit into cartesian squares
+
+\[
+\xymatrix{\RGr_V(V \perp \mbb H^\infty) \ar[r]\ar[d] & \RGr_{|V|}(V
+  \perp \mbb H^\infty) \ar[d] \\ \star \ar[r]^V & \Iso_{|V|}(R)}
+\]
+and 
+\[
+\xymatrix{\mc S_V(V \perp \mbb H^\infty) \ar[r]\ar[d] & \mc S_{|V|}(V
+  \perp \mbb H^\infty) \ar[d] \\ \star \ar[r]^V & \Iso_{|V|}(R)}
+\]
+
+where $\RGr_V(V \perp \mbb H^\infty_R)$ is the subset of $\RGr_{|V|}(V
+\perp \mbb H^\infty_R)$ of bundles isometric to $V$, and similarly
+$\mc S_V(V \perp \mbb H^\infty) \subseteq \mc S_{|V|}(V \perp \mbb H^\infty)$ is the full subcategory whose objects
+correspond to the set $\RGr_V(V \perp \mbb H^\infty_R)$.
+
+Taking colimits over non-degenerate subspaces $V \subset \mbb
+H^\infty_R$ and using the standard facts that the nerve functor commutes with filtered colimits and
+that filtered colimits of cartesian diagrams are cartesian, we get cartesian diagrams of simplicial sets
+\[
+\xymatrix{B\RGr_{[0]}(V \perp \mbb H^\infty)(R) \ar[r]\ar[d] & B\RGr_\bullet(V
+  \perp \mbb H^\infty)(R) \ar[d] \\ B\star \ar[r]^V & B\widetilde{GW}_{[0]}(R)}
+\]
+and 
+\[
+\xymatrix{B\mc S_{[0]}(V \perp \mbb H^\infty)(R) \ar[r]\ar[d] & B\mc S_\bullet(V
+  \perp \mbb H^\infty)(R) \ar[d] \\ B\star \ar[r]^V & B\widetilde{GW}_{[0]}(R)}
+\]
+
+where the upper left corners are just defined as the respective colimits. 
+
+\begin{lemma}
+The diagrams
+\[
+\xymatrix{B\RGr_{[0]}(V \perp \mbb H^\infty)(\Delta R) \ar[r]\ar[d] & B\RGr_\bullet(V
+  \perp \mbb H^\infty)(\Delta R) \ar[d] \\ B\star \ar[r]^V & |B\widetilde{GW}_{[0]}(\Delta R)|}
+\]
+and 
+\[
+\xymatrix{|B\mc S_{[0]}(V \perp \mbb H^\infty)(\Delta R)| \ar[r]\ar[d] & |B\mc S_\bullet(V
+  \perp \mbb H^\infty)(\Delta R)| \ar[d] \\ B\star \ar[r]^V &
+  |B\widetilde{GW}_{[0]}(\Delta R)|}
+\]
+are homotopy cartesian over any regular ring $R$ with involution such that
+non-degenerate hermitian vector bundles have constant rank.
+\end{lemma}
+
+\begin{proof}
+
+% We claim that $\colim_{V \subset \mbb H^\infty_R} \mathrm{Iso}_{|V|}(R)
+% \cong \widetilde{GW}_0(R)$, the zeroth reduced Grothendieck-Witt group
+% of $R$. Indeed, our assumptions imply that $\widetilde{GW}_0(R)$ is
+% the kernel of the rank map $GW_0(R) \rightarrow \Z$, and there's a map
+% \[
+% \colim_{V \subset \mbb H^\infty_R} \mathrm{Iso}_{|V|}(R) \rightarrow
+% \widetilde{GW}_0(R) \qquad (E,V) \mapsto [E] - [V].
+% \]
+
+% One can quickly check that the map is well-defined and an isomorphism
+% (here it's crucial that we only talk about Grothendieck-Witt groups of
+% rings so that all non-degenerate bundles embed up to isometry in
+% hyperbolic space). 
+
+First, note that before applying the diagonal functor $| - |$, these
+diagrams are cartesian diagrams of bisimplicial sets. This follows
+simply because limits are computed object-wise in functor
+categories. For the same reason, we get a cartesian diagram after
+applying $| - |$. Thus to prove that the diagrams are homotopy
+cartesian (in the standard model structure on simplicial sets), it
+suffices to prove that the bottom horizontal map is a fibration. If $R$
+is a regular ring with involution, then $GW_0(R[t]) \cong GW_0(R)$
+where the involution on $R[t]$ is on the coefficients of a
+polynomial. It follows that the reduced Grothendieck-Witt group is
+also homotopy invariant. It follows that the simplicial set in the bottom right
+corner of both diagrams is discrete. A map of discrete simplicial sets
+is a Kan fibration, since a map from a simplicial set to a discrete
+simplicial set is completely determined by the map on zero simplices,
+and the zero simplices of an $n$-horn and $n$-simplex for $n \geq 1$ agree.
+\end{proof}
+
+
+
+Via inclusion of zero simplices, there is a map of homotopy fibrations
+\begin{equation}\label{dia:Grass_GW}
+\begin{gathered}
+\xymatrix{B\RGr_{[0]}(V \perp \mbb H^\infty)(\Delta R) \ar[r]\ar[d] & B\RGr_\bullet(V
+  \perp \mbb H^\infty)(\Delta R) \ar[d] \ar[r] &
+  |B\widetilde{GW}_{[0]}(\Delta R)| \ar[d]^{id} \\
+|B\mc S_{[0]}(V \perp \mbb H^\infty)(\Delta R)| \ar[r]& |B\mc S_\bullet(V
+  \perp \mbb H^\infty)(\Delta R)| \ar[r] &
+  |B\widetilde{GW}_{[0]}(\Delta R)|}. 
+\end{gathered}
+\end{equation}
+
+In order to conclude that the map $B\RGr_\bullet(\Delta R) \rightarrow
+|B \mc S_\bullet (\Delta R)|$ is a weak equivalence of simplicial
+sets, it suffices to check two things:
+\begin{itemize}
+\item in diagram \ref{dia:Grass_GW}, the map on fibers $B\RGr_{[0]}(V
+  \perp \mbb H^\infty) \rightarrow |B\mc S_{[0]}(V \perp \mbb H^\infty)(\Delta R)| $is a weak
+  equivalence (the map on bases is the identity),
+\item in diagram \ref{dia:Grass_GW}, the maps are maps of
+  $E_\infty$-spaces.
+\end{itemize}
+
+\begin{remark}
+Note that even over rings where $|B\widetilde{GW}_{[0]}(V\perp \mbb H^\infty)(\Delta R)|$ is
+a constant simplicial set, $B\RGr_{[0]}(V \perp \mbb H^\infty)$ will
+not be. This is simply because there are more hermitian vector bundles over
+$R[x]$ than over $R$ when we don't mod out by isometry. 
+
+\end{remark}
+
+\begin{example}
+For an
+explicit example that demonstrates why $|B\RGr_{[0]}(\Delta
+R)|$ has a hope of being connected (if it was discrete it would in
+general not be), let $R = \mbb R$ with trivial involution, and
+consider the simplicial set
+\[
+|B\RGr_{[0]}(\langle 1 \rangle_{\mbb R} \perp \mbb H_{\mbb R}^\infty)(\Delta R)|.
+\]
+
+Consider the two split surjections
+\[
+X = \langle 1 \rangle_{\mbb R} \perp \mbb H_{\mbb R}^\infty
+\xrightarrow{\pi_{\langle 1 \rangle}} \langle 1 \rangle
+\]
+and
+\[
+Y = \langle 1 \rangle_{\mbb R} \perp \mbb H_{\mbb R}^\infty
+\xrightarrow{\pi_2 \oplus \pi_3} \mbb H \xrightarrow{+} \mbb R
+\]
+where the second surjection is split by $\frac{1}{2}\Delta$. 
+Now consider the split surjection over $R[x]$ given by
+\[
+T = \langle 1 \rangle_{\mbb R} \perp \mbb H_{\mbb R}^\infty
+\xrightarrow{\pi_{\langle 1 \rangle} \oplus \pi_2 \oplus \pi_3}
+\langle 1 \rangle \oplus \mbb H \xrightarrow{+} R[x]
+\]
+where the last surjection is split by the map sending $1 \mapsto
+(x,\frac{1}{2}(1-x),\frac{1}{2}(1-x))$. We claim
+that under the two maps $R[x] \rightarrow R$, $x \mapsto 0, \xmapsto
+1$, the split surjection $T$ restricts to $X$ and $Y$. Indeed, this is
+just the fact that given an $R[x]$-module structure on $R$ via the map
+$\eta_t: R[x] \rightarrow R$, $x \mapsto t$, as well as a map $R[x]
+\rightarrow R[x]$. $1 \mapsto x$, 
+the induced map $R \cong R[x]\otimes_{R[x]} R \xrightarrow{x \otimes id} R[x] \otimes_{R[x]}
+R \cong R$ is multiplication by $\eta_t(x)$.
+\end{example}
+
+We proceed to prove that the map on fibers is a weak equivalence by
+presenting the domain and codomain as free quotients of contractible
+spaces. To set up the relevant group actions, we need the following lemma.
+
+
+\begin{lemma}\label{lem:incHE}
+Let $V$ be a nondegenerate hermitian vector bundle over a commutive
+ring with involution $(R,\sigma)$ such that $\frac{1}{2} \in R$. Then
+the inclusion $\mbb H^\infty \subset V \perp \mbb H^\infty$ induces a
+homotopy equivalence of simplicial groups
+\[
+O(\mbb H^\infty_{\Delta R}) \rightarrow O(V \perp \mbb
+H^\infty_{\Delta R}) \qquad A \mapsto 1_V \perp A.
+\]
+\end{lemma}
+
+\begin{proof}
+First, assume that $V = \mbb H$. Consider the map $j : O(\mbb H^n)
+\rightarrow O(\mbb H^{2n+2})$ sending $A$ to $1_H \perp A \perp
+1_{\mbb H^{n+1}}$. We claim that this is naively $\mbb A^1$ homotopic
+to the inclusion $i : O(\mbb H^n) \rightarrow O(\mbb H^{2n+2})$, $i(A)
+= A \perp 1_{\mbb H^{n+2}}$ which defines the colimit $O(\mbb
+H^\infty)$. Let $g = \begin{pmatrix}
+0 & I_{2n} & 0 \\
+I_2 & 0 & 0 \\
+0 & 0 & I_{2n+2}
+\end{pmatrix}$ where $I_n$ denotes an $n \times n$ identity
+matrix. Then $i = gjg^{-1} = gjg^t$. Because $g$ corresponds to an
+even permutation matrix, it can be written as a product of elementary
+matrices, each of which is naively $\mbb A^1$ homotopic to the
+identity. It follow that $g$ is naively $\mbb A^1$ homotopic to the
+identity, and hence the induced maps $i,j : O(\mbb H^n_{\Delta R})
+\rightarrow O(\mbb H^{2n+2}_{\Delta R})$ are simplicially homotopic
+via a base-point preserving homotopy. It follows that $i,j$ induce the
+same map on homotopy groups, so that $j_* = i_*: \pi_kO(\mbb
+H^\infty_{\Delta R}) = \colim_n \pi_k O(\mbb H^n_{\Delta R})
+\rightarrow \pi_k O(\mbb H^\infty_{\Delta R})$ is the colimit of a map
+corresponding to a cofinal inclusion of diagrams, and hence is an
+isomorphism on all simplicial homotopy groups. Because simplicial
+groups are Kan complexes, it follows that $j$ is a homotopy
+equivalence, and the claim is proved when $V = \mbb H$.
+
+Now a trivial induction shows that the lemma holds when $V = \mbb
+H^n$. In general, choose an embedding $V \subseteq \mbb H^n$, and
+consider the sequence of maps
+\[
+O(\mbb H^\infty_{\Delta R}) \rightarrow O(V \perp \mbb
+H^\infty_{\Delta R}) \rightarrow O(\mbb H^n \perp \mbb H_{\Delta R}^\infty)
+\rightarrow O(\mbb H^n \perp V \perp \mbb H^\infty_{\Delta R}).
+\]
+
+The composites $O(\mbb H^\infty_{\Delta R}) \rightarrow O(\mbb H^n
+\perp \mbb H^\infty)$ and $O(V \perp \mbb
+H^\infty_{\Delta R}) \rightarrow O(\mbb H^n \perp V \perp \mbb
+H^\infty_{\Delta R})$ are weak equivalences, so by 2 out of 6 the
+first map is a weak equivalence. Because it is a map of simplicial
+groups it is a homotopy equivalence. 
+ 
+\end{proof}
+
+For nondegenerate hermitian vector bundles $(V,\phi_V), (W,\phi_W)$ and a commutative
+$R$-algebra with involution $(A,\sigma)$, let
+\[
+\St(V,W)(A)
+\]
+
+be the set of $A$-linear isometric embeddings $f : V_A \rightarrow
+W_A$. Given a map $A \rightarrow B$ of commutative $R$-algebras with involution, tensoring over $R$ with $B$ makes
+$\St(V,W)(-)$ a presheaf on commutative $R$-algebras with involution. There's a
+transitive left action of $O(V \perp \mbb H^\infty)$ on $\St(V,V \perp \mbb
+H^\infty)$ given by $(f,g) \mapsto f \circ g$. Let $i_V$ denote the
+isometric embedding $V \hookrightarrow V \perp \mbb H^\infty : v
+\mapsto (v,0)$. The stabilizer of $i_V$ is the subgroup $O(\mbb
+H^\infty) \subset O(V \perp \mbb H^\infty)$ where the inclusion map is
+$A \mapsto 1_V \perp A$.
+
+It follows that there's an isomorphism of presheaves of sets 
+\[
+O(\mbb H^\infty)\backslash O(V \perp \mbb  H^\infty) \cong
+\St(V,V\perp \mbb H^\infty) \qquad f \mapsto f \circ i_V.
+\]
+
+Now Lemma \ref{lem:incHE} shows that the map $O(\mbb H^\infty_{\Delta
+  R}) \rightarrow O(V \perp \mbb H^\infty_{\Delta R})$ is an
+equivariant map which is a non-equivariant homotopy equivalence. The
+simplicial group $O(\mbb H^\infty_{\Delta R})$ acts freely on both the
+domain and codomain, so that the quotients $O(\mbb H^\infty_{\Delta
+  R})\backslash O(V \perp \mbb H^\infty_{\Delta R})$ and $O(\mbb H^\infty_{\Delta
+  R})\backslash O(\mbb H^\infty_{\Delta R})$ are homotopy equivalent.
+
+Together with the isomorphism of simplicial sets
+\[
+O(\mbb H^\infty_{\Delta
+  R})\backslash O(V \perp \mbb H^\infty_{\Delta R}) \cong \St(V,V
+\perp \mbb H^\infty_{\Delta R})
+\]
+
+it follows that $\St(V,V\perp \mbb H^\infty_{\Delta R})$ is a
+contractible for a commutative ring $(R,\sigma)$ with involution and
+$\frac{1}{2} \in R$. Morever, this simplicial set is fibrant because
+$G/H$ is fibrant for a simplicial group $G$ and subgroup $H$.
+
+Now we move to identifying $\RGr_d(V)$ as a quotient of a contractible
+space by a free group aciton. Let $V$ be a non-degenerate hermitian
+vector bundle over a ring $R$ with involution. Then the group $O(V)$
+acts on the right on $\St(V,U)$ by precomposition. The map $\St(V,U)
+\rightarrow \RGr_V(U) : f \mapsto \im(f)$ factors through the quotient
+$\St(V,U)/O(V)$. The map is clearly surjective, and hence furnishes an
+isomorphism of sets
+\[
+\St(V,U)/O(V) \cong \RGr_V(U) \qquad f \mapsto \im(f).
+\]
+
+In particular, there's an isomorphism of presheaves of sets $\St(V,V \perp \mbb
+H^\infty)/O(\mbb H^\infty) \cong \RGr_V(U)$.
+
+Now, for a non-degenerate hermitian vector bundle $V$ over a ring with
+involution $R$, and let $U$ be a possible degenerate hermitian form
+over $R$. Define $\mc E_V(U)$ to be the category whose objects are
+$R$-linear maps $V \rightarrow U$ of hermitian forms, and whose
+morphisms from two objects $a : V \rightarrow U$ and $b : V
+\rightarrow U$ are maps $c : \im(a) \rightarrow \im(b)$ making the
+diagram
+\[
+\xymatrix{V \ar[r]^a\ar[dr]_b & \im(a) \ar[d]^c\\ & \im(b)}
+\]
+
+commute.
+
+There's a natural right action of $O(V)$ on $\mc E_V(U)$ which on
+objects sends
+\[
+\mc E_V(U) \times O(V) \rightarrow \mc E_V(U) : (a,g) \mapsto ag
+\]
+and which morphisms is the trivial action.
+
+Then clearly there's an isomorphism
+
+\[
+\mc E_V(U)/O(V) \cong \mc S_V(U) \qquad a \mapsto \im(a).
+\] 
+
+\begin{lemma}
+The category $\mc E_V(V \perp \mbb H^\infty)$ is contractible.
+\end{lemma}
+
+\begin{proof}
+The category is nonempty and every object is initial.
+\end{proof}
+
+Now we show that the map on fibers in \ref{dia:Grass_GW} is a weak
+equivalence. The map of simplicial sets
+\[
+\St(V,V\perp \mbb H^\infty)(\Delta R) \rightarrow \mc E_V(V \perp \mbb
+H^\infty)(\Delta R)
+\]
+
+is $O(V_{\Delta R})$ equivariant and a weak equivalence after
+forgetting the action. Furthermore, $O(V_{\Delta R})$ acts freely on
+both sides, so that the induced map on quotients $\RGr_V(V \perp \mbb
+H^\infty_{\Delta R}) \rightarrow \mc S_V(V \perp \mbb H^\infty_{\Delta
+  R})$ is also a weak equivalence. 
+
+As an aside, the inclusion $BO(V) \subset B\mc S_V(V \perp \mbb
+H^\infty)$ is a weak equivalence since $\mc S_V(V \perp \mbb
+H^\infty)$ is a connected groupoid. 
+
+\subsubsection{Showing that digram \ref{dia:Grass_GW} is a diagram in
+  $E_\infty$-spaces}
+
+For a commutative ring with involution $(R,\sigma)$, let $\mathscr
+E(n)(R)$ be the set
+\[
+\mathscr E(n)(R) = \lim_{V \subset \mbb H^\infty_R} \St(V^{\perp n} , \mbb H^\infty_R).
+\]
+
+where limit is over non-degenerate subspaces of $\mbb H^\infty$. The
+permutation group $\Sigma_n$ acts by permuting the component
+subspaces. The maps in the limit are equivariant with respect to this
+free action, and hence there's an induced free action on the
+limit. Now if $V \subseteq W$, then the map $\St(V^n,\mbb
+H^\infty_{\Delta R}) \rightarrow \St(W^n,\mbb H^\infty_{\Delta R})$ is
+a Kan fibration, and hence
+\[
+\mathscr E(n)(\Delta R) = \lim_k \St(\mbb H^k \perp \cdots \perp \mbb
+H^k,\mbb H^\infty)(\Delta R)
+\]
+
+is a tower of Kan fibrations with each object fibrant. It follows that
+this limit is a homotopy limit, and the Milnor sequence implies that
+$\mathscr E(n)(\Delta R)$ is contractible. The same reasoning as above
+implies that the action of $\Sigma_n$ is free. 
+
+Now, define the structure maps of the operad by
+
+\[
+\mathscr E(k) \times \mathscr E(j_1) \times \cdots \times \mathscr
+E(j_k) \rightarrow \mathscr E(j_1 + \cdots + j_k) : f,g_1,\cdots,g_k
+\mapsto f \circ (g_1 \perp \cdots \perp g_k).
+\]
+
+It follows that $\mathscr E(\Delta R)$ is an $E_\infty$-operad in the
+category of simplicial sets.
+
+\begin{proposition}
+For any commutive ring with involution $(R,\sigma)$ such that
+$\frac{1}{2} \in R$, the map given by inclusion of 0-simplices
+\[
+\RGr_\bullet(\Delta R) \rightarrow \mc S_\bullet(\Delta R)
+\]
+is a map of group complete $E_\infty$-spaces.
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+\mc S_\bullet = \colim_{V \subset \mbb H^\infty} \mc S_{|V|}(V^- \perp V^+)
+\]
+where $V^-$ and $V^+$ are two copies of $V$ and for $V \subset W$ the
+transition map is defined by
+\[
+\mc S_{|V|}(V^- \perp V^+) \rightarrow \mc S_{|W|}(W^- \perp W^+) : E
+\mapsto (W-V)^- \perp E, g \mapsto 1_{(W-V)^-} \perp g.
+\]
+
+Now, the action of $\mathscr E$ on $\mc S_\bullet$ is defined by
+\[
+\St(V_1 \perp \cdots \perp V_k,W) \times \mc S_{|V_1|}(V_1^- \perp
+V_1^+) \times \cdots \times \mc S_{|V_k|}(V_k^- \perp V_k^+)
+\rightarrow \mc S_{|W|}(W^- \perp W^+)
+\]
+
+where for $g \in \St(V_1 \perp \cdots \perp V_k,W)$, the functor
+\[
+\mc S_{|V_1|}(V_1^- \perp V_1^+) \times \cdots \times \mc
+S_{|V_k|}(V_k^- \perp V_k^+) \rightarrow \mc S_{|W|}(W^- \perp W^+)
+\]
+sends the object $(E_1,\dots,E_k)$ to 
+\[
+(W - g(V_1\perp \cdots \perp V_k))^- \perp g(E_1 \perp \cdots \perp E_k)
+\]
+and the map $(e_1,\dots,e_k): (E_1,\dots,E_k) \rightarrow
+(E_1',\dots,E_k')$ to
+\[
+1_{(W - g(V_1 \perp \cdots \perp V_k))^-} \perp g|_{E_1'} \circ e_1
+\circ g^{-1}|_{E_1} \perp \cdots \perp g|_{E'_k} \circ e_k \circ g^{-1}|_{E_k}.
+\]
+
+To see that the spaces are group complete, note that the homotopy
+fiber sequences above imply that the $\pi_0$ of both spaces is
+$\widetilde GW_0(R)$. Indeed, it's straightforward to check that
+$\pi_0(\RGr_{[0]}(\Delta R),x) = \{\ast\}$ for any choice of basepoint
+$x$, which implies that the right
+maps in \ref{dia:Grass_GW} are an injection on $\pi_0$. The maps on
+zero simplices are clearly surjective, and hence the maps on $\pi_0$
+must be surjective. 
+\end{proof}
+
+Now that we've checked that the maps in \ref{dia:Grass_GW} are maps of
+$E_\infty$-spaces and that they're weak equivalences on base and
+fiber, we can conclude that the map on total spaces is an equivalence.
+
+\begin{corollary}
+Let $(R,\sigma)$ be a regular ring with involution such that
+non-degenerate hermitian vector bundles have constant rank, and such
+that $\frac{1}{2} \in R$. Then the map
+\[
+\RGr_\bullet(\Delta R) \rightarrow \mc S_\bullet(\Delta R)
+\]
+is a weak equivalence of simplicial sets.
+\end{corollary}
+
+
+
+\subsection{The Grothendieck-Witt space}
+
+
+For a ring $R$ with involution $\sigma$, there's an associated
+category $S(R)$ with duality given by vector bundles
+with their canonical duality and vector bundle morphisms as
+morphisms. The subcategory of hermitian objects and isometries is symmetric monoidal under $\perp$, and the translations
+$A \mapsto A \perp B$ are faithful. Quillen's $S^{-1}S(R)$ construction
+yields a symmetric monoidal category with objects pairs $(A_0,A_1)$ in
+$S$ and morphisms $(A_0,A_1) \rightarrow (B_0,B_1)$ equivalence
+classes $[C,a_0,a_1]$ with $a_i : C \perp A_i \rightarrow B_i$ an
+isometry. Two morphisms $[C,a_0,a_1], [C',a_0',a_1']$ are equivalent
+if there exists an isometry $f : C \cong C'$ such that $a_i'\circ
+(1_{A_i} \perp f) = a_i$. Unfortunately, this category is neither
+small (in general) nor strictly functorial in
+the underyling $C_2$-scheme. 
+
+\begin{definition}
+Let $(R,\sigma)$ be a ring with involution, and let
+\[
+\mathscr GW(R,\sigma) \subset S^{-1}S(R,\sigma)
+\]
+be the full subcategory whose objects are pairs $(A,B)$ where $A
+\subset \mbb H^\infty_R \perp \mbb H^\infty_R$ and $B \subset (\mbb
+H^\infty_R)^{\perp 3}$ are finitely genereated nondegenerate
+subspaces. 
+
+Let $(X,\sigma)$ be a $C_2$-scheme, and let
+\[
+\mathscr GW(X,\sigma) = \mathscr GW(\Spec \Gamma(X),\sigma).
+\]
+\end{definition}
+
+Note that $\mathscr GW(R,\sigma) \hookrightarrow S^{-1}S(R,\sigma)$ is
+an equivalence because over a ring, every non-degenerate vector bundle
+is a summand of hyperbolic space. Thus by \cite{Schder}, Theorem A.1, there's an equivalence
+$\mathscr GW(R,\sigma) \cong \Omega^\infty GW(R,\sigma)$ for any ring
+with involution $(R,\sigma)$. 
+
+\subsection*{Homotopy colimits of categories}
+
+\begin{definition}
+Let $\mc C$ be a small category, and let $J : \mc C \rightarrow \Cat$
+a functor into the category of small categories. The homotopy colimit
+\[
+\hocolim_{\mc C} J
+\]
+is the category whose objects are pairs $(X,A)$ with $X$ an object of
+$\mc C$ and $A$ an object of $J(X)$. A map from $(X,A)$ to $(Y,B)$ is
+a pair $(x,a)$ where $x : X \rightarrow Y$ is a map in $\mc C$ and $a
+: J(x)(A) \rightarrow B$ is a map in $J(Y)$. Composition $(y,b) \circ
+(x,a)$ is the map $(y \circ x, b \circ J(y) \circ a)$. 
+\end{definition}
+
+We recall some notation from \cite{Gra76}.
+
+\begin{definition}
+Let $S$ be a symmetric monoidal category acting on another category
+$X$. The category $\langle S, X\rangle$ is by definition the category
+whose objects are the objects of $X$, and whose morphisms $F
+\rightarrow G$ are
+isomorphism classes of tuples $(F,G,A,A+F \rightarrow G)$ with $A \in
+S$ and $F,G$ in $X$. An isomorphism of tuples is an isomorphism $A
+\cong A'$ which makes the diagram
+\[
+\xymatrix{A+F \ar[rr]^{\sim} \ar[dr]&& A' + F \ar[dl] \\ &G&}
+\]
+commute.
+\end{definition}
+
+Now consider the category $\mc S(\mbb H_R^\infty)$ of finitely generated
+non-degenerate subspaces of $\mbb H_R^\infty$. It's symmetric monoidal
+via $\perp$, and thus it acts on itself by translation. Then $\langle
+\mc S(\mbb H_R^\infty), \mc S(\mbb H_R^\infty) \rangle$ is the category
+whose objects are finitely generated non-degenerate subspaces of $\mbb
+H_R^\infty$, and whose morphisms $W \rightarrow T$ are isomorphism classes of isometries
+$V \perp W \rightarrow T$. 
+
+We claim that the morphisms correspond to
+isometric embeddings $W \hookrightarrow T$ which don't necessarily
+commute with the embeddings into  $\mbb H^\infty$. First, given an isometry
+$\phi : V \perp W \rightarrow T$,  $\phi|_W : W \rightarrow T$ is an
+isometric embedding. Given two isomorphic morphisms $W \rightarrow T$
+(as defined above), they necessarily
+restrict to the same map on $W$ so that there's a well-defined map of
+sets from the morphisms in $\langle
+\mc S(\mbb H_R^\infty, \mc S(\mbb H_R^\infty)\rangle$ to isometric
+embeddings. Given an isometric embedding $\phi : W \hookrightarrow T$,
+because $W$ is non-degenerate there's a decomposition $T = \phi(W)
+\perp (\phi(W))^\perp$. It follows that there's an isometry 
+$(\phi(W))^\perp \perp W \rightarrow T$, yielding a morphism in $\langle
+\mc S(\mbb H_R^\infty), \mc S(\mbb H_R^\infty) \rangle$.
+
+\begin{definition}
+Define a functor $\mc I : \langle
+\mc S(\mbb H_R^\infty), \mc S(\mbb H_R^\infty) \rangle \rightarrow
+\Cat$ which on objects is defined by $\mc I(V) = \mc S_{|V|}(V \perp
+\mbb H_R^\infty)$ and given a morphism $g : V
+\hookrightarrow W$, $\mc I(g)$ is the functor
+\[
+\mc I(g) : \mc S_{|V|}(V \perp
+\mbb H_R^\infty) \rightarrow \mc S_{|W|}(W \perp
+\mbb H_R^\infty),
+\]
+\begin{align*}
+&E \mapsto (W - g(V)) \perp (g\perp id)(E)\\
+&e \mapsto id_{W-g(V)} \perp geg^{-1}.
+\end{align*}
+
+Now, let 
+\[
+\widetilde{\mathscr GW}(R) = \hocolim \mc I.
+\]
+
+To spell this out, the objects of $\widetilde{\mathscr GW}(R)$ are pairs $(V,W)$ with $V
+\subseteq \mbb H^\infty_R$ a finitely generated non-degenerate
+subspace and $W \subset V \perp \mbb H^\infty_R$ a finitely generated
+non-degenerate subspace of constant rank $|V|$.
+
+A morphism $(V,W) \rightarrow (A,B)$ is a pair $(f : V \hookrightarrow
+A,
+g  : (A-f(V))\perp (f\perp id)(W) \xrightarrow{\sim} B)$.
+\end{definition}
+
+To justify this definition, we need to describe the relationship
+between $\widetilde{\mathscr GW}(R)$ and $\mathscr GW(R)$.
+
+Let $\mbb N$ denote the discrete category on the natural numbers with
+its usual symmetric monoidal structure, and
+let $\mbb N^{-1}\mbb N$ denote Grayson's group completion of this
+symmetric monoidal category outlined above. There's a functor $\mbb
+N^{-1}\mbb N \rightarrow \Z$, where $\Z$ is the discrete category on
+the integers, defined on objects by $(n,m) \mapsto n-m$. This functor
+is non-canonically split by the functor $\Z \rightarrow \mbb
+N^{-1}\mbb N$, $z \mapsto (z,0)$, and these two functors yield weak equivalences
+equivalences after application of the nerve. 
+
+Consider the map 
+\[
+Fr: \mbb N^{-1}\mbb N  \rightarrow GW(R)
+\]
+defined on objects by
+\[
+(n,m) \mapsto (R^n,R^m)
+\]
+where $R^n,R^m$ have bilinear form corresponding to the identity
+matrix and 
+
+\begin{align*}
+&R^n
+\hookrightarrow \mbb H^\infty_R \perp 0\\ 
+&R^m \hookrightarrow \mbb H^\infty_R \perp 0
+\perp 0
+\end{align*}
+
+On morphisms an equivalence class $(k,a_0,a_1) : (n_0,n_1) \rightarrow
+(m_0,m_1)$ such that $a_i : n_i + k = m_i$ is sent to the isometry
+$(R^k,a_0,a_1)$ where  $a_i$ is the canonical isometry  $R^{n_i} \perp R^k \cong R^{m_i}$.
+
+Consider as well the map 
+\[
+\iota: \widetilde{GW}(R) \rightarrow GW(R)
+\]
+ defined
+on objects by
+\[
+(V,W) \mapsto (0 \perp V,0 \perp W)
+\]
+where
+\begin{align*}
+&0 \perp V \hookrightarrow 0 \perp \mbb H^\infty_R \\
+&0 \perp W \hookrightarrow 0 \perp
+V \perp \mbb H^\infty_R.
+\end{align*}
+
+For morphisms,note that given a morphism $(f,g) : (V,W) \rightarrow
+(A,B)$ in $\widetilde{\mathscr GW}(R)$, there are induced isometries
+\[
+\widetilde{f} : A-f(V) \perp V \xrightarrow{id \perp f} A-f(V) \perp
+f(V) \xrightarrow{\sim} A
+\]
+\[
+\widetilde{g} : A-f(V) \perp W \xrightarrow{id \perp f} A-f(V) \perp (f \perp id)(W)
+\xrightarrow{g} B.
+\]  
+Send such a pair $(f,g)$ to the triple $(A-f(V),\widetilde f,
+\widetilde g) : (V,W) \rightarrow (A,B)$ in $\mathscr GW(R)$.
+
+
+Now consider the composite functor
+\begin{equation}\label{RankSplit}
+\mbb N^{-1} \mbb N \times \widetilde{\mathscr GW}(R) \xrightarrow{Fr
+  \times \iota}\mathscr GW(R) \times \mathscr GW(R)
+\xrightarrow{\perp} \mathscr GW(R).
+\end{equation}
+
+\begin{lemma}
+The functor \eqref{RankSplit} is an equivalence of categories over any
+ring $R$ such that non-degenerate hermitian vector bundles have
+constant rank. 
+\end{lemma}
+
+\begin{proof}
+Consider the functor $\mathscr GW(R) \rightarrow \Z$
+defined on objects by $(V,W) \mapsto
+\mathrm{rk}(V)-\mathrm{rk}(W)$. By assumption, this is well-defined. Given a morphism $(C,a_0,a_1) :
+(V_0,V_1) \rightarrow (W_0,W_1)$, send it to the morphism
+$id_{\mathrm{rk}(W_0)}$. Now consider the commutative diagram
+\[
+\xymatrix{\widetilde{\mathscr GW}(R) \ar[r]^{\iota} & \mathscr GW(R)
+\ar[r]^-{\mathrm{rk}} & \Z \\ \widetilde{\mathscr GW}(R) \ar[u]^{id}
+\ar[r]^-{0 \times id} & \Z \times \widetilde{\mathscr GW}(R) \ar[u]^{T} \ar[r]^-{\pi_\Z} & \Z \ar[u]^{id}},
+\]
+where $T$ is the composite
+\[
+\Z \times \widetilde{\mathscr GW}(R) \rightarrow 
+  \mbb N^{-1}\mbb N \times  \widetilde{\mathscr GW}(R)  \xrightarrow{\eqref{RankSplit}} \mathscr GW(R).
+\]
+
+After applying the nerve, we get a diagram of fibrations of grouplike $E_\infty$ spaces (and the
+maps are maps of $E_\infty$ spaces) so that $T$ is a weak equivalence
+by the 5-lemma. 
+\end{proof}
+
+\begin{corollary}
+The functor \eqref{RankSplit} is a weak equivalence in the equivariant
+Nisnevich topology, and hence an equivariant $\mbb A^1$-equivalence. 
+\end{corollary}
+
+\begin{proof}
+The points in the equivariant Nisnevich topology have the form
+\[
+R = C_2 \times^{S_x} \Spec(\mc O^h_{X,x}).
+\]
+If $S_x = C_2$, then $R$ is a local ring and hence connected. If $S_x
+= \{e\}$, then $R$ is a hyperbolic ring, and non-degenerate hermitian
+vector bundles have the same rank over each connected component. 
+\end{proof}
+
+Now that we've justified the definition of $\widetilde{\mathscr
+  GW}(R)$, we produce maps 
+\[
+\RGr_\infty \rightarrow B_{et} O \rightarrow \widetilde{\mathscr
+  GW}.
+\]
+
+Recall that $P$ is the poset of non-degenerate sub-bundles of
+$\mbb H^\infty$. The inclusion $P \hookrightarrow \langle \mc  S(\mbb
+H^\infty),\mc S(\mbb H^\infty)\rangle$ yields a natural transformation
+of functors $\mc H \rightarrow \mc I$. 
+
+\begin{definition}
+Let
+\begin{align*}
+\hRGr_\bullet(R) =& \hocolim_{P} \RGr_{|V|}(V_R
+  \perp \mbb H^\infty_R)\\
+\mathscr S_\bullet(R) =& \hocolim \mc H
+\end{align*}
+\end{definition}
+
+\begin{lemma}
+Let $(\mathscr P,\leq)$ be a filtered poset, and let $\mathscr F:
+\mathscr P \rightarrow \Cat$ be a functor from $\mathscr P$ into the
+category $\Cat$ of small categories. Then the canonical functor of categories
+\[
+\phi : \hocolim_{\mathscr P} \mathscr F \rightarrow \colim_{\mathscr
+  P} \mathscr F
+\]
+is a homotopy equivalence of simplicial sets after application of the
+nerve. 
+\end{lemma}
+
+\begin{proof}
+The tool for proving such results is Quillen's Theorem A. To use it to
+conclude that $\phi$ is a homotopy equivalence, we need to show that
+$N(d \downarrow \phi)$ is contractible for any object $d \in \colim_{\mathscr
+  P} \mathscr F$. By definition, the comma category $d \downarrow
+\phi$ has as objects pairs 
+\[
+ (c \in \hocolim_{\mathscr P} \mathscr F, e \in \Hom_{\colim_{\mathscr
+  P} \mathscr F}(d, \phi(c)))
+\] 
+and morphisms $(c,e) \rightarrow (c',e')$ are maps $t: c \rightarrow c'$
+which make the square
+\[
+\xymatrix{d \ar[r]^e \ar[d]_{id} & \phi(c) \ar[d]^{\phi(t)} \\ d \ar[r]^{e'} & \phi(c')} 
+\]
+commute. Given a morphism $P \leq Q$ in $\mathscr P$, and an object $A
+\in \mathscr F(P)$, denote by $A_Q$
+the object
+$\mathscr F(P\leq Q)(A)$. A fixed object $d \in \colim_{\mathscr
+  P} \mathscr F$ is represented by a pair $[P,A]$ with $P \in \mathscr
+P$ and $A \in \mathscr F(P)$. Given such a pair, we claim that there
+is an equivalence of categories
+\[
+\psi : \colim_{P \leq Q \in \mathscr P}(id_{\hocolim_{\mathscr P} \mathscr F} \downarrow (Q,A_Q)) \cong (\phi \downarrow [P,A]).
+\]
+
+Here for $Q \leq R$, the functor $(id \downarrow (Q,A_Q)) \rightarrow
+(id \downarrow (R,A_R))$ sends $t : (T,B) \rightarrow (Q,A_Q)$ to $c
+\circ t : (T,B) \rightarrow (R,A_R)$ with $c : (Q,A_Q) \rightarrow
+(R,A_R)$ the map in the homotopy colimit given by 
+\[
+(Q \leq R,id: A_R = \mathscr F(Q \leq R)(A_Q)
+\rightarrow A_R).
+\]
+
+The functor $\psi$ is defined on objects by $(c,e: c\rightarrow
+(Q,A_Q)) \mapsto (c,e)$. This is well-defined, because $\phi(Q,A_Q) =
+[P,A]$ by definition of colimit of categories. On morphisms, a map $t:
+c \rightarrow c'$ over $(Q,A_Q)$ is sent to the corresponding map $t :
+c \rightarrow c'$ in $(\phi \downarrow [P,A])$.
+
+Given such an equivalence, the colimit on the left is a filtered
+colimit of categories with initial objects given by $((Q,A_Q),id)$,
+and hence is a filtered colimit of contractible
+categories. Because the nerve commutes with filtered colimits, and
+simplicial homotopy groups commute with filtered colimits, it follows
+that the comma category $(\phi \downarrow [P,A])$ is contractible just
+as desired.
+\end{proof}
+
+\begin{corollary}
+There are homotopy equivalences
+\begin{align*}
+\hRGr_\bullet &\xrightarrow{\sim} \RGr\\
+\mathscr S_\bullet &\xrightarrow{\sim} \mc S_\bullet.
+\end{align*}
+\end{corollary}
+
+Now, there's a sequence of maps
+\[
+\hRGr_\bullet \xrightarrow{\phi} \mathscr S_\bullet \xrightarrow{\psi}
+\widetilde{\mathscr GW}
+\]
+where $\phi$ is induced by inclusion of objects and $\psi$ is induced
+by inclusion of diagrams. 
+
+We now state the theorem that will set us up for a geometric model of
+$\widetilde{\mathscr GW}$ in the equivariant $\mbb A^1$-homotopy
+category. 
+
+\begin{theorem}
+Let $R$ be a commutative regular Noetherian ring which is either
+connected or hyperbolic, and with
+$\frac{1}{2} \in R$. Then there are weak equivalences
+\[
+B\hRGr_\bullet(\Delta R) \xrightarrow{\phi} |B\mathscr S_\bullet(\Delta R)| \xrightarrow{\psi}
+|B\widetilde{\mathscr GW}(\Delta R)|
+\]
+where $| - |$ denotes the diagonal of a bisimplicial set. 
+\end{theorem}
+
+\begin{remark}
+The theorem is evidently false if we replace $\Delta R$ by $R$, since
+$B\hRGr_\bullet(R)$ is 0-truncated. 
+\end{remark}
+
+\begin{proposition}
+Let $R$ be a regular noetherian ring with involution such that
+non-degenerate hermitian vector bundles over $R$ have constant rank,
+and such that $\frac{1}{2} \in R$. Then inclusion of diagrams induces
+a weak equivalence of simplicial sets
+\[
+\mathscr S_\bullet(\Delta R) \xrightarrow{\sim} \widetilde{\mathscr{G}W}(\Delta R).
+\]
+\end{proposition}
+
+
+
+\begin{proof}
+By the Group Completion Theorem, the map
+\[
+\mathscr S_\bullet( R) \xrightarrow{\sim} \widetilde{\mathscr{G}W}( R)
+\]
+is an isomorphism on integral homology groups. To write this out more
+explicitly, we have a commutative diagram
+\[
+\xymatrix{\mathscr S_\bullet(R) \ar[r]\ar[d] &
+  \widetilde{\mathscr{G}W}( R) \ar[d] \\
+\colim_{V \subset \mbb H_R^\infty} \mc S(V \perp\mbb H_R^\infty) \ar[r]
+\ar[d] & \colim_{\mc I}\mc S(V \perp\mbb H_R^\infty)  \ar[d] \ar[r]^-\sim
+& GW(R)\\
+\Z \ar[r] & \Z}.
+\]
+
+Using that homology commutes with filtered colimits of simplicial
+sets together we compute that the homology of $\colim_{V \subset \mbb
+  H_R^\infty} \mc S(V \perp\mbb H_R^\infty)$ is the group completion
+of the homology of $\mc S(V \perp\mbb H_R^\infty)$, and by the group
+completion theorem so is the homology of $GW(R)$.
+
+ Said another way, the
+map
+\[
+\Z\mathscr S_\bullet( R) \xrightarrow{\sim} \Z\widetilde{\mathscr{G}W}( R)
+\]
+is a weak equivalence. It follows that
+\[
+\Z\mathscr S_\bullet(\Delta R) \xrightarrow{\sim} \Z\widetilde{\mathscr{G}W}(\Delta R)
+\]
+is a level-wise weak equivalence of bisimplicial sets, and hence is a
+weak equivalence after taking the diagonal. It follows that the map in
+the proposition is an isomorphism on integral homology. 
+
+Now for regular rings with involution, we have $GW(\Delta R) \cong
+GW(R)$ and hence $\widetilde{\mathscr GW}(\Delta R) \cong
+\widetilde{\mathscr GW}( R)$ are group complete $H$-spaces. 
+
+Note that the $E_\infty$-structure defined above on $\mc
+S_\bullet(\Delta R)$ gives an $E_\infty$-structure on $\mathscr
+S_\bullet(\Delta R)$ simply by replacing all limits/colimits in the
+definition with homotopy limits/colimits. Now we have a map $\mathscr
+S_\bullet(\Delta R) \rightarrow \widetilde{\mathscr GW}(\Delta R)$ of
+group complete $H$-spaces which is a homology isomorphism. By
+uniqueness of group completions, It follows
+that the map is a homotopy equivalence. 
+\end{proof}
+
+\begin{corollary}
+There's an equivariant motivic equivalence $L_{mot}\RGr_\bullet
+\xrightarrow{\sim} L_{mot}\widetilde{\mathscr{G}W}$.
+\end{corollary}
+
+\section{An $E_\infty$ structure on the Hermitian $K$-Theory Spectrum}
+
+In \cite{Schder}, Schlichting defines a spectrum $GW(\mathscr A)$
+associated to any dg category with weak equivalences and
+duality. Considering the dg category with weak equivalences and
+duality associated to a ring with involution $(R,\sigma)$, his results
+imply that $\Z \times \widetilde{\mathscr GW}(R) \cong
+\Omega^\infty GW(R)$. Together with the results of the previous
+section, we see that there's an equivariant motivic equivalence $L_{mot}(\Z
+\times \RGr_\bullet(R)) \cong L_{mot}\Omega^\infty GW$.
+
+\begin{enumerate}
+\item Check that $GW$ (non boldface) is a presheaf of
+  $E_\infty$-spectra.
+
+We know that $GW$ is monoidal from dg categories with weak
+equivalences to spectra. 
+
+Consider the presheaf of categories with weak equivalence and duality
+on $\Sm_S^{C_2}$ given by $f : X \rightarrow S \mapsto BigVB(S)$, or some
+other strictly functorial version of the category of projective
+modules. This is (strongly) symmetric monoidal via tensor product of
+modules. 
+(prove that you actually get symmetric monoidal structure on
+dgcatwe). It follows that upon application of $GW$ we get a symmetric
+monoidal presheaf of spectra. 
+\item Identify $\mbb GW$ with a periodization of $GW$.
+
+Note that in Hu-Kriz they explicitly produce a periodic spectrum.
+
+\item Use marc's technology to deduce that $\mbb GW$ is a motivic
+  $E_\infty$-ring spectrum. 
+\end{enumerate}
+
+
+
+\bibliography{Thesisbib}
+\bibliographystyle{plain}
+\end{document}
