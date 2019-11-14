@@ -4,7 +4,6 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows}
 \usepackage[all]{xy}
-\usepackage{cite}
 \usepackage{hyperref}
 \usepackage{color}
 \usepackage{tabulary}
@@ -14,6 +13,7 @@
 \usepackage{todonotes}
 \setlength{\marginparwidth}{2cm}
 \hypersetup{colorlinks=true,linktoc=all,linkcolor=blue}
+\usepackage{kpfonts}
 
 
 
@@ -48,7 +48,7 @@
 \DeclareMathOperator{\PreSm}{Pre_{Sm_S^{C_2}}}
 \DeclareMathOperator{\rk}{rk}
 \DeclareMathOperator{\tr}{tr}
-
+\DeclareMathOperator{\can}{can}
 %%%%%%%%%%%%%% Diagrams
 
 \newcommand{\commsq}[4]{\xymatrix{{#1} \ar[r]\ar[d] & {#2} \ar[d] \\
@@ -579,8 +579,9 @@ O_X(U)$, then $m \cdot c = m \cdot \sigma^{\#}(c)$. Note that this
 last product is defined, because $m \in \sigma_*M(U) =
 M(\sigma^{-1}(U))$, $c \in \sigma_*\mc O_X(U) = \mc
 O_X(\sigma^{-1}(U))$, and $M$ is a right $\mc O_X$-module. 
-
 \end{definition}
+
+
 
 \begin{remark}
 We have two choices for the definition of the dual $M^*$. We can
@@ -588,6 +589,8 @@ either define $M^* = Hom_{mod-\mc O_X}(\sigma_*M,\mc O_X)$, or we can
 define $M^* = \sigma_*Hom_{mod-\mc O_X}(M,\mc O_X)$. We claim that
 these two choices of dual are naturally isomorphic. 
 \end{remark}
+
+
 
 \begin{proof}
 Let $f : \sigma_*M|_U \rightarrow \mc O_X|_U$ be a map of right $\mc
@@ -614,6 +617,25 @@ postcomposition with a natural transformation.
 Define the adjoint module $M^*$ to be $Hom_{mod-\mc O_X}(\sigma_*M,\mc
 O_X)$. By the remark above, it doesn't really matter which of the two
 possible definitions we choose here. 
+\end{definition}
+
+
+\begin{definition}
+Given a right $\mc O_X$-module $M$, we define the double dual
+isomorphism $\can : M \rightarrow M^{**}$ as follows: given an open $U
+\subseteq X$, we define a map
+\[
+M(U) \rightarrow Nat(\sigma_* Nat(\sigma_* M,\mc O_X)|_U, \mc O_X|_U)
+= Nat(Nat(\sigma_* M|_{\sigma(U)}, \mc O_X|_{\sigma(U)}),\mc O_X|_U)
+\]
+by $u \mapsto \eta_u$, where for an open $V \subseteq U$,
+\[
+(\eta_u)_V(\gamma) = \sigma_*(\gamma_{\sigma(V)}(u|_V)).
+\]
+
+Here $\gamma \in Nat(\sigma_* M|_{\sigma(U)}, \mc
+O_X|_{\sigma(U)})$. Note that $\gamma_{\sigma(V)}(u|_V)$ makes sense
+because $\sigma_*M(\sigma(V)) = M(V)$.
 \end{definition}
 
 \begin{definition}
@@ -2539,7 +2561,7 @@ We know that $GW$ is monoidal from dg categories with weak
 equivalences to spectra. 
 
 Consider the presheaf of categories with weak equivalence and duality
-on $\Sm_S^{C_2}$ given by $f : X \rightarrow S \mapsto BigVB(S)$, or some
+on $\Sm{S}^{C_2}$ given by $f : X \rightarrow S \mapsto BigVB(S)$, or some
 other strictly functorial version of the category of projective
 modules. This is (strongly) symmetric monoidal via tensor product of
 modules. 
@@ -2554,8 +2576,86 @@ Note that in Hu-Kriz they explicitly produce a periodic spectrum.
   $E_\infty$-ring spectrum. 
 \end{enumerate}
 
+Fix a scheme with involution $(X,\sigma)$, and let $GW$ be the
+Grothendieck-Witt spectrum of $(X,\sigma)$ as defined in
+\cite{Xie2018ATM}. It follows from results in \cite{Schder} that $GW((X,\sigma))$ is
+a symmetric monoid in the category of symmetric spectra, and hence an
+$E_\infty$-ring spectrum. It also follows from (loc. cit. )that $GW$ yields a presheaf
+of symmetric monoids in symmetric spectra, and in particular an
+$E_\infty$ object in the $\infty$-category of presheaves of spectra on
+$\Sm{S}^{C_2}$. 
 
+For a scheme $X$ (possibly with involution), denote by $GW^{[n]}(X)$ the
+Grothendieck-Witt spectrum of the dg-category with weak equivalences
+and duality given by the category of strictly perfect complexes on $X$
+with duality induced by the shifted duality coefficient corresponding
+to $\mc O_X[-n]$. 
 
+Now fix a scheme $X$ with trivial involution. The projective bundle
+formula in \cite{Schder} yields a natural isomorphism
+$GW^{[n]}(X) \oplus GW^{[n-1]}(X) \cong GW^{[n]}(\mbb P^1_X)$, while
+the Devissage theorem in \cite{Xie2018ATM} yields a natural isomorphism 
+$GW^{[n]}(\mbb P^\sigma_X) \cong GW^{[n-1]}(X,-can) \oplus
+GW^{[n]}(X)$, where $GW^{[n-1]}(X,-can)$ denotes symplectic hermitian
+$K$-theory. Thus working with pointed versions of $\mbb P^\sigma, \mbb
+P^1$, we have $GW^{[n]}(\mbb P^1_X,[1:1]) \cong GW^{[n-1]}(X)$ and
+$GW^{[n]}(\mbb P_X^\sigma,[1:1]) \cong GW^{[n-1]}(X,-can)$.
+
+Because this isomorphism is natural, it follows that, as a presheaf of spectra, $\Omega^{\mbb P^1}GW \cong
+\Omega^{\mbb P^\sigma}  \prescript{}{-1}{GW}$. Using Karoubi's fundamental theorem
+(\cite{Schder} Theorem 6.2),
+Hu-Kriz prove that there are periodicity equivalences 
+\begin{align}
+\Omega^{\mbb G_m \wedge S^\sigma}GW &\cong GW \label{per:1}\\
+\Omega^4 GW &\cong \Omega^{S^{4\sigma}}GW. \label{per:2}
+\end{align}
+
+Using Karoubi's fundamental theorem and its consequences, together
+with the fact that loop spaces commute and we're $S^1$-stable, we get
+\begin{align*}
+\Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}  \prescript{}{-1}{GW} &\cong
+\Omega^{\mbb P^1}\Omega^{\mbb P^1} GW \\
+\implies \Omega^2 \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}  \prescript{}{-1}{GW} &
+  \cong \Omega^2 \Omega^{\mbb P^1}\Omega^{\mbb P^1} GW\\
+\implies \Omega^{S^{2\sigma}} \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}
+  GW & \cong  \Omega^2 \Omega^{\mbb P^1}\Omega^{\mbb P^1} GW\\
+\implies \Omega^{S^{4\sigma}} \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}
+  GW & \cong  \Omega^{S^{2\sigma}} \Omega^2 \Omega^{\mbb
+       P^1}\Omega^{\mbb P^1} GW\\
+\implies \Omega^4 \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}
+  GW & \cong  \Omega^{S^{2\sigma}} \Omega^4 \Omega^{\mbb
+       G_m^{\wedge 2}} GW\\
+\implies \Omega^4 \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}
+  GW & \cong \Omega^4  GW\\
+\implies \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}
+  GW & \cong GW.
+\end{align*}
+
+ Issue, we're using equivalences in motivic spaces. The equivalence
+ $\mbb P^1 \cong S^1 \wedge \mbb G_m$ is a zig-zag of motivic spaces. 
+
+There's an equivalence $\Omega \Omega^{\mbb G_m} GW \rightarrow U$ given by
+the connecting map in the $GW$-localization sequence. Thus there's an
+equivalence $\Omega^{S^\sigma} \Omega \Omega^{\mbb G_m} GW \rightarrow
+\Omega^{S^\sigma} U$. Now HKO prove that there's an equivalence of fiber
+sequences of presheaves of spectra
+\[
+\xymatrix{\Omega^{S^\sigma}U \ar[r] \ar[d] &  \Omega^{S^\sigma}F(\Z/2_+,GW)
+  \ar[d] \ar[r]^-{\Omega^{S^\sigma} H} &\Omega^{S^\sigma} GW \ar[d]\\
+\Omega GW \ar[r]  & F(\Z/2_+ \wedge S^\sigma,GW) \ar[r] &
+\Omega^{S^\sigma}GW 
+}.
+\]
+
+where the bottom sequence is obtained from applying the functor
+$F(-,GW)$ to the cofiber sequence of pointed spaces given by the pinch map
+\[
+S^\sigma \rightarrow \Z/2_+ \wedge S^\sigma \rightarrow S^1.
+\]
+
+Composing with the above equivalences gives a map $\Omega^{S^\sigma}
+\Omega \Omega^{\mbb G_m} GW \rightarrow \Omega^{S^\sigma} U
+\rightarrow \Omega GW$.
 \bibliography{Thesisbib}
 \bibliographystyle{plain}
 \end{document}
