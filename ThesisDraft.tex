@@ -49,6 +49,7 @@
 \DeclareMathOperator{\rk}{rk}
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\can}{can}
+\DeclareMathOperator{\iHom}{\mathbf{Hom}}
 %%%%%%%%%%%%%% Diagrams
 
 \newcommand{\commsq}[4]{\xymatrix{{#1} \ar[r]\ar[d] & {#2} \ar[d] \\
@@ -630,12 +631,25 @@ M(U) \rightarrow Nat(\sigma_* Nat(\sigma_* M,\mc O_X)|_U, \mc O_X|_U)
 \]
 by $u \mapsto \eta_u$, where for an open $V \subseteq U$,
 \[
-(\eta_u)_V(\gamma) = \sigma_*(\gamma_{\sigma(V)}(u|_V)).
+(\eta_u)_V(\gamma) = (\sigma^\#)_{V}^{-1}(\gamma_{\sigma(V)}(u|_V)).
 \]
 
 Here $\gamma \in Nat(\sigma_* M|_{\sigma(U)}, \mc
-O_X|_{\sigma(U)})$. Note that $\gamma_{\sigma(V)}(u|_V)$ makes sense
+O_X|_{\sigma(U)})$ and $\sigma^\#$ is the morphism of sheaves
+$\sigma^\# : \mc O_X \rightarrow \sigma_* \mc O_X$. Note that $\gamma_{\sigma(V)}(u|_V)$ makes sense
 because $\sigma_*M(\sigma(V)) = M(V)$.
+
+More globally, there's an evaluation map
+\[
+ev_\sigma : M \otimes \sigma_*Nat(\sigma_*M,\mc O_X) \rightarrow \mc O_X
+\]
+defined by the composition
+\[
+M \otimes \sigma_*Nat(\sigma_*M,\mc O_X) \cong M \otimes
+Nat(M,\sigma_*\mc O_X) \xrightarrow{ ev} \sigma_* \mc O_X
+\xrightarrow{\sigma^\#} \mc O_X
+\]
+which under adjunction yields the above map. 
 \end{definition}
 
 \begin{definition}
@@ -2543,6 +2557,38 @@ There's an equivariant motivic equivalence $L_{mot}\RGr_\bullet
 \end{corollary}
 
 \section{An $E_\infty$ structure on the Hermitian $K$-Theory Spectrum}
+
+\subsection{A projective bundle formula for $\mbb P^\sigma$}
+
+
+Consider the square
+\[
+\xymatrix{\mc O(-1)\ar[r]^{\frac{T-S}{2}}\ar[d]^{\frac{T+S}{2}} & \mc O \ar[d]^{\frac{T+S}{2}} \\ \iHom(\sigma_*\mc
+  O,\mc O) \ar[r]^{\frac{T-S}{2}} & \iHom(\sigma_* \mc O(-1),\mc O)}
+\]
+
+where the map $\frac{T+S}{2} : \mc O(-1) \rightarrow \mc
+O$ is induced via adjunction by the composition 
+\[
+\mc O(-1) \otimes \left\{\frac{T+S}{2}\right\} \otimes \sigma_* \mc O
+\xrightarrow{id \otimes i \otimes id}
+\mc O(-1) \otimes \mc O(1) \otimes \sigma_*\mc O  
+\xrightarrow{id \otimes id \otimes (\sigma^\#)^{-1}} \mc O(-1) \otimes
+\mc O(1) \otimes \mc O \xrightarrow{\mu \otimes id} \mc O \otimes \mc
+O \xrightarrow{\mu} \mc O
+\]
+where $\mu$ denotes multiplication, and the map $\frac{T-S}{2} :
+\iHom(\sigma_* \mc O, \mc O) \rightarrow \iHom(\sigma_* \mc O(-1),\mc
+O)$ is induced by $\sigma_*(\frac{T-S}{2})$, which is still
+multiplication by the global section $\frac{T-S}{2}$. 
+
+Note that these are both well-defined maps of $\mc O$-modules. Denote
+this form by $\phi$.
+
+In order to show that this is a symplectic form, we have to check that
+$\phi^* \circ (-\can) = \phi$. 
+
+
 
 In \cite{Schder}, Schlichting defines a spectrum $GW(\mathscr A)$
 associated to any dg category with weak equivalences and
