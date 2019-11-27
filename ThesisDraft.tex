@@ -2698,21 +2698,62 @@ GW^{[n]}(\mbb P^\sigma_X)\\
 \end{align*}
 \end{theorem}
 
-Let 
-\[
-\widetilde{GW} = \fib(GW(\mbb P^\sigma) \rightarrow GW([1:1])),
-\]
-be the fiber of the map induced by the equivariant inclusion $[1:1]
-\hookrightarrow \mbb P^\sigma$,
-and define $\widetilde{\mathbb GW}$ similarly. Then it follows from
-theorem \ref{thm:proj_inv} that $\widetilde{GW}(\mbb P^\sigma) \cong
+Considering $GW$ as a presheaf of spectra on $\Sm{S}^{C_2}$ it follows from
+theorem \ref{thm:proj_inv} that $GW(\mbb P^\sigma,[1:1]) \cong
 GW^{[n-1]}(X,-\can) \cong GW^{[n+1]}(X)$, recovering one of the results of
   \cite{Xie2018ATM}. In particular, it follows that
 \[
-\iHom(\Sigma^\infty (\mbb P^\sigma,[1:1]),\widetilde{GW}) \cong
+\iHom(\Sigma^\infty (\mbb P^\sigma,[1:1]),GW) \cong
 GW^{[n+1]}
 \]
-as presheaves of spectra on $\Sm{S}^{C_2}$.
+as presheaves of spectra on $\Sm{S}^{C_2}$. In particular, by the
+projective bundle formula from \cite{Schder} and the usual cofiber
+sequence 
+\[
+([1:1] \times \mbb P^\sigma) \vee (\mbb P^1 \times [1:1]) \rightarrow
+\mbb P^\sigma \times \mbb P^1 \rightarrow \mbb P^\sigma \wedge \mbb P^1
+\]
+we obtain the periodicity isomorphism  
+\[
+\iHom((\mbb P^1,[1:1]) \wedge (\mbb P^\sigma,[1:1]),GW^{[n]}) \cong
+GW^{[n]}
+\]
+
+induced by the map 
+\begin{align*}
+\eta : GW^{[n]}(X) &\rightarrow GW^{[n+1]}(\mbb P^1_X) \rightarrow
+              GW^{[n]}(\mbb P^\sigma_{\mbb P^1_X})\\
+& x \mapsto \beta \cup p^*(x) \mapsto \beta^\sigma \cup q^*(\beta \cup p^*(x))
+\end{align*}
+
+where $p$ is the projection $\mbb P^1_X \rightarrow X$, and $q$ is the
+projection $\mbb P^\sigma_{\mbb P^1_X} \rightarrow \mbb P^1_X$. The
+analogous statements hold for the presheaf of spectra $\mbb GW$.
+
+\begin{enumerate}
+\item Define $\gamma$ to be the composite
+\[
+\mbb A^\sigma \coprod_{\mbb G_m^\sigma} \mbb A^\sigma \wedge \mbb A^1
+\coprod_{\mbb G_m} \mbb A^1 \xrightarrow{\psi} \mbb P^\sigma \wedge \mbb P^1
+\rightarrow GW
+\]
+where $\mbb P^\sigma$ and $\mbb P^1$ are both pointed at $[1:1]$. 
+\item Check that periodization with respect to $\gamma$ doesn't change
+  homotopy groups in positive degrees, and forces the usual square to
+  be a pushout.
+\item Conclude via the Bass fundamental theorem that $L_{\mbb A^1}$ of
+  the periodization
+  is $L_{\mbb A^1}$ of  $\mbb GW$. 
+\item 
+\end{enumerate}
+
+If $\gamma$ is an equivalence, then because $\eta$ is already an
+equivalence, the induced map $Q_\gamma GW(\psi)$ is an equivalence by
+2 out of 3. This turns the usual square into a homotopy pullback
+square. Almost there...
+
+
+
 % In \cite{Schder}, Schlichting defines a spectrum $GW(\mathscr A)$
 % associated to any dg category with weak equivalences and
 % duality. Considering the dg category with weak equivalences and
