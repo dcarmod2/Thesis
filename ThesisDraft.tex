@@ -1,22 +1,25 @@
-\documentclass[10pt]{amsart}
+\documentclass[draftthesis,tocnosub,noragright,centerchapter,12pt]{uiucecethesis09}
+\usepackage{setspace}
+\usepackage{epsfig}
+\usepackage{lscape}  % Useful for wide tables or figures.
+\usepackage[justification=raggedright]{caption}	% makes captions ragged right - thanks to Bryce Lobdell
 \usepackage{amsmath,amsthm,amssymb,amsfonts,amsopn,mathrsfs,mathtools}
-\usepackage[margin=1in]{geometry}
 \usepackage{tikz}
 \usetikzlibrary{arrows}
 \usepackage[all]{xy}
-\usepackage{hyperref}
-\usepackage{color}
+%\usepackage{hyperref}
+%\usepackage{color}
 \usepackage{tabulary}
 \usepackage{cite}
 \usepackage[normalem]{ulem}
 \usepackage{aliascnt}
 \usepackage{todonotes}
-\setlength{\marginparwidth}{2cm}
-\hypersetup{colorlinks=true,linktoc=all,linkcolor=blue}
-\usepackage{kpfonts}
+%\setlength{\marginparwidth}{2cm}
+%\hypersetup{colorlinks=true,linktoc=all,linkcolor=blue}
+%\usepackage{kpfonts}
 
 
-
+\makeatletter
 
 
 \newcommand{\Z}{\mathbb Z}
@@ -42,6 +45,7 @@
 \DeclareMathOperator*{\colim}{colim}
 \DeclareMathOperator*{\im}{im}
 \DeclareMathOperator*{\coker}{coker}
+\DeclareMathOperator*{\fib}{fib}
 \DeclareMathOperator{\Ob}{Ob}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator*{\Mor}{Mor}
@@ -50,6 +54,10 @@
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\can}{can}
 \DeclareMathOperator{\iHom}{\mathbf{Hom}}
+\DeclareMathOperator{\Ch}{Ch}
+\DeclareMathOperator{\Fun}{Fun}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\Cone}{Cone}
 %%%%%%%%%%%%%% Diagrams
 
 \newcommand{\commsq}[4]{\xymatrix{{#1} \ar[r]\ar[d] & {#2} \ar[d] \\
@@ -72,16 +80,38 @@
 \newtheorem{conjecture}{Conjecture}
 \newtheorem{construction}{Construction}
 
+\phdthesis
+
+\title{An $E_\infty$ structure on the motivic spectrum representing
+  Hermitian $K$-Theory}
+\author{Daniel Carmody}
+\department{Mathematics}
+\degreeyear{2020}
+
+% Advisor name is required for
+% - doctoral students for the ProQuest abstract
+% - master's students who do not have a master's committee
+\advisor{Jeremiah Heller}
+\committee{Professor Randy McCarthy, Chair\\
+        Professor Vesna Stojanoska\\ Professor Jeremiah Heller\\
+        Professor Charles Rezk} 
+
 
 \begin{document}
 
+\maketitle
+
+%\raggedright
+\parindent 1em%
+
+\frontmatter
+
 \tableofcontents
 
-\section{Introduction}
+\chapter{Introduction}
 
-\section{Equivariant Topologies}
+\chapter{Equivariant Topologies}
 
-\todo{Add things about the equivariant Nisnevich topology}
 \begin{notation}
 Throughout this section, $G$ will be either a finite group or the
 group scheme over $S$ associated to a finite group. Recall that to pass between
@@ -503,7 +533,7 @@ and homotopy invariance of homotopy cofiber:
 
 \end{proof}
 
-\section{Hermitian Forms on Schemes}
+\chapter{Hermitian Forms on Schemes}
 
 \subsection{Definitions}
 
@@ -647,7 +677,7 @@ defined by the composition
 \[
 M \otimes \sigma_*Nat(\sigma_*M,\mc O_X) \cong M \otimes
 Nat(M,\sigma_*\mc O_X) \xrightarrow{ ev} \sigma_* \mc O_X
-\xrightarrow{\sigma^\#} \mc O_X
+\xrightarrow{(\sigma^\#)^{-1}} \mc O_X
 \]
 which under adjunction yields the above map. 
 \end{definition}
@@ -1038,7 +1068,7 @@ is split exact, and the canonical map is an isomorphism.
 
 
 
-\section{Hermitian Grassmannians}
+\chapter{Hermitian Grassmannians}
 
 Fix a separated base scheme $S$ with trivial involution. The goal of
 this section is to define a sheaf on $\Sm{S}^{C_2}$, denoted $\RGr_V$, which represents
@@ -2556,7 +2586,7 @@ There's an equivariant motivic equivalence $L_{mot}\RGr_\bullet
 \xrightarrow{\sim} L_{mot}\widetilde{\mathscr{G}W}$.
 \end{corollary}
 
-\section{An $E_\infty$ structure on the Hermitian $K$-Theory Spectrum}
+\chapter{An $E_\infty$ structure on the Hermitian $K$-Theory Spectrum}
 
 \subsection{A projective bundle formula for $\mbb P^\sigma$}
 
@@ -2586,122 +2616,217 @@ Note that these are both well-defined maps of $\mc O$-modules. Denote
 this form by $\phi$.
 
 In order to show that this is a symplectic form, we have to check that
-$\phi^* \circ (-\can) = \phi$. 
+$\phi^* \circ (-\can) = \phi$. We'll see that this follows from the
+fact that $\sigma^\#(\frac{T-S}{2}) = -\frac{T-S}{2}$. Fix open $U
+\subseteq \mbb P^\sigma$ which need not be invariance, and open $V
+\subseteq U$. Tracing
+through the definitions, we see that $\can$ is the map which sends $u
+\in \mc O(-1)(U)$ to the natural transformation
+\[
+\gamma \mapsto (\sigma^\#)^{-1}(\gamma(u|_V)),
+\]
+and $\phi^* \circ \can (u)$ is the natural transformation
+\[
+v \mapsto (\sigma^\#)^{-1}\left(\frac{T+S}{2} \cdot v \cdot (\sigma^\#)^{-1}(u)\right).
+\]
 
+Composing with the map $\frac{T-S}{2} : \mc O^* \rightarrow \mc
+O(-1)^*$ given by precomposition yields in total the composite
+\[
+u \mapsto (v \mapsto (\sigma^\#)^{-1}\left(\frac{T+S}{2} \cdot v \cdot (\sigma^\#)^{-1}\left(\frac{T-S}{2}u\right)\right).
+\]
 
+By the definition of $\sigma^\#$, this is just
+\[
+u \mapsto (v \mapsto \frac{T+S}{2} \cdot (\sigma^\#)^{-1}(v) \cdot \frac{T-S}{2} \cdot u),
+\]
+where we're crucially using that $\frac{T+S}{2}$ is an invariant
+global section. 
 
-In \cite{Schder}, Schlichting defines a spectrum $GW(\mathscr A)$
-associated to any dg category with weak equivalences and
-duality. Considering the dg category with weak equivalences and
-duality associated to a ring with involution $(R,\sigma)$, his results
-imply that $\Z \times \widetilde{\mathscr GW}(R) \cong
-\Omega^\infty GW(R)$. Together with the results of the previous
-section, we see that there's an equivariant motivic equivalence $L_{mot}(\Z
-\times \RGr_\bullet(R)) \cong L_{mot}\Omega^\infty GW$.
+On the other hand, the composite $\frac{T-S}{2} \circ \frac{T+S}{2} :
+\mc O(-1) \rightarrow \mc O(-1)^*$ is the map
+\[
+u \mapsto (v \mapsto \frac{T+S}{2} \cdot u \cdot (\sigma^\#)^{-1}\left(\frac{T-S}{2}v\right))
+\]
+which is the same thing as
+\[
+u\mapsto (v \mapsto \frac{T+S}{2} \cdot u \cdot \frac{S-T}{2} (\sigma^\#)^{-1}(v)),
+\]
 
-\begin{enumerate}
-\item Check that $GW$ (non boldface) is a presheaf of
-  $E_\infty$-spectra.
+which is by what we calculated above equal to $-(\phi^* \circ \can) =
+\phi^* \circ (-\can)$.
 
-We know that $GW$ is monoidal from dg categories with weak
-equivalences to spectra. 
+Now just as in \cite{Schder}, taking the mapping cone of $\phi$ via
+the functor
 
-Consider the presheaf of categories with weak equivalence and duality
-on $\Sm{S}^{C_2}$ given by $f : X \rightarrow S \mapsto BigVB(S)$, or some
-other strictly functorial version of the category of projective
-modules. This is (strongly) symmetric monoidal via tensor product of
-modules. 
-(prove that you actually get symmetric monoidal structure on
-dgcatwe). It follows that upon application of $GW$ we get a symmetric
-monoidal presheaf of spectra. 
-\item Identify $\mbb GW$ with a periodization of $GW$.
+\[
+\Cone : \Fun([1],\Ch^b\Vect(\mbb P^\sigma))^{[0]} \rightarrow
+\left(\Ch^b\Vect(\mathbb P^\sigma)\right)^{[1]}
+\]
 
-Note that in Hu-Kriz they explicitly produce a periodic spectrum.
+yields a symplectic form $\beta^\sigma = \Cone(\phi)$. Note
+that since there's an exact sequence
+\[
+\mc O(-1) \xrightarrow{\begin{pmatrix}\frac{T-S}{2} \\ \frac{T+S}{2} \end{pmatrix}} \mc O \oplus \mc O^* \xrightarrow{\begin{pmatrix}\frac{T-S}{2} & -\frac{T+S}{2} \end{pmatrix}} \mc O(-1)^*
+\]
 
-\item Use marc's technology to deduce that $\mbb GW$ is a motivic
-  $E_\infty$-ring spectrum. 
-\end{enumerate}
+the square defining $\phi$ is a pushout, and hence the induced map on
+mapping cones is a quasi isomorphism. It follows that $\beta^\sigma$
+is a well-defined, non-degenerate symplectic form in
+$\left(\Ch^b\Vect(\mathbb P^\sigma)\right)^{[1]}$. 
 
-Fix a scheme with involution $(X,\sigma)$, and let $GW$ be the
-Grothendieck-Witt spectrum of $(X,\sigma)$ as defined in
-\cite{Xie2018ATM}. It follows from results in \cite{Schder} that $GW((X,\sigma))$ is
-a symmetric monoid in the category of symmetric spectra, and hence an
-$E_\infty$-ring spectrum. It also follows from (loc. cit. )that $GW$ yields a presheaf
-of symmetric monoids in symmetric spectra, and in particular an
-$E_\infty$ object in the $\infty$-category of presheaves of spectra on
-$\Sm{S}^{C_2}$. 
+Now we note that the proof of Theorem 9.10 in \cite{Schder} uses results about the
+classical Bott element in algebraic $K$-theory together with
+localization and invariance statements about Grothendieck-Witt
+theories. Because the involution only affects the duality and which
+point we're allowed to include equivariantly in $\mbb P^\sigma$, the
+proof of Theorem 9.10 in \emph{loc. cit} can be applied with trivial
+modification to obtain:
 
-For a scheme $X$ (possibly with involution), denote by $GW^{[n]}(X)$ the
-Grothendieck-Witt spectrum of the dg-category with weak equivalences
-and duality given by the category of strictly perfect complexes on $X$
-with duality induced by the shifted duality coefficient corresponding
-to $\mc O_X[-n]$. 
-
-Now fix a scheme $X$ with trivial involution. The projective bundle
-formula in \cite{Schder} yields a natural isomorphism
-$GW^{[n]}(X) \oplus GW^{[n-1]}(X) \cong GW^{[n]}(\mbb P^1_X)$, while
-the Devissage theorem in \cite{Xie2018ATM} yields a natural isomorphism 
-$GW^{[n]}(\mbb P^\sigma_X) \cong GW^{[n-1]}(X,-can) \oplus
-GW^{[n]}(X)$, where $GW^{[n-1]}(X,-can)$ denotes symplectic hermitian
-$K$-theory. Thus working with pointed versions of $\mbb P^\sigma, \mbb
-P^1$, we have $GW^{[n]}(\mbb P^1_X,[1:1]) \cong GW^{[n-1]}(X)$ and
-$GW^{[n]}(\mbb P_X^\sigma,[1:1]) \cong GW^{[n-1]}(X,-can)$.
-
-Because this isomorphism is natural, it follows that, as a presheaf of spectra, $\Omega^{\mbb P^1}GW \cong
-\Omega^{\mbb P^\sigma}  \prescript{}{-1}{GW}$. Using Karoubi's fundamental theorem
-(\cite{Schder} Theorem 6.2),
-Hu-Kriz prove that there are periodicity equivalences 
-\begin{align}
-\Omega^{\mbb G_m \wedge S^\sigma}GW &\cong GW \label{per:1}\\
-\Omega^4 GW &\cong \Omega^{S^{4\sigma}}GW. \label{per:2}
-\end{align}
-
-Using Karoubi's fundamental theorem and its consequences, together
-with the fact that loop spaces commute and we're $S^1$-stable, we get
+\begin{theorem} \label{thm:proj_inv}
+Let $X$ be a scheme with trivial involution, an ample famliy of line
+bundles, and $\frac{1}{2} \in X$, and denote by $p : \mbb P^\sigma
+\rightarrow X$ the structure map of the equivariant projective line
+over $X$, with action $[x:y] \mapsto [y:x]$. Then for all $n \in \mbb
+Z$, the following are natural stable equivalence of (bi-) spectra
 \begin{align*}
-\Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}  \prescript{}{-1}{GW} &\cong
-\Omega^{\mbb P^1}\Omega^{\mbb P^1} GW \\
-\implies \Omega^2 \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}  \prescript{}{-1}{GW} &
-  \cong \Omega^2 \Omega^{\mbb P^1}\Omega^{\mbb P^1} GW\\
-\implies \Omega^{S^{2\sigma}} \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}
-  GW & \cong  \Omega^2 \Omega^{\mbb P^1}\Omega^{\mbb P^1} GW\\
-\implies \Omega^{S^{4\sigma}} \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}
-  GW & \cong  \Omega^{S^{2\sigma}} \Omega^2 \Omega^{\mbb
-       P^1}\Omega^{\mbb P^1} GW\\
-\implies \Omega^4 \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}
-  GW & \cong  \Omega^{S^{2\sigma}} \Omega^4 \Omega^{\mbb
-       G_m^{\wedge 2}} GW\\
-\implies \Omega^4 \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}
-  GW & \cong \Omega^4  GW\\
-\implies \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}
-  GW & \cong GW.
+GW^{[n]}(X) \oplus & GW^{[n-1]}(X,-\can) \xrightarrow{\sim}
+GW^{[n]}(\mbb P^\sigma_X)\\
+ \mbb GW^{[n]}(X) \oplus & \mbb GW^{[n-1]}(X,-\can) \xrightarrow{\sim}
+\mbb GW^{[n]}(\mbb P^\sigma_X)\\
+&(x,y) \mapsto p^*(x) + \beta^\sigma \cup p^*(y).
 \end{align*}
+\end{theorem}
 
- Issue, we're using equivalences in motivic spaces. The equivalence
- $\mbb P^1 \cong S^1 \wedge \mbb G_m$ is a zig-zag of motivic spaces. 
-
-There's an equivalence $\Omega \Omega^{\mbb G_m} GW \rightarrow U$ given by
-the connecting map in the $GW$-localization sequence. Thus there's an
-equivalence $\Omega^{S^\sigma} \Omega \Omega^{\mbb G_m} GW \rightarrow
-\Omega^{S^\sigma} U$. Now HKO prove that there's an equivalence of fiber
-sequences of presheaves of spectra
+Let 
 \[
-\xymatrix{\Omega^{S^\sigma}U \ar[r] \ar[d] &  \Omega^{S^\sigma}F(\Z/2_+,GW)
-  \ar[d] \ar[r]^-{\Omega^{S^\sigma} H} &\Omega^{S^\sigma} GW \ar[d]\\
-\Omega GW \ar[r]  & F(\Z/2_+ \wedge S^\sigma,GW) \ar[r] &
-\Omega^{S^\sigma}GW 
-}.
+\widetilde{GW} = \fib(GW(\mbb P^\sigma) \rightarrow GW([1:1])),
 \]
-
-where the bottom sequence is obtained from applying the functor
-$F(-,GW)$ to the cofiber sequence of pointed spaces given by the pinch map
+be the fiber of the map induced by the equivariant inclusion $[1:1]
+\hookrightarrow \mbb P^\sigma$,
+and define $\widetilde{\mathbb GW}$ similarly. Then it follows from
+theorem \ref{thm:proj_inv} that $\widetilde{GW}(\mbb P^\sigma) \cong
+GW^{[n-1]}(X,-\can) \cong GW^{[n+1]}(X)$, recovering one of the results of
+  \cite{Xie2018ATM}. In particular, it follows that
 \[
-S^\sigma \rightarrow \Z/2_+ \wedge S^\sigma \rightarrow S^1.
+\iHom(\Sigma^\infty (\mbb P^\sigma,[1:1]),\widetilde{GW}) \cong
+GW^{[n+1]}
 \]
+as presheaves of spectra on $\Sm{S}^{C_2}$.
+% In \cite{Schder}, Schlichting defines a spectrum $GW(\mathscr A)$
+% associated to any dg category with weak equivalences and
+% duality. Considering the dg category with weak equivalences and
+% duality associated to a ring with involution $(R,\sigma)$, his results
+% imply that $\Z \times \widetilde{\mathscr GW}(R) \cong
+% \Omega^\infty GW(R)$. Together with the results of the previous
+% section, we see that there's an equivariant motivic equivalence $L_{mot}(\Z
+% \times \RGr_\bullet(R)) \cong L_{mot}\Omega^\infty GW$.
 
-Composing with the above equivalences gives a map $\Omega^{S^\sigma}
-\Omega \Omega^{\mbb G_m} GW \rightarrow \Omega^{S^\sigma} U
-\rightarrow \Omega GW$.
+% \begin{enumerate}
+% \item Check that $GW$ (non boldface) is a presheaf of
+%   $E_\infty$-spectra.
+
+% We know that $GW$ is monoidal from dg categories with weak
+% equivalences to spectra. 
+
+% Consider the presheaf of categories with weak equivalence and duality
+% on $\Sm{S}^{C_2}$ given by $f : X \rightarrow S \mapsto BigVB(S)$, or some
+% other strictly functorial version of the category of projective
+% modules. This is (strongly) symmetric monoidal via tensor product of
+% modules. 
+% (prove that you actually get symmetric monoidal structure on
+% dgcatwe). It follows that upon application of $GW$ we get a symmetric
+% monoidal presheaf of spectra. 
+% \item Identify $\mbb GW$ with a periodization of $GW$.
+
+% Note that in Hu-Kriz they explicitly produce a periodic spectrum.
+
+% \item Use marc's technology to deduce that $\mbb GW$ is a motivic
+%   $E_\infty$-ring spectrum. 
+% \end{enumerate}
+
+% Fix a scheme with involution $(X,\sigma)$, and let $GW$ be the
+% Grothendieck-Witt spectrum of $(X,\sigma)$ as defined in
+% \cite{Xie2018ATM}. It follows from results in \cite{Schder} that $GW((X,\sigma))$ is
+% a symmetric monoid in the category of symmetric spectra, and hence an
+% $E_\infty$-ring spectrum. It also follows from (loc. cit. )that $GW$ yields a presheaf
+% of symmetric monoids in symmetric spectra, and in particular an
+% $E_\infty$ object in the $\infty$-category of presheaves of spectra on
+% $\Sm{S}^{C_2}$. 
+
+% For a scheme $X$ (possibly with involution), denote by $GW^{[n]}(X)$ the
+% Grothendieck-Witt spectrum of the dg-category with weak equivalences
+% and duality given by the category of strictly perfect complexes on $X$
+% with duality induced by the shifted duality coefficient corresponding
+% to $\mc O_X[-n]$. 
+
+% Now fix a scheme $X$ with trivial involution. The projective bundle
+% formula in \cite{Schder} yields a natural isomorphism
+% $GW^{[n]}(X) \oplus GW^{[n-1]}(X) \cong GW^{[n]}(\mbb P^1_X)$, while
+% the Devissage theorem in \cite{Xie2018ATM} yields a natural isomorphism 
+% $GW^{[n]}(\mbb P^\sigma_X) \cong GW^{[n-1]}(X,-can) \oplus
+% GW^{[n]}(X)$, where $GW^{[n-1]}(X,-can)$ denotes symplectic hermitian
+% $K$-theory. Thus working with pointed versions of $\mbb P^\sigma, \mbb
+% P^1$, we have $GW^{[n]}(\mbb P^1_X,[1:1]) \cong GW^{[n-1]}(X)$ and
+% $GW^{[n]}(\mbb P_X^\sigma,[1:1]) \cong GW^{[n-1]}(X,-can)$.
+
+% Because this isomorphism is natural, it follows that, as a presheaf of spectra, $\Omega^{\mbb P^1}GW \cong
+% \Omega^{\mbb P^\sigma}  \prescript{}{-1}{GW}$. Using Karoubi's fundamental theorem
+% (\cite{Schder} Theorem 6.2),
+% Hu-Kriz prove that there are periodicity equivalences 
+% \begin{align}
+% \Omega^{\mbb G_m \wedge S^\sigma}GW &\cong GW \label{per:1}\\
+% \Omega^4 GW &\cong \Omega^{S^{4\sigma}}GW. \label{per:2}
+% \end{align}
+
+% Using Karoubi's fundamental theorem and its consequences, together
+% with the fact that loop spaces commute and we're $S^1$-stable, we get
+% \begin{align*}
+% \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}  \prescript{}{-1}{GW} &\cong
+% \Omega^{\mbb P^1}\Omega^{\mbb P^1} GW \\
+% \implies \Omega^2 \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}  \prescript{}{-1}{GW} &
+%   \cong \Omega^2 \Omega^{\mbb P^1}\Omega^{\mbb P^1} GW\\
+% \implies \Omega^{S^{2\sigma}} \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}
+%   GW & \cong  \Omega^2 \Omega^{\mbb P^1}\Omega^{\mbb P^1} GW\\
+% \implies \Omega^{S^{4\sigma}} \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}
+%   GW & \cong  \Omega^{S^{2\sigma}} \Omega^2 \Omega^{\mbb
+%        P^1}\Omega^{\mbb P^1} GW\\
+% \implies \Omega^4 \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}
+%   GW & \cong  \Omega^{S^{2\sigma}} \Omega^4 \Omega^{\mbb
+%        G_m^{\wedge 2}} GW\\
+% \implies \Omega^4 \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}
+%   GW & \cong \Omega^4  GW\\
+% \implies \Omega^{\mbb P^1}\Omega^{\mbb P^\sigma}
+%   GW & \cong GW.
+% \end{align*}
+
+%  Issue, we're using equivalences in motivic spaces. The equivalence
+%  $\mbb P^1 \cong S^1 \wedge \mbb G_m$ is a zig-zag of motivic spaces. 
+
+% There's an equivalence $\Omega \Omega^{\mbb G_m} GW \rightarrow U$ given by
+% the connecting map in the $GW$-localization sequence. Thus there's an
+% equivalence $\Omega^{S^\sigma} \Omega \Omega^{\mbb G_m} GW \rightarrow
+% \Omega^{S^\sigma} U$. Now HKO prove that there's an equivalence of fiber
+% sequences of presheaves of spectra
+% \[
+% \xymatrix{\Omega^{S^\sigma}U \ar[r] \ar[d] &  \Omega^{S^\sigma}F(\Z/2_+,GW)
+%   \ar[d] \ar[r]^-{\Omega^{S^\sigma} H} &\Omega^{S^\sigma} GW \ar[d]\\
+% \Omega GW \ar[r]  & F(\Z/2_+ \wedge S^\sigma,GW) \ar[r] &
+% \Omega^{S^\sigma}GW 
+% }.
+% \]
+
+% where the bottom sequence is obtained from applying the functor
+% $F(-,GW)$ to the cofiber sequence of pointed spaces given by the pinch map
+% \[
+% S^\sigma \rightarrow \Z/2_+ \wedge S^\sigma \rightarrow S^1.
+% \]
+
+% Composing with the above equivalences gives a map $\Omega^{S^\sigma}
+% \Omega \Omega^{\mbb G_m} GW \rightarrow \Omega^{S^\sigma} U
+% \rightarrow \Omega GW$.
+
+
+\bibliographystyle{IEEE_ECE}
 \bibliography{Thesisbib}
-\bibliographystyle{plain}
 \end{document}
