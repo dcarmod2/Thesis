@@ -1,5 +1,6 @@
-\documentclass[draftthesis,tocnosub,noragright,centerchapter,12pt]{uiucecethesis09}
+\documentclass[draftthesis,tocnosub,noragright,centerchapter,10pt]{uiucecethesis09}
 \usepackage{setspace}
+\usepackage[margin=1in]{geometry}
 \usepackage{epsfig}
 \usepackage{lscape}  % Useful for wide tables or figures.
 \usepackage[justification=raggedright]{caption}	% makes captions ragged right - thanks to Bryce Lobdell
@@ -16,7 +17,7 @@
 \usepackage{todonotes}
 %\setlength{\marginparwidth}{2cm}
 %\hypersetup{colorlinks=true,linktoc=all,linkcolor=blue}
-%\usepackage{kpfonts}
+\usepackage{kpfonts}
 
 
 \makeatletter
@@ -107,6 +108,8 @@
 \frontmatter
 
 \tableofcontents
+
+\mainmatter
 
 \chapter{Introduction}
 
@@ -2699,11 +2702,11 @@ GW^{[n]}(\mbb P^\sigma_X)\\
 \end{theorem}
 
 Considering $GW$ as a presheaf of spectra on $\Sm{S}^{C_2}$ it follows from
-theorem \ref{thm:proj_inv} that $GW(\mbb P^\sigma,[1:1]) \cong
+theorem \ref{thm:proj_inv} that $GW^{[n]}(\mbb P^\sigma,[1:1]) \cong
 GW^{[n-1]}(X,-\can) \cong GW^{[n+1]}(X)$, recovering one of the results of
   \cite{Xie2018ATM}. In particular, it follows that
 \[
-\iHom(\Sigma^\infty (\mbb P^\sigma,[1:1]),GW) \cong
+\iHom(\Sigma^\infty (\mbb P^\sigma,[1:1]),GW^{[n]}) \cong
 GW^{[n+1]}
 \]
 as presheaves of spectra on $\Sm{S}^{C_2}$. In particular, by the
@@ -2749,8 +2752,105 @@ where $\mbb P^\sigma$ and $\mbb P^1$ are both pointed at $[1:1]$.
 
 If $\gamma$ is an equivalence, then because $\eta$ is already an
 equivalence, the induced map $Q_\gamma GW(\psi)$ is an equivalence by
-2 out of 3. This turns the usual square into a homotopy pullback
+2 out of 3. This turns the smash product of the usual squares into a homotopy pullback
 square. Almost there...
+
+Consider the homotopy pushout in the category of presheaves of spectra
+\[
+\xymatrix{ A^\sigma \coprod_{\mbb G_m^\sigma} \mbb
+  A^\sigma \wedge \mbb G_m  \ar[d] \ar[r] &  A^\sigma \coprod_{\mbb G_m^\sigma} \mbb
+  A^\sigma \ar[d] \wedge \mbb A^1 \\  A^\sigma \coprod_{\mbb G_m^\sigma} \mbb
+  A^\sigma \wedge \mbb A^1  \ar[r] &  \mbb A^\sigma \coprod_{\mbb G_m^\sigma} \mbb A^\sigma \wedge \mbb A^1
+\coprod_{\mbb G_m} \mbb A^1}
+\]
+
+Applying $Q_\gamma GW$ and using that $Q_\gamma GW(\psi)$ is an
+equivalence, ...
+
+Because $\mbb GW$ satisfies equivariant Nisnevich descent
+(\cite{Xie2018ATM}), the map $\gamma$ is a stable equivalence on the
+sheaf $\mbb GW$. It follows that $\pi_i(\gamma)$ is an isomorphism in
+all degrees. Because $\pi_i(\mbb GW)$ agrees with $\pi_i(GW)$ in
+positive degrees, it follows that the map $\pi_i(\gamma)$ on $GW$ is
+an isomorphism in non-negative degrees, and hence $\pi_i(Q_\gamma GW)
+= \pi_i GW$ is non-negative degrees. 
+
+Now $p.b. Q_\gamma = Q_\gamma GW(p.o.) \cong Q_\gamma GW(\mbb P^1
+\wedge \mbb P^\sigma)$ because the pushout is computed in presheaves,
+so that there's a htpy cartesian square... this gives Bass sequence. 
+
+Questions:
+\begin{enumerate}
+\item Is the diagram a pushout in pointed or unpointed spaces? The
+  goal at the end of the day is to show that the homotopy groups of
+  $Q_\gamma GW$ can be computed in terms of the positive homotopy
+  groups of $Q_\gamma GW$. At the end of the day, $Q_\gamma GW$ is an
+  object of $GW$-mod.
+
+At the
+  end of the day we need to be working in the category $GW$-mod, where
+  $GW$ is the unpointed presheaf $X \mapsto GW(X)$. Homotopy groups in
+  $GW$-mod can be computed after forgetting I believe. Weak
+  equivalences in module categories are computed on the underlying
+  objects. 
+
+I think it's fine. Start with the usual pushout square
+\[
+\xymatrix{\mbb G_m \ar[r]\ar[d] & \mbb A^1 \ar[d] \\ \mbb A^1 \ar[r] &
+\mbb A^1\coprod_{\mbb G_m} \mbb A^1}
+\]
+and take the product with the presheaf $\mbb A^- \coprod_{\mbb G_m^-}
+\mbb A^-$. Because we're stable, we still get a homotopy pushout
+square. 
+
+Now the square
+\[
+\xymatrix{\mbb G_m \vee \mbb A^- \coprod_{\mbb G_m^-}
+\mbb A^-\ar[r]\ar[d] & \mbb A^1 \vee \mbb A^- \coprod_{\mbb G_m^-}
+\mbb A^- \ar[d] \\ \mbb A^1 \vee \mbb A^- \coprod_{\mbb G_m^-}
+\mbb A^- \ar[r] &
+\mbb A^1\coprod_{\mbb G_m} \mbb A^1 \vee \mbb A^- \coprod_{\mbb G_m^-}
+\mbb A^-}
+\]
+
+should be a pushout square, since it's the cofiber of the map from the
+pushout square
+\[
+\xymatrix{S^0 \ar[r]\ar[d] & S^0 \ar[d] \\ S^0\ar[r] & S^0}
+\]
+
+to the pushout square 
+
+\[
+\xymatrix{\mbb G_m \coprod \mbb A^- \coprod_{\mbb G_m^-}
+\mbb A^-\ar[r]\ar[d] & \mbb A^1 \coprod \mbb A^- \coprod_{\mbb G_m^-}
+\mbb A^- \ar[d] \\ \mbb A^1 \coprod \mbb A^- \coprod_{\mbb G_m^-}
+\mbb A^- \ar[r] &
+\mbb A^1\coprod_{\mbb G_m} \mbb A^1 \coprod \mbb A^- \coprod_{\mbb G_m^-}
+\mbb A^-}
+\]
+
+It follows that similarly, the smash product square is the cofiber of
+a map between pushout squares. So it's a pushout in unpointed
+presheaves.
+
+\item Why is it a homotopy pushout (instead of honest pushout)?
+
+For this one, I think the point is that we can put the injective model
+structure on presheaves, and then the maps in the diagram question are
+monomorphisms, hence are cofibrations. (Taking representable presheaf
+preserves monomorphisms)
+
+\item After applying Hom into $GW$, either in $GW$-mod or in unpointed
+  presheaves (by adjunction), we claim that the induced map 
+\[
+\mbb A^- \coprod_{\mbb G_m^-} \mbb A^- \wedge \mbb A^1 \coprod_{\mbb
+  G_m} \mbb A^1 \rightarrow \mbb A^- \coprod_{\mbb G_m^-} \mbb
+A^-\wedge \mbb A^1
+\]
+is the zero map. The point is that it's a cup product with $\beta$,
+and we know that $\beta$ restricts to zero in $\mbb A^1$. 
+\end{enumerate}
 
 
 
