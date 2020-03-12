@@ -1,4 +1,4 @@
-\documentclass[draftthesis,tocnosub,noragright,centerchapter,10pt]{uiucecethesis09}
+\documentclass[draftthesis,tocnosub,noragright,centerchapter,10pt]{uiucthesis2009}
 \usepackage{setspace}
 \usepackage[margin=1in]{geometry}
 \usepackage{epsfig}
@@ -8,8 +8,8 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows}
 \usepackage[all]{xy}
-%\usepackage{hyperref}
-%\usepackage{color}
+\usepackage{hyperref}
+\usepackage{color}
 \usepackage{tabulary}
 \usepackage{cite}
 \usepackage[normalem]{ulem}
@@ -39,6 +39,7 @@
 \newcommand{\St}{\mathrm{St}}
 \newcommand{\Span}{\mathrm{Span}}
 \newcommand{\ptr}{\mathrm{ptr}}
+\newcommand{\inv}{\tau}
 
 
 \DeclareMathOperator{\Spec}{Spec}
@@ -69,8 +70,10 @@
 %%%%%%%%%%%%%% Theorem Environments
 \theoremstyle{plain}
 
+
+
 \newtheorem{lemma}{Lemma}
-\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}[lemma]{Theorem}
 \newtheorem{proposition}[lemma]{Proposition}
 \theoremstyle{definition}
 \newtheorem{corollary}[lemma]{Corollary}
@@ -79,9 +82,9 @@
 \newtheorem{notation}[lemma]{Notation}
 
 \newtheorem{remark}[lemma]{Remark}
-\newtheorem{question}{Question}
-\newtheorem{conjecture}{Conjecture}
-\newtheorem{construction}{Construction}
+\newtheorem{question}[lemma]{Question}
+\newtheorem{conjecture}[lemma]{Conjecture}
+\newtheorem{construction}[lemma]{Construction}
 
 \phdthesis
 
@@ -1721,7 +1724,7 @@ B S_{|V|}(V\perp \mbb H^\infty) \rightarrow B\mc F \rightarrow B_{isoEt}O(V)
 \]
 
 where the first map is a weak equivalence of simplicial sets when
-evaluated at affine $C_2$-schemes, and by \cite{Jar01} theorem 6, the second map is a
+evaluated at affine $C_2$-schemes, and by \cite{Jar01} Theorem 6, the second map is a
 weak equivalence of simplicial sets when evaluated at any
 $C_2$-scheme. 
 \end{proof}
@@ -2693,7 +2696,7 @@ Consider the square
 \end{equation}
 
 where the map $\frac{T-S}{2} : \mc O(-1) \rightarrow \mc
-O$ is induced via adjunction by the composition 
+O$ is induced via the tensor-hom adjunction by the composition 
 \[
 \mc O(-1) \otimes \left\{\frac{T-S}{2}\right\} \otimes \sigma_* \mc O
 \xrightarrow{id \otimes i \otimes id}
@@ -2704,7 +2707,7 @@ O \xrightarrow{\mu} \mc O
 \]
 
 and the map  $\frac{T-S}{2} : \mc O \rightarrow \sigma_*\mc
-O(-1)$ is induced via adjunction by the composition 
+O(-1)$ is induced via the tensor-hom adjunction by the composition 
 \[
 \mc O \otimes \left\{\frac{T-S}{2}\right\} \otimes \sigma_* \mc O(-1)
 \xrightarrow{\sigma^\# \otimes  \sigma^\# \circ i \otimes id}
@@ -2739,10 +2742,22 @@ Going right first then down yields the composite
 u \mapsto (v \mapsto (\sigma^\#)^{-1}(\sigma^\#(\frac{T+S}{2} \cdot u
 )\cdot \frac{S-T}{2}\cdot v))
 \]
-These are equal since $\frac{T+S}{2}$ is an invariant global section. Denote
-the form given by the diagram \ref{diag:prebott} by $\phi$.
+These are equal since $\frac{T+S}{2}$ is an invariant global
+section. Note that the diagram \ref{diag:prebott} is a map in
+$\Fun([1],\Vect(\mbb P^\sigma))$ from 
+\[
+\mc O(-1) \xrightarrow{\frac{T+S}{2}} \mc O
+\]
+to its dual,
+\[
+\iHom(\sigma_*\mc
+  O,\mc O) \xrightarrow{\frac{T+S}{2}}  \iHom(\sigma_* \mc O(-1),\mc O).
+\]
 
-In order to show that this is a symplectic form, we have to check that
+Thus this diagram defines a (not necessarily non-degenerate) form,
+which we denote by $\phi$. 
+
+In order to show that this$\phi$ is symplectic, we have to check that
 $\phi^* \circ (-\can) = \phi$. To spell this out in detail, the dual
 and double dual are functors. Applying these two functors, we get the
 two objects
@@ -2865,7 +2880,7 @@ equivalence of triangulated categories. As in
 $\sPerf(\mbb P^1_X)$ which are isomorphisms in $\mc T\sPerf(\mbb
 P^1_X)/p^*\mc T\sPerf(X)$, we get a sequence
 \[
-\xymatrix{(\sPerf(X),\mathrm{quis}) \ar[r]{p^*} & (\sPerf(\mbb
+\xymatrix{(\sPerf(X),\mathrm{quis}) \ar[r]^{p^*} & (\sPerf(\mbb
   P^1_X),\mathrm{quis}) \ar[r] & (\sPerf(\mbb P^1_X),w)}
 \]
 
@@ -2885,9 +2900,9 @@ equivalences, we conclude the theorem.
 \end{proof}
 
 Considering $GW$ as a presheaf of spectra on $\Sm{S}^{C_2}$ it follows from
-theorem \ref{thm:proj_inv} that $GW^{[n]}(\mbb P^\sigma,[1:1]) \cong
+Theorem \ref{thm:proj_inv} that $GW^{[n]}(\mbb P^\sigma,[1:1]) \cong
 GW^{[n-1]}(X,-\can) \cong GW^{[n+1]}(X)$, recovering one of the results of
-  \cite{Xie2018ATM}. It follows that
+  \cite{Xie2018ATM}. Hence
 \[
 \iHom(\Sigma^\infty (\mbb P^\sigma,[1:1]),GW^{[n]}) \cong
 GW^{[n+1]}
@@ -2916,6 +2931,12 @@ GW^{[n]}(X) &\rightarrow GW^{[n+1]}(\mbb P^1_X) \rightarrow
 where $p$ is the projection $\mbb P^1_X \rightarrow X$, and $q$ is the
 projection $\mbb P^\sigma_{\mbb P^1_X} \rightarrow \mbb P^1_X$. The
 analogous statements hold for the presheaf of spectra $\mbb GW$.
+
+As notation for later, let $\beta^{1+\sigma}$ denote the induced map
+\begin{equation}\label{eq:bott_element}
+\beta^{1+\sigma} : (\mbb P^1,[1:1]) \wedge (\mbb P^\sigma,[1:1])
+\rightarrow GW.
+\end{equation}
 
 \begin{lemma}\label{lem:bott_zero}
 The Bott element $\beta^\sigma$ restricts to zero in $C_2 \times \mbb
@@ -3378,6 +3399,7 @@ may or may not be exact, as the image of an exact sequence is in
 general not exact. 
 
 Consider the commutative diagram
+\small
 \[
 \xymatrix{F^{i+1}_{n-1}(\mbb A^1/1 \otimes W_\sigma/S^0)  \oplus F^{i+1}_{n-1}(\mbb
   A^1/1 \otimes W_\sigma/S^0)  \ar[r] \ar[d]& F^{i+1}_{n-1}(\mbb G_m/1
@@ -3388,6 +3410,7 @@ W_\sigma/S^0)^{\otimes i+2})^{\oplus 2} \ar[r] & \mbb
 GW(\mbb G_m/1 \otimes W_\sigma/S^0 \otimes (W/S^0 \otimes W_\sigma/S^0)^{\otimes i+2}) \ar[r]^-{\partial^B} &
  \mbb GW^{[m]}_{n-2}((W/S^0 \otimes W_\sigma/S^0)^{\otimes i+3}) }
 \]
+\normalsize
 where the left two vertical maps are isomorphisms by what we've
 already shown. We claim that the top row is exact. The composite is
 zero since it's a chain complex, and if $x \in \ker(\partial)$, then
@@ -3501,6 +3524,101 @@ $E_\infty$ objects, $L_{\mbb A^1}\mbb GW$ is an $E_\infty$ object in
 the subcategory of Nisnevich excisive Bott periodic
 $GW$-modules. 
 \end{proof}
+
+Recall the definition of $\beta^{1+\sigma}$ from equation
+\ref{eq:bott_element}.
+
+\begin{definition}
+A $GW$-module $E$ is called \emph{Bott periodic} if the map
+\[
+\iHom(\beta^{1+\sigma},E): E
+\rightarrow \iHom((\mbb P^1,[1:1])\wedge (\mbb P^\sigma,[1:1]),E)
+\]
+is an equivalence.
+\end{definition}
+
+There are zigzags
+\[
+\mbb A^1/\mbb G_m \hookrightarrow \mbb P^1/(\mbb P^1 - [-1:1])
+\twoheadleftarrow \mbb P^1/[1:1]
+\]
+and 
+\[
+\mbb A^-/\mbb G_m^- \hookrightarrow \mbb P^\sigma/(\mbb P^\sigma - [-1:1])
+\twoheadleftarrow \mbb P^\sigma/[1:1].
+\]
+
+The maps $\beta :  \mbb P^1/[1:1] \rightarrow GW^{[1]}$ and
+$\beta^\sigma : \mbb P^\sigma/[1:1] \rightarrow GW^{[-1]}$ lift to
+$\mbb P^1/(\mbb P^1 - [-1:1])$ and $\mbb P^\sigma/(\mbb P^\sigma -
+[-1:1])$ respectively by results analogous to Lemma
+\ref{lem:bott_zero}, and hence there are induced maps 
+\[
+\beta' : \mbb A^1/\mbb G_m \rightarrow GW^{[1]}
+\]
+\[
+(\beta^\sigma)' : \mbb A^-/\mbb G_m^- \rightarrow GW^{[-1]}.
+\]
+
+Taking smash products and using that $\mbb A^1 \oplus \mbb A^- \cong
+\mbb A^\rho$, we get a map
+\[
+\beta' \otimes (\beta^\sigma)' : \mbb
+A^\rho/(\mbb A^\rho - 0) \rightarrow GW^{[1]} \otimes GW^{[-1]}
+\rightarrow GW.
+\]
+
+For a vector bundle $E$, let $\mbb V_0(E)$ denote $E/(E-0)$, the
+quotient by the complement of the zero section.
+
+\begin{lemma}\label{lem:bott_3symm}
+The $\mbb A^1$ localization of the Bott element $L_{\mbb A^1}(\beta'
+\otimes (\beta^\sigma)' : L_{\mbb A^1} \mbb V_0(\mbb A^\rho)
+\rightarrow L_{\mbb A^1} GW$, viewed as an element of $\Sp(\mc P_{\mbb
+  A^1}(\Sm{S}^{C_2}))_{/L_{\mbb A^1}GW}$ is 3-symmetric.
+\end{lemma}
+
+\begin{proof}
+The proof is identical to Lemma 4.8 in \cite{cdhdesc}. The main idea
+is that the identity and the cyclic permutation $\sigma_3$ are both
+induced by matrices in $SL_{3\cdot 2}(\Z)$ acting on $\mbb A^{3\rho}$,
+and any two such matrices are (na\'''ively) $\mbb A^1$-homotopic so
+that there's a map $h: \mbb A^1 \times \mbb A^{3\rho} \rightarrow \mbb
+A^{3\rho}$ witnessing the homotopy. We can extend this to a map
+\[
+\mbb A^1 \times \mbb A^{3\rho} \xrightarrow{\pi_1 \times h} \mbb A^1 \times \mbb A^{3\rho}.
+\]
+Letting $p : \mbb A^1 \times S \rightarrow S$ denote the projection, the
+displayed map is an automorphism of the vector bundle $p^*(\mbb
+A^{3\rho})$.
+
+Now we want to show that, given an automorphism $\phi$ of $p^*(E)$ for
+any vector bundle $E$, the automorphisms $\phi_0,\phi_1$ of $\mbb
+V_0(E)$ induced by the restrictions of $\phi$ to 1 and 0 are $\mbb
+A^1$-homotopic over $L_{\mbb A^1}GW$. Applying this to the
+automorphism $\pi_1 \times h$ of $p^*(\mbb A^{3\rho})$ will complete
+the proof. From here we finish the proof just as in \cite{cdhdesc}.
+\end{proof}
+
+Note that we've shown that $\mbb GW$ is Bott periodic and
+Nisnevich excisive. Since it's the Bott periodization of $GW$, it is
+in fact the reflection of $GW$
+in the subcategory of Nisnevich excisive and Bott periodic
+$GW$-modules. Because $C_2$ is a finite group (scheme), making $\mbb
+A^1$ contractible is equivalent to making the regular representation
+$\mbb A^\sigma$ contractible. Thus by definition, $L_{\mbb A^1}\mbb
+GW$ is the reflection of $GW$ in the subcategory of homotopy
+invariant, Nisnevich excisive, and Bott periodic $GW$-modules. 
+
+
+
+If one wants to work in a more general settings (i.e. work with stacks
+rather than $C_2$-schemes), then one can still define homotopy
+Grothendieck-Witt theory as 
+As in \cite{cdhdesc}, we can compare the definition of the $\mbb
+A^1$-localization of homotopy
+Grothendieck-Witt theory to the periodization of $L_{mot} GW$ with
+respect to the Bott element $\beta' \otimes (\beta^\sigma)'$.
 
 % \begin{lemma}
 % Let $f : X \rightarrow Y$ be a morphism of presheaves of spectra such
