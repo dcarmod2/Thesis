@@ -40,6 +40,8 @@
 \newcommand{\Span}{\mathrm{Span}}
 \newcommand{\ptr}{\mathrm{ptr}}
 \newcommand{\inv}{\tau}
+\newcommand{\Sp}{\mathbf{Sp}}
+\newcommand{\mothom}{\mathbf{H}}
 
 
 \DeclareMathOperator{\Spec}{Spec}
@@ -62,6 +64,7 @@
 \DeclareMathOperator{\Vect}{Vect}
 \DeclareMathOperator{\Cone}{Cone}
 \DeclareMathOperator{\sPerf}{sPerf}
+\DeclareMathOperator{\KGL}{KGL}
 %%%%%%%%%%%%%% Diagrams
 
 \newcommand{\commsq}[4]{\xymatrix{{#1} \ar[r]\ar[d] & {#2} \ar[d] \\
@@ -120,6 +123,11 @@
 
 Hi I am a thesis.
 
+
+Theorems:
+
+\ref{thm:RGr_Bet}
+\ref{thm:RGr_GW}
 \chapter{Equivariant Topologies}
 
 \begin{notation}
@@ -809,7 +817,7 @@ $M = U + U^\perp$. Since $\phi|_U$ is non-degenerate, $U \cap U^\perp
 = 0$, so we're done. 
 \end{proof}
 
-\subsection{Hermitian Forms on Semilocal Rings}
+\subsection{Hermitian Forms on Semilocal Rings}\label{sec:herm_form_semiloc}
 
 \begin{theorem}
 Let $R$ be a ring, and let $E$ be a hermitian module over
@@ -1163,14 +1171,48 @@ of exact sequences with $(\phi_{-1},\phi_0,\phi_1) = (\phi_1^\vee
 
 
 
-
-
-
 \chapter{Hermitian Grassmannians}
 
 Fix a separated base scheme $S$ with trivial involution. The goal of
-this section is to define a sheaf on $\Sm{S}^{C_2}$, denoted $\RGr_V$, which represents
-non-degenerate sub-bundles of a given hermitian vector bundle $V$. 
+this chapter is to define a sheaf on $\Sm{S}^{C_2}$, denoted $\RGr_V$, which represents
+hermitian $K$-theory in the motivic homotopy category $\mathcal
+\mothom_S^{C_2}$. 
+
+Representability of $K$-theory in the stable motivic homotopy category
+allows one to check that $K$-theory pulls back nicely. In particular,
+given $f : X \rightarrow S$ a map of schemes over $S$, we can use
+representability of $\KGL$ to show that
+$f^*(\KGL_S) = \KGL_X$. Together with standard tools like the cousin
+sequence, one can use this fact to show cdh descent for algebraic
+$K$-theory, see \cite{DenRep}.
+
+By analogy with the $K$ theory case, the equivariant scheme
+representing Hermitian $K$-theory on $\Sm{S}^{C_2}$ will be a colimit of schemes
+which parametrize non-degenerate hermitian sub-bundles of a given
+hermitian vector bundle $V$. The new results here are mostly the
+definitions, as the proofs in this section are either
+minor modifications or identical to the proofs in \cite{SchTri}. The
+main difference which might cause concern that stalks in the
+isovariant \'etale topology are now semi-local (rather than
+local) rings. 
+
+As in \cite{SchTri}, we first compare $\RGr_d(\mbb H^\infty)$ to the isovariant \'etale
+classifying space $B_{isoEt}O(d)$ of the group of automorphisms of
+hyperbolic $d$-space. The key to the comparison is that locally in the
+isovariant \'etale topology, hermitian vectors bundles are isometric
+to hyperbolic space. This will utilize some of the analysis of
+hermitian forms over semi-local rings from section
+\ref{sec:herm_form_semiloc}.
+
+We then compare $B_{isoEt}O$ (the colimit of the $B_{isoEt}O(d)$) to the Grothendieck-Witt space defined in
+chapter \ref{chap:higher_GW} by viewing them both as group completions
+and comparing their homology. 
+
+
+
+\todo{Why does one want this?}
+
+
 
 \subsection{The definition of $\RGr$}
 
@@ -1224,7 +1266,7 @@ over $S$, define
   \ar@/_1.0pc/@{-->}[l]_{g^*s} g^*W}.
 \]
 \end{itemize}
-There's a natural action of $C_2$, on $\RGr_V$, whose non-trivial
+There's a natural action of $C_2$ on $\RGr_V$ whose non-trivial
 natural transformation will be denoted $\eta$. Define $\eta$ as
 follows: 
 
@@ -1412,30 +1454,37 @@ Now fix a dimension $d$ and a non-degenerate hermitian vector bundle
 $(V,\phi)$ over $S$.  Recalling that the trace of an idempotent
 coincides with the rank of the image, define $\RGr_d(V)$ to be the closed
 subscheme of $\RGr(V)$ cut out by $\tr(p) = d$, where $\tr$ is the
-trace of an endomorphism. In other words, $\RGr_d(V)$ is the pullback
+trace of an endomorphism. In other words $\RGr_d(V)$ is the pullback
 \[
-\xymatrix{\RGr_d(V) \ar[r]\ar[d] & \RGr(V) \ar[d]^{\tr} \\ \{d\}
-  \ar[r] & \Z}
+\xymatrix{\RGr_d(V) \ar[r]\ar[d] & \RGr(V) \ar[d]^{\tr} \\ S
+  \ar[r]^d & \mbb A^1_S}
 \]
 
-where $\Z$ is the locally constant sheaf on $\Sm{S}^{C_2}$. The
+Here the trace map is induced under the equivalence of categories
+between locally free sheaves and vector bundles by the map 
+\[
+ \RGr(V) \hookrightarrow \uline{\Hom}_{\mc O_S}(V,V) \xrightarrow{\sim} V^* \otimes V
+ \xrightarrow{ev} \mathcal O_S.
+\]
+The
 requirement that $V$ be non-degenerate is necessary so that the action
 on $\RGr(V)$ sends rank $d$ subspaces to rank $d$ subspaces and hence
-induces an action on $\RGr_d(V)$.
+induces an action on $\RGr_d(V)$. \todo{ask jeremiah about this}
 \end{remark}
 
-\subsection{The universal idempotent}
 
+\begin{remark}
 Denote by $g : \RGr_d(V) \rightarrow S$ the structure map of
 $\RGr_d(V)$.  Because $\RGr_d(V)$ is representable by a $C_2$-scheme, there's an
 idempotent $g^*(V) \rightarrow g^*(V)$ corresponding to the identity map $id: \RGr_d(V) \rightarrow
-\RGr_d(V)$. This idempotent is simply the idempotent which over a
+\RGr_d(V)$. This idempotent is simply the idempotent which, over a
 point of $\RGr_d(V)$ represented by an idempotent $p : V \rightarrow
-V$ restricts to $p$. There's an action $\sigma$ on $\RGr_d(V) \times_S V$
+V$, restricts to $p$. There's an action $\sigma$ on $\RGr_d(V) \times_S V$
 induced by the action on $\RGr_d(V)$, and using the fact that $\sigma
 p \sigma = p^\dagger$ one can see that this idempotent is
 non-degenerate with respect to the promoted hermitian form on $g^*(V)$
 compatible with the involution on $\RGr_d(V)$.
+\end{remark}
 
 \begin{remark}
 Since we've shown that $\RGr(V)$ represents non-degenerate hermitian
@@ -1445,10 +1494,10 @@ $\RGr(V)$ by non-degenerate subbundles.
 \end{remark}
 
 \begin{definition}
-Let $\mbb H_S$ denote the hyperbolic plane. For $V \in \mbb H^\infty$
+Let $\mbb H_S$ denote the hyperbolic plane over the base scheme $S$. For $V \in \mbb H^\infty$
 a constant rank non-degenerate subbundle,
 let $|V|$ denote the rank of $V$. Order such subbundles of $\mbb
-H^\infty$ by inclusion, and denote the resulting poset $P$. Given an inclusion $V \hookrightarrow V'$
+H^\infty$ by inclusion, and denote the resulting poset by $P$. Given an inclusion $V \hookrightarrow V'$
 of non-degenerate subbundles, denote by $V'-V$ the complement of $V$
 in $V'$. Let $\mc H : P \rightarrow \mathrm{Fun}(\Sm{S}^{C_2,
   op},Set)$ be the functor which on objects sends a subbundle $V$ to $
@@ -1456,9 +1505,9 @@ in $V'$. Let $\mc H : P \rightarrow \mathrm{Fun}(\Sm{S}^{C_2,
 $\RGr_{|V|}(V \perp \mbb H^\infty) \rightarrow \RGr_{|V'|}(V' \perp
 \mbb H^\infty)$ is given by $E \mapsto E \perp (V'-V)$. Note that
 because $V$ is non-degenerate, $V \perp (V'-V) = V'$. Define
-\[
-\RGr_\infty = \colim \mc H.
-\]
+\begin{equation}\label{def:RGr_inf}
+\RGr_\bullet = \colim \mc H.
+\end{equation}
 
 \end{definition}
 
@@ -1662,7 +1711,7 @@ denote a global fibrant replacement of $B\mc S_{|V|}(V\perp \mbb H^\infty)$ in t
 BO(V) \rightarrow B\mc S_{|V|}(V\perp \mbb H^\infty) \rightarrow B_{isoEt}O(V).
 \]
 
-\begin{lemma} \label{weqaff}
+\begin{lemma} \label{lem:weqaff}
 Let $(V,\phi)$ be a non-degenerate hermitian vector bundle over a
 scheme $S$ with trivial involution and $\frac{1}{2} \in \Gamma(S,\mc
 O_S)$. Then for any affine $C_2$-scheme over $S$, $\Spec R$, the map
@@ -1855,13 +1904,11 @@ Taking colimits over non-degenerate subspaces $V \subset \mbb
 H^\infty_R$ and using the standard facts that the nerve functor commutes with filtered colimits and
 that filtered colimits of cartesian diagrams are cartesian, we get cartesian diagrams of simplicial sets
 \[
-\xymatrix{B\RGr_{[0]}(V \perp \mbb H^\infty)(R) \ar[r]\ar[d] & B\RGr_\bullet(V
-  \perp \mbb H^\infty)(R) \ar[d] \\ B\star \ar[r]^V & B\widetilde{GW}_{[0]}(R)}
+\xymatrix{B\RGr_{[0]}(R) \ar[r]\ar[d] & B\RGr_\bullet(R) \ar[d] \\ B\star \ar[r]^V & B\widetilde{GW}_{[0]}(R)}
 \]
 and 
 \[
-\xymatrix{B\mc S_{[0]}(V \perp \mbb H^\infty)(R) \ar[r]\ar[d] & B\mc S_\bullet(V
-  \perp \mbb H^\infty)(R) \ar[d] \\ B\star \ar[r]^V & B\widetilde{GW}_{[0]}(R)}
+\xymatrix{B\mc S_{[0]}(R) \ar[r]\ar[d] & B\mc S_\bullet(R) \ar[d] \\ B\star \ar[r]^V & B\widetilde{GW}_{[0]}(R)}
 \]
 
 where the upper left corners are just defined as the respective colimits. 
@@ -1869,13 +1916,11 @@ where the upper left corners are just defined as the respective colimits.
 \begin{lemma}
 The diagrams
 \[
-\xymatrix{B\RGr_{[0]}(V \perp \mbb H^\infty)(\Delta R) \ar[r]\ar[d] & B\RGr_\bullet(V
-  \perp \mbb H^\infty)(\Delta R) \ar[d] \\ B\star \ar[r]^V & |B\widetilde{GW}_{[0]}(\Delta R)|}
+\xymatrix{B\RGr_{[0]}(\Delta R) \ar[r]\ar[d] & B\RGr_\bullet(\Delta R) \ar[d] \\ B\star \ar[r]^V & |B\widetilde{GW}_{[0]}(\Delta R)|}
 \]
 and 
 \[
-\xymatrix{|B\mc S_{[0]}(V \perp \mbb H^\infty)(\Delta R)| \ar[r]\ar[d] & |B\mc S_\bullet(V
-  \perp \mbb H^\infty)(\Delta R)| \ar[d] \\ B\star \ar[r]^V &
+\xymatrix{|B\mc S_{[0]}(\Delta R)| \ar[r]\ar[d] & |B\mc S_\bullet(\Delta R)| \ar[d] \\ B\star \ar[r]^V &
   |B\widetilde{GW}_{[0]}(\Delta R)|}
 \]
 are homotopy cartesian over any regular ring $R$ with involution such that
@@ -1920,11 +1965,9 @@ and the zero simplices of an $n$-horn and $n$-simplex for $n \geq 1$ agree.
 Via inclusion of zero simplices, there is a map of homotopy fibrations
 \begin{equation}\label{dia:Grass_GW}
 \begin{gathered}
-\xymatrix{B\RGr_{[0]}(V \perp \mbb H^\infty)(\Delta R) \ar[r]\ar[d] & B\RGr_\bullet(V
-  \perp \mbb H^\infty)(\Delta R) \ar[d] \ar[r] &
+\xymatrix{B\RGr_{[0]}(\Delta R) \ar[r]\ar[d] & B\RGr_\bullet(\Delta R) \ar[d] \ar[r] &
   |B\widetilde{GW}_{[0]}(\Delta R)| \ar[d]^{id} \\
-|B\mc S_{[0]}(V \perp \mbb H^\infty)(\Delta R)| \ar[r]& |B\mc S_\bullet(V
-  \perp \mbb H^\infty)(\Delta R)| \ar[r] &
+|B\mc S_{[0]}(\Delta R)| \ar[r]& |B\mc S_\bullet(\Delta R)| \ar[r] &
   |B\widetilde{GW}_{[0]}(\Delta R)|}. 
 \end{gathered}
 \end{equation}
@@ -1941,8 +1984,8 @@ sets, it suffices to check two things:
 \end{itemize}
 
 \begin{remark}
-Note that even over rings where $|B\widetilde{GW}_{[0]}(V\perp \mbb H^\infty)(\Delta R)|$ is
-a constant simplicial set, $B\RGr_{[0]}(V \perp \mbb H^\infty)$ will
+Note that even over rings where $|B\widetilde{GW}_{[0]}(\Delta R)|$ is
+a constant simplicial set, $B\RGr_{[0]}$ will
 not be. This is simply because there are more hermitian vector bundles over
 $R[x]$ than over $R$ when we don't mod out by isometry. 
 
@@ -1955,7 +1998,7 @@ R)|$ has a hope of being connected (if it was discrete it would in
 general not be), let $R = \mbb R$ with trivial involution, and
 consider the simplicial set
 \[
-|B\RGr_{[0]}(\langle 1 \rangle_{\mbb R} \perp \mbb H_{\mbb R}^\infty)(\Delta R)|.
+\RGr_{\langle 1 \rangle}(\langle 1 \rangle \perp \mbb H^\infty)(\Delta R).
 \]
 
 Consider the two split surjections
@@ -2088,7 +2131,7 @@ contractible for a commutative ring $(R,\sigma)$ with involution and
 $\frac{1}{2} \in R$. Morever, this simplicial set is fibrant because
 $G/H$ is fibrant for a simplicial group $G$ and subgroup $H$.
 
-Now we move to identifying $\RGr_d(V)$ as a quotient of a contractible
+Now we move to identifying $\RGr_V$ as a quotient of a contractible
 space by a free group aciton. Let $V$ be a non-degenerate hermitian
 vector bundle over a ring $R$ with involution. Then the group $O(V)$
 acts on the right on $\St(V,U)$ by precomposition. The map $\St(V,U)
@@ -2102,10 +2145,10 @@ isomorphism of sets
 In particular, there's an isomorphism of presheaves of sets $\St(V,V \perp \mbb
 H^\infty)/O(\mbb H^\infty) \cong \RGr_V(U)$.
 
-Now, for a non-degenerate hermitian vector bundle $V$ over a ring with
-involution $R$, and let $U$ be a possible degenerate hermitian form
+Now, let $V$ be a non-degenerate hermitian vector bundle over a ring with
+involution $R$ and let $U$ be a possibly degenerate hermitian form
 over $R$. Define $\mc E_V(U)$ to be the category whose objects are
-$R$-linear maps $V \rightarrow U$ of hermitian forms, and whose
+$R$-linear maps $V \rightarrow U$ of hermitian forms (aka isometric embeddings), and whose
 morphisms from two objects $a : V \rightarrow U$ and $b : V
 \rightarrow U$ are maps $c : \im(a) \rightarrow \im(b)$ making the
 diagram
@@ -2248,7 +2291,7 @@ Now that we've checked that the maps in \ref{dia:Grass_GW} are maps of
 $E_\infty$-spaces and that they're weak equivalences on base and
 fiber, we can conclude that the map on total spaces is an equivalence.
 
-\begin{corollary}
+\begin{corollary}\label{cor:RGr_S_eq}
 Let $(R,\sigma)$ be a regular ring with involution such that
 non-degenerate hermitian vector bundles have constant rank, and such
 that $\frac{1}{2} \in R$. Then the map
@@ -2258,7 +2301,78 @@ that $\frac{1}{2} \in R$. Then the map
 is a weak equivalence of simplicial sets.
 \end{corollary}
 
+\begin{theorem}\label{thm:RGr_Bet}
+Let $(R,\tau)$ be a regular noetherian ring with involution with
+$\frac{1}{2} \in R$. Then
+\[
+\RGr_\bullet(\Delta R) \xrightarrow{\sim} B_{isoEt}O(\Delta R)
+\]
+is an equivalence.
+In particular there's an equivariant motivic equivalence $\RGr_\bullet
+\rightarrow B_{isoEt}O$.
+\end{theorem}
 
+\begin{proof}
+For connected or hyperbolic rings, this follows by combining Corollary
+\ref{cor:RGr_S_eq} and Lemma \ref{lem:weqaff}. Since both sides
+convert finite disjoint unions of equivariant schemes into cartesian
+products (in particular $\Delta(R
+\times K) \cong \Delta R \times \Delta K$), we're done.
+\end{proof}
+
+\begin{theorem}
+There's an equivalence
+\[
+\RGr_{2n}(\mbb H^n \perp \mbb H^\infty) \rightarrow B_{isoEt}O(\mbb H^n).
+\]
+\end{theorem}
+
+\begin{proof}
+We've already shown that 
+\[
+\RGr_V(V \perp \mbb
+H^\infty_{\Delta R}) \rightarrow \mc S_V(V \perp \mbb H^\infty_{\Delta
+  R})
+\]
+and Lemma \ref{lem:weqaff} implies that
+\[
+ \mc S_{|V|}(V \perp \mbb H^\infty_{\Delta
+  R}) \xrightarrow{\sim} B_{isoEt}(V_{\Delta R})
+\]
+is an equivalence. Because hermitian vector bundles are determined by
+rank locally in the isovariant \'etale topology, we also have
+isovariant \'etale equivalences
+\[
+\mc S_{|V|}(V \perp \mbb H^\infty_{\Delta
+  -}) \cong \mc S_{V}(V \perp \mbb H^\infty_{\Delta
+  -})
+\]
+and
+\[
+\RGr_V(V \perp \mbb
+H^\infty_{\Delta -}) \cong \RGr_{|V|}(V \perp \mbb
+H^\infty_{\Delta -}) .
+\]
+In particular, the maps
+\[
+\RGr_{|V|}(V \perp \mbb
+H^\infty_{\Delta -}) \leftarrow \RGr_V(V \perp \mbb
+H^\infty_{\Delta -}) \rightarrow   \mc S_V(V \perp \mbb H^\infty_{\Delta
+  -}) \rightarrow \mc S_{|V|}(V \perp \mbb H^\infty_{\Delta
+  -}) \rightarrow B_{isoEt}(V_{\Delta -})
+\]
+are all weak equivalences in the isovariant \'etale topology. Because $\RGr_{|V|}(V \perp \mbb
+H^\infty_{\Delta -})$ is a sheaf in the isovariant \'etale topology,
+we get an inverse $\RGr_{|V|}(V \perp \mbb
+H^\infty_{\Delta -}) \rightarrow \RGr_{V}(V \perp \mbb
+H^\infty_{\Delta -})$ and hence an induced map
+\[
+\RGr_{|V|}(V \perp \mbb
+H^\infty_{\Delta -}) \rightarrow  B_{isoEt}(V_{\Delta -})
+\]
+which is a local equivalence of isovariant \'etale sheaves, and hence
+a global equivalence. 
+\end{proof}
 
 \subsection{The Grothendieck-Witt space}
 
@@ -2582,7 +2696,7 @@ that the comma category $(\phi \downarrow [P,A])$ is contractible just
 as desired.
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{cor:htpy_RGr_compare}
 There are homotopy equivalences
 \begin{align*}
 \hRGr_\bullet &\xrightarrow{\sim} \RGr\\
@@ -2597,26 +2711,6 @@ Now, there's a sequence of maps
 \]
 where $\phi$ is induced by inclusion of objects and $\psi$ is induced
 by inclusion of diagrams. 
-
-We now state the theorem that will set us up for a geometric model of
-$\widetilde{\mathscr GW}$ in the equivariant $\mbb A^1$-homotopy
-category. 
-
-\begin{theorem}
-Let $R$ be a commutative regular Noetherian ring which is either
-connected or hyperbolic, and with
-$\frac{1}{2} \in R$. Then there are weak equivalences
-\[
-B\hRGr_\bullet(\Delta R) \xrightarrow{\phi} |B\mathscr S_\bullet(\Delta R)| \xrightarrow{\psi}
-|B\widetilde{\mathscr GW}(\Delta R)|
-\]
-where $| - |$ denotes the diagonal of a bisimplicial set. 
-\end{theorem}
-
-\begin{remark}
-The theorem is evidently false if we replace $\Delta R$ by $R$, since
-$B\hRGr_\bullet(R)$ is 0-truncated. 
-\end{remark}
 
 \begin{proposition}
 Let $R$ be a regular noetherian ring with involution such that
@@ -2679,10 +2773,44 @@ uniqueness of group completions, It follows
 that the map is a homotopy equivalence. 
 \end{proof}
 
-\begin{corollary}
+We now state the theorem that will set us up for a geometric model of
+$\widetilde{\mathscr GW}$ in the equivariant $\mbb A^1$-homotopy
+category. 
+
+\begin{lemma}\label{lem:RGr_GW}
+Let $R$ be a commutative regular Noetherian ring which is either
+connected or hyperbolic, and with
+$\frac{1}{2} \in R$. Then there are weak equivalences
+\[
+B\hRGr_\bullet(\Delta R) \xrightarrow{\phi} |B\mathscr S_\bullet(\Delta R)| \xrightarrow{\psi}
+|B\widetilde{\mathscr GW}(\Delta R)|
+\]
+where $| - |$ denotes the diagonal of a bisimplicial set and
+$B(\mathcal C)$ is
+the nerve of the category $\mathcal C$. 
+\end{lemma}
+
+\begin{proof}
+This follows from the previous proposition, Corollary
+\ref{cor:RGr_S_eq}, and Corollary \ref{cor:htpy_RGr_compare}.
+\end{proof}
+
+\begin{remark}
+The theorem is evidently false if we replace $\Delta R$ by $R$, since
+$B\hRGr_\bullet(R)$ is 0-truncated. 
+\end{remark}
+
+
+
+\begin{theorem}\label{thm:RGr_GW}
 There's an equivariant motivic equivalence $L_{mot}\RGr_\bullet
 \xrightarrow{\sim} L_{mot}\widetilde{\mathscr{G}W}$.
-\end{corollary}
+\end{theorem}
+\begin{proof}
+This follows immediately from Lemma \ref{lem:RGr_GW} and  Corollary \ref{cor:htpy_RGr_compare}.
+\end{proof}
+
+
 
 \chapter{An $E_\infty$ structure on the Hermitian $K$-Theory Spectrum}
 
