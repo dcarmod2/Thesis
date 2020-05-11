@@ -42,6 +42,7 @@
 \newcommand{\inv}{\tau}
 \newcommand{\Sp}{\mathbf{Sp}}
 \newcommand{\mothom}{\mathbf{H}}
+\newcommand{\KR}{KR^{\mathrm{alg}}}
 
 
 \DeclareMathOperator{\Spec}{Spec}
@@ -65,6 +66,9 @@
 \DeclareMathOperator{\Cone}{Cone}
 \DeclareMathOperator{\sPerf}{sPerf}
 \DeclareMathOperator{\KGL}{KGL}
+\DeclareMathOperator{\SH}{\underline{SH}}
+\DeclareMathOperator{\HH}{\underline{H}}
+
 %%%%%%%%%%%%%% Diagrams
 
 \newcommand{\commsq}[4]{\xymatrix{{#1} \ar[r]\ar[d] & {#2} \ar[d] \\
@@ -129,6 +133,12 @@ Theorems:
 \ref{thm:RGr_Bet}
 \ref{thm:RGr_GW}
 \chapter{Equivariant Topologies}
+
+This chapter reviews the foundations of equivariant motivic homotopy
+theory. The key definitions are those of the equivariant \'etale and
+Nisnevich topologies -- two topologies that play a crucial role in
+defining the an equivariant motivic infinity category
+$\underline{H}(S)$ over a Noetherian base scheme $S$ with finite Krull dimension.
 
 \begin{notation}
 Throughout this section, $G$ will be either a finite group or the
@@ -216,7 +226,7 @@ example above, $\Spec L \times_k \Spec L \cong \coprod_{g \in G} \Spec
 k$, whereas the pullback in spaces is just a single point. 
 \end{remark}
 
-\subsection{The equivariant \'Etale topology}
+\section{The equivariant and isovariant \'Etale topologies}
 
 \begin{notation}
 Let $S$ be a  $G$-scheme. The equivariant \'etale topology on $Sm_S$
@@ -244,6 +254,14 @@ $G \times^{G_x} \Spec(\mc O^h_{X,\overline x})$ where $\overline x
 \rightarrow x \rightarrow X$ is a geometric point, and $(-)^h$ denotes
 strict henselization. 
 \end{remark}
+
+The fact that the points in the isovariant \'etale topology are either
+strictly henselian local or hyperbolic rings will be crucial when we want to describe
+the isovariant \'etale sheafification of the category of hermitian
+vector bundles. Fortunately hermitian vector bundles over such rings
+are well understood, and we'll in fact that hermitian vector bundles
+are up to isometry determined by rank locally in the isovariant
+\'etale topology. 
 
 \begin{remark}
 If $G = C_2$, then $G_x = \{e\}$ or $G_x = C_2$ for all $x \in X$. If
@@ -428,15 +446,13 @@ identity, which follows simply because the involution is unital (and
 because it gives a well-defined map on the residue field!).
 \end{example}
 
-\subsection{The equivariant Nisnevich topology}
+\section{The equivariant Nisnevich topology}
 
 Similarly to the non-equivariant case, the equivariant Nisnevich
 topology is defined a particularly nice cd-structure. While there are
 a few different definitions of this topology in the literature which
 can give non-Quillen equivalent model structures, we use the
 definition from \cite{GrpSchHell}.
-
-
 
 \begin{definition}
 A distinguished equivariant Nisnevich square is a cartesian square in
@@ -459,7 +475,18 @@ For finite groups $G$, any smooth $G$-scheme is Nisnevich-locally
 affine. 
 \end{remark}
 
-\subsection{Computations with Equivariant Spheres}
+\section{The Equivariant cdh Topology}
+
+\begin{definition}
+An abstract blow-up square is a cartesian square in $\Sm{S}^G$
+\[
+\xymatrix{\widetilde Z \ar[r]\ar[d] & \widetilde X \ar[d]^p \\ Z \ar@{^{(}->}[r]^i & X}
+\]
+where $i$ is a closed immersion and $p$ is a proper map which induces
+an isomorphism $(\widetilde X - \widetilde Z)_{red} \cong (X-Z)_{red}$.
+\end{definition}
+
+\section{Computations with Equivariant Spheres}
 
 Because we'll be using equivariant spheres to index our spectra, we'll
 record some of their basic properties here. Though there are exotic
@@ -553,7 +580,7 @@ and homotopy invariance of homotopy cofiber:
 
 \chapter{Hermitian Forms on Schemes}\label{chap:herm_form_sch}
 
-\subsection{Definitions}
+\section{Definitions}
 
 \begin{definition}
 Let $R$ be a ring with involution $- : R \rightarrow R$. A \emph{hermitian
@@ -763,7 +790,7 @@ I & 0
 This form is isometric to the above form, and we'll use both forms below.
 \end{example}
 
-\subsubsection{Properties}
+\subsection{Properties}
 
 \begin{lemma}
 Given a map of schemes with involution $f : (Y,i_Y) \rightarrow (X,i_X)$
@@ -817,7 +844,7 @@ $M = U + U^\perp$. Since $\phi|_U$ is non-degenerate, $U \cap U^\perp
 = 0$, so we're done. 
 \end{proof}
 
-\subsection{Hermitian Forms on Semilocal Rings}\label{sec:herm_form_semiloc}
+\section{Hermitian Forms on Semilocal Rings}\label{sec:herm_form_semiloc}
 
 \begin{theorem}
 Let $R$ be a ring, and let $E$ be a hermitian module over
@@ -980,7 +1007,7 @@ diagonalizable (see the proof of the non-involution case).
 
 
 \begin{corollary}
-Hermitian vector bundles are locally hyperbolic in the isovariant \'etale topology.
+Hermitian vector bundles are locally determined by rank in the isovariant \'etale topology.
 \end{corollary}
 
 \begin{proof}
@@ -1173,8 +1200,8 @@ of exact sequences with $(\phi_{-1},\phi_0,\phi_1) = (\phi_1^\vee
 
 \chapter{Hermitian Grassmannians}
 
-Fix a separated base scheme $S$ with trivial involution. The goal of
-this chapter is to define a sheaf on $\Sm{S}^{C_2}$, denoted $\RGr_V$, which represents
+The goal of
+this chapter is to define a sheaf on $\Sm{S}^{C_2}$, denoted $\RGr$, which represents
 hermitian $K$-theory in the motivic homotopy category $\mathcal
 \mothom_S^{C_2}$. 
 
@@ -1186,6 +1213,16 @@ $f^*(\KGL_S) = \KGL_X$. Together with standard tools like the cousin
 sequence, one can use this fact to show cdh descent for algebraic
 $K$-theory, see \cite{DenRep}.
 
+In this chapter, we check that over a regular base $S$ with 2 invertible
+(e.g. $\Z[\frac{1}{2}]$), hermitian $K$-theory is representable in the
+category of smooth $C_2$-schemes, $\Sm{S}^{C_2}$. 
+
+To
+extend this result to non-regular bases, one must consider the
+homotopy invariant version of hermitian $K$-theory discussed in
+chapter \ref{chap:Einf}, as several of the proofs in this section rely
+on homotopy invariance of $GW$.
+
 By analogy with the $K$ theory case, the equivariant scheme
 representing Hermitian $K$-theory on $\Sm{S}^{C_2}$ will be a colimit of schemes
 which parametrize non-degenerate hermitian sub-bundles of a given
@@ -1196,25 +1233,28 @@ main difference which might cause concern that stalks in the
 isovariant \'etale topology are now semi-local (rather than
 local) rings. 
 
-As in \cite{SchTri}, we first compare $\RGr_d(\mbb H^\infty)$ to the isovariant \'etale
+As in \cite{SchTri}, we first compare $\RGr_{2d}(\mbb H^\infty)$ to the isovariant \'etale
 classifying space $B_{isoEt}O(d)$ of the group of automorphisms of
 hyperbolic $d$-space. The key to the comparison is that locally in the
-isovariant \'etale topology, hermitian vectors bundles are isometric
-to hyperbolic space. This will utilize some of the analysis of
+isovariant \'etale topology, hermitian vectors bundles are determined
+by rank. This will utilize some of the analysis of
 hermitian forms over semi-local rings from section
-\ref{sec:herm_form_semiloc}.
+\ref{sec:herm_form_semiloc}. Note that this is a key difference for
+the $K$-theory case, where one must pass only to local, rather than
+strictly henselian local rings in order for $K$-theory to be
+determined by rank. 
 
 We then compare $B_{isoEt}O$ (the colimit of the $B_{isoEt}O(d)$) to the Grothendieck-Witt space defined in
 chapter \ref{chap:higher_GW} by viewing them both as group completions
 and comparing their homology. 
 
+\todo{Is Sing of a group complete $H$-space a group complete $H$-space?}
 
+\section{The definition of $\RGr$}
 
-\todo{Why does one want this?}
-
-
-
-\subsection{The definition of $\RGr$}
+The definition here describes the sections of $\RGr$ over an arbitrary
+(regular) scheme $X \rightarrow S$. We advise the hurried reader to
+skip to section \ref{subsec:representability}.
 
 \begin{lemma}\label{lem:action_presheaf}
 Let $\mc F$ be a presheaf on $\Sm{S}$ and let $a : \mc F \implies
@@ -1230,8 +1270,9 @@ a_X\mc F(\sigma)(f)) = \mc F(\sigma) a_X(a_X \mc F(\sigma)(f)) = \mc
 F(\sigma)(\mc F(\sigma)(f)) = f$ using naturality. 
 \end{proof}
 
-Fix a (possibly degenerate) hermitian vector bundle $(V,\phi)$ over the base scheme $S$
-(which has trivial involution). 
+Fix a (possibly degenerate) hermitian vector bundle $(V,\phi)$ over a
+regular base scheme $S$ with 2 invertible and with trivial
+involution. The canonical example of such a base scheme is $S = \Spec \Z[\frac{1}{2}]$.
 
 We'll define a presheaf $\RGr : (\Sm{S}^{C_2})^{op} \rightarrow \Set$
 by first defining a presheaf on $\Sm{S}$, showing that it's
@@ -1398,7 +1439,7 @@ follows.
 % with module structure via the map on the right. On the other hand,  $\sigma_*M(U) = M(\sigma^{-1}(U)) = M(\sigma(U))$,
 
 
-\subsection{Representability of $\RGr$}
+\section{Representability of $\RGr$}\label{subsec:representability}
 
 
 Fix a hermitian vector bundle $(V,\phi)$ over $S$ where $\dim(V) = n$
@@ -1448,29 +1489,23 @@ To summarize, the underlying scheme of $\RGr(V)$ represents
 idempotents, and equivariant maps pick out those idempotents which
 correspond to orthogonal projections. 
 
-\begin{remark}
+\begin{definition}
 
 Now fix a dimension $d$ and a non-degenerate hermitian vector bundle
 $(V,\phi)$ over $S$.  Recalling that the trace of an idempotent
 coincides with the rank of the image, define $\RGr_d(V)$ to be the closed
-subscheme of $\RGr(V)$ cut out by $\tr(p) = d$, where $\tr$ is the
-trace of an endomorphism. In other words $\RGr_d(V)$ is the pullback
+subscheme of $\RGr(V)$ cut out by $\rk(p) = d$, where $\rk$ is the
+rank map. In other words, the underlying topological space of $\RGr_d(V)$ is the pullback
 \[
-\xymatrix{\RGr_d(V) \ar[r]\ar[d] & \RGr(V) \ar[d]^{\tr} \\ S
-  \ar[r]^d & \mbb A^1_S}
+\xymatrix{\RGr_d(V) \ar[r]\ar[d] & \RGr(V) \ar[d]^{\rk} \\ \{d\}
+  \ar[r] & \Z}
 \]
 
-Here the trace map is induced under the equivalence of categories
-between locally free sheaves and vector bundles by the map 
-\[
- \RGr(V) \hookrightarrow \uline{\Hom}_{\mc O_S}(V,V) \xrightarrow{\sim} V^* \otimes V
- \xrightarrow{ev} \mathcal O_S.
-\]
-The
-requirement that $V$ be non-degenerate is necessary so that the action
+and $\RGr_d(V)$ is the closed subscheme equipped with the reduced
+induced scheme structure. The requirement that $V$ be non-degenerate is necessary so that the action
 on $\RGr(V)$ sends rank $d$ subspaces to rank $d$ subspaces and hence
-induces an action on $\RGr_d(V)$. \todo{ask jeremiah about this}
-\end{remark}
+induces an action on $\RGr_d(V)$. 
+\end{definition}
 
 
 \begin{remark}
@@ -1668,7 +1703,7 @@ because $V$ is non-degenerate, $V \perp (V'-V) = V'$. Define
 
 % \end{proof}
 
-\subsection{The \'Etale Classifying Space}
+\section{The \'Etale Classifying Space}
 
 Fix a scheme $S$ with trivial involution and 2 invertible, and let $(V,\phi)$ be a
 (possibly degenerate) hermitian vector bundle over $S$. For a
@@ -1947,7 +1982,7 @@ First, note that before applying the diagonal functor $| - |$, these
 diagrams are cartesian diagrams of bisimplicial sets. This follows
 simply because limits are computed object-wise in functor
 categories. For the same reason, we get a cartesian diagram after
-applying $| - |$. Thus to prove that the diagrams are homotopy
+applying the diagonal $| - |$. Thus to prove that the diagrams are homotopy
 cartesian (in the standard model structure on simplicial sets), it
 suffices to prove that the bottom horizontal map is a fibration. If $R$
 is a regular ring with involution, then $GW_0(R[t]) \cong GW_0(R)$
@@ -2129,7 +2164,16 @@ O(\mbb H^\infty_{\Delta
 it follows that $\St(V,V\perp \mbb H^\infty_{\Delta R})$ is a
 contractible for a commutative ring $(R,\sigma)$ with involution and
 $\frac{1}{2} \in R$. Morever, this simplicial set is fibrant because
-$G/H$ is fibrant for a simplicial group $G$ and subgroup $H$.
+$G/H$ is fibrant for a simplicial group $G$ and subgroup $H$. We have
+thus proved:
+
+\begin{lemma}\label{lem:St_contrac}
+Let $R$ be a commutative ring with $\frac{1}{2} \in R$. Then 
+\[
+\St(V,V\perp \mbb H^\infty_{\Delta R})
+\]
+is a contractible Kan set.
+\end{lemma}
 
 Now we move to identifying $\RGr_V$ as a quotient of a contractible
 space by a free group aciton. Let $V$ be a non-degenerate hermitian
@@ -2188,15 +2232,19 @@ H^\infty)(\Delta R)
 
 is $O(V_{\Delta R})$ equivariant and a weak equivalence after
 forgetting the action. Furthermore, $O(V_{\Delta R})$ acts freely on
-both sides, so that the induced map on quotients $\RGr_V(V \perp \mbb
+both sides, so that the induced map on quotients 
+\begin{equation}\label{eq:RGr_Sv}
+\RGr_V(V \perp \mbb
 H^\infty_{\Delta R}) \rightarrow \mc S_V(V \perp \mbb H^\infty_{\Delta
-  R})$ is also a weak equivalence. 
+  R})
+\end{equation}
+ is also a weak equivalence. 
 
 As an aside, the inclusion $BO(V) \subset B\mc S_V(V \perp \mbb
 H^\infty)$ is a weak equivalence since $\mc S_V(V \perp \mbb
 H^\infty)$ is a connected groupoid. 
 
-\subsubsection{Showing that digram \ref{dia:Grass_GW} is a diagram in
+\subsection{Showing that digram \ref{dia:Grass_GW} is a diagram in
   $E_\infty$-spaces}
 
 For a commutative ring with involution $(R,\sigma)$, let $\mathscr
@@ -2232,6 +2280,58 @@ E(j_k) \rightarrow \mathscr E(j_1 + \cdots + j_k) : f,g_1,\cdots,g_k
 
 It follows that $\mathscr E(\Delta R)$ is an $E_\infty$-operad in the
 category of simplicial sets.
+
+We now state a lemma which will allow us to check that certain spaces
+are group complete.
+
+\begin{lemma}\label{lem:grp_complete_help}
+Let $f: Y \twoheadrightarrow Z$ be an epimorphism of simplicial
+sets. Assume that for all $z \in Z_0$, the fiber $X_z$ defined by the
+cartesian square
+\[
+\xymatrix{X_z \ar[r] \ar[d]& Y \ar[d]^f \\ \ast \ar[r] & Z}
+\]
+satisfies $\pi_0(X_z) = \{\ast\}$. Then $\pi_0(Y) \cong \pi_0(Z)$.
+\end{lemma}
+
+\begin{proof}
+First, note that $\pi_0(Y) \twoheadrightarrow \pi_0(Z)$ since $Y
+\twoheadrightarrow Z$. Thus it suffices to prove that $\pi_0(Y)
+\hookrightarrow \pi_0(Z)$ is an injection. Let $\sim$ denote the
+equivalence relation on the zero simplices of any simplicial set $T$
+generated by the reflexive relation: $a \rightarrow b$ if there exists $c \in T_1$
+such that $s_0(c) = a, s_1(c) = b$. In other words, the equivalence
+relation used to define $\pi_0(T) = T_0/\sim$.
+
+Say $a,b \in Y_0$ and $f(a) \sim f(b)$ in $Z_0$. Then there exist
+$z_1,\dots,z_n$ in $Z_1$ witnessing a chain $t_0 \leftarrow t_1 \cdots
+\rightarrow t_n$ where $t_0 = f(a), t_n = f(b)$. Because $Y_1
+\rightarrow Z_1$ is epi, there's a lift $y_1,\dots,y_n$ of
+$z_1,\dots,z_n$. 
+
+To deal
+with the fact that the relation is not symmetric, form a
+sequence $(e_i)_{1 \leq i \leq 2n+2} $ from \\
+$(a,s_0(y_1),s_1(y_1),s_0(y_2),\dots,s_1(y_n),b)$ by ordering the entries so that $f(e_{2i+1}) =
+f(e_{2i+2})$. In other words, switch the order of $s_0(y_i)$ and
+$s_1(y_i)$ if necessary. With notation in place, we'll proceed by
+induction on $n$ to show that $e_1 \sim e_{2n}$. Say $n =
+1$. Then $f(e_2) = f(e_1)$
+and  $f(e_3) = f(e_4)$. Thus $e_2$ and
+$e_1$ both lift to the fiber $X_{f(e_1)}$. Because $X_{f(e_1)}$ is
+connected, we have $e_1 \sim e_2$ in $X_{f(a)}$, and hence in $Y$
+as well. Similarly, $e_3 \sim e_4$, and hence we have $e_1 \sim
+e_2 \sim e_3\sim e_4$ as desired. 
+
+For the inductive step, assume that $e_1\sim \cdots \sim e_{2n}$. Then
+$e_{2n} \sim e_{2n+1}$ because they're the two faces of $y_n$. To see
+that $e_{2n+1}\sim e_{2n+2}$, note that $f(e_{2n+1}) = f(e_{2n+2})$,
+so both $e_{2n+1}$ and $e_{2n+1}$ live in the fiber over
+$f(e_{2n+2})$. Since this fiber is connected, $e_{2n+1} \sim
+e_{2n+2}$.
+
+Finally we have $a = e_1 \sim e_2 \sim \cdots \sim e_{2n+2} = b$, so we're done.
+\end{proof}
 
 \begin{proposition}
 For any commutive ring with involution $(R,\sigma)$ such that
@@ -2277,14 +2377,13 @@ and the map $(e_1,\dots,e_k): (E_1,\dots,E_k) \rightarrow
 \circ g^{-1}|_{E_1} \perp \cdots \perp g|_{E'_k} \circ e_k \circ g^{-1}|_{E_k}.
 \]
 
-To see that the spaces are group complete, note that the homotopy
-fiber sequences above imply that the $\pi_0$ of both spaces is
-$\widetilde GW_0(R)$. Indeed, it's straightforward to check that
-$\pi_0(\RGr_{[0]}(\Delta R),x) = \{\ast\}$ for any choice of basepoint
-$x$, which implies that the right
-maps in \ref{dia:Grass_GW} are an injection on $\pi_0$. The maps on
-zero simplices are clearly surjective, and hence the maps on $\pi_0$
-must be surjective. 
+To see that the spaces are group complete, we apply Lemma \ref{lem:grp_complete_help} to
+the (ordinary!) fiber sequences defining Diagram
+\ref{dia:Grass_GW}. Because $\mc S_V(V \perp \mbb H^\infty_R) \cong
+BO(V)$, both it and $\mc S_V(V \perp \mbb H^\infty_{\Delta R})$ are
+connected. We've already shown that $\RGr_V(V \perp \mbb
+H^\infty_{\Delta R}) \cong \mc S_V(V \perp \mbb H^\infty_{\Delta R})$,
+so it too is connected. 
 \end{proof}
 
 Now that we've checked that the maps in \ref{dia:Grass_GW} are maps of
@@ -2320,61 +2419,65 @@ products (in particular $\Delta(R
 \times K) \cong \Delta R \times \Delta K$), we're done.
 \end{proof}
 
-\begin{theorem}
-There's an equivalence
-\[
-\RGr_{2n}(\mbb H^n \perp \mbb H^\infty) \rightarrow B_{isoEt}O(\mbb H^n).
-\]
-\end{theorem}
+% \todo{remove this when satisfied}
 
-\begin{proof}
-We've already shown that 
-\[
-\RGr_V(V \perp \mbb
-H^\infty_{\Delta R}) \rightarrow \mc S_V(V \perp \mbb H^\infty_{\Delta
-  R})
-\]
-and Lemma \ref{lem:weqaff} implies that
-\[
- \mc S_{|V|}(V \perp \mbb H^\infty_{\Delta
-  R}) \xrightarrow{\sim} B_{isoEt}(V_{\Delta R})
-\]
-is an equivalence. Because hermitian vector bundles are determined by
-rank locally in the isovariant \'etale topology, we also have
-isovariant \'etale equivalences
-\[
-\mc S_{|V|}(V \perp \mbb H^\infty_{\Delta
-  -}) \cong \mc S_{V}(V \perp \mbb H^\infty_{\Delta
-  -})
-\]
-and
-\[
-\RGr_V(V \perp \mbb
-H^\infty_{\Delta -}) \cong \RGr_{|V|}(V \perp \mbb
-H^\infty_{\Delta -}) .
-\]
-In particular, the maps
-\[
-\RGr_{|V|}(V \perp \mbb
-H^\infty_{\Delta -}) \leftarrow \RGr_V(V \perp \mbb
-H^\infty_{\Delta -}) \rightarrow   \mc S_V(V \perp \mbb H^\infty_{\Delta
-  -}) \rightarrow \mc S_{|V|}(V \perp \mbb H^\infty_{\Delta
-  -}) \rightarrow B_{isoEt}(V_{\Delta -})
-\]
-are all weak equivalences in the isovariant \'etale topology. Because $\RGr_{|V|}(V \perp \mbb
-H^\infty_{\Delta -})$ is a sheaf in the isovariant \'etale topology,
-we get an inverse $\RGr_{|V|}(V \perp \mbb
-H^\infty_{\Delta -}) \rightarrow \RGr_{V}(V \perp \mbb
-H^\infty_{\Delta -})$ and hence an induced map
-\[
-\RGr_{|V|}(V \perp \mbb
-H^\infty_{\Delta -}) \rightarrow  B_{isoEt}(V_{\Delta -})
-\]
-which is a local equivalence of isovariant \'etale sheaves, and hence
-a global equivalence. 
-\end{proof}
+% \begin{theorem}
+% There's an equivalence
+% \[
+% \RGr_{2n}(\mbb H^n \perp \mbb H^\infty) \rightarrow B_{isoEt}O(\mbb H^n).
+% \]
+% \end{theorem}
 
-\subsection{The Grothendieck-Witt space}
+% \begin{proof}
+% We've already shown that 
+% \[
+% \RGr_V(V \perp \mbb
+% H^\infty_{\Delta R}) \rightarrow \mc S_V(V \perp \mbb H^\infty_{\Delta
+%   R})
+% \]
+% and Lemma \ref{lem:weqaff} implies that
+% \[
+%  \mc S_{|V|}(V \perp \mbb H^\infty_{\Delta
+%   R}) \xrightarrow{\sim} B_{isoEt}(V_{\Delta R})
+% \]
+% is an equivalence. Because hermitian vector bundles are determined by
+% rank locally in the isovariant \'etale topology, we also have
+% isovariant \'etale equivalences
+% \[
+% \mc S_{|V|}(V \perp \mbb H^\infty_{\Delta
+%   -}) \cong \mc S_{V}(V \perp \mbb H^\infty_{\Delta
+%   -})
+% \]
+% and
+% \[
+% \RGr_V(V \perp \mbb
+% H^\infty_{\Delta -}) \cong \RGr_{|V|}(V \perp \mbb
+% H^\infty_{\Delta -}) .
+% \]
+% In particular, the maps
+% \[
+% \RGr_{|V|}(V \perp \mbb
+% H^\infty_{\Delta -}) \leftarrow \RGr_V(V \perp \mbb
+% H^\infty_{\Delta -}) \rightarrow   \mc S_V(V \perp \mbb H^\infty_{\Delta
+%   -}) \rightarrow \mc S_{|V|}(V \perp \mbb H^\infty_{\Delta
+%   -}) \rightarrow B_{isoEt}(V_{\Delta -})
+% \]
+% are all weak equivalences in the isovariant \'etale topology. Because $\RGr_{|V|}(V \perp \mbb
+% H^\infty_{\Delta -})$ is a sheaf in the isovariant \'etale topology,
+% we get an inverse $\RGr_{|V|}(V \perp \mbb
+% H^\infty_{\Delta -}) \rightarrow \RGr_{V}(V \perp \mbb
+% H^\infty_{\Delta -})$ and hence an induced map
+% \[
+% \RGr_{|V|}(V \perp \mbb
+% H^\infty_{\Delta -}) \rightarrow  B_{isoEt}(V_{\Delta -})
+% \]
+% which is a local equivalence 
+
+% of isovariant \'etale sheaves, and hence
+% a global equivalence. 
+% \end{proof}
+
+\section{The Grothendieck-Witt space}
 
 
 For a ring $R$ with involution $\sigma$, there's an associated
@@ -2413,7 +2516,7 @@ is a summand of hyperbolic space. Thus by \cite{Schder}, Theorem A.1, there's an
 $\mathscr GW(R,\sigma) \cong \Omega^\infty GW(R,\sigma)$ for any ring
 with involution $(R,\sigma)$. 
 
-\subsection*{Homotopy colimits of categories}
+\subsection{Homotopy colimits of categories}
 
 \begin{definition}
 Let $\mc C$ be a small category, and let $J : \mc C \rightarrow \Cat$
@@ -2712,9 +2815,10 @@ Now, there's a sequence of maps
 where $\phi$ is induced by inclusion of objects and $\psi$ is induced
 by inclusion of diagrams. 
 
-\begin{proposition}
-Let $R$ be a regular noetherian ring with involution such that
-non-degenerate hermitian vector bundles over $R$ have constant rank,
+\begin{proposition}\label{prop:Bet_GW}
+Let $R$ be a possibly non-regular noetherian ring with involution
+such that
+non-degenerate hermitian vector bundles over $R$ have constant rank (e.g. connected or hyperbolic),
 and such that $\frac{1}{2} \in R$. Then inclusion of diagrams induces
 a weak equivalence of simplicial sets
 \[
@@ -2725,12 +2829,7 @@ a weak equivalence of simplicial sets
 
 
 \begin{proof}
-By the Group Completion Theorem, the map
-\[
-\mathscr S_\bullet( R) \xrightarrow{\sim} \widetilde{\mathscr{G}W}( R)
-\]
-is an isomorphism on integral homology groups. To write this out more
-explicitly, we have a commutative diagram
+We have a commutative diagram
 \[
 \xymatrix{\mathscr S_\bullet(R) \ar[r]\ar[d] &
   \widetilde{\mathscr{G}W}( R) \ar[d] \\
@@ -2744,7 +2843,8 @@ Using that homology commutes with filtered colimits of simplicial
 sets together we compute that the homology of $\colim_{V \subset \mbb
   H_R^\infty} \mc S(V \perp\mbb H_R^\infty)$ is the group completion
 of the homology of $\mc S(V \perp\mbb H_R^\infty)$, and by the group
-completion theorem so is the homology of $GW(R)$.
+completion theorem (which uses that projective modules over a ring
+form a \emph{split} exact category with duality) so is the homology of $GW(R)$.
 
  Said another way, the
 map
@@ -2759,9 +2859,20 @@ is a level-wise weak equivalence of bisimplicial sets, and hence is a
 weak equivalence after taking the diagonal. It follows that the map in
 the proposition is an isomorphism on integral homology. 
 
-Now for regular rings with involution, we have $GW(\Delta R) \cong
-GW(R)$ and hence $\widetilde{\mathscr GW}(\Delta R) \cong
-\widetilde{\mathscr GW}( R)$ are group complete $H$-spaces. 
+Now we claim that $GW(\Delta R)$ is a group complete $H$-space. We
+already know that
+$GW(R[t_1,\dots,t_n])$ is a group complete $H$-space for all $n$. We
+obtain an $H$-space structure on $GW(\Delta R)$ by using the
+level-wise $H$-space structure on the corresponding bisimplicial
+set. To prove that it's group complete, we use the fact that
+$\pi_0(GW(\Delta R))$ can be written as a coequalizer
+\[
+\xymatrix{\pi_0GW(R[t]) \ar@<0.5ex>[r] \ar@<-0.5ex>[r] & \pi_0GW(R)
+  \ar[r] & \pi_0GW(\Delta R)}
+\]
+in the category of \emph{abelian} groups. 
+
+It follows that $\widetilde{\mathscr GW}(\Delta R)$ is also a group complete $H$-space. 
 
 Note that the $E_\infty$-structure defined above on $\mc
 S_\bullet(\Delta R)$ gives an $E_\infty$-structure on $\mathscr
@@ -2778,8 +2889,7 @@ $\widetilde{\mathscr GW}$ in the equivariant $\mbb A^1$-homotopy
 category. 
 
 \begin{lemma}\label{lem:RGr_GW}
-Let $R$ be a commutative regular Noetherian ring which is either
-connected or hyperbolic, and with
+Let $R$ be a commutative regular Noetherian ring with
 $\frac{1}{2} \in R$. Then there are weak equivalences
 \[
 B\hRGr_\bullet(\Delta R) \xrightarrow{\phi} |B\mathscr S_\bullet(\Delta R)| \xrightarrow{\psi}
@@ -2791,14 +2901,17 @@ the nerve of the category $\mathcal C$.
 \end{lemma}
 
 \begin{proof}
-This follows from the previous proposition, Corollary
-\ref{cor:RGr_S_eq}, and Corollary \ref{cor:htpy_RGr_compare}.
+For connected or hyperbolic (Noetherian) rings, this follows from
+proposition \ref{prop:Bet_GW}, Corollary
+\ref{cor:RGr_S_eq}, and Corollary \ref{cor:htpy_RGr_compare}. To
+extend to general commutative Noetherian rings, we can decompose
+$\Spec R$
+as a disjoint union of its connected components. The involution on $R$
+permutes these connected components, so we can write $\Spec R$ as a
+disjoint union of $\Spec$ of connected rings with involution or
+hyperbolic rings. Since all spaces in the equivalence above convert
+disjoint unions of schemes with involution to sums, we're done. 
 \end{proof}
-
-\begin{remark}
-The theorem is evidently false if we replace $\Delta R$ by $R$, since
-$B\hRGr_\bullet(R)$ is 0-truncated. 
-\end{remark}
 
 
 
@@ -2810,11 +2923,74 @@ There's an equivariant motivic equivalence $L_{mot}\RGr_\bullet
 This follows immediately from Lemma \ref{lem:RGr_GW} and  Corollary \ref{cor:htpy_RGr_compare}.
 \end{proof}
 
+\section{Representability over non-regular base schemes}
+
+Note first that Proposition \ref{prop:Bet_GW}, which provides an 
+equivalence between $L_{\mbb A^1}B_{isoEt}(O)$ and $L_{\mbb A^1}GW$
+over connected or hyperbolic rings, doesn't require the base
+to be regular. Extending to non-connected rings just as in the proof
+of Lemma \ref{lem:RGr_GW} shows that $L_{\mbb A^1}GW \cong
+L_{\mbb A^1} B_{isoEt}O$ over Noetherian base rings. In particular,
+there's a motivic equivalence $B_{isoEt}O \cong GW$ over Noetherian
+base rings which aren't necessarily regular.
+
+It remains to show that there's a motivic equivalence $\RGr_\bullet
+\rightarrow B_{isoEt}O$ over non-regular noetherian base rings. 
+
+Let  $X \rightarrow S$ be an affine
+$C_2$-scheme over $S$, and let $W$ be a non-degenerate hermitian
+vector bundle over $X$. Given an isovariant \'etale $O(W)$
+torsor $\pi : T \rightarrow X$, and an isovariant \'etale torsor $U$, let $U_\pi$ denote
+the twisted sheaf $(U \times T)/O(W)$. 
+
+Our goal is to appy Lemma 2.1 from \cite{cdhdesc}, which we restate below:
+
+\begin{lemma}(Hoyois)
+Let $\Gamma$ be an isovariant \'etale sheaf of groups on $\Sm{S}^{C_2}$
+acting on an isovariant \'etale sheaf $U$. Suppose that, for every $X
+\in \Sm{S}^{C_2}$ and every isovariant \'etale torsor $\pi: T
+\rightarrow X$ under $\Gamma$, $U_\pi \rightarrow X$ is a motivic
+equivalence on $\Sm{S}^{C_2}$. Then the map
+\[
+L_{isoEt}(U/\Gamma) \rightarrow B_{isoEt}\Gamma
+\]
+induced by $U \rightarrow \ast$ is a motivic equivalence on $\Sm{S}^{C_2}$.
+\end{lemma}
+
+Given an $O(W)$-torsor $\pi : T \rightarrow X$, we want to check that $\St(W,\mbb H^\infty)_\pi  =(\St(W,\mbb H^\infty) \times T)/O(W) \rightarrow
+X$ is a motivic equivalence on $\Sm{S}^{C_2}$. Leting $V = W_\pi$,
+this is equivalent to checking
+that $\St(V,\mbb H^\infty_X)$ is motivically contractible
+over $\Sm{X}^{C_2}$. To wit, because $X$ is affine there's an
+embedding $V \hookrightarrow \mbb H^m$ we have $V \perp \mbb
+H^\infty_X \cong \mbb H^\infty_X$ since $\mbb H^\infty_X = \colim_{W
+  \subset \mbb H^\infty_X} W$. It follows that $\St(V,\mbb H^\infty_X)
+\cong \St(V,V \perp \mbb H^\infty_X)$, then Lemma
+\ref{lem:St_contrac} (which didn't assume regularity of the base) shows
+that $\St(V,V \perp \mbb H^\infty_X)$ is motivically contractible over
+$\Sm{X}^{C_2}$. 
 
 
-\chapter{An $E_\infty$ structure on the Hermitian $K$-Theory Spectrum}
 
-\subsection{A projective bundle formula for $\mbb P^\sigma$}
+It's a direct consequence of the above lemma that 
+\[
+L_{isoEt}(\St(W,W\perp \mbb H^\infty)/O(W)
+\rightarrow B_{isoEt}O(W)
+\]
+is a motivic equivalence. However, we've already shown \eqref{eq:RGr_Sv} that
+\[
+\St(W,W\perp \mbb H^\infty) \cong \RGr_W(W \perp \mbb H^\infty),
+\]
+so that 
+\[
+L_{isoEt}\St(W,W\perp \mbb H^\infty) \cong L_{isoEt}\RGr_W(W \perp
+\mbb H^\infty) \cong \RGr_{|W|}(W \perp \mbb H^\infty)
+\]
+which after taking colimits gives the desired result. 
+
+\chapter{An $E_\infty$ structure on the Hermitian $K$-Theory Spectrum}\label{chap:Einf}
+
+\section{A projective bundle formula for $\mbb P^\sigma$}
 
 
 Consider the square
@@ -3092,7 +3268,7 @@ map.
 \end{proof}
 
 
-\subsection{The periodization of $GW$}
+\section{The periodization of $GW$}
 
 The idea behind the Bass construction in algebraic $K$-theory is that
 as a consequence of satisfying localization, there is a
@@ -3634,8 +3810,10 @@ colimits of groups.
 $\mbb GW \cong Q_\gamma GW$.
 \end{corollary}
 
+
 \begin{theorem}\label{thm:GW_Einfty}
-$L_{\mbb A^1}\mbb GW$ is an $E_\infty$-object in motivic spectra.
+Let $S$ be a Noetherian scheme of finite Krull dimension. Then $L_{\mbb A^1}\mbb GW$ lifts to an $E_\infty$ motivic spectrum, denoted
+$\KR$ over $\Sm{S}^{C_2}$.
 \end{theorem}
 
 \begin{proof}
@@ -3647,7 +3825,7 @@ $\gamma$. Now $\mbb GW$ is Nisnevich excisive, so that $\mbb GW(W/S^0
 \otimes W_\sigma/S^0) \cong \mbb GW(\mbb P^\sigma)$, and $\mbb GW$ is
 $\gamma$ periodic if and only if it is Bott periodic with respect to
 the Bott element in the projective bundle formula. By \cite{cdhdesc}, proposition 3.2, $\mbb GW$ lifts to an
-$E_\infty$ object in $GW_{mod}[(\mbb P^\sigma))^{-1}]$. Because $\mbb A^1$-localization preserves
+$E_\infty$ object $\KR$ in $GW_{mod}[(\mbb P^\sigma))^{-1}]$. Because $\mbb A^1$-localization preserves
 $E_\infty$ objects, $L_{\mbb A^1}\mbb GW$ is an $E_\infty$ object in
 the subcategory of Nisnevich excisive Bott periodic
 $GW$-modules. 
@@ -3700,7 +3878,7 @@ For a vector bundle $E$, let $\mbb V_0(E)$ denote $E/(E-0)$, the
 quotient by the complement of the zero section.
 
 \begin{lemma}\label{lem:bott_3symm}
-The $\mbb A^1$ localization of the Bott element $L_{\mbb A^1}(\beta'
+The $\mbb A^1$-localization of the Bott element $L_{\mbb A^1}(\beta'
 \otimes (\beta^\sigma)' : L_{\mbb A^1} \mbb V_0(\mbb A^\rho)
 \rightarrow L_{\mbb A^1} GW$, viewed as an element of $\Sp(\mc P_{\mbb
   A^1}(\Sm{S}^{C_2}))_{/L_{\mbb A^1}GW}$ is 3-symmetric.
@@ -3710,7 +3888,7 @@ The $\mbb A^1$ localization of the Bott element $L_{\mbb A^1}(\beta'
 The proof is identical to Lemma 4.8 in \cite{cdhdesc}. The main idea
 is that the identity and the cyclic permutation $\sigma_3$ are both
 induced by matrices in $SL_{3\cdot 2}(\Z)$ acting on $\mbb A^{3\rho}$,
-and any two such matrices are (na\'''ively) $\mbb A^1$-homotopic so
+and any two such matrices are (na\"ively) $\mbb A^1$-homotopic so
 that there's a map $h: \mbb A^1 \times \mbb A^{3\rho} \rightarrow \mbb
 A^{3\rho}$ witnessing the homotopy. We can extend this to a map
 \[
@@ -3720,12 +3898,28 @@ Letting $p : \mbb A^1 \times S \rightarrow S$ denote the projection, the
 displayed map is an automorphism of the vector bundle $p^*(\mbb
 A^{3\rho})$.
 
-Now we want to show that, given an automorphism $\phi$ of $p^*(E)$ for
+Now we claim that given an automorphism $\phi$ of $p^*(E)$ for
 any vector bundle $E$, the automorphisms $\phi_0,\phi_1$ of $\mbb
 V_0(E)$ induced by the restrictions of $\phi$ to 1 and 0 are $\mbb
-A^1$-homotopic over $L_{\mbb A^1}GW$. Applying this to the
-automorphism $\pi_1 \times h$ of $p^*(\mbb A^{3\rho})$ will complete
-the proof. From here we finish the proof just as in \cite{cdhdesc}.
+A^1$-homotopic over $L_{\mbb A^1}GW$. Once we've shown this claim, we can
+apply it to the
+automorphism $\pi_1 \times h$ of $p^*(\mbb A^{3\rho})$ to complete the
+proof of the lemma. 
+
+To prove the claim, by functoriality of $\beta'$, any automorphism
+$\phi$ as above induces a triangle
+\[
+\xymatrix{\mbb V_0(p^*(E)) \ar[rr]^\phi \ar[dr]_{\beta'_{p^*(E)}} & & \mbb V_0(p^*(E))
+  \ar[dl]^{\beta'_{p^*(E)}} \\ & L_{\mbb A^1}GW_{\mbb A^1 \times X}}
+\]
+or presheaves of spectra on $\Sm{\mbb A^1 \times X}^{C_2}$. By
+adjunction, this is equivalent to a triangle
+\[
+\xymatrix{\mbb A^1_+ \otimes \mbb V_0(E) \ar[rr] \ar[dr]_{\beta'_E} && \mbb V_0(E)
+  \ar[dl]^{\beta'_X} \\ & L_{\mbb A^1}GW_X}
+\]
+which is an $\mbb A^1$-homotopy between $\phi_0$ and $\phi_1$ over
+$L_{\mbb A^1}GW$ as desired.
 \end{proof}
 
 Note that we've shown that $\mbb GW$ is Bott periodic and
@@ -3738,15 +3932,31 @@ $\mbb A^\sigma$ contractible. Thus by definition, $L_{\mbb A^1}\mbb
 GW$ is the reflection of $GW$ in the subcategory of homotopy
 invariant, Nisnevich excisive, and Bott periodic $GW$-modules. 
 
+\begin{corollary}\label{cor:MotLoc_GW}
+The canonical map $GW \rightarrow Q_{\beta}L_{\mathrm{mot}}GW$ is the universal
+map to a homotopy invariant, Nisnevich excisive, and Bott periodic
+$GW$-module. In particular
+\[
+L_{\mbb A^1}\mbb GW = Q_{\beta}L_{\mathrm{mot}}GW
+\]
+\end{corollary}
+
+\begin{proof}
+Given Lemma \ref{lem:bott_3symm}, the proof is identical to
+Proposition 4.9 in \cite{cdhdesc}.
+\end{proof}
 
 
-If one wants to work in a more general settings (i.e. work with stacks
-rather than $C_2$-schemes), then one can still define homotopy
-Grothendieck-Witt theory as 
-As in \cite{cdhdesc}, we can compare the definition of the $\mbb
-A^1$-localization of homotopy
-Grothendieck-Witt theory to the periodization of $L_{mot} GW$ with
-respect to the Bott element $\beta' \otimes (\beta^\sigma)'$.
+
+
+
+% If one wants to work in a more general settings (i.e. work with stacks
+% rather than $C_2$-schemes), then one can still define homotopy
+% Grothendieck-Witt theory as 
+% As in \cite{cdhdesc}, we can compare the definition of the $\mbb
+% A^1$-localization of homotopy
+% Grothendieck-Witt theory to the periodization of $L_{mot} GW$ with
+% respect to the Bott element $\beta' \otimes (\beta^\sigma)'$.
 
 % \begin{lemma}
 % Let $f : X \rightarrow Y$ be a morphism of presheaves of spectra such
@@ -3861,10 +4071,126 @@ respect to the Bott element $\beta' \otimes (\beta^\sigma)'$.
 % We claim that the long exact sequence of homotopy groups arising from
 % this homotopy pullback splits. 
 
+\chapter{cdh Descent for Homotopy Hermitian $K$-theory}
+
+\section{A review of the homotopy $K$-theory case}
+\begin{theorem}(Cisinski)
+\item $KGL_{/X} \in SH_{/X}$, given a smooth map $T \rightarrow X$, get
+  $Hom_{SH_{/X}}([T], KGL_{/X}) \cong KH(T)$
+\item $f : X \rightarrow Y$, then $f^* KGL_{/Y} \cong KGL_{/X}$.
+\end{theorem}
+
+\begin{proof}
+Given $E \in SH_{/X}$ and an abstract blowup square
+\[
+\xymatrix{\widetilde Z \ar[r]\ar[d] & \widetilde X \ar[d] \\ Z \ar[r] &X}
+\]
+
+with composite $q : \widetilde Z \rightarrow X$, get a Cartesian square
+\[
+\xymatrix{q_*q^* E & \ar[l] f_*f^* E \\ i_*i^*E \ar[u] & E \ar[l]\ar[u]}
+\]
+
+Apply to $E = KGL_{/X}$, now compute $Hom_{SH_{/X}}([X],-)$. To prove
+that the square is Cartesian, pull-back and use the Cousin
+sequence/base change. 
+\end{proof}
 
 
+Let $\KR$ be the motivic spectrum associated to homotopy
+hermitian $K$-theory $L_{\mbb A^1}\mbb GW$ on $\Sm{S}^{C_2}$ for $S$ a
+Noetherian scheme of finite Krull dimension. 
 
-\bibliographystyle{IEEE_ECE}
+Let $\HH(S)$ denote the motivic homotopy $\infty$-category on
+$\Sm{S}^{C_2}$. By Corollary \label{cor:MotLoc_GW}, we can write $\KR$ as the image under the localization functor
+\[
+QL_{\mathrm{mot}} : \mathrm{Stab}^{\mathrm{lax}}_{\mbb P^\rho} \Sp(\mc
+P(Sm{S}^{C_2}) \rightarrow \mathrm{Stab}_{\mbb P^\rho} \Sp(\underline
+H) \simeq \SH
+\]
+of the ``constant'' $\mbb P^\rho$-spectrum $c_{\beta}GW$.
+
+\begin{definition}
+For $X \in \Sm{S}^{C_2}$, let $\KR_X$ denote the restriction of the
+motivic spectrum $\KR$ to $\Sm{X}^{C_2}$.
+\end{definition}
+
+We want to show that $\KR$ is a cdh sheaf on $\Sm{S}^{C_2}$. By Corollary 6.25 of \cite{HoyoisSixOp} it suffices to show that, for
+each $f : D \rightarrow X \in \Sm{X}^{C_2}$, the restriction map
+\[
+f^*(\KR_X) \rightarrow \KR_D
+\]
+in $\SH(D)$ is an equivalence. 
+
+By Appendix A in \cite{Schder}, there's a map 
+\[
+\mathrm{Herm}(X)^+ \rightarrow \Omega^\infty GW(X)
+\]
+where $\mathrm{Herm}(X)$ is the $E_\infty$ space of non-degenerate hermitian vector
+bundles over $X$ and $(-)^+$ denotes group complete. If $X$ is an
+affine $C_2$-scheme, the category of hermitian vector bundles is a
+split exact category with duality, and the above map is an
+equivalence. It follows that
+\[
+\mathrm{Herm}^+ \rightarrow \Omega^\infty GW|\Sm{X}^{C_2}
+\]
+is a motivic equivalence in $\mc P(\Sm{X}^{C_2})$. 
+
+Just as in \cite{cdhdesc} we note that
+\[
+\coprod_{n \geq 0} B_{isoEt}O(\langle 1 \rangle^{\perp n}) \rightarrow \mathrm{Herm}
+\]
+exhibits $\mathrm{Herm}$ as the equivariant Zariski sheafification of
+the subgroupoid of non-degenerate hermitian vector bundles of constant
+rank (in other words, it fixes the sections over non-connected or
+hyperbolic rings). By Lemma 5.5 in \cite{cdhdesc}, it remains an
+equivalence after group completion, yielding a motivic equivalence
+\[
+\left(\coprod_{n \geq 0} B_{isoEt}O(\langle 1 \rangle^{\perp
+    n})\right)^+ \rightarrow \Omega^\infty GW|\Sm{X}^{C_2}.
+\]
+
+Fix a map $f : D \rightarrow X$ in $\Sm{S}^{C_2}$. Again by Lemma 5.5
+in \cite{cdhdesc}, since the pullback $f^* : \mc P(\Sm{X}^{C_2})
+\rightarrow \mc P(\Sm{X}^{C_2})$ preserves finite products, it
+commutes with group completion of $E_\infty$-monoids. The same is true
+for $L_{\mathrm{mot}}$. It follows that there are motivic equivalences
+
+\[
+f^*\Omega^\infty GW|\Sm{X}^{C_2})\rightarrow  f^*\left(\coprod_{n \geq 0} B_{isoEt}O(\langle 1 \rangle^{\perp
+    n})\right)^+ \rightarrow \left(\coprod_{n \geq 0} f^*B_{isoEt}O(\langle 1 \rangle^{\perp
+    n})\right)^+
+\]
+
+Because $B_{isoEt}O(\langle 1 \rangle^{\perp n})$ is representable, by
+Proposition 2.9 in \cite{cdhdesc}, we also have a motivic equivalence
+\[
+\left(\coprod_{n \geq 0} f^*B_{isoEt}O(\langle 1 \rangle^{\perp
+    n})\right)^+ \rightarrow \left(\coprod_{n \geq 0} B_{isoEt}f^*O(\langle 1 \rangle^{\perp
+    n})\right)^+.
+\]
+
+But $f^*O(\langle 1 \rangle^{\perp n})|\Sm{X}^{C_2} = O(\langle 1
+\rangle^{\perp n})|\Sm{D}^{C_2}$ since $f^*\langle 1 \rangle_X =
+\langle 1 \rangle_D$. It follows that there's a motivic equivalence 
+\[
+ \left(\coprod_{n \geq 0} B_{isoEt}f^*O(\langle 1 \rangle^{\perp
+    n})\right)^+ \rightarrow \Omega^\infty GW|\Sm{D}^{C_2},
+\]
+and combining everything we get that the restriction map
+\[
+f^*(\Omega^\infty GW|\Sm{X}^{C_2}) \rightarrow \Omega^\infty GW|\Sm{D}^{C_2}
+\]
+is a motivic equivalence in the $\infty$-category of grouplike
+$E_\infty$-monoids in $\mc P(\Sm{D}^{C_2})$. Because the localization
+functor $QL_{\mathrm{mot}}$ is also compatible with the base change
+$f^*$, it follows that each arrow 
+\[
+f^*(QL_{\mathrm{mot}}GW|\Sm{X}^{C_2}) \rightarrow
+QL_{\mathrm{mot}}(f^*GW|\Sm{X}^{C_2}) \rightarrow QL_{\mathrm{mot}}(GW|\Sm{D}^{C_2})
+\]
+is a motivic equivalence, as was desired. 
+0\bibliographystyle{IEEE_ECE}
 \bibliography{Thesisbib}
 \end{document}
 
