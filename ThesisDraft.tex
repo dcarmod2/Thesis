@@ -1,4 +1,5 @@
-\documentclass[draftthesis,tocnosub,noragright,centerchapter,10pt]{uiucthesis2009}
+%\documentclass[draftthesis,tocnosub,noragright,centerchapter,10pt]{uiucthesis2009}
+\documentclass[edeposit,fullpage]{uiucthesis2009}
 \usepackage{setspace}
 \usepackage[margin=1in]{geometry}
 \usepackage{epsfig}
@@ -43,6 +44,7 @@
 \newcommand{\Sp}{\mathbf{Sp}}
 \newcommand{\mothom}{\mathbf{H}}
 \newcommand{\KR}{KR^{\mathrm{alg}}}
+\newcommand{\Quad}{\mathbf{Quad}}
 
 
 \DeclareMathOperator{\Spec}{Spec}
@@ -125,7 +127,87 @@
 
 \chapter{Introduction}
 
-Hi I am a thesis.
+Algebraic $K$-theory is an invariant of a scheme built from the category of vector bundles over the scheme. It was introduced in the 1950s by Alexander
+Grothendieck where it served as the cornerstone of his reformulation
+of the Riemann-Roch theorem \cite{Gro57}.  Twenty years previously, Ernst Witt had
+developed the notion of quadratic forms over arbitrary fields and
+introduced the Witt ring as an object to encapsulate the nature of
+all the quadratic forms over a given field \cite{Witt1937}. Following
+Grothendieck's ideas, Hyman Bass introduced a category of quadratic
+forms  $\Quad(R)$
+with isometries over a ring $R$ and studied $K_1(\Quad(R))$ and $K_0(\Quad(R))$
+. $K_0(\Quad(R))$ is what we know today as the
+Grothendieck-Witt ring, and Bass was able to recovered the Witt ring
+as a quotient of $K_0(\Quad(R))$ by the image of the hyperbolic
+quadratic forms. $K_1(\Quad(R))$ was seen to be related to the stable
+structure of the automorphisms of hyperbolic modules. The $K$-theory
+of quadratic forms soon found applications to surgery theory through
+the periodic $L$-groups defined by Wall in 1966 \cite{Wall66}. When
+the means to define the higher algebraic $K$-groups via the $+$ construction was discovered by
+Quillen in the 1970s, Karoubi applied it to the orthogonal groups $BO$
+in order to define the higher hermitian $K$-theory of rings with
+involution as we know it today\cite{Kar73}.
+
+Fast forward twenty years into the 1990s when Morel and Voevodsky
+developed the motivic homotopy category and proved that algebraic
+$K$-theory was representable in the stable motivic homotopy category
+\cite{MorelVoev}. The development of the stable motivic homotopy
+category not only gave a new domain to motivic cohomology, it also
+opened the door for a slew of topological tools like obstruction
+theory to be brought to bear on more algebraic objects. Several
+subsequent developments inspire our work here.
+
+The first set of developments relates to hermitian $K$-theory. In 2005 Hornbostel showed that Hermitian $K$-theory was
+representable in the stable motivic homotopy category on schemes
+without involution \cite{Hornbos2005}. We note that Hornbostel defined
+hermitian $K$-theory on schemes by extending the definition on rings
+using Jouanolou's trick. In 2011 Hu-Kriz-Ormsby showed that Hermitian
+$K$-theory on the category of $C_2$-schemes was representable in the
+$C_2$-equivariant stable motivic homotopy category \cite{HuKriz}. Here
+they used a similar trick to Hornbostel in order to extend hermitian
+$K$-theory from rings with involution to schemes with involution. In
+the meantime, Schlichting, building off of work of Thomason,
+Karoubi, and Balmer, defined the higher hermitian $K$-theory of a dg-category
+with weak equivalences and duality and proved the analogues of the
+fundamental theorems of higher $K$-theory for these groups
+\cite{Schder}. Although some of Schlichting's theorems are stated only
+for schemes (rather than schemes with $C_2$ action), many of his
+proofs require only trivial modification to extend to Grothendieck-Witt
+groups of schemes with $C_2$ action. See also \cite{Xie2018ATM} for
+the proofs of the equivariant case of some of the theorems together with a new
+transfer morphism.
+
+Back in $K$-theory land, Cisinski proved that the six
+functor formalism in motivic homotopy theory developed by Ayoub
+\cite{Ayoub} together with the fact that the motivic $K$-theory
+spectrum $\KGL$ is a cocartesian section of $\SH(-)$ yields a simple
+proof of $cdh$-descent for homotopy $K$-theory \cite{DenRep}. This in
+turn yields a short proof of Weibel's vanishing conjecture for homotopy
+$K$-theory, and inspired work of Kerz, Strunk, and Tamme which solved
+Weibel's conjecture by proving a version of pro-cdh descent for
+ordinary $K$-theory \cite{KerzStrunkTamme}. Hoyois in \cite{cdhdesc}
+uses these ideas to show cdh descent for equivariant homotopy $K$-theory.
+
+This thesis, inspired by the above developments, shows $cdh$-descent
+for homotopy hermitian $K$-theory of schemes with $C_2$ action. The
+techniques in \cite{cdhdesc} provide our pathway to descent. In order
+to show that hermitian $K$-theory is a cocartesian section of
+$\SH^{C_2}(-)$, we need to show that the hermitian $K$-theory space
+$\Omega^\infty GW$ can be represented by a certain Grassmannian, and
+we need a periodization theorem in order to pass from the hermitian
+$K$-theory space $\Omega^\infty
+GW$ to homotopy hermitian $K$-theory motivic spectrum $L_{\mbb
+  A^1}\mbb GW$. Schlichting and Tripathi \cite{SchTri} show that
+$\Omega^\infty GW$ is representable by a Grassmannian over schemes
+with trivial action over a regular base scheme with 2 invertible. Their techniques extend to the equivariant
+setting, and with slight modification provide a proof of
+representability over non-regular bases. The periodization techniques
+in \cite{cdhdesc} can also be extended to hermitian $K$-theory by
+investigating the hermitian $K$-theory of $\mbb P^\rho$, the Thom
+space of the regular representation.
+
+\section{Outline}
+
 
 
 Theorems:
@@ -156,6 +238,11 @@ tacitly be thinking of $G$ as a group scheme, and $X \times Y$ will
 really mean $X \times_S Y$.
 \end{notation}
 
+We introduce the background definitions from \cite{GrpSchHell} which
+will allow us to define the isovariant \'etale topology. This topology
+is a topology slightly coarser than the equivariant etale topology,
+but whose points are still nice enough so that hermitian vector
+bundles are locally determined by rank. 
 
 \begin{definition}
 For a $G$-scheme $X$, the isotropy group scheme is a group scheme
@@ -229,14 +316,14 @@ k$, whereas the pullback in spaces is just a single point.
 \section{The equivariant and isovariant \'Etale topologies}
 
 \begin{notation}
-Let $S$ be a  $G$-scheme. The equivariant \'etale topology on $Sm_S$
+Let $S$ be a  $G$-scheme. The equivariant \'etale topology on $\Sm{S}^{G}$
 will denote the site whose covers are \'etale covers whose component
 morphisms are equivariant.
 \end{notation}
 
 \begin{definition} (Thomason)
 An equivariant map $f : Y \rightarrow X$ is said to be
-\emph{isovariant} if it induces an isomorphism $G_Y \cong G_X \times_X
+\emph{isovariant} if it induces an isomorphism on isotropy groups $G_Y \cong G_X \times_X
 Y$. A collection $\{f_i : X_i \rightarrow X\}_{i \in I}$ of
 equivariant maps called an isovariant etale cover if it is an
 equivariant etale cover such that each $f_i$ is isovariant. 
@@ -252,7 +339,7 @@ notion more often in computations.
 The points in the isovariant \'etale topology are schemes of the form
 $G \times^{G_x} \Spec(\mc O^h_{X,\overline x})$ where $\overline x
 \rightarrow x \rightarrow X$ is a geometric point, and $(-)^h$ denotes
-strict henselization. 
+strict henselization. See \cite{GrpSchHell} for a proof.
 \end{remark}
 
 The fact that the points in the isovariant \'etale topology are either
@@ -273,7 +360,11 @@ O^h_{X,\overline x}) = \Spec(\mc
 O^h_{X,\overline x})$.
 \end{remark}
 
-The following example shows that there are equivariant \'etale covers
+\subsection{Examples}
+
+We now proceed to give a sequence of examples of equivariant \'etale
+and isovariant \'etale covers in order to give a flavor for these
+topologies. The following example shows that there are equivariant \'etale covers
 which are not isovariant:
 
 \begin{example}
@@ -449,7 +540,7 @@ because it gives a well-defined map on the residue field!).
 \section{The equivariant Nisnevich topology}
 
 Similarly to the non-equivariant case, the equivariant Nisnevich
-topology is defined a particularly nice cd-structure. While there are
+topology is defined by a particularly nice cd-structure. While there are
 a few different definitions of this topology in the literature which
 can give non-Quillen equivalent model structures, we use the
 definition from \cite{GrpSchHell}.
@@ -470,6 +561,10 @@ The equivariant Nisnevich $cd$-structure on $\Sm{S}^G$ is the
 collection of distinguished equivariant Nisnevich squares in $\Sm{S}^G$.
 \end{definition}
 
+The next remark has the important consequence that to prove a map is
+an equivariant motivic equivalence, it suffices to check that it's an
+equivalence on affine $G$-schemes. 
+
 \begin{remark}
 For finite groups $G$, any smooth $G$-scheme is Nisnevich-locally
 affine. 
@@ -477,7 +572,14 @@ affine.
 
 \section{The Equivariant cdh Topology}
 
-\begin{definition}
+The cdh topology is, roughly speaking, the coarsest topology
+satisfying Nisnevich excision and which allows for a theory of
+cohomology with compact support. Like the Nisnevich topology (and
+unlike the \'etale topology) it can be generated by a cd-structure,
+which gives a convenient way to check whether or not a presheaf is a
+cdh sheaf. 
+
+\begin{definition}\label{def:cdh_top}
 An abstract blow-up square is a cartesian square in $\Sm{S}^G$
 \[
 \xymatrix{\widetilde Z \ar[r]\ar[d] & \widetilde X \ar[d]^p \\ Z \ar@{^{(}->}[r]^i & X}
@@ -486,21 +588,42 @@ where $i$ is a closed immersion and $p$ is a proper map which induces
 an isomorphism $(\widetilde X - \widetilde Z)_{red} \cong (X-Z)_{red}$.
 \end{definition}
 
+\begin{definition}
+The cdh topology is the topology generated by the cd-structure whose
+distinguished squares are
+\begin{enumerate}
+\item The equivariant Nisnevich distinguished squares
+\item The abstract blowup squares.
+\end{enumerate}
+\end{definition}
+
+One canonical example of a cdh cover is the map $X_{red} \rightarrow
+X$ for an equivariant scheme $X \rightarrow S$.
+
+Another example is given by resolution of singularities: given a
+proper birational map $p : X \rightarrow Y$, it's an isomorphism over
+some open set $U$ in $Y$, so letting $Z = Y-U$ and $\widetilde Z = X -
+p^{-1}(U)$ we get an abstract blowup square
+\[
+\xymatrix{\widetilde Z \ar[r] \ar[d] & X \ar[d] \\ Z \ar[r] & Y}.
+\]
+
 \section{Computations with Equivariant Spheres}
 
 Because we'll be using equivariant spheres to index our spectra, we'll
 record some of their basic properties here. Though there are exotic
 elements of the Picard group even in non-equivariant stable motivic
 homotopy theory, we'll be concerned with the four building blocks
-$S^1, S^\sigma = \colim ((C_2)_+ \rightarrow S^0), \mbb G_m, \mbb
-G_m^{\sigma}$.
+$S^1, S^\sigma = \colim (\ast \leftarrow (C_2)_+ \rightarrow S^0), \mbb G_m, \mbb
+G_m^{\sigma}$. Here $\mbb G_m^\sigma$ is the $C_2$ scheme
+corresponding to $S[T,T^{-1}]$ with action $T \mapsto T^{-1}$.
 
 \begin{lemma}
 Let $\mbb P^\sigma$ denote $\mbb P^1$ with the action defined by $[x:y] \mapsto
 [y:x]$. There is an equivariant Nisnevich square
 \[
 \xymatrix{C_2\times \mbb G_m^\sigma \ar[r]\ar[d]^{\pi_2} & \mbb P^1 -
-  \{0\} \coprod \mbb P^1 - \{\infty\} \ar[d]^f \\ G_m^\sigma \ar[r]^i & \mbb P^\sigma}
+  \{0\} \coprod \mbb P^1 - \{\infty\} \ar[d]^f \\ \mbb G_m^\sigma \ar[r]^i & \mbb P^\sigma}
 \]
 \end{lemma} 
 
@@ -577,6 +700,84 @@ and homotopy invariance of homotopy cofiber:
 \]
 
 \end{proof}
+
+\section{The Equivariant Motivic Homotopy Category}
+
+In this thesis, we'll work over a Noetherian scheme of finite Krull
+dimension and a finite group scheme $G$ over $S$. Equivariant motivic
+homotopy theory is developed in somewhat more generality by Hoyois in
+\cite{HoyoisSixOp}, though there's a price to be paid for allowing
+more general group schemes in that the motivic localization functor becomes more
+complicated (one must in general invert Thom spaces of all $G$-affine
+bundles).  
+
+\begin{definition}
+A presheaf $F$ on $\Sm{S}^G$ is called \emph{homotopy invariant} if
+the projection $\mbb A^1_S \rightarrow S$ induces an equivalence $F(X)
+\simeq F(X \times \mbb A^1)$. Denote by $\mc
+P_{\mathrm{htp}}(\Sm{S}^{G}) \subset \mc P(\Sm{S}^G)$ the full
+subcategory spanned by the homotopy invariant presheaves. Denote by
+$L_{\mathrm{htp}}$ the corresponding localization endofunctor of $\mc P(\Sm{S}^G)$.
+\end{definition}
+
+Now we give the usual definition of excision, the condition that
+guarantees that a presheaf is a Nisnevich sheaf.
+
+\begin{definition}
+A presheaf $F$ on $\Sm{S}^G$ is called \emph{Nisnevich excisive} if:
+\begin{itemize}
+\item $F(\emptyset)$ is contractible;
+\item for every equivariant Nisnevich square $Q$ in $\Sm{S}^G$, $F(Q)$ is
+  cartesian. 
+\end{itemize}
+
+Denote by $\mc P_{\mathrm{Nis}}(\Sm{S}^G) \subset \mc P(\Sm{S}^G)$ the
+full subcategory of Nisnevich excisive presheaves. Denote by
+$L_{\mathrm{Nis}}$ the corresponding localization endofunctor. 
+\end{definition}
+
+Finally we come to the definition of a motivic $G$-space, namely a
+presheaf that is both Nisnevich excisive and homotopy invariant.
+
+\begin{definition}
+Let $S$ be a $G$-scheme. A \emph{motivic $G$-space} over $S$ is a
+presheaf on $\Sm{S}^G$ that is homotopy invariant and Nisnevich
+excisive. Denote by $\HH^G(S) \subset \mc P(\Sm{S}^G)$ the full
+subcategory of motivic $G$-spaces over $S$.
+
+Let 
+\[
+L_{{\mathrm{mot}}} = \colim_{n \rightarrow \infty} (L_{\mathrm{htp}}
+\circ L_{\mathrm{Nis}})^n(F)
+\]
+denote the motivic localization functor.
+\end{definition}
+
+In order to form the stable equivariant motivic homotopy category, we
+also need to discuss pointed motivic $G$-spaces.
+
+\begin{definition}
+Let $S$ be a $G$-scheme. A \emph{pointed motivic $G$-space} over $S$
+is a motivic $G$-space $X$ over $S$ equipped with a global section $S
+\rightarrow X$. Denote by $\HH_\bullet^G(S)$ the $\infty$-category of
+pointed motivic $G$-spaces. 
+\end{definition}
+
+The definition of stabilization can in general be complicated. With
+our assumptions however, we need only invert the Thom space of the
+regular representation $\mbb P^\rho$.
+
+\begin{definition}
+Let $S$ be a $G$-scheme. The symmetric monoidal $\infty$-category of
+\emph{motivic $G$-spectra} over $S$ is defined by 
+\[
+\SH^G(S) = \HH_\bullet^G(S)[(\mbb P^{\rho}_S)^{-1}] = \colim
+\left(\HH_\bullet^G \xrightarrow{-\otimes \mbb P^\rho} \HH_\bullet^G
+  \xrightarrow{-\otimes \mbb P^\rho} \cdots \right)
+\]
+where $\mbb P^\rho$ is the projectivization of the regular
+representation $\mbb A^\rho$ of $G$.
+\end{definition}
 
 \chapter{Hermitian Forms on Schemes}\label{chap:herm_form_sch}
 
@@ -1113,7 +1314,7 @@ is split exact, and the canonical map is an isomorphism.
 \end{proof}
 
 
-\chapter{Higher Grothendieck Witt Groups}\label{chap:higher_GW}
+\section{Higher Grothendieck Witt Groups}\label{sec:higher_GW}
 
 In \cite{Xie2018ATM}, the author works with coherent Grothendieck-Witt
 groups on a scheme. Because the negative $K$-theory of the category of
@@ -1244,11 +1445,9 @@ the $K$-theory case, where one must pass only to local, rather than
 strictly henselian local rings in order for $K$-theory to be
 determined by rank. 
 
-We then compare $B_{isoEt}O$ (the colimit of the $B_{isoEt}O(d)$) to the Grothendieck-Witt space defined in
-chapter \ref{chap:higher_GW} by viewing them both as group completions
+We then compare $B_{isoEt}O$ (the colimit of the $B_{isoEt}O(d)$) to
+the Grothendieck-Witt space defined in chapter \ref{sec:higher_GW} by viewing them both as group completions
 and comparing their homology. 
-
-\todo{Is Sing of a group complete $H$-space a group complete $H$-space?}
 
 \section{The definition of $\RGr$}
 
@@ -3443,8 +3642,7 @@ the inverse is uniquely determined by a lift of the element $\langle 1 \rangle
 G_m^\sigma)$. We stress that this element $\langle 1 \rangle$ maps to
 $\beta^\sigma \cup k[-1] \cup \langle 1 \rangle$ in $\mbb P^\sigma$,
 and in particular it isn't the unit of multiplication in $GW(\mbb P^\sigma)$. We'll denote this element by $[T^\sigma]$ in analogy with
-the non-equivariant case. \todo{Is there an actual description of this
-element?} 
+the non-equivariant case. 
 
 Over an arbitrary base scheme $X$, we denote by $[T^\sigma]$ the pullback of
 $[T^\sigma]$ to $GW^{[-1]}_0(S^\sigma \wedge \mbb G_m^\sigma
@@ -4074,28 +4272,75 @@ Proposition 4.9 in \cite{cdhdesc}.
 \chapter{cdh Descent for Homotopy Hermitian $K$-theory}
 
 \section{A review of the homotopy $K$-theory case}
+
+Recall from Definition \ref{def:cdh_top} that the cdh topology is the
+topology generated by the Nisnevich and abstract blow-up squares. Fix
+a Noetherian scheme of finite Krull dimension $S$, and scheme $X$
+which is smooth over $S$.
+
 \begin{theorem}(Cisinski)
-\item $KGL_{/X} \in SH_{/X}$, given a smooth map $T \rightarrow X$, get
+Fix $X \in \Sm{S}$, and let $\KGL_X$ denote the restriction of $KGL$
+to $\Sm{X}$. To show that $\KGL$ satisfies cdh descent, it suffices to
+show that:
+\begin{itemize}
+\item given a smooth map $T \rightarrow X$, get
   $Hom_{SH_{/X}}([T], KGL_{/X}) \cong KH(T)$
 \item $f : X \rightarrow Y$, then $f^* KGL_{/Y} \cong KGL_{/X}$.
+\end{itemize}
 \end{theorem}
 
 \begin{proof}
-Given $E \in SH_{/X}$ and an abstract blowup square
+
+Consider the stable $\infty$-category valued functor $\Sm{S}
+\rightarrow \mathrm{Stab}$, $X \mapsto SH_{/X}$. Given $T
+\rightarrow X$, we get a $[T] \in SH_{/X}$. Given $f : X \rightarrow Y$,
+we have the following
+\begin{enumerate}
+\item an adjunction $f^*: SH_{/Y} \leftrightarrow SH_{/X} : f_*$ satisfying
+  $f^*([T]) = T \times_X Y$;
+\item for $f$ smooth, $f^*$ admits a left adjoint $f_{\#}$;
+\item (Cousin sequence) Given a cover of $X$ by a closed and open
+  immersion $Z \hookrightarrow X \hookleftarrow U$, 
+\[
+j_\# j^* \mc F \rightarrow \mc F \rightarrow i_* i^* \mc F
+\]
+is exact.
+\item (base change) Given a pullback square
+\[
+\xymatrix{\widetilde Y \ar[r]^{\widetilde u}\ar[d]^{\widetilde f} & \widetilde X \ar[d]^f \\ Y
+  \ar[r]^u & X}
+\]
+
+If $f$ proper, we get an equivalence
+\[
+u^* f_* E \xrightarrow{\sim} \widetilde f_* \widetilde u^* E
+\]
+
+If $u$ is smooth, we get
+\[
+f^* u_\# \mc F \xleftarrow{\sim} \widetilde u_\# \widetilde f^* \mc F
+\]
+\end{enumerate}
+
+
+Now, given $E \in SH_{/X}$ and an abstract blowup square
 \[
 \xymatrix{\widetilde Z \ar[r]\ar[d] & \widetilde X \ar[d] \\ Z \ar[r] &X}
 \]
 
-with composite $q : \widetilde Z \rightarrow X$, get a Cartesian square
+with composite $q : \widetilde Z \rightarrow X$, we get a square 
 \[
 \xymatrix{q_*q^* E & \ar[l] f_*f^* E \\ i_*i^*E \ar[u] & E \ar[l]\ar[u]}
 \]
-
-Apply to $E = KGL_{/X}$, now compute $Hom_{SH_{/X}}([X],-)$. To prove
-that the square is Cartesian, pull-back and use the Cousin
-sequence/base change. 
+One can show that the
+square is homotopy cartesian by pulling back to each set in the cover $\widetilde
+Z \cup X-\widetilde Z = X$ and using the Cousin sequence/base change.
+Setting $E = KGL_{X}$ and using that $Hom_{SH_{/X}}([X],-)$ preserves
+homotopy cartesian squares together with the assumptions in the theorem,  we see that
+homotopy $K$-theory $KH$ takes abstract blowup squares to homotopy cartesian squares.
 \end{proof}
 
+\section{Extending to homotopy hermitian $K$-theory}
 
 Let $\KR$ be the motivic spectrum associated to homotopy
 hermitian $K$-theory $L_{\mbb A^1}\mbb GW$ on $\Sm{S}^{C_2}$ for $S$ a
@@ -4115,7 +4360,10 @@ For $X \in \Sm{S}^{C_2}$, let $\KR_X$ denote the restriction of the
 motivic spectrum $\KR$ to $\Sm{X}^{C_2}$.
 \end{definition}
 
-We want to show that $\KR$ is a cdh sheaf on $\Sm{S}^{C_2}$. By Corollary 6.25 of \cite{HoyoisSixOp} it suffices to show that, for
+We want to show that $\KR$ is a cdh sheaf on $\Sm{S}^{C_2}$. By first
+checking that the formalism of six operations holds in equivariant
+motivic homotopy theory and following the same recipe as the
+$K$-theory case, Corollary 6.25 of \cite{HoyoisSixOp} proves that it suffices to show that for
 each $f : D \rightarrow X \in \Sm{X}^{C_2}$, the restriction map
 \[
 f^*(\KR_X) \rightarrow \KR_D
@@ -4190,7 +4438,7 @@ f^*(QL_{\mathrm{mot}}GW|\Sm{X}^{C_2}) \rightarrow
 QL_{\mathrm{mot}}(f^*GW|\Sm{X}^{C_2}) \rightarrow QL_{\mathrm{mot}}(GW|\Sm{D}^{C_2})
 \]
 is a motivic equivalence, as was desired. 
-0\bibliographystyle{IEEE_ECE}
+\bibliographystyle{alpha}
 \bibliography{Thesisbib}
 \end{document}
 
