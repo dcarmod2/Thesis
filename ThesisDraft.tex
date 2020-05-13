@@ -221,7 +221,7 @@ the same:
 \item equivariant schemes are locally affine in the equivariant
   Nisnevich topology, and
 \item to invert $G$-affine bundles $Y \rightarrow S$ it suffices to
-  invert $\mbb A^1$.
+  invert $\mbb A_S^1$.
 \end{itemize}
 
 The content in this section is a selection of relevant content from
@@ -255,7 +255,7 @@ culminates with two theorems. First we have Theorem \ref{thm:RGr_GW} a represent
 can be shown by a straightforward generalization of
 Schlichting-Tripathi's techniques to the equivariant setting.
 \begin{theorem}
-Let $GW$ denote the Grothendieck-Witt space on $\Sm{S}^{C_2}$, and let
+Let $S$ be a regular Noetherian scheme of finite Krull dimension. Let $GW$ denote the Grothendieck-Witt space on $\Sm{S}^{C_2}$, and let
 $\underline \Z$ denote the sheafification of the constant sheaf. There's an equivariant motivic equivalence 
 \[
 L_{\mathrm{mot}} \underline{\Z} \times\RGr_\bullet
@@ -263,10 +263,47 @@ L_{\mathrm{mot}} \underline{\Z} \times\RGr_\bullet
 \]
 \end{theorem}
 
-Theorems:
+Combining the tools from Schlichting-Tripathi with the Morel-Voevodsky approach to classifying spaces outlined
+in \cite{cdhdesc}, we strengthen this result to
+non-regular base schemes in Theorem \ref{thm:RGr_GW_nonreg}.
 
-\ref{thm:RGr_Bet}
-\ref{thm:RGr_GW}
+\begin{theorem}
+Let $S$ be a Noetherian scheme of finite Krull dimension. There are
+equivalences of $C_2$-motivic spaces on $\Sm{S}^{C_2}$
+\[
+\Z \times \RGr_\bullet \xrightarrow \Z \times B_{isoEt}O
+\xrightarrow{\sim} GW.
+\]
+\end{theorem}
+
+Chapter \ref{chap:Einf} provides a convenient way of passing from the
+presheaf of Grothendieck-Witt spectra to an
+$E_\infty$-motivic spectrum in $\SH^{C_2}(S)$. The crucial fact is that
+localizing version equivariant hermitian $K$-theory, denoted $\mbb
+GW$, is the periodization of $GW$ with respect to a certain Bott map
+derived from some projective bundle formulas (see Corollary \ref{cor:GW_per}). Here
+$\mbb P^\sigma$ is a copy of $\mbb P^1$ with action $[x:y] \mapsto
+[y:x]$. The fact that the periodization functor is monoidal together
+with Schlichting's results on monoidality of $GW$ immediately give
+that the motivic spectrum $L_{\mbb A^1}\mbb GW \in \SH^{C_2}(S)$ is an
+$E_\infty$ object \ref{thm:GW_Einfty}.
+
+\begin{theorem}
+Let $S$ be a Noetherian scheme of finite Krull dimension. Then $L_{\mbb A^1}\mbb GW$ lifts to an $E_\infty$ motivic spectrum, denoted
+$\KR$ over $\Sm{S}^{C_2}$.
+\end{theorem}
+
+The final chapter \ref{chap:cdh} follows the recipe given by Cisinski
+and summarized in \cite{cdhdesc} to prove cdh descent for equivariant
+homotopy hermitian $K$-theory. After reviewing the $K$-theory case,
+the chapter culminates in theorem \ref{thm:cdh_desc}.
+
+\begin{theorem}
+Let $S$ be a Noetherian scheme of finite Krull dimension. Then the
+equivariant homotopy hermitian $K$-theory spectrum $L_{\mbb A^1}\mbb
+GW$ satisfies descent for the equivariant cdh topology in $\Sm{S}^{C_2}$.
+\end{theorem}
+
 \chapter{Equivariant Topologies and the Equivariant Motivic Homotopy Category}\label{chap:Eq_Top}
 
 This chapter reviews the foundations of equivariant motivic homotopy
@@ -3715,12 +3752,12 @@ $[T^\sigma]$ to $GW^{[-1]}_0(S^\sigma \wedge \mbb G_m^\sigma
 \times_{\Z[\frac{1}{2}]} X)$ using functoriality of $GW$. 
 
 Let $W = (\mbb A^1 \coprod_{\mbb G_m} \mbb A^1)_+$. Now (by taking the pointed version of everything) we have a candidate map
-\[
+\begin{equation}\label{eq:gamma}
 \gamma : W_\sigma/S^0 \otimes W/S^0 \rightarrow
 S^\sigma \wedge \mbb G_m^\sigma \otimes S^1 \wedge \mbb G_m
 \xrightarrow{[T^\sigma] \otimes [T]}
 GW^{[-1]} \otimes GW^{[1]} \rightarrow GW
-\]
+\end{equation}
 to invert. 
 
 % Define $\gamma$ to be the composite
@@ -3864,7 +3901,7 @@ GW_i^{[n]}(X)$ as desired.
 
 \begin{lemma}\label{lem:pos_htpy}
 The canonical map $Q_\gamma GW^{[m]} \rightarrow Q_\gamma \mbb GW^{[m]} \cong \mbb
-GW$ induces isomorphisms $\pi_nQ_\gamma GW^{[m]} \cong \pi_n \mbb
+GW^{[m]}$ induces isomorphisms $\pi_nQ_\gamma GW^{[m]} \cong \pi_n \mbb
 GW^{[m]}$ for $n \geq 0$ and for all $m$.
 \end{lemma}
 
@@ -4071,7 +4108,7 @@ colimits of groups.
  \end{proof}
 
 \begin{corollary}\label{cor:GW_per}
-$\mbb GW \cong Q_\gamma GW$.
+Let $\gamma$ be the map \eqref{eq:gamma}. Then $\mbb GW \cong Q_\gamma GW$.
 \end{corollary}
 
 
@@ -4335,7 +4372,7 @@ Proposition 4.9 in \cite{cdhdesc}.
 % We claim that the long exact sequence of homotopy groups arising from
 % this homotopy pullback splits. 
 
-\chapter{cdh Descent for Homotopy Hermitian $K$-theory}
+\chapter{cdh Descent for Homotopy Hermitian $K$-theory}\label{chap:cdh}
 
 \section{A review of the homotopy $K$-theory case}
 
@@ -4503,7 +4540,14 @@ $f^*$, it follows that each arrow
 f^*(QL_{\mathrm{mot}}GW|\Sm{X}^{C_2}) \rightarrow
 QL_{\mathrm{mot}}(f^*GW|\Sm{X}^{C_2}) \rightarrow QL_{\mathrm{mot}}(GW|\Sm{D}^{C_2})
 \]
-is a motivic equivalence, as was desired. 
+is a motivic equivalence, as was desired. Thus we've proved
+
+\begin{theorem}\label{thm:cdh_desc}
+Let $S$ be a Noetherian scheme of finite Krull dimension. Then the
+equivariant homotopy hermitian $K$-theory spectrum $L_{\mbb A^1}\mbb
+GW$ satisfies descent for the equivariant cdh topology in $\Sm{S}^{C_2}$.
+\end{theorem}
+
 \bibliographystyle{alpha}
 \bibliography{Thesisbib}
 \end{document}
