@@ -79,9 +79,10 @@
 %%%%%%%%%%%%%% Theorem Environments
 \theoremstyle{plain}
 
-
+\setcounter{secnumdepth}{2}
 
 \newtheorem{lemma}{Lemma}
+\numberwithin{lemma}{section}
 \newtheorem{theorem}[lemma]{Theorem}
 \newtheorem{proposition}[lemma]{Proposition}
 \theoremstyle{definition}
@@ -97,8 +98,7 @@
 
 \phdthesis
 
-\title{An $E_\infty$ structure on the motivic spectrum representing
-  Hermitian $K$-Theory}
+\title{cdh Descent for Hermitian $K$-Theory of Rings with Involution}
 \author{Daniel Carmody}
 \department{Mathematics}
 \degreeyear{2020}
@@ -127,7 +127,7 @@
 
 \chapter{Introduction}
 
-Algebraic $K$-theory is an invariant of a scheme built from the category of vector bundles over the scheme. It was introduced in the 1950s by Alexander
+Algebraic $K$-theory is an algebraic invariant built from the category of vector bundles over a scheme. It was introduced in the 1950s by Alexander
 Grothendieck where it served as the cornerstone of his reformulation
 of the Riemann-Roch theorem \cite{Gro57}.  Twenty years previously, Ernst Witt had
 developed the notion of quadratic forms over arbitrary fields and
@@ -175,7 +175,13 @@ for schemes (rather than schemes with $C_2$ action), many of his
 proofs require only trivial modification to extend to Grothendieck-Witt
 groups of schemes with $C_2$ action. See also \cite{Xie2018ATM} for
 the proofs of the equivariant case of some of the theorems together with a new
-transfer morphism.
+transfer morphism. Another approach is taken by Hesselholt-Madsen, who
+define real algebraic $K$-theory of a category with weak equivalences
+and duality as a symmetric spectrum object in the monoidal category of
+pointed $C_2$-spaces. Schlichting's higher Grothendieck-Witt groups can be
+recovered from the Hesselholt-Madsen construction by taking
+homotopy groups of $C_2$-fixed points of deloopings of the real
+algebraic $K$-theory spaces with respect to the sign representation spheres. 
 
 Back in $K$-theory land, Cisinski proved that the six
 functor formalism in motivic homotopy theory developed by Ayoub
@@ -186,7 +192,7 @@ turn yields a short proof of Weibel's vanishing conjecture for homotopy
 $K$-theory, and inspired work of Kerz, Strunk, and Tamme which solved
 Weibel's conjecture by proving a version of pro-cdh descent for
 ordinary $K$-theory \cite{KerzStrunkTamme}. Hoyois in \cite{cdhdesc}
-uses these ideas to show cdh descent for equivariant homotopy $K$-theory.
+uses Cisinski's approach to show cdh descent for equivariant homotopy $K$-theory.
 
 This thesis, inspired by the above developments, shows $cdh$-descent
 for homotopy hermitian $K$-theory of schemes with $C_2$ action. The
@@ -271,7 +277,7 @@ non-regular base schemes in Theorem \ref{thm:RGr_GW_nonreg}.
 Let $S$ be a Noetherian scheme of finite Krull dimension. There are
 equivalences of $C_2$-motivic spaces on $\Sm{S}^{C_2}$
 \[
-\Z \times \RGr_\bullet \xrightarrow \Z \times B_{isoEt}O
+\Z \times \RGr_\bullet \xrightarrow{\sim} \Z \times B_{isoEt}O
 \xrightarrow{\sim} GW.
 \]
 \end{theorem}
@@ -279,7 +285,7 @@ equivalences of $C_2$-motivic spaces on $\Sm{S}^{C_2}$
 Chapter \ref{chap:Einf} provides a convenient way of passing from the
 presheaf of Grothendieck-Witt spectra to an
 $E_\infty$-motivic spectrum in $\SH^{C_2}(S)$. The crucial fact is that
-localizing version equivariant hermitian $K$-theory, denoted $\mbb
+the localizing version of hermitian $K$-theory of rings with involution, denoted $\mbb
 GW$, is the periodization of $GW$ with respect to a certain Bott map
 derived from some projective bundle formulas (see Corollary \ref{cor:GW_per}). Here
 $\mbb P^\sigma$ is a copy of $\mbb P^1$ with action $[x:y] \mapsto
@@ -403,7 +409,7 @@ example above, $\Spec L \times_k \Spec L \cong \coprod_{g \in G} \Spec
 k$, whereas the pullback in spaces is just a single point. 
 \end{remark}
 
-\section{The equivariant and isovariant \'Etale topologies}
+\section{The equivariant and isovariant \'etale topologies}
 
 \begin{notation}
 Let $S$ be a  $G$-scheme. The equivariant \'etale topology on $\Sm{S}^{G}$
@@ -632,7 +638,7 @@ because it gives a well-defined map on the residue field!).
 Similarly to the non-equivariant case, the equivariant Nisnevich
 topology is defined by a particularly nice cd-structure. While there are
 a few different definitions of this topology in the literature which
-can give non-Quillen equivalent model structures, we use the
+can give non Quillen equivalent model structures, we use the
 definition from \cite{GrpSchHell}.
 
 \begin{definition}
@@ -701,12 +707,12 @@ p^{-1}(U)$ we get an abstract blowup square
 \section{Computations with Equivariant Spheres}
 
 Because we'll be using equivariant spheres to index our spectra, we'll
-record some of their basic properties here. Though there are exotic
+record some of their basic properties here. These computations will be important when we investigate periodicity of $GW$ in chapter \ref{chap:Einf}. Though there are exotic
 elements of the Picard group even in non-equivariant stable motivic
 homotopy theory, we'll be concerned with the four building blocks
 $S^1, S^\sigma = \colim (\ast \leftarrow (C_2)_+ \rightarrow S^0), \mbb G_m, \mbb
 G_m^{\sigma}$. Here $\mbb G_m^\sigma$ is the $C_2$ scheme
-corresponding to $S[T,T^{-1}]$ with action $T \mapsto T^{-1}$.
+corresponding to $S[T,T^{-1}]$ with action $T \mapsto T^{-1}$. 
 
 \begin{lemma}
 Let $\mbb P^\sigma$ denote $\mbb P^1$ with the action defined by $[x:y] \mapsto
@@ -871,11 +877,25 @@ representation $\mbb A^\rho$ of $G$.
 
 \chapter{Hermitian Forms on Schemes}\label{chap:herm_form_sch}
 
+This chapter reviews the definitions and properties of hermitian forms over schemes
+with involution from\cite{Xie2018ATM}. After defining the proper
+notion of the dual of a quasi-coherent module over a scheme with involution, the definition of a hermitian vector bundle finally
+appears in Definition \ref{def:herm_form_sch} as a locally free $\mc
+O_X$-module with a well-behaved map to the dual module. Once the
+definitions are in place, we discuss in section
+\ref{sec:herm_form_semiloc} the structure of hermitian forms over
+semilocal rings as this is the fundamental tool for showing that hermitian forms
+are locally trivial in the isovariant or equivariant \'etale
+topologies. We prove this particular statement in Corollary
+\ref{cor:loc_det_rank}. We end this chapter by recalling Schlichting's
+definition of a dg categoy with weak equivalence and duality and the
+Grothendieck-Witt groups of such an object.  
+
 \section{Definitions}\label{sec:herm_def}
 
 \begin{definition}
 Let $R$ be a ring with involution $- : R \rightarrow R$. A \emph{hermitian
-module over $R$} is a finitely generated projective module-$R$, $M$, together
+module over $R$} is a finitely generated projective right $R$-module, $M$, together
 with a map
 \[
 b : M \otimes_{\Z} M \rightarrow R
@@ -907,7 +927,7 @@ either as a left or right $R$-module.
 
 \begin{remark}
 Another way to define a Hermitian form over a ring $R$ with involution
-$\sigma$ is to give a finitely generated projective mod-$R$ $M$ together
+$\sigma$ is to give a finitely generated projective right $R$-module $M$ together
 with an $R-R$-bimodule map  
 \[
 b :  M \otimes_{\Z}  M \rightarrow R
@@ -987,9 +1007,9 @@ possible definitions we choose here.
 \end{definition}
 
 
-\begin{definition}
+\begin{definition}\label{def:double_dual_iso}
 Given a right $\mc O_X$-module $M$, we define the double dual
-isomorphism $\can : M \rightarrow M^{**}$ as follows: given an open $U
+isomorphism $\can_M : M \rightarrow M^{**}$ as follows: given an open $U
 \subseteq X$, we define a map
 \[
 M(U) \rightarrow Nat(\sigma_* Nat(\sigma_* M,\mc O_X)|_U, \mc O_X|_U)
@@ -1018,10 +1038,12 @@ Nat(M,\sigma_*\mc O_X) \xrightarrow{ ev} \sigma_* \mc O_X
 which under adjunction yields the above map. 
 \end{definition}
 
-\begin{definition}
-Let $X$ be a scheme with involution $- : X \rightarrow X$. A
+\begin{definition}\label{def:herm_form_sch}
+Let $X$ be a scheme with involution $- : X \rightarrow X$. Let
+$\can_X$ be the double dual isomorphism of Definition \ref{def:double_dual_iso}. A
 \emph{hermitian vector bundle over $X$} is a locally free right $\mc
-O_X$-module $V$ with an $\mc O_X$-module map $V \rightarrow V^*$.
+O_X$-module $V$ with an $\mc O_X$-module map $\phi : V \rightarrow
+V^*$ such that $\phi = \phi^*\can_V$.
 \end{definition}
 
 \begin{remark}
@@ -1137,7 +1159,12 @@ $M = U + U^\perp$. Since $\phi|_U$ is non-degenerate, $U \cap U^\perp
 
 \section{Hermitian Forms on Semilocal Rings}\label{sec:herm_form_semiloc}
 
-\begin{theorem}
+The following result from \cite{Baeza} will allow us to conclude that
+hermitian forms diagonalize over semilocal rings. We include its proof
+in order to show that it generalizes to semilocal rings with
+involution -- see Corollary \ref{cor:semiloc_quot_form}.
+
+\begin{theorem}(Baeza)
 Let $R$ be a ring, and let $E$ be a hermitian module over
 $R$. Let $I \subset Jac(R)$ be an ideal. For every orthogonal decomposition $\overline E = \overline F
 \perp \overline G$ of $\overline E = E/IE$ over $R/I$, where $\overline
@@ -1155,9 +1182,12 @@ representatives $x_i \in E$ of $\overline x_i$, and let $F = Rx_1 +
 free: indeed, if $\lambda_1x_1 + \dots + \lambda_nx_n = 0$, then we
 get $n$ equations $\lambda_1b(x_1,x_i) + \dots + \lambda_nb(x_n,x_i) =
 0$. But we know that $\det(b(x_i,x_j)) = t\in R^*$, since $1-st \in I$
-for some $s$ by assumption, but then $st$ cannot be contained in any
+for some $s$ by assumption (because the determinant is a unit mod the
+ideal $I$), but then $st$ cannot be contained in any
 maximal ideal, so $st \in R^*
-\implies t \in R^*$. It follows that the $\lambda_i$ are zero, so that
+\implies t \in R^*$. It follows that the $\lambda_i$ are zero
+(otherwise we would have a non-zero vector in the kernel of an
+invertible matrix), so that
 the $x_i$ are independent as desired. The determinant fact also shows
 that $F$ is regular, so by the lemma above, it has an orthogonal
 summand $G$. By construction $F/I = \overline F$, so that $\overline G
@@ -1223,7 +1253,7 @@ The following corollary has the same proof as the theorem above, the
 only subtlety is that we need the quotient ring to inherit the
 involution to make sense of an induced hermitian module.
 
-\begin{corollary}
+\begin{corollary}\label{cor:semiloc_quot_form}
 Let $R$ be a ring with involution, and let $E$ be a hermitian module over
 $R$. Let $I \subset Jac(R)$ be an ideal fixed by the involution. For every orthogonal decomposition $\overline E = \overline F
 \perp \overline G$ of $\overline E = E/IE$ over $R/I$, where $\overline
@@ -1297,16 +1327,16 @@ diagonalizable (see the proof of the non-involution case).
 \end{proof}
 
 
-\begin{corollary}
+\begin{corollary}\label{cor:loc_det_rank}
 Hermitian vector bundles are locally determined by rank in the isovariant \'etale topology.
 \end{corollary}
 
 \begin{proof}
 The points in the isovariant \'etale topology are either strictly
 henselian local rings with
-trivial involution or a ring of the form $\mc O_{X,x}^g \times \mc
+trivial involution or a ring of the form $\mc O_{X,x}^h \times \mc
 O_{X,x}^h$ with involution $(x,y) \mapsto (i(y),i(x))$. Via the map
-$(x,y) \mapsto (x,i(y)$, such rings are isomorphic to hyperbolic rings. If the ring is a local ring, the fact that all non-degenerate hermitian
+$(x,y) \mapsto (x,i(y))$, such rings are isomorphic to hyperbolic rings. If the ring is a local ring, the fact that all non-degenerate hermitian
 forms are trivial is well-known, since we have square roots. If the
 ring is hyperbolic, then all non-degenerate hermitian forms over the
 ring are hyperbolic by the corollary above.
@@ -1404,7 +1434,7 @@ is split exact, and the canonical map is an isomorphism.
 \end{proof}
 
 
-\section{Higher Grothendieck Witt Groups}\label{sec:higher_GW}
+\section{Higher Grothendieck Witt Groups}\label{sec:Higher_GW}
 
 In \cite{Xie2018ATM}, the author works with coherent Grothendieck-Witt
 groups on a scheme. Because the negative $K$-theory of the category of
@@ -1433,8 +1463,8 @@ objects $A$ in $\mc A$.
 A dg category with duality has an underlying
 exact category with duality $(Z^0\mc
 A^{\ptr},\vee,\can)$, where $Z^0\mc A^{\ptr}$ has the same objects
-as $\mc A^{\ptr}$ but morphism set the zero cycles in the morphism
-complex of $\mc A^\ptr$ and $\mc A^\ptr$ is the pretriangulated hull
+as $\mc A^{\ptr}$ but the morphism sets are the zero cycles in the morphism
+complexes of $\mc A^\ptr$. Here $\mc A^\ptr$ is the pretriangulated hull
 of $\mc A$ (see \cite{Schder} definition 1.7).
 \end{remark}
 
@@ -1443,6 +1473,13 @@ A \emph{dg category with weak equivalences} is a pair $(\mc A,w)$
 where $\mc A$ is a pointed dg category and $w \subseteq Z^0 \mc
 A^\ptr$ is a set of morphisms which saturated in $\mc A$. A map $f$ in
 $w$ is called a weak equivalence.
+\end{definition}
+
+\begin{definition}
+Given a pointed dg category with duality $(\mc A,\vee,\can)$, a
+hermitian object in $\mc A$ is a pair $(X,\phi)$ where $\phi : X
+\rightarrow X^{\vee}$ is a morphism in $\mc A$ satisfying
+$\phi^{\vee}\can_X = \phi$.
 \end{definition}
 
 \begin{definition}
@@ -1489,7 +1526,7 @@ of exact sequences with $(\phi_{-1},\phi_0,\phi_1) = (\phi_1^\vee
 
 
 
-\chapter{Hermitian Grassmannians}\label{chap:herm_grass}
+\chapter{Representability of Homotopy Hermitian $K$-Theory}\label{chap:herm_grass}
 
 The goal of
 this chapter is to define a sheaf on $\Sm{S}^{C_2}$, denoted $\RGr$, which represents
@@ -1498,21 +1535,21 @@ hermitian $K$-theory in the motivic homotopy category $\mathcal
 
 Representability of $K$-theory in the stable motivic homotopy category
 allows one to check that $K$-theory pulls back nicely. In particular,
-given $f : X \rightarrow S$ a map of schemes over $S$, we can use
-representability of $\KGL$ to show that
+given $f : X \rightarrow S$ a map of schemes over $S$, one can use
+ind-representability of $\KGL$ to show that
 $f^*(\KGL_S) = \KGL_X$. Together with standard tools like the cousin
-sequence, one can use this fact to show cdh descent for algebraic
+sequence, one obtains cdh descent for algebraic
 $K$-theory, see \cite{DenRep}.
 
-In this chapter, we check that over a regular base $S$ with 2 invertible
+We first check that over a regular base $S$ with 2 invertible
 (e.g. $\Z[\frac{1}{2}]$), hermitian $K$-theory is representable in the
 category of smooth $C_2$-schemes, $\Sm{S}^{C_2}$. 
 
 To
-extend this result to non-regular bases, one must consider the
-homotopy invariant version of hermitian $K$-theory discussed in
-chapter \ref{chap:Einf}, as several of the proofs in this section rely
-on homotopy invariance of $GW$.
+extend this result to non-regular bases, we utilize the
+Morel-Voevodsky approach to classifying spaces and obtain
+representability of homotopy hermitian $K$-theory (not ordinary
+hermitian $K$-theory).
 
 By analogy with the $K$ theory case, the equivariant scheme
 representing Hermitian $K$-theory on $\Sm{S}^{C_2}$ will be a colimit of schemes
@@ -1520,26 +1557,28 @@ which parametrize non-degenerate hermitian sub-bundles of a given
 hermitian vector bundle $V$. The new results here are mostly the
 definitions, as the proofs in this section are either
 minor modifications or identical to the proofs in \cite{SchTri}. The
-main difference which might cause concern that stalks in the
+main difference which might cause concern is that stalks in the
 isovariant \'etale topology are now semi-local (rather than
 local) rings. 
 
 As in \cite{SchTri}, we first compare $\RGr_{2d}(\mbb H^\infty)$ to the isovariant \'etale
-classifying space $B_{isoEt}O(d)$ of the group of automorphisms of
+classifying space $B_{isoEt}O(\mbb H^{d})$ of the group of automorphisms of
 hyperbolic $d$-space. The key to the comparison is that locally in the
 isovariant \'etale topology, hermitian vectors bundles are determined
 by rank. This will utilize some of the analysis of
 hermitian forms over semi-local rings from section
-\ref{sec:herm_form_semiloc}. Note that this is a key difference for
-the $K$-theory case, where one must pass only to local, rather than
-strictly henselian local rings in order for $K$-theory to be
+\ref{sec:herm_form_semiloc}. Note that this is a key difference from
+the $K$-theory case where one must pass only to local (rather than
+strictly henselian local) rings in order for $K$-theory to be
 determined by rank. 
 
-We then compare $B_{isoEt}O$ (the colimit of the $B_{isoEt}O(d)$) to
+We then compare $B_{isoEt}O(\Delta R$ (the colimit of the
+$B_{isoEt}O(\mbb H^d)(\Delta R)$) to
 the Grothendieck-Witt space defined in chapter \ref{sec:higher_GW} by viewing them both as group completions
-and comparing their homology. 
+and comparing their homology. This approach is inspired by the
+Karoubi-Villamayor definition of higher algebraiic $K$-theory. 
 
-\section{The definition of $\RGr$}
+\section{The definition of the hermitian Grassmannian $\RGr$}
 
 The definition here describes the sections of $\RGr$ over an arbitrary
 (regular) scheme $X \rightarrow S$. We advise the hurried reader to
@@ -1790,8 +1829,10 @@ rank map. In other words, the underlying topological space of $\RGr_d(V)$ is the
   \ar[r] & \Z}
 \]
 
-and $\RGr_d(V)$ is the closed subscheme equipped with the reduced
-induced scheme structure. The requirement that $V$ be non-degenerate is necessary so that the action
+and if $S$ is regular, $\RGr_d(V)$ is the closed subscheme equipped with the reduced
+induced scheme structure. If $S$ is non-regular, then let $f : S
+\rightarrow \Z[\frac{1}{2}]$ and note that $\RGr_d(V)$ over $S$ is
+just $f^*(\RGr_d[\frac{1}{2}]$. The requirement that $V$ be non-degenerate is necessary so that the action
 on $\RGr(V)$ sends rank $d$ subspaces to rank $d$ subspaces and hence
 induces an action on $\RGr_d(V)$. 
 \end{definition}
@@ -3290,7 +3331,7 @@ equivalences of $C_2$-motivic spaces on $\Sm{S}^{C_2}$
 \]
 \end{theorem}
 
-\chapter{Periodicity in Equivariant Hermitian $K$-Theory}\label{chap:Einf}
+\chapter{Periodicity in the Hermitian $K$-Theory of Rings with Involution}\label{chap:Einf}
 
 \section{A projective bundle formula for $\mbb P^\sigma$}
 
