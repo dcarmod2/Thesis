@@ -1058,7 +1058,7 @@ V^*$ such that $\phi = \phi^*\can_V$.
 
 Below we give the key example of a hermitian vector bundle.
 
-\begin{example}
+\begin{example}\label{ex:hyp_space}
 
 Define (diagonal) hyperbolic $n$-space over a scheme $(S,-)$ with involution to be $\mbb A^{2n}_S$
 with the hermitian form $(x_1,\dots,x_{2n},y_1,\dots,y_{2n}) \mapsto
@@ -1524,32 +1524,43 @@ of exact sequences with $(\phi_{-1},\phi_0,\phi_1) = (\phi_1^\vee
 \end{enumerate}
 \end{definition}
 
+\begin{definition}\label{def:GW_spectra}
+Given a dg-category with weak equivalences and duality $\mathscr A = (\mc A,w,\vee,\can)$, Schlichting
+defines \cite[Section 4.1]{Schder}  a functorial monoidal symmetric spectrum
+$GW(\mathscr A)$ using a modified version of the Waldhausen $\mc
+S_\bullet$ construction. For the sake of brevity, we don't reproduce
+his construction here. 
+
+Noting in general that $GW$ doesn't sit in a localization sequence,
+Schlichting defines a localizing variant, $\mbb GW$ in \cite[Section
+8.1]{Schder} as a bispectrum. Note that the reason Schlichting defines
+$\mbb GW$ as an object in bispectra rather than spectra is to get a monoidal structure
+on $\mbb GW$. We provide an alternative approach to producing $\mbb
+GW$ by periodization in chapter \ref{chap:Einf}. 
+\end{definition}
+
 
 
 \chapter{Representability of Homotopy Hermitian $K$-Theory}\label{chap:herm_grass}
 
-The goal of
-this chapter is to define a sheaf on $\Sm{S}^{C_2}$, denoted $\RGr$, which represents
-hermitian $K$-theory in the motivic homotopy category $\mathcal
-\mothom_S^{C_2}$. 
 
 Representability of $K$-theory in the stable motivic homotopy category
 allows one to check that $K$-theory pulls back nicely. In particular,
 given $f : X \rightarrow S$ a map of schemes over $S$, one can use
 ind-representability of $\KGL$ to show that
-$f^*(\KGL_S) = \KGL_X$. Together with standard tools like the cousin
-sequence, one obtains cdh descent for algebraic
+$f^*(\KGL_S) = \KGL_X$. Together with the formalism of six operations
+in motivic homotopy theory, one obtains rather formally cdh descent for algebraic
 $K$-theory, see \cite{DenRep}.
 
-We first check that over a regular base $S$ with 2 invertible
+The goal of
+this chapter is to define a sheaf on $\Sm{S}^{C_2}$, denoted $\RGr$, which represents
+hermitian $K$-theory in the motivic homotopy category $\mathcal
+\mothom_S^{C_2}$. We first check that over a regular base $S$ with 2 invertible
 (e.g. $\Z[\frac{1}{2}]$), hermitian $K$-theory is representable in the
-category of smooth $C_2$-schemes, $\Sm{S}^{C_2}$. 
-
-To
-extend this result to non-regular bases, we utilize the
+category of smooth $C_2$-schemes, $\Sm{S}^{C_2}$. To
+extend this result to non-regular bases $S$, we utilize the
 Morel-Voevodsky approach to classifying spaces and obtain
-representability of homotopy hermitian $K$-theory (not ordinary
-hermitian $K$-theory).
+representability of homotopy hermitian $K$-theory in the motivic homotopy category $\HH^{C_2}(S)$.
 
 By analogy with the $K$ theory case, the equivariant scheme
 representing Hermitian $K$-theory on $\Sm{S}^{C_2}$ will be a colimit of schemes
@@ -1572,16 +1583,16 @@ the $K$-theory case where one must pass only to local (rather than
 strictly henselian local) rings in order for $K$-theory to be
 determined by rank. 
 
-We then compare $B_{isoEt}O(\Delta R$ (the colimit of the
+We then compare $B_{isoEt}O(\Delta R)$ (the colimit of the
 $B_{isoEt}O(\mbb H^d)(\Delta R)$) to
-the Grothendieck-Witt space defined in chapter \ref{sec:higher_GW} by viewing them both as group completions
+the Grothendieck-Witt space defined in section \ref{sec:Higher_GW} by viewing them both as group completions
 and comparing their homology. This approach is inspired by the
 Karoubi-Villamayor definition of higher algebraiic $K$-theory. 
 
 \section{The definition of the hermitian Grassmannian $\RGr$}
 
-The definition here describes the sections of $\RGr$ over an arbitrary
-(regular) scheme $X \rightarrow S$. We advise the hurried reader to
+The definition here describes the sections of the underlying scheme of
+$\RGr$ over a scheme $X \rightarrow S$. We advise the hurried reader to
 skip to section \ref{subsec:representability}.
 
 \begin{lemma}\label{lem:action_presheaf}
@@ -1599,13 +1610,15 @@ F(\sigma)(\mc F(\sigma)(f)) = f$ using naturality.
 \end{proof}
 
 Fix a (possibly degenerate) hermitian vector bundle $(V,\phi)$ over a
-regular base scheme $S$ with 2 invertible and with trivial
+base scheme $S$ with 2 invertible and with trivial
 involution. The canonical example of such a base scheme is $S = \Spec \Z[\frac{1}{2}]$.
 
 We'll define a presheaf $\RGr : (\Sm{S}^{C_2})^{op} \rightarrow \Set$
 by first defining a presheaf on $\Sm{S}$, showing that it's
 representable, equipping with an action, then taking the corresponding
-representable functor on $\Sm{S}^{C_2}$.
+representable functor on $\Sm{S}^{C_2}$. We can then extend to an
+arbitrary equivariant base $T$ with 2 invertible by pulling back along the unique map $T
+\rightarrow \Z[\frac{1}{2}]$.
 
 \begin{itemize}
 \item On objects, $\RGr(V)(f: X \rightarrow S)$ for an $S$-scheme $f :
@@ -1759,8 +1772,8 @@ But using the natural isomorphism between $\sigma^*$ and $\sigma_*$,
 together with the natural isomorphisms $\sigma^*\Hom(M,\mc O_x) \cong
 \Hom(M,\mc O_X)$ and $\sigma^*f^*V \cong f^*V$, this becomes a question
 of whether $\sigma^*$ is left exact. In general it isn't, but because
-it's naturally isomorphic to $\sigma_*$, and $\sigma_*$ is left exact, the claim
-follows. 
+$\sigma$ is an involution, $\sigma^*$ is naturally isomorphic to
+$\sigma_*$ which is left exact. The claim follows.
 
 % First note that $\sigma^{-1}M(U) = M(\sigma(U))$. Thus
 % $\sigma^*M(U) = M(\sigma(U)) \otimes_{\mc O_X(\sigma(U))} \mc O_X(U)$
@@ -1820,8 +1833,7 @@ correspond to orthogonal projections.
 \begin{definition}
 
 Now fix a dimension $d$ and a non-degenerate hermitian vector bundle
-$(V,\phi)$ over $S$.  Recalling that the trace of an idempotent
-coincides with the rank of the image, define $\RGr_d(V)$ to be the closed
+$(V,\phi)$ over $S$.  Define $\RGr_d(V)$ to be the closed
 subscheme of $\RGr(V)$ cut out by $\rk(p) = d$, where $\rk$ is the
 rank map. In other words, the underlying topological space of $\RGr_d(V)$ is the pullback
 \[
@@ -1832,7 +1844,8 @@ rank map. In other words, the underlying topological space of $\RGr_d(V)$ is the
 and if $S$ is regular, $\RGr_d(V)$ is the closed subscheme equipped with the reduced
 induced scheme structure. If $S$ is non-regular, then let $f : S
 \rightarrow \Z[\frac{1}{2}]$ and note that $\RGr_d(V)$ over $S$ is
-just $f^*(\RGr_d[\frac{1}{2}]$. The requirement that $V$ be non-degenerate is necessary so that the action
+just $f^*(\RGr_d[\frac{1}{2}])$ since pullback preserves rank and
+non-degeneracy of bundles. The requirement that $V$ be non-degenerate is necessary so that the action
 on $\RGr(V)$ sends rank $d$ subspaces to rank $d$ subspaces and hence
 induces an action on $\RGr_d(V)$. 
 \end{definition}
@@ -1859,7 +1872,7 @@ $\RGr(V)$ by non-degenerate subbundles.
 \end{remark}
 
 \begin{definition}
-Let $\mbb H_S$ denote the hyperbolic plane over the base scheme $S$. For $V \in \mbb H^\infty$
+Let $\mbb H_S$ denote the hyperbolic space \ref{ex:hyp_space} over the base scheme $S$. For $V \in \mbb H^\infty$
 a constant rank non-degenerate subbundle,
 let $|V|$ denote the rank of $V$. Order such subbundles of $\mbb
 H^\infty$ by inclusion, and denote the resulting poset by $P$. Given an inclusion $V \hookrightarrow V'$
@@ -2044,7 +2057,7 @@ $C_2$-scheme $f : X \rightarrow S$, let
 be the category of non-degenerate hermitian sub-bundles of $f^*V$. A
 morphism in this category from $E_0$ to $E_1$ is an isometry not
 necessarily compatible with the embeddings $E_0,E_1 \subseteq
-V$. Using pullbacks of quasi-coherent modules, we turn $\mc S$ into a presheaf of categories on
+f^*V$. Using pullbacks of quasi-coherent modules, we turn $\mc S$ into a presheaf of categories on
 $\Sm{S}^{C_2}$. For integer $d \geq 0$, define
 \[
 \mc S_d(V,\phi)  \subset \mc S(V,\phi)
@@ -2059,13 +2072,8 @@ automorphism group $O(V)$. Thus we get an inclusion $O(V,\phi)
 \rightarrow \mc S_{|V|}(V \perp H^\infty) $, where $O(V)$ is the
 isometry group considered as a category on one object. After isovariant \'etale
 sheafification, this inclusion becomes an equivalence; this follows
-from our remarks above that on the points in the isovariant \'etale
-topology, hermitian vector bundles are isomorphic to $\mbb H^n(P)$ for
-some $n$, where $P$ is a hermitian vector bundle over a strictly
-henselian local ring. Since all hermitian vector bundles over strictly
-henselian local rings (with 2 invertible) are trivial, hermitian vector bundles over the
-points in the isovariant \'etale topology are completely determined by
-rank. 
+from Corollary \ref{cor:loc_det_rank} that on the points in the isovariant \'etale
+topology, hermitian vector bundles are determined by rank.
 
 Upon applying the nerve, we get maps of simplicial presheaves $BO(V)
 \rightarrow B\mc S_{|V|}(V\perp \mbb H^\infty)$ which is a weak
@@ -2212,7 +2220,8 @@ R[x_0,\dots,x_n]/(\sum x_i -1)$.
 
 \begin{lemma}
 Let $\Iso_d(R)$ denote the set of isometry classes of finitely-generated, non-degenerate
-hermitian vector bundles over $R$. The map
+hermitian vector bundles over a connected or hyperbolic ring with
+involution $R$. The map
 \[
 \colim_{V \subset \mbb H^\infty_R} \Iso_{|V|}(R) = \coprod_{V \subset
   \mbb H^\infty} \Iso_{|V|}/\sim \cong \widetilde{GW}_{[0]}(R)
@@ -2385,7 +2394,7 @@ T = \langle 1 \rangle_{\mbb R} \perp \mbb H_{\mbb R}^\infty
 \]
 where the last surjection is split by the map sending $1 \mapsto
 (x,\frac{1}{2}(1-x),\frac{1}{2}(1-x))$. We claim
-that under the two maps $R[x] \rightarrow R$, $x \mapsto 0, \xmapsto
+that under the two maps $R[x] \rightarrow R$, $x \mapsto 0, x \mapsto
 1$, the split surjection $T$ restricts to $X$ and $Y$. Indeed, this is
 just the fact that given an $R[x]$-module structure on $R$ via the map
 $\eta_t: R[x] \rightarrow R$, $x \mapsto t$, as well as a map $R[x]
