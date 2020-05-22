@@ -135,8 +135,7 @@ introduced the Witt ring as an object to encapsulate the nature of
 all the quadratic forms over a given field \cite{Witt1937}. Following
 Grothendieck's ideas, Hyman Bass introduced a category of quadratic
 forms  $\Quad(R)$
-with isometries over a ring $R$ and studied $K_1(\Quad(R))$ and $K_0(\Quad(R))$
-. $K_0(\Quad(R))$ is what we know today as the
+with isometries over a ring $R$ and studied $K_1(\Quad(R))$ and $K_0(\Quad(R))$. $K_0(\Quad(R))$ is what we know today as the
 Grothendieck-Witt ring, and Bass was able to recovered the Witt ring
 as a quotient of $K_0(\Quad(R))$ by the image of the hyperbolic
 quadratic forms. $K_1(\Quad(R))$ was seen to be related to the stable
@@ -153,8 +152,9 @@ developed the motivic homotopy category and proved that algebraic
 $K$-theory was representable in the stable motivic homotopy category
 \cite{MorelVoev}. The development of the stable motivic homotopy
 category not only gave a new domain to motivic cohomology, it also
-opened the door for a slew of topological tools like obstruction
-theory to be brought to bear on more algebraic objects. Several
+opened the door for applications of topological tools like obstruction
+theory to
+more algebraic objects. Several
 subsequent developments inspire our work here.
 
 The first set of developments relates to hermitian $K$-theory. In 2005 Hornbostel showed that Hermitian $K$-theory was
@@ -256,7 +256,9 @@ is a group complete $H$-space
 and get a version of algebraic $K$-theory which agrees with Quillen's
 definition over regular rings. Over non-regular rings, one gets a
 ``positive homotopy $K$-theory'', which is perhaps the more natural
-version to consider from the motivic perspective. This chapter
+version to consider from the motivic perspective. 
+
+This chapter
 culminates with two theorems. First we have Theorem \ref{thm:RGr_GW} a representability result which
 can be shown by a straightforward generalization of
 Schlichting-Tripathi's techniques to the equivariant setting.
@@ -409,7 +411,7 @@ example above, $\Spec L \times_k \Spec L \cong \coprod_{g \in G} \Spec
 k$, whereas the pullback in spaces is just a single point. 
 \end{remark}
 
-\section{The equivariant and isovariant \'etale topologies}
+\section{The Equivariant and Isovariant \'Etale Topologies}
 
 \begin{notation}
 Let $S$ be a  $G$-scheme. The equivariant \'etale topology on $\Sm{S}^{G}$
@@ -633,7 +635,7 @@ identity, which follows simply because the involution is unital (and
 because it gives a well-defined map on the residue field!).
 \end{example}
 
-\section{The equivariant Nisnevich topology}
+\section{The Equivariant Nisnevich Topology}
 
 Similarly to the non-equivariant case, the equivariant Nisnevich
 topology is defined by a particularly nice cd-structure. While there are
@@ -1434,7 +1436,7 @@ is split exact, and the canonical map is an isomorphism.
 \end{proof}
 
 
-\section{Higher Grothendieck Witt Groups}\label{sec:Higher_GW}
+\section{Higher Grothendieck-Witt Groups}\label{sec:Higher_GW}
 
 In \cite{Xie2018ATM}, the author works with coherent Grothendieck-Witt
 groups on a scheme. Because the negative $K$-theory of the category of
@@ -2125,15 +2127,16 @@ equivalence after $C_2$ motivic localization.
 
 Each Hermitian vector bundle $W  \in S_{|V|}(V\perp \mbb H^\infty)(R)$
 gives rise to an $ O(V)$-torsor via $W \mapsto Isom(V,W)$. Note
-that this is an $O(V)$-torsor because etale locally, $W \cong V$,
-so that etale locally $Isom(V,W) \cong Isom(V,V) \cong 
+that this is an $O(V)$-torsor because locally in the isovariant
+\'etale topology, $W \cong V$,
+so that locally $Isom(V,W) \cong Isom(V,V) \cong 
 O(V)$. Because hermitian vectors bundles are isovariant etale locally
-determined by rank, the same proof as the vector bundle case shows
+determined by rank, the same proof as the ordinary vector bundle case shows
 that the category of $\mc O(V)$ torsors is equivalent to the category
 of Hermitian vector bundles. Because over an affine scheme, every
 hermitian vector bundle is a summand of a hyperbolic module, it
 follows that $S_{|V|}(V\perp \mbb H^\infty)(R)$ is equivalent to the
-category of (etale) $\mc O(V)$ torsors. 
+category of (isovariant \'etale) $\mc O(V)$ torsors. 
 
 Let $\mc F : \Sm{S}^{C_2} \rightarrow Gpd$ be the sheaf which assigns
 to $f : X \rightarrow S$ the groupoid of $ O(f^*V)$-torsors. The
@@ -2405,7 +2408,8 @@ R \cong R$ is multiplication by $\eta_t(x)$.
 
 We proceed to prove that the map on fibers is a weak equivalence by
 presenting the domain and codomain as free quotients of contractible
-spaces. To set up the relevant group actions, we need the following lemma.
+spaces. The following lemma will be used to show that the spaces in
+question (defined after the lemma) will be contractible. 
 
 
 \begin{lemma}\label{lem:incHE}
@@ -2422,7 +2426,7 @@ H^\infty_{\Delta R}) \qquad A \mapsto 1_V \perp A.
 \begin{proof}
 First, assume that $V = \mbb H$. Consider the map $j : O(\mbb H^n)
 \rightarrow O(\mbb H^{2n+2})$ sending $A$ to $1_H \perp A \perp
-1_{\mbb H^{n+1}}$. We claim that this is naively $\mbb A^1$ homotopic
+1_{\mbb H^{n+1}}$. We claim that this is na\"ively $\mbb A^1$ homotopic
 to the inclusion $i : O(\mbb H^n) \rightarrow O(\mbb H^{2n+2})$, $i(A)
 = A \perp 1_{\mbb H^{n+2}}$ which defines the colimit $O(\mbb
 H^\infty)$. Let $g = \begin{pmatrix}
@@ -2574,8 +2578,8 @@ forgetting the action. Furthermore, $O(V_{\Delta R})$ acts freely on
 both sides, so that the induced map on quotients 
 \begin{equation}\label{eq:RGr_Sv}
 \RGr_V(V \perp \mbb
-H^\infty_{\Delta R}) \rightarrow \mc S_V(V \perp \mbb H^\infty_{\Delta
-  R})
+H^\infty)({\Delta R}) \rightarrow \mc S_V(V \perp \mbb
+H^\infty)(\Delta R)
 \end{equation}
  is also a weak equivalence. 
 
@@ -2583,22 +2587,24 @@ As an aside, the inclusion $BO(V) \subset B\mc S_V(V \perp \mbb
 H^\infty)$ is a weak equivalence since $\mc S_V(V \perp \mbb
 H^\infty)$ is a connected groupoid. 
 
-\subsection{Showing that digram \ref{dia:Grass_GW} is a diagram in
+\subsection{Showing that diagram \ref{dia:Grass_GW} is a diagram in
   $E_\infty$-spaces}
 
-For a commutative ring with involution $(R,\sigma)$, let $\mathscr
+As in \cite{SchTri}, we start by defining an $E_\infty$-operad, then
+show that the spaces in \ref{dia:Grass_GW} are algebras over this
+operad. For a commutative ring with involution $(R,\sigma)$, let $\mathscr
 E(n)(R)$ be the set
 \[
 \mathscr E(n)(R) = \lim_{V \subset \mbb H^\infty_R} \St(V^{\perp n} , \mbb H^\infty_R).
 \]
 
-where limit is over non-degenerate subspaces of $\mbb H^\infty$. The
+where the limit is over non-degenerate subspaces of $\mbb H^\infty$. The
 permutation group $\Sigma_n$ acts by permuting the component
 subspaces. The maps in the limit are equivariant with respect to this
 free action, and hence there's an induced free action on the
 limit. Now if $V \subseteq W$, then the map $\St(V^n,\mbb
-H^\infty_{\Delta R}) \rightarrow \St(W^n,\mbb H^\infty_{\Delta R})$ is
-a Kan fibration, and hence
+H^\infty)(\Delta R) \rightarrow \St(W^n,\mbb H^\infty)(\Delta R)$ is
+a Kan fibration by \cite[Proposition A.5]{SchTri}, and hence
 \[
 \mathscr E(n)(\Delta R) = \lim_k \St(\mbb H^k \perp \cdots \perp \mbb
 H^k,\mbb H^\infty)(\Delta R)
@@ -2716,7 +2722,8 @@ and the map $(e_1,\dots,e_k): (E_1,\dots,E_k) \rightarrow
 \circ g^{-1}|_{E_1} \perp \cdots \perp g|_{E'_k} \circ e_k \circ g^{-1}|_{E_k}.
 \]
 
-To see that the spaces are group complete, we apply Lemma \ref{lem:grp_complete_help} to
+It follows that the spaces are algebras over an $E_\infty$-operad, and
+the maps in question preserve the operad action. To see that the spaces are group complete, we apply Lemma \ref{lem:grp_complete_help} to
 the (ordinary!) fiber sequences defining Diagram
 \ref{dia:Grass_GW}. Because $\mc S_V(V \perp \mbb H^\infty_R) \cong
 BO(V)$, both it and $\mc S_V(V \perp \mbb H^\infty_{\Delta R})$ are
@@ -2819,7 +2826,8 @@ products (in particular $\Delta(R
 \section{The Grothendieck-Witt space}
 
 
-For a ring $R$ with involution $\sigma$, there's an associated
+The goal of this section is to give a model for $GW$ which very
+obviously receives a map from $\mc S_\bullet$. For a ring $R$ with involution $\sigma$, there's an associated
 category $S(R)$ with duality given by vector bundles
 with their canonical duality and vector bundle morphisms as
 morphisms. The subcategory of hermitian objects and isometries is symmetric monoidal under $\perp$, and the translations
@@ -3271,7 +3279,7 @@ equivalence between $L_{\mbb A^1}B_{isoEt}(O)$ and $L_{\mbb A^1}GW$
 over connected or hyperbolic rings, doesn't require the base
 to be regular. Extending to non-connected rings just as in the proof
 of Lemma \ref{lem:RGr_GW} shows that $L_{\mbb A^1}GW \cong
-L_{\mbb A^1} B_{isoEt}O$ over Noetherian base rings. In particular,
+L_{\mbb A^1} B_{isoEt}O$ over Noetherian base rings of finite Krull dimension. In particular,
 there's a motivic equivalence $B_{isoEt}O \cong GW$ over Noetherian
 base rings which aren't necessarily regular.
 
@@ -3335,7 +3343,7 @@ We've thus proved:
 Let $S$ be a Noetherian scheme of finite Krull dimension. There are
 equivalences of $C_2$-motivic spaces on $\Sm{S}^{C_2}$
 \[
-\Z \times \RGr_\bullet \xrightarrow \Z \times B_{isoEt}O
+\Z \times \RGr_\bullet \xrightarrow{\sim} \Z \times B_{isoEt}O
 \xrightarrow{\sim} GW
 \]
 \end{theorem}
@@ -3344,6 +3352,10 @@ equivalences of $C_2$-motivic spaces on $\Sm{S}^{C_2}$
 
 \section{A projective bundle formula for $\mbb P^\sigma$}
 
+Let $\mbb P^\sigma$ denote $\mbb P^1$ with involution $\sigma$ defined
+by $[x:y] \mapsto
+[y:x]$. When necessary we'll point it at the point $[1:1]$. Throughout this section, we'll fix the notation $\mc O = \mc
+O_{\mbb P^1}$.
 
 Consider the square
 \begin{equation}\label{diag:prebott}
@@ -3497,12 +3509,11 @@ that the composite is zero follows from commutativity of that
 that any permutation of $(\frac{T+S}{2},\frac{S-T}{2})$ is a regular sequence on
 $k[S,T]$. Thus if  $\frac{T+S}{2}x + \frac{S-T}{2}y = 0$, reducing mod
 $\frac{T+S}{2}$ we see that $y \in (\frac{T+S}{2})$, and reducing mod
-$\frac{S-T}{2}$, we see that $x \in (\frac{S-T}{2})$. Proving that the
-kernel is equal to the image reduces to this fact.
+$\frac{S-T}{2}$, we see that $x \in (\frac{S-T}{2})$. 
 
 
 It follows that the square defining $\phi$ is a pushout, and hence the induced map on
-mapping cones is a quasi isomorphism. It follows that $\beta^\sigma$
+mapping cones is a quasi isomorphism. Hence $\beta^\sigma$
 is a well-defined, non-degenerate symplectic form in
 $\left(\Ch^b\Vect(\mathbb P^\sigma)\right)^{[1]}$. 
 
@@ -3547,7 +3558,7 @@ induces a homotopy fibration of $GW^{[n]}$ and $\mbb GW^{[n]}$
 spectra. As remarked above, these fibration sequences split via the
 exact dg form functors
 \[
-\xymatrix{(\sPerf(X),\mathrm{quis}) \ar[r]{\beta \otimes} & (\sPerf(\mbb
+\xymatrix{(\sPerf(X),\mathrm{quis}) \ar[r]^{\beta^\sigma \otimes} & (\sPerf(\mbb
   P^1_X),\mathrm{quis}) \ar[r] & (\sPerf(\mbb P^1_X),w)}
 \]
 so that the composite is an equivalence of triangulated categories.
