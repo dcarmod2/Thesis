@@ -1533,10 +1533,10 @@ his construction here.
 
 Noting in general that $GW$ doesn't sit in a localization sequence,
 Schlichting defines a localizing variant, $\mbb GW$ in \cite[Section
-8.1]{Schder} as a bispectrum. Note that the reason Schlichting defines
+8.1]{Schder} as a bispectrum. The reason Schlichting defines
 $\mbb GW$ as an object in bispectra rather than spectra is to get a monoidal structure
 on $\mbb GW$. We provide an alternative approach to producing $\mbb
-GW$ by periodization in chapter \ref{chap:Einf}. 
+GW$ via periodization in chapter \ref{chap:Einf}. 
 \end{definition}
 
 
@@ -2209,7 +2209,7 @@ B_{isoEt}O = \colim_{W \subseteq \mbb H^\infty_S} B_{isoEt}O(W).
 % and 
 
 \begin{theorem}
-Let $R$ be a regular noetherian ring with involution which is either connected or
+Let $R$ be a regular Noetherian ring with involution which is either connected or
 hyperbolic. Then there's an equivalence of simplicial sets
 \[
 B\RGr_\bullet(\Delta R) \rightarrow |B \mc S_\bullet (\Delta R)|
@@ -2517,7 +2517,7 @@ is a contractible Kan set.
 \end{lemma}
 
 Now we move to identifying $\RGr_V$ as a quotient of a contractible
-space by a free group aciton. Let $V$ be a non-degenerate Hermitian
+space by a free group action. Let $V$ be a non-degenerate Hermitian
 vector bundle over a ring $R$ with involution. Then the group $O(V)$
 acts on the right on $\St(V,U)$ by precomposition. The map $\St(V,U)
 \rightarrow \RGr_V(U) : f \mapsto \im(f)$ factors through the quotient
@@ -2745,7 +2745,7 @@ is a weak equivalence of simplicial sets.
 \end{corollary}
 
 \begin{theorem}\label{thm:RGr_Bet}
-Let $(R,\tau)$ be a regular noetherian ring with involution with
+Let $(R,\tau)$ be a regular Noetherian ring with involution with
 $\frac{1}{2} \in R$. Then
 \[
 \RGr_\bullet(\Delta R) \xrightarrow{\sim} B_{isoEt}O(\Delta R)
@@ -2861,7 +2861,7 @@ is a summand of hyperbolic space. Thus by \cite{Schder}, Theorem A.1, there's an
 $\mathscr GW(R,\sigma) \cong \Omega^\infty GW(R,\sigma)$ for any ring
 with involution $(R,\sigma)$. 
 
-\subsection{Homotopy colimits of categories}
+\subsection{Homotopy Colimits of Categories}
 
 \begin{definition}
 Let $\mc C$ be a small category, and let $J : \mc C \rightarrow \Cat$
@@ -3161,7 +3161,7 @@ where $\phi$ is induced by inclusion of objects and $\psi$ is induced
 by inclusion of diagrams. 
 
 \begin{proposition}\label{prop:Bet_GW}
-Let $R$ be a possibly non-regular noetherian ring with involution
+Let $R$ be a possibly non-regular Noetherian ring with involution
 such that
 non-degenerate Hermitian vector bundles over $R$ have constant rank (e.g. connected or hyperbolic),
 and such that $\frac{1}{2} \in R$. Then inclusion of diagrams induces
@@ -3270,7 +3270,7 @@ Let $\underline{\Z}$ denote the sheafification of the constant sheaf. There's an
 This follows immediately from Lemma \ref{lem:RGr_GW} and  Corollary \ref{cor:htpy_RGr_compare}.
 \end{proof}
 
-\section{Representability over non-regular base schemes}
+\section{Representability over Non-Regular Base Schemes}
 
 Note first that Proposition \ref{prop:Bet_GW}, which provides an 
 equivalence between $L_{\mbb A^1}B_{isoEt}(O)$ and $L_{\mbb A^1}GW$
@@ -3282,7 +3282,7 @@ there's a motivic equivalence $B_{isoEt}O \cong GW$ over Noetherian
 base rings which aren't necessarily regular.
 
 It remains to show that there's a motivic equivalence $\RGr_\bullet
-\rightarrow B_{isoEt}O$ over non-regular noetherian base rings. 
+\rightarrow B_{isoEt}O$ over non-regular Noetherian base rings. 
 
 Let  $X \rightarrow S$ be an affine
 $C_2$-scheme over $S$, and let $W$ be a non-degenerate Hermitian
@@ -3348,14 +3348,14 @@ equivalences of $C_2$-motivic spaces on $\Sm{S}^{C_2}$
 
 \chapter{Periodicity in the Hermitian $K$-Theory of Rings with Involution}\label{chap:Einf}
 
-\section{A projective bundle formula for $\mbb P^\sigma$}
+\section{A Projective Bundle Formula for $\mbb P^\sigma$}
 
 Let $\mbb P^\sigma$ denote $\mbb P^1$ with involution $\sigma$ defined
 by $[x:y] \mapsto
 [y:x]$. When necessary we'll point it at the point $[1:1]$. Throughout this section, we'll fix the notation $\mc O = \mc
 O_{\mbb P^1}$.
 
-Consider the square
+Consider the square of $\mc O$-modules
 \begin{equation}\label{diag:prebott}
 \xymatrix{\mc O(-1)\ar[r]^{\frac{T+S}{2}}\ar[d]^{\frac{T-S}{2}} & \mc O \ar[d]^{\frac{T-S}{2}} \\ \iHom(\sigma_*\mc
   O,\mc O) \ar[r]^{\frac{T+S}{2}} & \iHom(\sigma_* \mc O(-1),\mc O)}
@@ -3363,37 +3363,40 @@ Consider the square
 
 where the map $\frac{T-S}{2} : \mc O(-1) \rightarrow \mc
 O$ is induced via the tensor-hom adjunction by the composition 
-\[
+\begin{equation}\label{eq:TminSone}
 \mc O(-1) \otimes \left\{\frac{T-S}{2}\right\} \otimes \sigma_* \mc O
 \xrightarrow{id \otimes i \otimes id}
 \mc O(-1) \otimes \mc O(1) \otimes \sigma_*\mc O  
 \xrightarrow{id \otimes id \otimes (\sigma^\#)^{-1}} \mc O(-1) \otimes
 \mc O(1) \otimes \mc O \xrightarrow{\mu \otimes id} \mc O \otimes \mc
 O \xrightarrow{\mu} \mc O
-\]
+\end{equation}
 
 and the map  $\frac{T-S}{2} : \mc O \rightarrow \sigma_*\mc
 O(-1)$ is induced via the tensor-hom adjunction by the composition 
-\[
+\begin{equation}\label{eq:TminS}
 \mc O \otimes \left\{\frac{T-S}{2}\right\} \otimes \sigma_* \mc O(-1)
 \xrightarrow{\sigma^\# \otimes  \sigma^\# \circ i \otimes id}
 \sigma_*\mc O \otimes \sigma_*\mc O(1) \otimes \sigma_*\mc O(-1)  
 \xrightarrow{ id \otimes \sigma_*(\mu)} \sigma_*\mc O \otimes \sigma_*\mc
 O \xrightarrow{\sigma_*\mu} \sigma_*\mc O
 \xrightarrow{(\sigma^\#)^{-1}} \mc O
-\]
+\end{equation}
 
-where $\mu$ denotes multiplication. Note that we're abusing notation
-here and using $\sigma^\#$ to also denote a map $\mc O(1) \rightarrow
-\sigma_* \mc O(1)$. We of course just mean the map induced by the
-graded automorphism of $k[S,T]$ given by $f(S,T) \mapsto f(T,S)$. This
-just yields the element $\frac{S-T}{2}$ as a global section of
+where $\mu$ denotes multiplication. We're abusing notation
+in the map \eqref{eq:TminS} and using $\sigma^\#$ to denote both the maps $\mc O \rightarrow
+\sigma_* \mc O$ and $\mc O(1) \rightarrow
+\sigma_* \mc O(1)$ induced by the graded automorphism of $k[S,T]$
+given by $f(S,T) \mapsto f(T,S)$. The image of $1 \in \mc O$ under the
+adjoint of the map \eqref{eq:TminS}
+ yields the element $\frac{S-T}{2}$ as a global section of
 $\sigma_*\mc O(1)$. The map $\frac{T+S}{2} :
 \iHom(\sigma_* \mc O, \mc O) \rightarrow \iHom(\sigma_* \mc O(-1),\mc
-O)$ is induced by precomposition with $\sigma_*(\frac{T+S}{2})$, which is still
-multiplication by the global section $\frac{T+S}{2}$. 
+O)$ is induced by precomposition with $\sigma_*(\frac{T+S}{2})$, which is just
+multiplication by the global section $\frac{T+S}{2}$. Equation
+\eqref{eq:TminSone} can be understood similarly.
 
-Note that these are both well-defined maps of $\mc O$-modules. We
+We
 claim that diagram \ref{diag:prebott} commutes. Fix an open $U
 \subseteq \mbb P^\sigma$ which need not be invariant, and open $V
 \subseteq U$. Going down then right yields the
@@ -3419,11 +3422,10 @@ to its dual,
 \iHom(\sigma_*\mc
   O,\mc O) \xrightarrow{\frac{T+S}{2}}  \iHom(\sigma_* \mc O(-1),\mc O).
 \]
-
 Thus this diagram defines a (not necessarily non-degenerate) form,
 which we denote by $\phi$. 
 
-In order to show that this$\phi$ is symplectic, we have to check that
+In order to show that this $\phi$ is symplectic, we have to check that
 $\phi^* \circ (-\can) = \phi$. To spell this out in detail, the dual
 and double dual are functors. Applying these two functors, we get the
 two objects
@@ -3448,7 +3450,6 @@ there's a commutative diagram
 
 The goal is to show that the vertical maps in the large rectangle are
 the negative of the vertical maps in diagram \ref{diag:prebott}.
-
 Tracing
 through the definitions, we see that $\can$ is the map which sends $u
 \in \mc O(-1)(U)$ to the natural transformation
@@ -3459,30 +3460,16 @@ and $\phi^* \circ \can (u)$ is the natural transformation
 \[
 v \mapsto (\sigma^\#)^{-1}\left(\frac{T-S}{2} \cdot v \cdot (\sigma^\#)^{-1}(u)\right)
 \]
-
 which is the same thing as
 \[
 v \mapsto \left(-\frac{T-S}{2} \cdot (\sigma^\#)^{-1} (v) \cdot u\right).
 \]
-% Composing with the map $\frac{T+S}{2} : \mc O^* \rightarrow \mc
-% O(-1)^*$ given by precomposition yields in total the composite
-% \[
-% u \mapsto (v \mapsto (\sigma^\#)^{-1}\left(\frac{T-S}{2} \cdot v \cdot (\sigma^\#)^{-1}\left(\frac{T+S}{2}u\right)\right).
-% \]
-
-% By the definition of $\sigma^\#$, this is just
-% \[
-% u \mapsto \left(v \mapsto \frac{T-S}{2} \cdot (\sigma^\#)^{-1}(v) \cdot \frac{T+S}{2} \cdot u\right),
-% \]
-% where we're crucially using that $\frac{T-S}{2}$ is an invariant
-% global section. 
 
 On the other hand, $\frac{T-S}{2} :
 \mc O(-1) \rightarrow \mc O^*$ is the map
 \[
 u \mapsto (v \mapsto \frac{T-S}{2} \cdot u \cdot (\sigma^\#)^{-1}(v))
 \]
-
 which is by what we calculated above equal to $-(\phi^* \circ \can) =
 \phi^* \circ (-\can)$.
 
@@ -3493,24 +3480,19 @@ the functor
 \Cone : \Fun([1],\Ch^b\Vect(\mbb P^\sigma))^{[0]} \rightarrow
 \left(\Ch^b\Vect(\mathbb P^\sigma)\right)^{[1]}
 \]
-
 yields a symplectic form $\beta^\sigma = \Cone(\phi)$. 
 
 We claim that there's an exact sequence
 \[
 \mc O(-1) \xrightarrow{\begin{pmatrix}\frac{T+S}{2} \\ \frac{T-S}{2} \end{pmatrix}} \mc O \oplus \mc O^* \xrightarrow{\begin{pmatrix}\frac{T+S}{2} & -\frac{T-S}{2} \end{pmatrix}} \mc O(-1)^*
 \]
-
 where the maps are the maps in diagram \ref{diag:prebott}. The fact
 that the composite is zero follows from commutativity of that
 \ref{diag:prebott}. To show that the kernel equals the image, note
 that any permutation of $(\frac{T+S}{2},\frac{S-T}{2})$ is a regular sequence on
 $k[S,T]$. Thus if  $\frac{T+S}{2}x + \frac{S-T}{2}y = 0$, reducing mod
-$\frac{T+S}{2}$ we see that $y \in (\frac{T+S}{2})$, and reducing mod
-$\frac{S-T}{2}$, we see that $x \in (\frac{S-T}{2})$. 
-
-
-It follows that the square defining $\phi$ is a pushout, and hence the induced map on
+$\frac{T+S}{2}$ we see that $y \in (\frac{T+S}{2})$ and reducing mod
+$\frac{S-T}{2}$ we see that $x \in (\frac{S-T}{2})$. It follows that the square defining $\phi$ is a pushout, and hence the induced map on
 mapping cones is a quasi isomorphism. Hence $\beta^\sigma$
 is a well-defined, non-degenerate symplectic form in
 $\left(\Ch^b\Vect(\mathbb P^\sigma)\right)^{[1]}$. 
@@ -3518,7 +3500,7 @@ $\left(\Ch^b\Vect(\mathbb P^\sigma)\right)^{[1]}$.
 
 
 \begin{theorem} \label{thm:proj_inv}
-Let $X$ be a scheme with trivial involution, an ample famliy of line
+Let $X$ be a scheme with trivial involution, an ample family of line
 bundles, and $\frac{1}{2} \in X$, and denote by $p : \mbb P^\sigma
 \rightarrow X$ the structure map of the equivariant projective line
 over $X$, with action $[x:y] \mapsto [y:x]$. Then for all $n \in \mbb
@@ -3534,7 +3516,7 @@ GW^{[n]}(\mbb P^\sigma_X)\\
 
 \begin{proof}
 The proof of Theorem 9.10 in \cite{Schder} can be easily adapted. Note
-that our Bott element $\beta^\sigma$ is just a linear change of
+that our Bott element $\beta^\sigma$ is  a linear change of
 coordinates from the standard Bott element on $\mbb P^1$. Keeping in
 mind that the involution only affects the duality and not the
 underlying derived category with weak equivalences, it's still true
@@ -3548,7 +3530,6 @@ P^1_X)/p^*\mc T\sPerf(X)$, we get a sequence
 \xymatrix{(\sPerf(X),\mathrm{quis}) \ar[r]^{p^*} & (\sPerf(\mbb
   P^1_X),\mathrm{quis}) \ar[r] & (\sPerf(\mbb P^1_X),w)}
 \]
-
 which is a Morita exact sequence of categories with duality. That is,
 the maps are maps of categories with duality, and the underlying
 sequence of categories is Morita exact. It follows that this sequence
@@ -3559,7 +3540,7 @@ exact dg form functors
 \xymatrix{(\sPerf(X),\mathrm{quis}) \ar[r]^{\beta^\sigma \otimes} & (\sPerf(\mbb
   P^1_X),\mathrm{quis}) \ar[r] & (\sPerf(\mbb P^1_X),w)}
 \]
-so that the composite is an equivalence of triangulated categories.
+so that the composite induces an equivalence of triangulated categories.
 Finally, using that $GW$ and $\mbb GW$ are invariant under derived
 equivalences, we conclude the theorem.
 \end{proof}
@@ -3584,7 +3565,6 @@ we obtain the periodicity isomorphism
 \iHom((\mbb P^1,[1:1]) \wedge (\mbb P^\sigma,[1:1]),GW^{[n]}) \cong
 GW^{[n]}
 \]
-
 induced by the map 
 \begin{align*}
 GW^{[n]}(X) &\rightarrow GW^{[n+1]}(\mbb P^1_X) \rightarrow
@@ -3629,7 +3609,7 @@ map.
 \end{proof}
 
 
-\section{The periodization of $GW$}
+\section{The Periodization of $GW$}
 
 The idea behind the Bass construction in algebraic $K$-theory is that
 as a consequence of satisfying localization, there is a
@@ -3661,7 +3641,8 @@ $K$-modules to the composite
 \xrightarrow{T} K.
 \]
 
-Here, loosely speaking, the first map in the composite represents the boundary $\partial$
+Here, loosely speaking, the first map in the composite represents the
+boundary in the long Bass exact sequence $\partial$
 while the second represents $[T]$, so that in the category of $K$
 modules this map represents cup product with $\partial([T])$. 
 
@@ -3670,7 +3651,7 @@ constructions to come. Let $W = \mbb A^1 \coprod_{\mbb G_m} \mbb A^1$,
 where we emphasize again that the pushout is in the category of
 presheaves. Because this is a (homotopy) pushout in the category of
 presheaves, applying $\iHom(-,K)$ gives us a homotopy pullback square,
-and hence a Mayer-Vietoris sequence. In particular, it gives us a map
+and hence a Mayer-Vietoris long exact sequence. In particular, it gives us a map
 of presheaves of spectra (which can be promoted to a map of $K$-modules) $\Omega  K(\mbb G_m) \rightarrow K(W)$, where
 we abuse notation and write $K(W)$ for the internal hom of $W$ into
 $K$. Because $K^B$ satisfies Nisnevich descent, and $K_i(-) =
@@ -3735,8 +3716,13 @@ formula. Now the map $p : (W,1) \rightarrow 1$ is split by inclusion
 of the base point, and thus $p^* : K(W,1) \rightarrow K((W,1) \otimes
 (W,1))$ is injective. Furthermore, $p^*(x \cup \partial([T]))
 = \partial([T]) \cup p^*(x)$, so that the image of $K_{-1}(W,1)$ in
-$K_{-1}((W,1) \otimes (W,1))$ is, by what we showed above, isomorphic
-to $K^B_{-1}(X)$. 
+$K_{-1}((W,1) \otimes (W,1))$ under the map $x \mapsto \partial([T])
+\cup p^*(x)$ is, by what we showed above, isomorphic
+to $K^B_{-1}(X)$. This shows that
+\[
+\pi_{-1}K^B = \pi_{-1}\colim(K \rightarrow \iHom(\mbb A^1 \coprod_{\mbb G_m} \mbb
+A^1,K) \rightarrow \cdots).
+\] 
 
 This argument is mostly formal given a few pieces of structural
 information:
@@ -3748,14 +3734,40 @@ information:
   $K_1(\mbb G^m)$.
 \end{itemize}
 
-The remainder of this section will show that we these three pieces of structure
-for Grothendieck-Witt groups as well, which will allow us to repeat
+The remainder of this section will show that these three pieces of
+structure are present
+for Grothendieck-Witt groups, which will allow us to repeat
 essentially the same argument to give a construction of the localizing
-$\mbb GW$ as a periodization of $GW$. We begin by
-identifying the analogues of the Bass sequence and the splittings
-therein.
+$\mbb GW$ as a periodization of $GW$. First, equivariant Nisnevich
+descent for $\mbb GW$ is a consequence of results from \cite{Schder}.
 
-From \cite[Theorem 9.13]{Schder}, we know that there's a Bass sequence
+\begin{lemma}
+$\mbb GW$ satisfies equivariant Nisnevich descent. 
+\end{lemma}
+
+\begin{proof}
+Recall that the distinguished squares defining the equivariant
+Nisnevich cd-structure are cartesian squares in $\Sm{S}^G$ 
+
+\[
+\xymatrix{B \ar[r]\ar[d] & Y \ar[d]^p \\ A \ar[r]^j & X}
+\]
+
+where $j$ is an open immersion, $p$ is \'etale, and
+$(Y-B)_{\mathrm{red}} \rightarrow (X-A)_{\mathrm{red}}$ is an
+isomorphism. 
+
+As in \cite[Theorem 9.6]{Schder}, a result of Thomason \cite[Theorem 2.6.3]{Thomason2007} tells us that the map $p$
+induces a quasi-equivalence of dg categories
+\[
+p^* : \mathrm{sPerf}_Z(X) \rightarrow \mathrm{sPerf}_Z(Y).
+\]
+From here, the localization sequence for $\mbb GW$ allows us to conclude the result. 
+\end{proof}
+
+ We begin by
+identifying the analogues of the Bass sequence and the splittings
+therein. From \cite[Theorem 9.13]{Schder}, we know that there's a Bass sequence
 \[
 \xymatrix{0 \ar[r] & \mbb GW^{[n]}_i(X) \ar[r] & \mbb GW^{[n]}_i(\mbb
   A^1_X) \oplus \mbb GW^{[n]}_i(\mbb A^1_X) \ar[r] & \mbb
@@ -3833,7 +3845,33 @@ the non-equivariant case.
 
 Over an arbitrary base scheme $X$, we denote by $[T^\sigma]$ the pullback of
 $[T^\sigma]$ to $GW^{[-1]}_0(S^\sigma \wedge \mbb G_m^\sigma
-\times_{\Z[\frac{1}{2}]} X)$ using functoriality of $GW$. 
+\times_{\Z[\frac{1}{2}]} X)$ using functoriality of $GW$. We summarize
+in the definition below.
+
+\begin{definition}\label{def:T_Tsigma}
+Let  $[T]$ denote the class of the element $T$ in $\mbb
+GW_1^{[1]}(\Z[\frac{1}{2}][T,T^{-1}])$. Let $\partial([T])$ denote the
+image of $[T]$ under the connecting map in the Bass sequence
+\[
+\partial : GW_1^{[1]}(\Z[\frac{1}{2}][T,T^{-1}]) \rightarrow
+GW_0^{[1]}(\mbb P^1_{\Z[\frac{1}{2}]}).
+\]
+
+Let $[T^\sigma]$ denote the lift of the element $\langle 1 \rangle
+\in GW^{[0]}_0(\Z[\frac{1}{2}])$ to $GW^{[-1]}_0(S^\sigma \wedge \mbb
+G_m^\sigma)$. Let $\partial([T^\sigma])$ denote the image of
+$[T^\sigma]$ under the connecting map in the long exact sequence
+\ref{eq:bass_inv}
+\[
+\partial : \xymatrix{GW_1^{[-1]}(S^\sigma \wedge \mbb G_m^\sigma) \ar[r] &
+  GW_0^{[-1]}(W_\sigma/S^0)}.
+\]
+
+Over an arbitrary scheme $S$ with $\frac{1}{2} \in S$, let $[T]$ and
+$[T^\sigma]$ denote the pullbacks $f^*([T])$, $f^*([T^\sigma])$ under
+the unique map $f : S \rightarrow \mbb Z[\frac{1}{2}]$, and similarly
+for $\partial([T])$ and $\partial([T^\sigma])$.
+\end{definition}
 
 Let $W = (\mbb A^1 \coprod_{\mbb G_m} \mbb A^1)_+$. Now (by taking the pointed version of everything) we have a candidate map
 \begin{equation}\label{eq:gamma}
@@ -3860,43 +3898,16 @@ Q_\alpha E = \colim(E \xrightarrow{\alpha} \iHom(x,E)
 \xrightarrow{\alpha} \iHom(x^{\otimes 2}, E) \xrightarrow{\alpha}
 \dots ).
 \]
-
 In general $Q_\alpha E$ is not the periodization of $E$ with respect
 to $\alpha$, one obstruction being that the cyclic permutation of
 $\alpha^3$ can fail to be homotopic to the identity. This matters
 because defining the map $\iHom(x,E)
 \xrightarrow{\alpha} \iHom(x^{\otimes 2}, E)$ requires making a choice
-between using $\alpha \otimes id$ or $id \otimes \alpha$. 
+between using $\alpha \otimes id$ or $id \otimes \alpha$, and these
+can fail to be homotopic. 
 
 
-% Our goal is to show that $Q_\gamma L_{mot}GW \cong L^{\mbb A^1}\mbb
-% GW$. Because we work over a base scheme of finite Krull dimension, it
-% suffices to show that the map induces an isomorphism of $\mbb
-% A^1$-homotopy groups. 
 
-\begin{lemma}
-$\mbb GW$ satisfies equivariant Nisnevich descent. 
-\end{lemma}
-
-\begin{proof}
-Recall that the distinguished squares defining the equivariant
-Nisnevich cd-structure are cartesian squares in $\Sm{S}^G$ 
-
-\[
-\xymatrix{B \ar[r]\ar[d] & Y \ar[d]^p \\ A \ar[r]^j & X}
-\]
-
-where $j$ is an open immersion, $p$ is \'etale, and
-$(Y-B)_{\mathrm{red}} \rightarrow (X-A)_{\mathrm{red}}$ is an
-isomorphism. 
-
-As in \cite[Theorem 9.6]{Schder}, a result of Thomason \cite[Theorem 2.6.3]{Thomason2007} tells us that the map $p$
-induces a quasi-equivalence of dg categories
-\[
-p^* : \mathrm{sPerf}_Z(X) \rightarrow \mathrm{sPerf}_Z(Y).
-\]
-From here, the localization sequence for $\mbb GW$ allows us to conclude the result. 
-\end{proof}
 
 \begin{remark}
 As a matter of notation, we will frequently use the symbols
@@ -4227,7 +4238,7 @@ $GW$-modules.
 \end{proof}
 
 Recall the definition of $\beta^{1+\sigma}$ from equation
-\ref{eq:bott_element}.
+\eqref{eq:bott_element}.
 
 \begin{definition}
 A $GW$-module $E$ is called \emph{Bott periodic} if the map
@@ -4468,7 +4479,7 @@ Proposition 4.9 in \cite{cdhdesc}.
 
 \chapter{cdh Descent for Homotopy Hermitian $K$-theory}\label{chap:cdh}
 
-\section{A review of the homotopy $K$-theory case}
+\section{A Review of the Homotopy $K$-Theory Case}
 
 Recall from Definition \ref{def:cdh_top} that the cdh topology is the
 topology generated by the Nisnevich and abstract blow-up squares. Fix
@@ -4538,7 +4549,7 @@ homotopy cartesian squares together with the assumptions in the theorem,  we see
 homotopy $K$-theory $KH$ takes abstract blowup squares to homotopy cartesian squares.
 \end{proof}
 
-\section{Extending to homotopy Hermitian $K$-theory}
+\section{Extending to Homotopy Hermitian $K$-Theory}
 
 Let $\KR$ be the motivic spectrum associated to homotopy
 Hermitian $K$-theory $L_{\mbb A^1}\mbb GW$ on $\Sm{S}^{C_2}$ for $S$ a
