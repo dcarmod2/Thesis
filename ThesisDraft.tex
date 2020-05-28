@@ -98,7 +98,7 @@
 
 \phdthesis
 
-\title{cdh Descent for Hermitian $K$-Theory of Rings with Involution}
+\title{cdh Descent for Homotopy Hermitian $K$-Theory of Rings with Involution}
 \author{Daniel Carmody}
 \department{Mathematics}
 \degreeyear{2020}
@@ -1295,7 +1295,7 @@ the map $M \otimes \overline M \rightarrow R \times R$ with an isomorphism $M
 
 \begin{corollary} \label{HermFormsOverSwitch} 
 Let $R$ be as in the lemma additionally with 2 invertible. Then $M \cong H(e_1M)$, where $H$ denotes
-the hyperbolic space functor. 
+the hyperbolic module functor. 
 \end{corollary}
 
 \begin{proof}
@@ -1305,7 +1305,7 @@ $b|_{e_1M} = 0$, so $M$ has a direct summand such that $e_1M =
 e_1M^{\perp}$. Now corollary 3.7.3 in Knus applies to finish the proof.
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{cor:herm_diag}
 Let $R$ be a semi-local ring with involution. Then any Hermitian
 module over $R$ diagonalizes.
 \end{corollary}
@@ -1327,19 +1327,56 @@ diagonalizable (see the proof of the non-involution case).
 \end{proof}
 
 
+\begin{lemma}\label{lem:semiloc_herm_form_rank}
+Non-degenerate Hermitian vector bundles are determined by rank over strictly
+henselian local rings $(R,m)$ with $\frac{1}{2} \in R$ such that the residue field $R/m$ has
+trivial involution.
+\end{lemma}
+
+\begin{proof}
+By Corollary \ref{cor:herm_diag}, any Hermitian vector bundle over $R$
+diagonalizes. Thus it suffices to prove that any two non-degenerate
+Hermitian vector bundles of rank 1 are isometric. 
+
+A non-degenerate rank 1 Hermitian vector bundle corresponds to a unit
+$x \in R^\times$ such that $x = \overline x$ (a one dimensional
+Hermitian matrix). Because $R$ is strictly henselian, there is a
+square root $c$ of $x^{-1}$. We claim that $c = \overline c$. Assume
+not. Then because the involution on $R/m$ is trivial, $c - \overline
+c \in m$. Since 2 is invertible, we have $c = \frac{c + \overline
+  c}{2} + \frac{c-\overline c}{2}$. It follows that $\frac{c+\overline
+  c}{2}$ is a unit. Otherwise it would be contained in $m$ which would
+imply that the unit $c$ was contained in $m$. 
+
+However, we calculate $(c + \overline c)(c - \overline c) = c^2 -
+\overline c^2$. But $(\overline c)^2 = \overline{(c^2)} = \overline x^{-1}
+= x^{-1}$, so that $(c + \overline c)(c - \overline c) = 0$. Because $c +
+\overline c$ is a unit, it follows that $c - \overline c = 0$. 
+
+This shows that given any one dimensional Hermitian matrix $x$,
+there's a unit $c$ such that $c x \overline c = 1$ so that all one
+dimensional Hermitian forms are isometric to the form $\langle 1 \rangle$.
+\end{proof}
+
 \begin{corollary}\label{cor:loc_det_rank}
 Hermitian vector bundles are locally determined by rank in the isovariant \'etale topology.
 \end{corollary}
 
 \begin{proof}
 The points in the isovariant \'etale topology are either strictly
-henselian local rings with
+henselian local rings whose residue field has
 trivial involution or a ring of the form $\mc O_{X,x}^{sh} \times \mc
 O_{X,x}^{sh}$ with involution $(x,y) \mapsto (i(y),i(x))$. Via the map
-$(x,y) \mapsto (x,i(y))$, such rings are isomorphic to hyperbolic rings. If the ring is a local ring, the fact that all non-degenerate Hermitian
-forms are trivial is well-known, since we have square roots. If the
-ring is hyperbolic, then all non-degenerate Hermitian forms over the
-ring are hyperbolic by the corollary above.
+$(x,y) \mapsto (x,i(y))$, such rings are isomorphic to hyperbolic
+rings. 
+
+If the ring is a stricty henselian local ring whose residue field has
+trivial involution, Lemma \ref{lem:semiloc_herm_form_rank} shows that
+non-degenerate Hermitian forms are determined by rank. If the
+ring is hyperbolic, then by Corollary \ref{HermFormsOverSwitch}  all non-degenerate Hermitian forms over the
+ring are hyperbolic forms of projective modules over a local
+ring. Since projective modules over a local ring are determined by
+rank, the corresponding hyperbolic forms are determined by rank. 
 \end{proof}
 
 
@@ -3309,10 +3346,10 @@ X$ is a motivic equivalence on $\Sm{S}^{C_2}$. Leting $V = W_\pi$,
 this is equivalent to checking
 that $\St(V,\mbb H^\infty_X)$ is motivically contractible
 over $\Sm{X}^{C_2}$. To wit, because $X$ is affine there's an
-embedding $V \hookrightarrow \mbb H^m$ we have $V \perp \mbb
+embedding $V \hookrightarrow \mbb H^m$, and we have $V \perp \mbb
 H^\infty_X \cong \mbb H^\infty_X$ since $\mbb H^\infty_X = \colim_{W
   \subset \mbb H^\infty_X} W$. It follows that $\St(V,\mbb H^\infty_X)
-\cong \St(V,V \perp \mbb H^\infty_X)$, then Lemma
+\cong \St(V,V \perp \mbb H^\infty_X)$, and Lemma
 \ref{lem:St_contrac} (which didn't assume regularity of the base) shows
 that $\St(V,V \perp \mbb H^\infty_X)$ is motivically contractible over
 $\Sm{X}^{C_2}$. 
@@ -3680,7 +3717,7 @@ K_0(\mbb A^1) \oplus K_0(\mbb A^1) \ar[r] & K_0(\mbb
   G_m) \ar[r]^\partial & K_{-1}^B(W)
 }
 \]
-which shows that$\phi$ restricts to an isomorphism $\partial(K_0(\mbb
+which shows that $\phi$ restricts to an isomorphism $\partial(K_0(\mbb
   G_m)) \cong \partial(K_0^B(\mbb
   G_m))$, and in particular that $\phi(\partial(K_0(\mbb
   G_m)) ) = \partial(K_0^B(\mbb
@@ -3765,15 +3802,14 @@ p^* : \mathrm{sPerf}_Z(X) \rightarrow \mathrm{sPerf}_Z(Y).
 From here, the localization sequence for $\mbb GW$ allows us to conclude the result. 
 \end{proof}
 
- We begin by
-identifying the analogues of the Bass sequence and the splittings
+ Next, we
+identify the analogues of the Bass sequence and the splittings
 therein. From \cite[Theorem 9.13]{Schder}, we know that there's a Bass sequence
 \[
 \xymatrix{0 \ar[r] & \mbb GW^{[n]}_i(X) \ar[r] & \mbb GW^{[n]}_i(\mbb
   A^1_X) \oplus \mbb GW^{[n]}_i(\mbb A^1_X) \ar[r] & \mbb
   GW^{[n]}_i(X[T,T^{-1}]) \ar[r] & \mbb GW^{[n-1]}_{i-1}(X) \ar[r] & 0}
 \]
-
 where the last non-trivial map is split by cup product with (the
 pullback of) $[T]$ in $\mbb
 GW_1^{[1]}(\Z[\frac{1}{2}][T,T^{-1}])$. This gives us a candidate map
@@ -3786,14 +3822,12 @@ Now, we want to find a candidate map $\Sigma^\sigma \mbb G_m^\sigma
 \mbb G_m^\sigma \otimes \Sigma \mbb G_m \rightarrow GW^{[-1]} \otimes
 GW^{[1]} \rightarrow GW^{[0]}.
 \]
-
 Define $W_\sigma$ by the pushout square in
 the category of presheaves
 \[
 \xymatrix{(C_2 \times \mbb G_m^\sigma)_+ \ar[r]\ar[d] & (C_2 \times \mbb
   A^\sigma)_+ \ar[d] \\ (\mbb G_m^\sigma)_+ \ar[r] & W_\sigma}.
 \]
-
 There's an associated homotopy pushout square
 \[
 \xymatrix{(C_2 \times \mbb G_m^\sigma)_+/(C_2)_+ \ar[r]\ar[d] & (C_2 \times \mbb
@@ -3810,24 +3844,12 @@ G_m^\sigma$, and that there's a long exact sequence
 \end{equation}
 Here if $\mbb A^\sigma_S \cong S$, then $(C_2 \times \mbb
   A^\sigma)_+/(C_2)_+ \cong (C_2)_+ \wedge \mbb A^\sigma$ is
-  contractible and $W/S^0 \cong S^\sigma \wedge \mbb G_m^\sigma$. 
-
-% Note that
-%   we're essentially going through the proof given in section ?? that $(\mbb
-%   P^\sigma,[1:1]) \cong S^\sigma \wedge \mbb G_m^\sigma$ as motivic
-%   spaces, but because presheaves don't satisfy Nisnevich descent we
-%   replace $\mbb P^\sigma_+$ by $W_\sigma$. 
-
-% Say $i \geq 0$. Then
-
-Working over the regular ring $\Z[\frac{1}{2}]$, $GW(W_\sigma/S^0)
+  contractible and $W/S^0 \cong S^\sigma \wedge \mbb G_m^\sigma$. Working over the regular ring $\Z[\frac{1}{2}]$, $GW(W_\sigma/S^0)
 \cong GW(\mbb P^\sigma/S^0)$, and
 \[  
 GW^{[n]}_i(W_\sigma/S^0) \cong GW^{[n]}_i(\mbb P^\sigma/S^0) \cong GW^{[n+1]}_i(S)
 \]
 by the projective bundle formula \ref{thm:proj_inv}. 
-
-
 
 The maps in the sequence
   \eqref{eq:bass_inv} are maps of $GW^{[0]}_*$-modules, and the
@@ -3906,16 +3928,13 @@ because defining the map $\iHom(x,E)
 between using $\alpha \otimes id$ or $id \otimes \alpha$, and these
 can fail to be homotopic. 
 
-
-
-
-\begin{remark}
-As a matter of notation, we will frequently use the symbols
-$\partial([T])$ and $\partial([T^\sigma])$ below. Since we use
-$\partial$ to denote every boundary map in a long exact sequence, we
-warn the reader that $\partial(([T])$ and $\partial([T^\sigma])$ are
-always (pullbacks of) the elements defined above. 
-\end{remark}
+% \begin{remark}
+% As a matter of notation, we will frequently use the symbols
+% $\partial([T])$ and $\partial([T^\sigma])$ below. Since we use
+% $\partial$ to denote every boundary map in a long exact sequence, we
+% warn the reader that $\partial(([T])$ and $\partial([T^\sigma])$ are
+% always (pullbacks of) the elements defined above. 
+% \end{remark}
 
 \begin{lemma}\label{lem:GWb_eq}
 The canonical map $\mbb GW \rightarrow Q_\gamma \mbb GW$ is an
@@ -3928,15 +3947,15 @@ that
 \[
 \mbb GW(\mbb P^\sigma \times \mbb P^1 = \mbb
 P^\sigma_{\mbb P^1}) \cong \mbb GW(\mbb P^1) \oplus \mbb GW^{[1]}(\mbb
-P^1) \cong \mbb GW(X) \oplus \mbb GW^{[n-1]}(X) \oplus \mbb
-GW^{[n+1]}(X) \oplus \mbb GW(X).
+P^1) \cong \mbb GW(X) \oplus \mbb GW^{[-1]}(X) \oplus \mbb
+GW^{[1]}(X) \oplus \mbb GW(X).
 \]
 We claim that under this isomorphism, cup product with
 $\partial [T^\sigma]$ is projection onto $\mbb
 GW^{[1]}(\mbb P^1)$ and cup product with $\partial [T]$ on
 $GW^{[1]}(\mbb P^1)$ is projection
 onto $\mbb GW(X)$. The latter statement is already known from
-\cite{Schder}, so we show the former. It suffices to show that cup
+\cite[Theorem 9.10]{Schder}, so we show the former. It suffices to show that cup
 product with $\partial [T^\sigma_{X}] \cup - : \mbb GW^{[n]}(X) \oplus
 \mbb GW^{[n+1]}(X) \rightarrow \mbb GW(X) \oplus \mbb GW^{[n+1]}(X)$ is projection
 onto the second factor. But this is precisely how $[T^\sigma]$ is
