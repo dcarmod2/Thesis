@@ -2453,8 +2453,8 @@ ring with involution $(R,\sigma)$ such that $\frac{1}{2} \in R$. Then
 the inclusion $\mbb H^\infty \subset V \perp \mbb H^\infty$ induces a
 homotopy equivalence of simplicial groups
 \[
-O(\mbb H^\infty_{\Delta R}) \rightarrow O(V \perp \mbb
-H^\infty_{\Delta R}) \qquad A \mapsto 1_V \perp A.
+O(\mbb H^\infty)(\Delta R) \rightarrow O(V \perp \mbb
+H^\infty)(\Delta R) \qquad A \mapsto 1_V \perp A.
 \]
 \end{lemma}
 
@@ -2473,12 +2473,12 @@ matrix. Then $i = gjg^{-1} = gjg^t$. Because $g$ corresponds to an
 even permutation matrix, it can be written as a product of elementary
 matrices, each of which is naively $\mbb A^1$ homotopic to the
 identity. It follow that $g$ is naively $\mbb A^1$ homotopic to the
-identity, and hence the induced maps $i,j : O(\mbb H^n_{\Delta R})
-\rightarrow O(\mbb H^{2n+2}_{\Delta R})$ are simplicially homotopic
+identity, and hence the induced maps $i,j : O(\mbb H^n)(\Delta R)
+\rightarrow O(\mbb H^{2n+2})(\Delta R)$ are simplicially homotopic
 via a base-point preserving homotopy. It follows that $i,j$ induce the
 same map on homotopy groups, so that $j_* = i_*: \pi_kO(\mbb
-H^\infty_{\Delta R}) = \colim_n \pi_k O(\mbb H^n_{\Delta R})
-\rightarrow \pi_k O(\mbb H^\infty_{\Delta R})$ is the colimit of a map
+H^\infty)(\Delta R) = \colim_n \pi_k O(\mbb H^n)(\Delta R)
+\rightarrow \pi_k O(\mbb H^\infty)(\Delta R)$ is the colimit of a map
 corresponding to a cofinal inclusion of diagrams, and hence is an
 isomorphism on all simplicial homotopy groups. Because simplicial
 groups are Kan complexes, it follows that $j$ is a homotopy
@@ -2488,15 +2488,15 @@ Now a trivial induction shows that the lemma holds when $V = \mbb
 H^n$. In general, choose an embedding $V \subseteq \mbb H^n$, and
 consider the sequence of maps
 \[
-O(\mbb H^\infty_{\Delta R}) \rightarrow O(V \perp \mbb
-H^\infty_{\Delta R}) \rightarrow O(\mbb H^n \perp \mbb H_{\Delta R}^\infty)
-\rightarrow O(\mbb H^n \perp V \perp \mbb H^\infty_{\Delta R}).
+O(\mbb H^\infty)(\Delta R) \rightarrow O(V \perp \mbb
+H^\infty)(\Delta R) \rightarrow O(\mbb H^n \perp \mbb H_{\Delta R}^\infty)
+\rightarrow O(\mbb H^n \perp V \perp \mbb H^\infty)(\Delta R).
 \]
 
-The composites $O(\mbb H^\infty_{\Delta R}) \rightarrow O(\mbb H^n
+The composites $O(\mbb H^\infty)(\Delta R) \rightarrow O(\mbb H^n
 \perp \mbb H^\infty)$ and $O(V \perp \mbb
-H^\infty_{\Delta R}) \rightarrow O(\mbb H^n \perp V \perp \mbb
-H^\infty_{\Delta R})$ are weak equivalences, so by 2 out of 6 the
+H^\infty)(\Delta R) \rightarrow O(\mbb H^n \perp V \perp \mbb
+H^\infty)(\Delta R)$ are weak equivalences, so by 2 out of 6 the
 first map is a weak equivalence. Because it is a map of simplicial
 groups it is a homotopy equivalence. 
  
@@ -2525,21 +2525,21 @@ O(\mbb H^\infty)\backslash O(V \perp \mbb  H^\infty) \cong
 \]
 
 Now Lemma \ref{lem:incHE} shows that the map $O(\mbb H^\infty_{\Delta
-  R}) \rightarrow O(V \perp \mbb H^\infty_{\Delta R})$ is an
+  R}) \rightarrow O(V \perp \mbb H^\infty)(\Delta R)$ is an
 equivariant map which is a non-equivariant homotopy equivalence. The
-simplicial group $O(\mbb H^\infty_{\Delta R})$ acts freely on both the
+simplicial group $O(\mbb H^\infty)(\Delta R)$ acts freely on both the
 domain and codomain, so that the quotients $O(\mbb H^\infty_{\Delta
-  R})\backslash O(V \perp \mbb H^\infty_{\Delta R})$ and $O(\mbb H^\infty_{\Delta
-  R})\backslash O(\mbb H^\infty_{\Delta R})$ are homotopy equivalent.
+  R})\backslash O(V \perp \mbb H^\infty)(\Delta R)$ and $O(\mbb H^\infty_{\Delta
+  R})\backslash O(\mbb H^\infty)(\Delta R)$ are homotopy equivalent.
 
 Together with the isomorphism of simplicial sets
 \[
 O(\mbb H^\infty_{\Delta
-  R})\backslash O(V \perp \mbb H^\infty_{\Delta R}) \cong \St(V,V
-\perp \mbb H^\infty_{\Delta R})
+  R})\backslash O(V \perp \mbb H^\infty)(\Delta R) \cong \St(V,V
+\perp \mbb H^\infty)(\Delta R)
 \]
 
-it follows that $\St(V,V\perp \mbb H^\infty_{\Delta R})$ is a
+it follows that $\St(V,V\perp \mbb H^\infty)(\Delta R)$ is a
 contractible for a commutative ring $(R,\sigma)$ with involution and
 $\frac{1}{2} \in R$. Morever, this simplicial set is fibrant because
 $G/H$ is fibrant for a simplicial group $G$ and subgroup $H$. We have
@@ -2548,7 +2548,7 @@ thus proved:
 \begin{lemma}\label{lem:St_contrac}
 Let $R$ be a commutative ring with $\frac{1}{2} \in R$. Then 
 \[
-\St(V,V\perp \mbb H^\infty_{\Delta R})
+\St(V,V\perp \mbb H^\infty)(\Delta R)
 \]
 is a contractible Kan set.
 \end{lemma}
@@ -2608,8 +2608,8 @@ equivalence. The map of simplicial sets
 H^\infty)(\Delta R)
 \]
 
-is $O(V_{\Delta R})$ equivariant and a weak equivalence after
-forgetting the action. Furthermore, $O(V_{\Delta R})$ acts freely on
+is $O(V)(\Delta R)$ equivariant and a weak equivalence after
+forgetting the action. Furthermore, $O(V)(\Delta R)$ acts freely on
 both sides, so that the induced map on quotients 
 \begin{equation}\label{eq:RGr_Sv}
 \RGr_V(V \perp \mbb
@@ -2761,9 +2761,9 @@ It follows that the spaces are algebras over an $E_\infty$-operad, and
 the maps in question preserve the operad action. To see that the spaces are group complete, we apply Lemma \ref{lem:grp_complete_help} to
 the (ordinary!) fiber sequences defining Diagram
 \ref{dia:Grass_GW}. Because $\mc S_V(V \perp \mbb H^\infty_R) \cong
-BO(V)$, both it and $\mc S_V(V \perp \mbb H^\infty_{\Delta R})$ are
+BO(V)$, both it and $\mc S_V(V \perp \mbb H^\infty)(\Delta R)$ are
 connected. We've already shown that $\RGr_V(V \perp \mbb
-H^\infty_{\Delta R}) \cong \mc S_V(V \perp \mbb H^\infty_{\Delta R})$,
+H^\infty)(\Delta R) \cong \mc S_V(V \perp \mbb H^\infty)(\Delta R)$,
 so it too is connected. 
 \end{proof}
 
@@ -2813,13 +2813,13 @@ products (in particular $\Delta(R
 % We've already shown that 
 % \[
 % \RGr_V(V \perp \mbb
-% H^\infty_{\Delta R}) \rightarrow \mc S_V(V \perp \mbb H^\infty_{\Delta
+% H^\infty)(\Delta R) \rightarrow \mc S_V(V \perp \mbb H^\infty_{\Delta
 %   R})
 % \]
 % and Lemma \ref{lem:weqaff} implies that
 % \[
 %  \mc S_{|V|}(V \perp \mbb H^\infty_{\Delta
-%   R}) \xrightarrow{\sim} B_{isoEt}(V_{\Delta R})
+%   R}) \xrightarrow{\sim} B_{isoEt}(V)(\Delta R)
 % \]
 % is an equivalence. Because Hermitian vector bundles are determined by
 % rank locally in the isovariant \'etale topology, we also have
@@ -3358,7 +3358,7 @@ $\Sm{X}^{C_2}$.
 
 It's a direct consequence of the above lemma that 
 \[
-L_{isoEt}(\St(W,W\perp \mbb H^\infty)/O(W)
+L_{isoEt}(\St(W,W\perp \mbb H^\infty)/O(W))
 \rightarrow B_{isoEt}O(W)
 \]
 is a motivic equivalence. However, we've already shown \eqref{eq:RGr_Sv} that
@@ -3376,10 +3376,10 @@ We've thus proved:
 
 \begin{theorem}\label{thm:RGr_GW_nonreg}
 Let $S$ be a Noetherian scheme of finite Krull dimension. There are
-equivalences of $C_2$-motivic spaces on $\Sm{S}^{C_2}$
+equivalences of motivic spaces on $\Sm{S}^{C_2}$
 \[
 \Z \times \RGr_\bullet \xrightarrow{\sim} \Z \times B_{isoEt}O
-\xrightarrow{\sim} GW
+\xrightarrow{\sim} GW.
 \]
 \end{theorem}
 
@@ -3606,7 +3606,7 @@ induced by the map
 \begin{align*}
 GW^{[n]}(X) &\rightarrow GW^{[n+1]}(\mbb P^1_X) \rightarrow
               GW^{[n]}(\mbb P^\sigma_{\mbb P^1_X})\\
-& x \mapsto \beta \cup p^*(x) \mapsto \beta^\sigma \cup q^*(k[-1]
+& x \mapsto \beta \cup p^*(x) \mapsto \beta^\sigma \cup q^*(\mc O_X[-1]
   \otimes \beta \cup p^*(x))
 \end{align*}
 
@@ -3634,12 +3634,13 @@ the Bott element, it's clear that it's supported on $[1:-1]$. There's a commutat
 \xymatrix{GW^{[n]}(C_2 \times \mbb A^\sigma \text{ on } [1:-1] \coprod
 [1:-1]) \ar[r] & GW^{[n]}(C_2 \times \mbb A^\sigma) \ar[r]\ar[d] &
 GW^{[n]}(C_2 \times \mbb A^\sigma - [1:-1]) \ar[dl] \\ &
-GW^{[n]}(\Spec(\Z[\frac{1}{2}])) &
+GW^{[n]}(C_2 \times \Spec(\Z[\frac{1}{2}])) &
 } 
 \]
 where the vertical maps are induced by inclusion of the point
-$[1:1]$. Because $\Z[\frac{1}{2}]$ is regular, the results of
-\cite{Xie2018ATM} show that the middle vertical map is an isomorphism,
+$[1:1]$. Because $\Z[\frac{1}{2}]$ is regular and $C_2 \times
+\mbb A^\sigma$ is equivariantly isomorphic to $C_2 \times \mbb A^1$, 
+\cite[Theorem 7.5]{Xie2018ATM} shows that the middle vertical map is an isomorphism,
 hence the upper right map is an injection. By localization, the top
 row is exact, and it follows that the left horizontal map is the zero
 map. 
