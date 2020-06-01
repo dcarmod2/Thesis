@@ -4265,25 +4265,7 @@ that the map induces an isomorphism on stable homotopy groups.
 \end{proof}
 
 
-\begin{theorem}\label{thm:GW_Einfty}
-Let $S$ be a Noetherian scheme of finite Krull dimension. Then $L_{\mbb A^1}\mbb GW$ lifts to an $E_\infty$ motivic spectrum, denoted
-$\KR$ over $\Sm{S}^{C_2}$.
-\end{theorem}
 
-\begin{proof}
-$GW$ is an $E_\infty$ object in presheaves of spectra on
-$\Sm{S}^{C_2}$ by results of Schlichting \cite{Schder}. By
-\cite{cdhdesc} Lemma 3.3, together with corollary \ref{cor:GW_per}
-above, $\mbb GW$ is the periodization of $GW$ with respect to
-$\gamma$. Now $\mbb GW$ is Nisnevich excisive, so that $\mbb GW(W/S^0
-\otimes W_\sigma/S^0) \cong \mbb GW(\mbb P^\sigma)$, and $\mbb GW$ is
-$\gamma$ periodic if and only if it is Bott periodic with respect to
-the Bott element in the projective bundle formula. By \cite{cdhdesc}, proposition 3.2, $\mbb GW$ lifts to an
-$E_\infty$ object $\KR$ in $GW_{mod}[(\mbb P^\sigma))^{-1}]$. Because $\mbb A^1$-localization preserves
-$E_\infty$ objects, $L_{\mbb A^1}\mbb GW$ is an $E_\infty$ object in
-the subcategory of Nisnevich excisive Bott periodic
-$GW$-modules. 
-\end{proof}
 
 Recall the definition of $\beta^{1+\sigma}$ from equation
 \eqref{eq:bott_element}.
@@ -4331,6 +4313,26 @@ A^\rho/(\mbb A^\rho - 0) \rightarrow GW^{[1]} \otimes GW^{[-1]}
 For a vector bundle $E$, let $\mbb V_0(E)$ denote $E/(E-0)$, the
 quotient by the complement of the zero section.
 
+\begin{theorem}\label{thm:GW_Einfty}
+Let $S$ be a Noetherian scheme of finite Krull dimension. Then $L_{\mbb A^1}\mbb GW$ lifts to an $E_\infty$ motivic spectrum, denoted
+$\KR$, over $\Sm{S}^{C_2}$.
+\end{theorem}
+
+\begin{proof}
+$GW$ is an $E_\infty$ object in presheaves of spectra on
+$\Sm{S}^{C_2}$ by results of Schlichting \cite{Schder}. By
+\cite{cdhdesc} Lemma 3.3, together with corollary \ref{cor:GW_per}
+above, $\mbb GW$ is the periodization of $GW$ with respect to
+$\gamma$. Let $\mbb P^\rho$ denote the projectivization of the regular
+representation $\mbb A^\rho$. Now $\mbb GW$ is Nisnevich excisive, so that $\mbb GW(W/S^0
+\otimes W_\sigma/S^0) \cong \mbb GW(\mbb P^\rho)$, and $\mbb GW$ is
+$\gamma$ periodic if and only if it is Bott periodic. By \cite{cdhdesc}, proposition 3.2, $\mbb GW$ lifts to an
+$E_\infty$ object $\KR$ in $GW_{mod}[(\mbb P^\rho)^{-1}]$. Because $\mbb A^1$-localization preserves
+$E_\infty$ objects, $L_{\mbb A^1}\mbb GW$ is an $E_\infty$ object in
+the subcategory of Nisnevich excisive Bott periodic
+$GW$-modules. 
+\end{proof}
+
 \begin{lemma}\label{lem:bott_3symm}
 The $\mbb A^1$-localization of the Bott element $L_{\mbb A^1}(\beta'
 \otimes (\beta^\sigma)' : L_{\mbb A^1} \mbb V_0(\mbb A^\rho)
@@ -4376,7 +4378,7 @@ which is an $\mbb A^1$-homotopy between $\phi_0$ and $\phi_1$ over
 $L_{\mbb A^1}GW$ as desired.
 \end{proof}
 
-Note that we've shown that $\mbb GW$ is Bott periodic and
+We've shown that $\mbb GW$ is Bott periodic and
 Nisnevich excisive. Since it's the Bott periodization of $GW$, it is
 in fact the reflection of $GW$
 in the subcategory of Nisnevich excisive and Bott periodic
