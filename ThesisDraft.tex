@@ -1301,8 +1301,8 @@ the hyperbolic module functor.
 \begin{proof}
 The assumption that 2 is invertible implies that $M$ is an even
 Hermitian space in the notation of Knus. Now by the corollary above
-$b|_{e_1M} = 0$, so $M$ has a direct summand such that $e_1M =
-e_1M^{\perp}$. Now corollary 3.7.3 in Knus applies to finish the proof.
+$b|_{e_1M} = 0$, so $M$ has direct summands $e_1M, e_2M$ such that $e_1M =
+e_1M^{\perp}$ and $M = e_1 M \oplus e_2M$. Now \cite[Corollary 3.7.3]{HermKnus} applies to finish the proof.
 \end{proof}
 
 \begin{corollary}\label{cor:herm_diag}
@@ -1529,6 +1529,8 @@ $\vee$ and $\can_A : A \rightarrow A^{\vee\vee}$ is a weak equivalence
 for all objects $A$ of $\mc A$. 
 \end{definition}
 
+
+
 \begin{definition}
 Let $\mathscr A = (\mc A,w,\vee,\can)$ be a dg category with weak
 equivalences and dualiy. The Grothendieck-Witt group $GW_0(\mathscr
@@ -1576,7 +1578,31 @@ on $\mbb GW$. We provide an alternative approach to producing $\mbb
 GW$ via periodization in chapter \ref{chap:Einf}. 
 \end{definition}
 
+\begin{definition}
+Let $X$ be a Noetherian scheme of finite Krull dimension, and let
+$\sigma : X \rightarrow X$ be an involution on $X$. Let $\sPerf(X)$
+denote the category of strictly perfect complexes on $X$ with the weak
+equivalences being the quasi-isomorphisms. Define a family of dualities on
+$\sPerf(X)$ index by $i \in \mbb N$ by 
+\[
+\ast^i : E \mapsto \iHom_{\sPerf(X)}(\sigma_*E,\mc O_X[i]).
+\]
+Note that because $\sigma$ is an involution, $\sigma_*E$ is a
+strictly perfect complex. Define the canonical isomorphim $\can$ as in Definition
+\ref{def:double_dual_iso} as the adjoint of the evaluation map
+\[
+ev : E \otimes \sigma_*\iHom_{\sPerf(X)}(\sigma_* E, \mc O_X[i])
+\rightarrow \mc O_X[i].
+\]
+Combining all this data we get a collection of dg categories with weak equivalences
+and duality $(\sPerf(X),\text{q. iso}, \ast^i,\can)$.
 
+The $i$th shifted Grothendieck-Witt spectrum of $(X,\sigma)$ is
+defined as
+\[
+GW^{[i]}(X,\sigma) = GW (\sPerf(X),\text{q. iso}, \ast^i,\can).
+\]
+\end{definition}
 
 \chapter{Representability of Homotopy Hermitian $K$-Theory}\label{chap:herm_grass}
 
@@ -3034,7 +3060,7 @@ where
 V \perp \mbb H^\infty_R.
 \end{align*}
 
-For morphisms,note that given a morphism $(f,g) : (V,W) \rightarrow
+For morphisms, note that given a morphism $(f,g) : (V,W) \rightarrow
 (A,B)$ in $\widetilde{\mathscr GW}(R)$, there are induced isometries
 \[
 \widetilde{f} : A-f(V) \perp V \xrightarrow{id \perp f} A-f(V) \perp
@@ -3253,9 +3279,7 @@ $\pi_0(GW(\Delta R))$ can be written as a coequalizer
   \ar[r] & \pi_0GW(\Delta R)}
 \]
 in the category of \emph{abelian groups}, see exercise IV.11.3 in
-Weibel's $K$-theory text \cite{Kbook}.
-
-It follows that $\widetilde{\mathscr GW}(\Delta R)$ is also a group complete $H$-space. 
+Weibel's $K$-theory text \cite{Kbook}. It follows that $\widetilde{\mathscr GW}(\Delta R)$ is also a group complete $H$-space. 
 
 Note that the $E_\infty$-structure defined above on $\mc
 S_\bullet(\Delta R)$ gives an $E_\infty$-structure on $\mathscr
@@ -3777,7 +3801,9 @@ The remainder of this section will show that these three pieces of
 structure are present
 for Grothendieck-Witt groups, which will allow us to repeat
 essentially the same argument to give a construction of the localizing
-$\mbb GW$ as a periodization of $GW$. 
+$\mbb GW$ as a periodization of $GW$. When the base scheme is a
+perfect field, a similar construction
+of $GW$ as a periodic spectrum was given in \cite{HuKriz}.
 
 
 First, equivariant Nisnevich
@@ -3867,7 +3893,7 @@ is an isomorphism of $GW^{[0]}_0(\Z[\frac{1}{2}])$-modules, and hence
 the inverse is uniquely determined by a lift of the element $\langle 1 \rangle
 \in GW^{[0]}_0(\Z[\frac{1}{2}])$ to $GW^{[-1]}_0(S^\sigma \wedge \mbb
 G_m^\sigma)$. We stress that this element $\langle 1 \rangle$ maps to
-$\beta^\sigma \cup \mc O_{\Z[\frac{1}{2}]}[-1] \cup \langle 1 \rangle$ in $\mbb P^\sigma$,
+$\beta^\sigma \cup \mc O_{\Z[\frac{1}{2}]}[-1] \cup \langle 1 \rangle$ in $GW(\mbb P^\sigma)$,
 and in particular it isn't the unit of multiplication in $GW(\mbb P^\sigma)$. We'll denote this element by $[T^\sigma]$ in analogy with
 the non-equivariant case. 
 
@@ -3929,9 +3955,7 @@ Q_\alpha E = \colim(E \xrightarrow{\alpha} \iHom(x,E)
 In general $Q_\alpha E$ is not the periodization of $E$ with respect
 to $\alpha$, one obstruction being that the cyclic permutation of
 $\alpha^3$ can fail to be homotopic to the identity. This matters
-because defining the map $\iHom(x,E)
-\xrightarrow{\alpha} \iHom(x^{\otimes 2}, E)$ requires making a choice
-between using $\alpha \otimes id$ or $id \otimes \alpha$, and these
+because checking periodicity requires permuting $\alpha \otimes id$ to $id \otimes \alpha$, and these
 can fail to be homotopic. 
 
 % \begin{remark}
@@ -3976,11 +4000,11 @@ the pointed $\mbb GW^{[-1]}(\mbb P^\sigma,[1:1])$.
 Because $\mbb GW$ satisfies equivariant Nisnevich descent, $\mbb
 GW(W/S^0) \cong \mbb GW(\mbb P^1,[1:1])$, and $\mbb GW(W_\sigma/S^0)
 \cong \mbb GW(\mbb P^\sigma,[1:1])$. Now we're essentially done. The
-maps in the colimit can be constructed as first identifying $\mbb GW_i^{[n]}(X)$
-with $\partial([T]) \cup \mbb GW_i^{[n]}(\mbb P^1_X,[1:1])$, then identifying
+maps in the colimit defining $Q_\gamma \mbb GW$ first identify $\mbb GW_i^{[n]}(X)$
+with $\partial([T]) \cup \mbb GW_i^{[n]}(\mbb P^1_X,[1:1])$, then identify
 $\mbb GW_i^{[n]}(\mbb P^1_X)$ with  $\partial([T^\sigma]) \cup
-\mbb GW_i^{[n]}(\mbb P^\sigma_{\mbb P^1_X},[1:1])$. By our remarks above,
-the image of $\mbb GW_i^{[n]}(X)$ under these identifications is isomorphic
+\mbb GW_i^{[n]}(\mbb P^\sigma_{\mbb P^1_X},[1:1])$. As we noted above,
+the projective bundle formulas imply that the image of $\mbb GW_i^{[n]}(X)$ under these identifications is isomorphic
 to $\mbb GW_i^{[n]}(X)$, and hence $Q_\gamma\mbb GW_i^{[n]}(X) \simeq \mbb
 GW_i^{[n]}(X)$ as desired.
 
@@ -4049,10 +4073,9 @@ commute with filtered (homotopy) colimits of spectra
 \otimes W_\sigma/S^0,GW) \xrightarrow{\alpha^{\otimes  2}} \cdots).
 \]
 
-Fix $[m]$ for now and denote by $F^i_n$ the image of $\pi_n$ under
-the map
+Fix $[m]$ for now and denote by $F^i_n$ the image of the map of groups
 \[
-\alpha : GW_n^{[m]}((W/S^0 \otimes W_\sigma/S^0)^{\otimes i})
+\gamma^* : GW_n^{[m]}((W/S^0 \otimes W_\sigma/S^0)^{\otimes i})
 \rightarrow GW_n^{[m]}((W/S^0 \otimes W_\sigma/S^0)^{\otimes i+1})
 \]
 and note that $F^0_n \cong GW^{[m]}_n$. Denote by $FB^i_n$ the same
@@ -4067,7 +4090,7 @@ For $i \geq -n$, we claim that there are exact sequences
 such that $\partial(F^i_n(\mbb
 G_m/1 \otimes W_\sigma/S^0)) = \partial([T]) \cup \partial([T^\sigma])
 \cup  F^{i}_{n-1}(W/S^0 \otimes W_\sigma/S^0)$. We prove this in conjunction with the
-statement that  $F^i_n \cong \mbb
+statement that, for each $n$,  $F^i_n \cong \mbb
 GW^{[m]}_n$ for $i \geq -n$. The proof is induction in $i$, and we
 must show that $\partial(F^i_n(\mbb
 G_m/1 \otimes W_\sigma/S^0)) = \partial([T]) \cup  F^{i}_{n-1}(W/S^0
@@ -4123,7 +4146,7 @@ First note that for all $i$ and $n$, there's a chain complex
   F^{i}_{n-1}(W/S^0 \otimes W_\sigma/S^0) }
 \]
 which is just the image of the usual long exact sequence for $GW$
-under the map $\alpha$. Depending on $n$, this sequence
+under the map $\gamma^*$. Depending on $n$, this sequence
 may or may not be exact, as the image of an exact sequence is in
 general not exact. 
 
