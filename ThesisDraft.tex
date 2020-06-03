@@ -308,8 +308,8 @@ the chapter culminates in theorem \ref{thm:cdh_desc}.
 
 \begin{theorem}
 Let $S$ be a Noetherian scheme of finite Krull dimension. Then the
-equivariant homotopy Hermitian $K$-theory spectrum $L_{\mbb A^1}\mbb
-GW$ satisfies descent for the equivariant cdh topology in $\Sm{S}^{C_2}$.
+homotopy Hermitian $K$-theory spectrum of rings with involution $L_{\mbb A^1}\mbb
+GW$ satisfies descent for the equivariant cdh topology on $\Sm{S}^{C_2}$.
 \end{theorem}
 
 \chapter{Equivariant Topologies and the Equivariant Motivic Homotopy Category}\label{chap:Eq_Top}
@@ -3331,7 +3331,7 @@ Let $\underline{\Z}$ denote the sheafification of the constant sheaf. There's an
 This follows immediately from Lemma \ref{lem:RGr_GW} and  Corollary \ref{cor:htpy_RGr_compare}.
 \end{proof}
 
-\section{Representability over Non-Regular Base Schemes}
+\section{Representability over Non-Regular Base Schemes}\label{sec:repr_nonreg}
 
 Note first that Proposition \ref{prop:Bet_GW}, which provides an 
 equivalence between $L_{\mbb A^1}B_{isoEt}(O)$ and $L_{\mbb A^1}GW$
@@ -3387,11 +3387,11 @@ L_{isoEt}(\St(W,W\perp \mbb H^\infty)/O(W))
 \]
 is a motivic equivalence. However, we've already shown \eqref{eq:RGr_Sv} that
 \[
-\St(W,W\perp \mbb H^\infty) \cong \RGr_W(W \perp \mbb H^\infty),
+\St(W,W\perp \mbb H^\infty)/O(W) \cong \RGr_W(W \perp \mbb H^\infty),
 \]
 so that 
 \[
-L_{isoEt}\St(W,W\perp \mbb H^\infty) \cong L_{isoEt}\RGr_W(W \perp
+L_{isoEt}\St(W,W\perp \mbb H^\infty)/O(W) \cong L_{isoEt}\RGr_W(W \perp
 \mbb H^\infty) \cong \RGr_{|W|}(W \perp \mbb H^\infty)
 \]
 which after taking colimits gives the desired result. 
@@ -4384,7 +4384,17 @@ in fact the reflection of $GW$
 in the subcategory of Nisnevich excisive and Bott periodic
 $GW$-modules. Because $C_2$ is a finite group (scheme), making $\mbb
 A^1$ contractible is equivalent to making the regular representation
-$\mbb A^\sigma$ contractible. Thus by definition, $L_{\mbb A^1}\mbb
+$\mbb A^\rho$ contractible. Indeed, there's an elementary $\mbb A^1$
+homotopy
+\[
+\mbb A^1 \times \mbb A^\rho \rightarrow \mbb A^\rho
+\qquad (t,s) \mapsto t\cdot s
+\]
+between $id_{\mbb A^\rho}$ and the composite $\mbb A^\rho \rightarrow
+S \xrightarrow{0} \mbb A^\rho$. Clearly the map $S \xrightarrow{0}
+\mbb A^\rho \rightarrow S$ is the identity, so that $\mbb A^\rho
+\rightarrow S$ is a na\"ive $\mbb A^1$-homotopy equivalence.
+ Thus by definition, $L_{\mbb A^1}\mbb
 GW$ is the reflection of $GW$ in the subcategory of homotopy
 invariant, Nisnevich excisive, and Bott periodic $GW$-modules. 
 
@@ -4543,7 +4553,7 @@ show that:
 \begin{itemize}
 \item given a smooth map $T \rightarrow X$, there's an isomorphism
   $Hom_{SH_{/X}}([T], KGL_{/X}) \cong KH(T)$
-\item given $f : X \rightarrow Y$, there's an isomorphism $f^* KGL_{/Y} \cong KGL_{/X}$.
+\item given $f : X \rightarrow Y$, there's an equivalence $f^* KGL_{/Y} \cong KGL_{/X}$.
 \end{itemize}
 \end{theorem}
 
@@ -4609,7 +4619,7 @@ Let $\HH(S)$ denote the motivic homotopy $\infty$-category on
 $\Sm{S}^{C_2}$. By Corollary \ref{cor:MotLoc_GW}, we can write $\KR$ as the image under the localization functor
 \[
 QL_{\mathrm{mot}} : \mathrm{Stab}^{\mathrm{lax}}_{\mbb P^\rho} \Sp(\mc
-P(Sm{S}^{C_2}) \rightarrow \mathrm{Stab}_{\mbb P^\rho} \Sp(\underline
+P(\Sm{S}^{C_2})) \rightarrow \mathrm{Stab}_{\mbb P^\rho} \Sp(\underline
 H) \simeq \SH
 \]
 of the ``constant'' $\mbb P^\rho$-spectrum $c_{\beta}GW$.
@@ -4634,7 +4644,7 @@ By Appendix A in \cite{Schder}, there's a map
 \mathrm{Herm}(X)^+ \rightarrow \Omega^\infty GW(X)
 \]
 where $\mathrm{Herm}(X)$ is the $E_\infty$ space of non-degenerate Hermitian vector
-bundles over $X$ and $(-)^+$ denotes group complete. If $X$ is an
+bundles over $X$ and $(-)^+$ denotes group completion. If $X$ is an
 affine $C_2$-scheme, the category of Hermitian vector bundles is a
 split exact category with duality, and the above map is an
 equivalence. It follows that
@@ -4669,8 +4679,9 @@ f^*\Omega^\infty GW|\Sm{X}^{C_2})\rightarrow  f^*\left(\coprod_{n \geq 0} B_{iso
     n})\right)^+
 \]
 
-Because $B_{isoEt}O(\langle 1 \rangle^{\perp n})$ is representable, by
-Proposition 2.9 in \cite{cdhdesc}, we also have a motivic equivalence
+Because $B_{isoEt}O(\langle 1 \rangle^{\perp n})$ is representable by
+the results of Section \ref{sec:repr_nonreg},
+\cite [Proposition 2.9]{cdhdesc} yields a motivic equivalence
 \[
 \left(\coprod_{n \geq 0} f^*B_{isoEt}O(\langle 1 \rangle^{\perp
     n})\right)^+ \rightarrow \left(\coprod_{n \geq 0} B_{isoEt}f^*O(\langle 1 \rangle^{\perp
@@ -4700,8 +4711,8 @@ is a motivic equivalence, as was desired. Thus we've proved
 
 \begin{theorem}\label{thm:cdh_desc}
 Let $S$ be a Noetherian scheme of finite Krull dimension. Then the
-equivariant homotopy Hermitian $K$-theory spectrum $L_{\mbb A^1}\mbb
-GW$ satisfies descent for the equivariant cdh topology in $\Sm{S}^{C_2}$.
+homotopy Hermitian $K$-theory spectrum of rings with involution $L_{\mbb A^1}\mbb
+GW$ satisfies descent for the equivariant cdh topology on $\Sm{S}^{C_2}$.
 \end{theorem}
 
 \bibliographystyle{alpha}
