@@ -127,21 +127,22 @@
 
 \chapter{Introduction}
 
-Algebraic $K$-theory is an algebraic invariant built from the category of vector bundles over a scheme. It was introduced in the 1950s by Alexander
+Algebraic $K$-theory is an algebraic invariant introduced in the 1950s by Alexander
 Grothendieck where it served as the cornerstone of his reformulation
 of the Riemann-Roch theorem \cite{Gro57}.  Twenty years previously, Ernst Witt had
 developed the notion of quadratic forms over arbitrary fields and
 introduced the Witt ring as an object to encapsulate the nature of
-all the quadratic forms over a given field \cite{Witt1937}. Following
-Grothendieck's ideas, Hyman Bass introduced a category of quadratic
+all the quadratic forms over a given field \cite{Witt1937}. Combining
+the ideas of Grothendieck and Witt, Hyman Bass introduced a category of quadratic
 forms  $\Quad(R)$
 with isometries over a ring $R$ and studied $K_1(\Quad(R))$ and $K_0(\Quad(R))$. $K_0(\Quad(R))$ is what we know today as the
-Grothendieck-Witt ring, and Bass was able to recovered the Witt ring
+Grothendieck-Witt ring, and Bass was able to recover the Witt ring
 as a quotient of $K_0(\Quad(R))$ by the image of the hyperbolic
-quadratic forms. $K_1(\Quad(R))$ was seen to be related to the stable
-structure of the automorphisms of hyperbolic modules. The $K$-theory
-of quadratic forms soon found applications to surgery theory through
-the periodic $L$-groups defined by Wall in 1966 \cite{Wall66}. When
+quadratic forms. He went on to show that $K_1(\Quad(R))$ was related to the stable
+structure of the automorphisms of hyperbolic modules, which complemented the relationship between $K_1(R)$ and the group $GL(R)$. The $K$-theory
+of quadratic forms soon found applications to surgery theory where
+the periodic $L$-groups defined by Wall in 1966 \cite{Wall66} served
+as obstructions to certain maps being cobordant to homotopy equivalences. When
 the means to define the higher algebraic $K$-groups via the $+$ construction was discovered by
 Quillen in the 1970s, Karoubi applied it to the orthogonal groups $BO$
 in order to define the higher Hermitian $K$-theory of rings with
@@ -159,10 +160,10 @@ subsequent developments inspire our work here.
 
 The first set of developments relates to Hermitian $K$-theory. In 2005 Hornbostel showed that Hermitian $K$-theory was
 representable in the stable motivic homotopy category on schemes
-without involution \cite{Hornbos2005}. We note that Hornbostel defined
+\cite{Hornbos2005}. We note that Hornbostel defined
 Hermitian $K$-theory on schemes by extending the definition on rings
 using Jouanolou's trick. In 2011 Hu-Kriz-Ormsby showed that Hermitian
-$K$-theory on the category of $C_2$-schemes was representable in the
+$K$-theory on the category of $C_2$-schemes over a field is representable in the
 $C_2$-equivariant stable motivic homotopy category \cite{HuKriz}. Here
 they used a similar trick to Hornbostel in order to extend Hermitian
 $K$-theory from rings with involution to schemes with involution. In
@@ -209,7 +210,7 @@ with trivial action over a regular base scheme with 2 invertible. Their techniqu
 setting, and with slight modification provide a proof of
 representability over non-regular bases. The periodization techniques
 in \cite{cdhdesc} can also be extended to Hermitian $K$-theory by
-investigating the Hermitian $K$-theory of $\mbb P^\rho$, the Thom
+investigating the Hermitian $K$-theory of $T^\rho$, the Thom
 space of the regular representation.
 
 \section{Outline}
@@ -269,6 +270,7 @@ $\underline \Z$ denote the sheafification of the constant sheaf. There's an equi
 L_{\mathrm{mot}} \underline{\Z} \times\RGr_\bullet
 \xrightarrow{\sim}  L_{\mathrm{mot}}GW.
 \]
+where $L_{\mathrm{mot}}$ denotes motivic localization.
 \end{theorem}
 
 Combining the tools from Schlichting-Tripathi with the Morel-Voevodsky approach to classifying spaces outlined
@@ -279,8 +281,8 @@ non-regular base schemes in Theorem \ref{thm:RGr_GW_nonreg}.
 Let $S$ be a Noetherian scheme of finite Krull dimension. There are
 equivalences of $C_2$-motivic spaces on $\Sm{S}^{C_2}$
 \[
-\Z \times \RGr_\bullet \xrightarrow{\sim} \Z \times B_{isoEt}O
-\xrightarrow{\sim} GW.
+L_{\mathrm{mot}}\Z \times \RGr_\bullet \xrightarrow{\sim} L_{\mathrm{mot}}\Z \times B_{isoEt}O
+\xrightarrow{\sim} L_{\mathrm{mot}} GW.
 \]
 \end{theorem}
 
@@ -298,7 +300,7 @@ $E_\infty$ object \ref{thm:GW_Einfty}.
 
 \begin{theorem}
 Let $S$ be a Noetherian scheme of finite Krull dimension. Then $L_{\mbb A^1}\mbb GW$ lifts to an $E_\infty$ motivic spectrum, denoted
-$\KR$ over $\Sm{S}^{C_2}$.
+$\KR$, over $\Sm{S}^{C_2}$.
 \end{theorem}
 
 The final chapter \ref{chap:cdh} follows the recipe given by Cisinski
@@ -318,14 +320,14 @@ This chapter reviews the foundations of equivariant motivic homotopy
 theory. The key definitions are those of the equivariant \'etale and
 Nisnevich topologies -- two topologies that play a crucial role in
 defining the equivariant motivic infinity category
-$\underline{H}(S)$ over a Noetherian base scheme $S$ with finite Krull dimension.
+$\HH(S)$ over a Noetherian base scheme $S$ with finite Krull dimension.
 
 \begin{notation}
 Throughout this section, $G$ will be either a finite group or the
 group scheme over $S$ associated to a finite group. Recall that to pass between
 finite groups and group schemes over $S$, we form the scheme
 $\coprod_G S$ with multiplication (using that fiber products commute
-with coproducts in $Sch/S$):
+with coproducts in $\Sm{S}$):
 \[
 \xymatrix{\coprod_G S \times_S \coprod_G S \ar[r]^-\sim &\coprod_{(g_1,g_2)\in G \times
   G} S \ar[r]^-{\mu}& \coprod_G S}
@@ -337,8 +339,8 @@ really mean $X \times_S Y$.
 \end{notation}
 
 We introduce the background definitions from \cite{GrpSchHell} which
-will allow us to define the isovariant \'etale topology. This topology
-is a topology slightly coarser than the equivariant \'etale topology,
+will allow us to define the isovariant \'etale topology. This is a topology
+which is slightly coarser than the equivariant \'etale topology,
 but whose points are still nice enough so that Hermitian vector
 bundles are locally determined by rank. 
 
@@ -368,7 +370,7 @@ By the pasting lemma, this is the same as the pullback
 \begin{definition}
 Let $X$ be a $G$-scheme, and define the \emph{set-theoretic}
 stabilizer $S_x$ of $x \in X$ to be $\{g \in G
-\mid gx = x\}$ where we think of $G$ as a finite group. 
+\mid gx = x\}$. 
 \end{definition}
 
 \begin{remark}
@@ -630,7 +632,7 @@ could take $R=\Z[\frac{1}{2}][t,t^{-1}]$, and consider the element
 $\frac{3}{2}t$ and the maximal ideal $(3,t-\frac{3}{2})$. One also has
 to note that the induced map on the residue field $\Z/3$ is the
 identity, which follows simply because the involution is unital (and
-because it gives a well-defined map on the residue field!).
+because it gives a well-defined map on the residue field).
 \end{example}
 
 \section{The Equivariant Nisnevich Topology}
@@ -647,9 +649,9 @@ $\Sm{S}^G$
 \[
 \xymatrix{B \ar[r]\ar[d] & Y \ar[d]^p \\ A \ar@{^{(}->}[r]^i & X}
 \]
-where $j$ is an open immersion, $p$ is \'etale, and
-$(Y-B)_{\mathrm{red}} \rightarrow (X-A)_{\mathrm{red}}$ is an
-isomorphism. 
+where $j$ is an open immersion, $p$ is \'etale, and $p$ restricts to
+an isomorphism
+$(Y-B)_{\mathrm{red}} \rightarrow (X-A)_{\mathrm{red}}$. 
 \end{definition}
 
 \begin{definition}
@@ -694,9 +696,7 @@ distinguished squares are
 \end{definition}
 
 One canonical example of a cdh cover is the map $X_{red} \rightarrow
-X$ for an equivariant scheme $X \rightarrow S$.
-
-Another example is given by resolution of singularities: given a
+X$ for an equivariant scheme $X \rightarrow S$. Another example is given by resolution of singularities: given a
 proper birational map $p : X \rightarrow Y$, it's an isomorphism over
 some open set $U$ in $Y$, so letting $Z = Y-U$ and $\widetilde Z = X -
 p^{-1}(U)$ we get an abstract blowup square
@@ -799,7 +799,7 @@ and homotopy invariance of homotopy cofiber:
 
 \section{The Equivariant Motivic Homotopy Category}\label{sec:cat_def}
 
-In this thesis, we'll work over a Noetherian scheme of finite Krull
+In this thesis, we'll work with a Noetherian scheme of finite Krull
 dimension and a finite group scheme $G$ over $S$. Equivariant motivic
 homotopy theory is developed in somewhat more generality by Hoyois in
 \cite{HoyoisSixOp}, though there's a price to be paid for allowing
@@ -861,18 +861,18 @@ pointed motivic $G$-spaces.
 
 The definition of stabilization can in general be complicated. With
 our assumptions however, we need only invert the Thom space of the
-regular representation $\mbb P^\rho$.
+regular representation $T^\rho$.
 
 \begin{definition}
 Let $S$ be a $G$-scheme. The symmetric monoidal $\infty$-category of
 \emph{motivic $G$-spectra} over $S$ is defined by 
 \[
-\SH^G(S) = \HH_\bullet^G(S)[(\mbb P^{\rho}_S)^{-1}] = \colim
-\left(\HH_\bullet^G \xrightarrow{-\otimes \mbb P^\rho} \HH_\bullet^G
-  \xrightarrow{-\otimes \mbb P^\rho} \cdots \right)
+\SH^G(S) = \HH_\bullet^G(S)[( T^{\rho}_S)^{-1}] = \colim
+\left(\HH_\bullet^G \xrightarrow{-\otimes T^\rho} \HH_\bullet^G
+  \xrightarrow{-\otimes T^\rho} \cdots \right)
 \]
-where $\mbb P^\rho$ is the projectivization of the regular
-representation $\mbb A^\rho$ of $G$.
+where $T^\rho$ is the Thom space of the regular
+representation $\mbb A^\rho/\mbb A^\rho - 0$ of $G$.
 \end{definition}
 
 \chapter{Hermitian Forms on Schemes}\label{chap:herm_form_sch}
@@ -885,8 +885,8 @@ O_X$-module with a well-behaved map to the dual module. Once the
 definitions are in place, we discuss in section
 \ref{sec:herm_form_semiloc} the structure of Hermitian forms over
 semilocal rings as this is the fundamental tool for showing that Hermitian forms
-are locally trivial in the isovariant or equivariant \'etale
-topologies. We prove this particular statement in Corollary
+are locally trivial in the isovariant \'etale
+topology. We prove this particular statement in Corollary
 \ref{cor:loc_det_rank}. We end this chapter by recalling Schlichting's
 definition of a dg categoy with weak equivalence and duality and the
 Grothendieck-Witt groups of such an object.  
@@ -933,7 +933,7 @@ with an $R-R$-bimodule map
 b :  M \otimes_{\Z}  M \rightarrow R
 \]
 where we view $R$ as a
-bimodule over itself just by $r_1 \cdot r \cdot r_2 = r_1rr_2$, $M$ as
+bimodule over itself by $r_1 \cdot r \cdot r_2 = r_1rr_2$, $M$ as
 a left $R$-module via the involution, and such that $b(x,y) = \sigma(b(y,x))$. If we remove the final
 condition, we obtain a sesquilinear form. 
 \end{remark}
@@ -972,8 +972,12 @@ O_X(\sigma^{-1}(U))$, and $M$ is a right $\mc O_X$-module.
 
 \begin{remark}
 We have two choices for the definition of the dual $M^*$. We can
-either define $M^* = Hom_{mod-\mc O_X}(\sigma_*M,\mc O_X)$, or we can
-define $M^* = \sigma_*Hom_{mod-\mc O_X}(M,\mc O_X)$. We claim that
+either define 
+\[
+M^* = \iHom_{mod-\mc O_X}(\sigma_*M,\mc O_X),
+\] 
+or we can
+define $M^* = \sigma_* \iHom_{mod-\mc O_X}(M,\mc O_X)$. We claim that
 these two choices of dual are naturally isomorphic. 
 \end{remark}
 
@@ -984,12 +988,12 @@ Let $f : \sigma_*M|_U \rightarrow \mc O_X|_U$ be a map of right $\mc
 O_X|_U$-modules. Post-composing with the map $\mc O_X|_U \rightarrow
 \sigma_* \mc O_X|_U$ yields a map $\overline f : \sigma_*M|_U
 \rightarrow \sigma_*\mc O_X|_U$, a.k.a. a map $M|_{\sigma^{-1}U}
-\rightarrow \mc O_X|_{\sigma^{-1}U}$. Note that $\sigma_*Hom_{mod-\mc
-  O_X}(M,\mc O_X)(U) = Hom_{mod-\mc
-  O_X}(M,\mc O_X)(\sigma^{-1}U)$, so that $\overline f \in \sigma_*Hom_{mod-\mc
+\rightarrow \mc O_X|_{\sigma^{-1}U}$. Note that $\sigma_*\iHom_{mod-\mc
+  O_X}(M,\mc O_X)(U) = \iHom_{mod-\mc
+  O_X}(M,\mc O_X)(\sigma^{-1}U)$, so that $\overline f \in \sigma_*\iHom_{mod-\mc
   O_X}(M,\mc O_X)(U)$.
 
-On the other hand, given $g \in \sigma_*Hom_{mod-\mc O_X}(M,\mc
+On the other hand, given $g \in \sigma_*\iHom_{mod-\mc O_X}(M,\mc
 O_X)(U)$, so that $g : \sigma_*M|_U
 \rightarrow \sigma_*\mc O_X|_U$, we can postcompose with
 $\sigma_*(\sigma^\#)$ to get a map $\widetilde g : \sigma_*M|_*
@@ -1001,7 +1005,7 @@ postcomposition with a natural transformation.
 \end{proof}
 
 \begin{definition}
-Define the adjoint module $M^*$ to be $Hom_{mod-\mc O_X}(\sigma_*M,\mc
+Define the adjoint module $M^*$ to be $\iHom_{mod-\mc O_X}(\sigma_*M,\mc
 O_X)$. By the remark above, it doesn't really matter which of the two
 possible definitions we choose here. 
 \end{definition}
@@ -1049,7 +1053,7 @@ V^*$ such that $\phi = \phi^*\can_V$.
 \begin{remark}
   Recall that there's an equivalence of categories between locally
   free coherent sheaves on $X$ and geometric vector bundles given by
-  $M \mapsto \mathbf{Spec}Sym(M\dual)$ in one direction and the sheaf
+  $M \mapsto \mathbf{Spec}(\mathrm{Sym}(M\dual))$ in one direction and the sheaf
   of sections in the other. For locally free sheaves, we have $M\dual
   \otimes N\dual \cong (M \otimes N)\dual$ so that the functor is
   monoidal. We will use this to think of a Hermitian
@@ -1273,7 +1277,8 @@ Let $R$ be a ring, and consider the ring $R \times R$ with the
 involution that switches factors. Then any module $M$ can be
 written as $e_1M \oplus e_2M$ as above. A non-degenerate Hermitian form on this
 module is determined by a map $e_1M \otimes e_2M \rightarrow R \times
-R$, i.e. as a matrix it has the form
+R$. In other words, the matrix representing the map $e_1M \oplus e_2M
+\rightarrow e_1M^* \oplus e_2M^*$ has the form
 \[
 \begin{bmatrix}
 0 & A \\
@@ -1306,7 +1311,7 @@ e_1M^{\perp}$ and $M = e_1 M \oplus e_2M$. Now \cite[Corollary 3.7.3]{HermKnus} 
 \end{proof}
 
 \begin{corollary}\label{cor:herm_diag}
-Let $R$ be a semi-local ring with involution. Then any Hermitian
+Let $R$ be a semi-local ring with involution and with 2 invertible. Then any Hermitian
 module over $R$ diagonalizes.
 \end{corollary}
 
@@ -1583,7 +1588,7 @@ Let $X$ be a Noetherian scheme of finite Krull dimension, and let
 $\sigma : X \rightarrow X$ be an involution on $X$. Let $\sPerf(X)$
 denote the category of strictly perfect complexes on $X$ with the weak
 equivalences being the quasi-isomorphisms. Define a family of dualities on
-$\sPerf(X)$ index by $i \in \mbb N$ by 
+$\sPerf(X)$ indexed by $i \in \mbb N$ by 
 \[
 \ast^i : E \mapsto \iHom_{\sPerf(X)}(\sigma_*E,\mc O_X[i]).
 \]
@@ -1620,7 +1625,7 @@ this chapter is to define a sheaf on $\Sm{S}^{C_2}$, denoted $\RGr$, which repre
 Hermitian $K$-theory in the motivic homotopy category $\mathcal
 \mothom_S^{C_2}$. We first check that over a regular base $S$ with 2 invertible
 (e.g. $\Z[\frac{1}{2}]$), Hermitian $K$-theory is representable in the
-category of smooth $C_2$-schemes, $\Sm{S}^{C_2}$. To
+category of $C_2$-schemes smooth over $S$, $\Sm{S}^{C_2}$. To
 extend this result to non-regular bases $S$, we utilize the
 Morel-Voevodsky approach to classifying spaces and obtain
 representability of homotopy Hermitian $K$-theory in the motivic homotopy category $\HH^{C_2}(S)$.
@@ -1650,7 +1655,7 @@ We then compare $B_{isoEt}O(\Delta R)$ (the colimit of the
 $B_{isoEt}O(\mbb H^d)(\Delta R)$) to
 the Grothendieck-Witt space defined in section \ref{sec:Higher_GW} by viewing them both as group completions
 and comparing their homology. This approach is inspired by the
-Karoubi-Villamayor definition of higher algebraiic $K$-theory. 
+Karoubi-Villamayor definition of higher algebraic $K$-theory. 
 
 \section{The definition of the Hermitian Grassmannian $\RGr$}
 
@@ -1903,7 +1908,6 @@ rank map. In other words, the underlying topological space of $\RGr_d(V)$ is the
 \xymatrix{\RGr_d(V) \ar[r]\ar[d] & \RGr(V) \ar[d]^{\rk} \\ \{d\}
   \ar[r] & \Z}
 \]
-
 and if $S$ is regular, $\RGr_d(V)$ is the closed subscheme equipped with the reduced
 induced scheme structure. If $S$ is non-regular, then let $f : S
 \rightarrow \Z[\frac{1}{2}]$ and note that $\RGr_d(V)$ over $S$ is
@@ -1941,7 +1945,7 @@ let $|V|$ denote the rank of $V$. Order such subbundles of $\mbb
 H^\infty$ by inclusion, and denote the resulting poset by $P$. Given an inclusion $V \hookrightarrow V'$
 of non-degenerate subbundles, denote by $V'-V$ the complement of $V$
 in $V'$. Let $\mc H : P \rightarrow \mathrm{Fun}(\Sm{S}^{C_2,
-  op},Set)$ be the functor which on objects sends a subbundle $V$ to $
+  op},\mathrm{Set})$ be the functor which on objects sends a subbundle $V$ to $
 \RGr_{|V|} (V \perp \mbb H^\infty)$. Given an inclusion $V \hookrightarrow V'$, the induced map
 $\RGr_{|V|}(V \perp \mbb H^\infty) \rightarrow \RGr_{|V'|}(V' \perp
 \mbb H^\infty)$ is given by $E \mapsto E \perp (V'-V)$. Note that
@@ -2111,9 +2115,9 @@ because $V$ is non-degenerate, $V \perp (V'-V) = V'$. Define
 
 \section{The \'Etale Classifying Space}
 
-Fix a scheme $S$ with trivial involution and 2 invertible, and let $(V,\phi)$ be a
+Fix a scheme $S$ with 2 invertible, and let $(V,\phi)$ be a
 (possibly degenerate) Hermitian vector bundle over $S$. For a
-$C_2$-scheme $f : X \rightarrow S$, let
+$C_2$-scheme $f : X \rightarrow S$ over $S$, let
 \[
 \mc S(V,\phi)(X)
 \]
@@ -2141,16 +2145,17 @@ topology, Hermitian vector bundles are determined by rank.
 Upon applying the nerve, we get maps of simplicial presheaves $BO(V)
 \rightarrow B\mc S_{|V|}(V\perp \mbb H^\infty)$ which is a weak
 equivalence in the isovariant \'etale topology. Abusing notation, let $B_{isoEt}O(V)$
-denote a global fibrant replacement of $B\mc S_{|V|}(V\perp \mbb H^\infty)$ in the isovariant
-\'etale topology so that we get a sequence of weak equivalences
+denote a fibrant replacement of $B\mc S_{|V|}(V\perp \mbb H^\infty)$ in the isovariant
+\'etale topology so that we get a sequence of maps
 \[
 BO(V) \rightarrow B\mc S_{|V|}(V\perp \mbb H^\infty) \rightarrow B_{isoEt}O(V).
 \]
+which are weak equivalences in the isovariant \'etale topology.
 
 \begin{lemma} \label{lem:weqaff}
 Let $(V,\phi)$ be a non-degenerate Hermitian vector bundle over a
 scheme $S$ with trivial involution and $\frac{1}{2} \in \Gamma(S,\mc
-O_S)$. Then for any affine $C_2$-scheme over $S$, $\Spec R$, the map
+O_S)$. Then for any affine $C_2$-scheme $\Spec R$ over $S$,, the map
 \[
 B\mc S_{|V|}(V\perp \mbb H^\infty)(R) \rightarrow B_{isoEt}O(V)(R)
 \]
@@ -2191,13 +2196,13 @@ gives rise to an $ O(V)$-torsor via $W \mapsto Isom(V,W)$. Note
 that this is an $O(V)$-torsor because locally in the isovariant
 \'etale topology, $W \cong V$,
 so that locally $Isom(V,W) \cong Isom(V,V) \cong 
-O(V)$. Because Hermitian vectors bundles are isovariant etale locally
+O(V)$. Because Hermitian vectors bundles are isovariant \'etale locally
 determined by rank, the same proof as the ordinary vector bundle case shows
 that the category of $\mc O(V)$ torsors is equivalent to the category
 of Hermitian vector bundles. Because over an affine scheme, every
 Hermitian vector bundle is a summand of a hyperbolic module, it
 follows that $S_{|V|}(V\perp \mbb H^\infty)(R)$ is equivalent to the
-category of (isovariant \'etale) $\mc O(V)$ torsors. 
+category of isovariant \'etale $\mc O(V)$ torsors. 
 
 Let $\mc F : \Sm{S}^{C_2} \rightarrow Gpd$ be the sheaf which assigns
 to $f : X \rightarrow S$ the groupoid of $ O(f^*V)$-torsors. The
@@ -2208,7 +2213,6 @@ there's a sequence
 \[
 B S_{|V|}(V\perp \mbb H^\infty) \rightarrow B\mc F \rightarrow B_{isoEt}O(V)
 \]
-
 where the first map is a weak equivalence of simplicial sets when
 evaluated at affine $C_2$-schemes, and by \cite{Jar01} Theorem 6, the second map is a
 weak equivalence of simplicial sets when evaluated at any
@@ -2236,12 +2240,9 @@ $f \mapsto f \perp 1_{V'-V}$.
 \begin{definition}
 Define
 \[
-O = \colim_{W \subseteq \mbb H^\infty_S} O(W).
+O = \colim_{W \subseteq \mbb H^\infty_S} O(W),
 \]
-Because the nerve construction commutes with filtered colimits, and
-because filtered colimits of globally fibrant objects are globally
-fibrant (follows from the fact that filtered colimits of Kan complexes
-are Kan complexes), define by abuse of notation
+and let
 \[
 B_{isoEt}O = \colim_{W \subseteq \mbb H^\infty_S} B_{isoEt}O(W).
 \]
@@ -2271,15 +2272,11 @@ B_{isoEt}O = \colim_{W \subseteq \mbb H^\infty_S} B_{isoEt}O(W).
 % \]
 % and 
 
-\begin{theorem}
-Let $R$ be a regular Noetherian ring with involution which is either connected or
-hyperbolic. Then there's an equivalence of simplicial sets
-\[
-B\RGr_\bullet(\Delta R) \rightarrow |B \mc S_\bullet (\Delta R)|
-\]
-where $\Delta R$ denotes the simplicial ring with involution $[n] \mapsto
-R[x_0,\dots,x_n]/(\sum x_i -1)$. 
-\end{theorem}
+\begin{definition}
+Let $R$ be a commutative ring. Define $\Delta R$ to be the simplicial ring with involution $[n] \mapsto
+R[x_0,\dots,x_n]/(\sum x_i -1)$, where the involution is inherited
+from the involution on $R$.
+\end{definition}
 
 
 \begin{lemma}
@@ -4323,11 +4320,11 @@ $GW$ is an $E_\infty$ object in presheaves of spectra on
 $\Sm{S}^{C_2}$ by results of Schlichting \cite{Schder}. By
 \cite{cdhdesc} Lemma 3.3, together with corollary \ref{cor:GW_per}
 above, $\mbb GW$ is the periodization of $GW$ with respect to
-$\gamma$. Let $\mbb P^\rho$ denote the projectivization of the regular
+$\gamma$. Let $T^\rho$ denote the Thom space of the regular
 representation $\mbb A^\rho$. Now $\mbb GW$ is Nisnevich excisive, so that $\mbb GW(W/S^0
-\otimes W_\sigma/S^0) \cong \mbb GW(\mbb P^\rho)$, and $\mbb GW$ is
+\otimes W_\sigma/S^0) \cong \mbb GW(\mbb P^1 \wedge \mbb P^\sigma)$, and $\mbb GW$ is
 $\gamma$ periodic if and only if it is Bott periodic. By \cite{cdhdesc}, proposition 3.2, $\mbb GW$ lifts to an
-$E_\infty$ object $\KR$ in $GW_{mod}[(\mbb P^\rho)^{-1}]$. Because $\mbb A^1$-localization preserves
+$E_\infty$ object $\KR$ in $GW_{mod}[(T^\rho)^{-1}]$. Because $\mbb A^1$-localization preserves
 $E_\infty$ objects, $L_{\mbb A^1}\mbb GW$ is an $E_\infty$ object in
 the subcategory of Nisnevich excisive Bott periodic
 $GW$-modules. 
@@ -4618,11 +4615,11 @@ Noetherian scheme of finite Krull dimension.
 Let $\HH(S)$ denote the motivic homotopy $\infty$-category on
 $\Sm{S}^{C_2}$. By Corollary \ref{cor:MotLoc_GW}, we can write $\KR$ as the image under the localization functor
 \[
-QL_{\mathrm{mot}} : \mathrm{Stab}^{\mathrm{lax}}_{\mbb P^\rho} \Sp(\mc
-P(\Sm{S}^{C_2})) \rightarrow \mathrm{Stab}_{\mbb P^\rho} \Sp(\underline
+QL_{\mathrm{mot}} : \mathrm{Stab}^{\mathrm{lax}}_{T^\rho} \Sp(\mc
+P(\Sm{S}^{C_2})) \rightarrow \mathrm{Stab}_{T^\rho} \Sp(\underline
 H) \simeq \SH
 \]
-of the ``constant'' $\mbb P^\rho$-spectrum $c_{\beta}GW$.
+of the ``constant'' $T^\rho$-spectrum $c_{\beta}GW$.
 
 \begin{definition}
 For $X \in \Sm{S}^{C_2}$, let $\KR_X$ denote the restriction of the
