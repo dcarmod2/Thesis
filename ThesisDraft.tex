@@ -121,6 +121,19 @@
 
 \frontmatter
 
+\begin{abstract}
+We provide a geometric model for the classifying space of the
+automorphism group of a Hermitian vector bundle over a ring with
+involution $R$ such that $\frac{1}{2} \in R$; this generalizes a
+result of Schlichting-Tripathi \cite{SchTri}. We then prove a
+periodicity theorem for
+Hermitian $K$-theory and use it to construct an $E_\infty$ motivic ring spectrum $\KR$
+representing homotopy Hermitian $K$-theory. From these results, we
+show that $\KR$ is stable under base change, and cdh descent for
+homotopy Hermitian $K$-theory of rings with involution follows
+formally. 
+\end{abstract}
+
 \tableofcontents
 
 \mainmatter
@@ -281,7 +294,8 @@ non-regular base schemes in Theorem \ref{thm:RGr_GW_nonreg}.
 Let $S$ be a Noetherian scheme of finite Krull dimension. There are
 equivalences of $C_2$-motivic spaces on $\Sm{S}^{C_2}$
 \[
-L_{\mathrm{mot}}\Z \times \RGr_\bullet \xrightarrow{\sim} L_{\mathrm{mot}}\Z \times B_{isoEt}O
+L_{\mathrm{mot}}\Z \times \RGr_\bullet \xrightarrow{\sim}
+L_{\mathrm{mot}}\Z \times \colim_n B_{isoEt}O(\mbb H^n)
 \xrightarrow{\sim} L_{\mathrm{mot}} GW.
 \]
 \end{theorem}
@@ -1651,11 +1665,13 @@ the $K$-theory case where one must pass only to local (rather than
 strictly henselian local) rings in order for $K$-theory to be
 determined by rank. 
 
-We then compare $B_{isoEt}O(\Delta R)$ (the colimit of the
-$B_{isoEt}O(\mbb H^d)(\Delta R)$) to
+We then compare $\colim_n B_{isoEt}O(\mbb H^n)(\Delta R)$ to
 the Grothendieck-Witt space defined in section \ref{sec:Higher_GW} by viewing them both as group completions
 and comparing their homology. This approach is inspired by the
-Karoubi-Villamayor definition of higher algebraic $K$-theory. 
+Karoubi-Villamayor definition of higher algebraic $K$-theory. The regularity assumption from \cite{SchTri} appears in the proof of Lemma
+\ref{lem:requires_reg}, though we'll see in section
+\ref{sec:repr_nonreg} that we can prove representability with a
+Morel-Voevodsky style argument to get around this assumption.
 
 \section{The definition of the Hermitian Grassmannian $\RGr$}
 
@@ -2155,7 +2171,7 @@ which are weak equivalences in the isovariant \'etale topology.
 \begin{lemma} \label{lem:weqaff}
 Let $(V,\phi)$ be a non-degenerate Hermitian vector bundle over a
 scheme $S$ with trivial involution and $\frac{1}{2} \in \Gamma(S,\mc
-O_S)$. Then for any affine $C_2$-scheme $\Spec R$ over $S$,, the map
+O_S)$. Then for any affine $C_2$-scheme $\Spec R$ over $S$, the map
 \[
 B\mc S_{|V|}(V\perp \mbb H^\infty)(R) \rightarrow B_{isoEt}O(V)(R)
 \]
@@ -2238,13 +2254,9 @@ $f \mapsto f \perp 1_{V'-V}$.
 \end{definition}
 
 \begin{definition}
-Define
+Define the infinite orthogonal group as
 \[
-O = \colim_{W \subseteq \mbb H^\infty_S} O(W),
-\]
-and let
-\[
-B_{isoEt}O = \colim_{W \subseteq \mbb H^\infty_S} B_{isoEt}O(W).
+O = \colim_{W \subseteq \mbb H^\infty_S} O(W).
 \]
 \end{definition}
 % Inclusion of discrete categories defines a functor
@@ -2348,7 +2360,7 @@ and
 
 where the upper left corners are just defined as the respective colimits. 
 
-\begin{lemma}
+\begin{lemma}\label{lem:requires_reg}
 The diagrams
 \[
 \xymatrix{B\RGr_{[0]}(\Delta R) \ar[r]\ar[d] & B\RGr_\bullet(\Delta R) \ar[d] \\ B\star \ar[r]^V & |B\widetilde{GW}_{[0]}(\Delta R)|}
@@ -2412,7 +2424,8 @@ In order to conclude that the map $B\RGr_\bullet(\Delta R) \rightarrow
 sets, it suffices to check two things:
 \begin{itemize}
 \item in diagram \ref{dia:Grass_GW}, the map on fibers $B\RGr_{[0]}(V
-  \perp \mbb H^\infty) \rightarrow |B\mc S_{[0]}(V \perp \mbb H^\infty)(\Delta R)| $is a weak
+  \perp \mbb H^\infty) \rightarrow |B\mc S_{[0]}(V \perp \mbb
+  H^\infty)(\Delta R)|$ is a weak
   equivalence (the map on bases is the identity),
 \item in diagram \ref{dia:Grass_GW}, the maps are maps of
   $E_\infty$-spaces.
@@ -2483,7 +2496,7 @@ H^\infty)(\Delta R) \qquad A \mapsto 1_V \perp A.
 
 \begin{proof}
 First, assume that $V = \mbb H$. Consider the map $j : O(\mbb H^n)
-\rightarrow O(\mbb H^{2n+2})$ sending $A$ to $1_H \perp A \perp
+\rightarrow O(\mbb H^{2n+2})$ sending $A$ to $1_{\mbb H} \perp A \perp
 1_{\mbb H^{n+1}}$. We claim that this is na\"ively $\mbb A^1$ homotopic
 to the inclusion $i : O(\mbb H^n) \rightarrow O(\mbb H^{2n+2})$, $i(A)
 = A \perp 1_{\mbb H^{n+2}}$ which defines the colimit $O(\mbb
@@ -2586,7 +2599,6 @@ isomorphism of sets
 \[
 \St(V,U)/O(V) \cong \RGr_V(U) \qquad f \mapsto \im(f).
 \]
-
 In particular, there's an isomorphism of presheaves of sets $\St(V,V \perp \mbb
 H^\infty)/O(\mbb H^\infty) \cong \RGr_V(U)$.
 
@@ -2609,9 +2621,7 @@ objects sends
 \mc E_V(U) \times O(V) \rightarrow \mc E_V(U) : (a,g) \mapsto ag
 \]
 and which morphisms is the trivial action.
-
 Then clearly there's an isomorphism
-
 \[
 \mc E_V(U)/O(V) \cong \mc S_V(U) \qquad a \mapsto \im(a).
 \] 
@@ -2655,7 +2665,6 @@ E(n)(R)$ be the set
 \[
 \mathscr E(n)(R) = \lim_{V \subset \mbb H^\infty_R} \St(V^{\perp n} , \mbb H^\infty_R).
 \]
-
 where the limit is over non-degenerate subspaces of $\mbb H^\infty$. The
 permutation group $\Sigma_n$ acts by permuting the component
 subspaces. The maps in the limit are equivariant with respect to this
@@ -2667,7 +2676,6 @@ a Kan fibration by \cite[Proposition A.5]{SchTri}, and hence
 \mathscr E(n)(\Delta R) = \lim_k \St(\mbb H^k \perp \cdots \perp \mbb
 H^k,\mbb H^\infty)(\Delta R)
 \]
-
 is a tower of Kan fibrations with each object fibrant. It follows that
 this limit is a homotopy limit, and the Milnor sequence implies that
 $\mathscr E(n)(\Delta R)$ is contractible. The same reasoning as above
@@ -2680,11 +2688,8 @@ Now, define the structure maps of the operad by
 E(j_k) \rightarrow \mathscr E(j_1 + \cdots + j_k) : f,g_1,\cdots,g_k
 \mapsto f \circ (g_1 \perp \cdots \perp g_k).
 \]
-
 It follows that $\mathscr E(\Delta R)$ is an $E_\infty$-operad in the
-category of simplicial sets.
-
-We now state a lemma which will allow us to check that certain spaces
+category of simplicial sets. We now state a lemma which will allow us to check that certain spaces
 are group complete.
 
 \begin{lemma}\label{lem:grp_complete_help}
@@ -2708,14 +2713,20 @@ relation used to define $\pi_0(T) = T_0/\sim$.
 
 Say $a,b \in Y_0$ and $f(a) \sim f(b)$ in $Z_0$. Then there exist
 $z_1,\dots,z_n$ in $Z_1$ witnessing a chain $t_0 \leftarrow t_1 \cdots
-\rightarrow t_n$ where $t_0 = f(a), t_n = f(b)$. Because $Y_1
+\rightarrow t_n$ where $t_0 = f(a), t_n = f(b)$. Note that this chain
+is not necessarily a zig-zag, the directionality of the arrow between
+$t_i$ and $t_{i+1}$ can be independent of the directionality of any other
+arrows. Because $Y_1
 \rightarrow Z_1$ is epi, there's a lift $y_1,\dots,y_n$ of
 $z_1,\dots,z_n$. 
 
-To deal
-with the fact that the relation is not symmetric, form a
-sequence $(e_i)_{1 \leq i \leq 2n+2} $ from \\
-$(a,s_0(y_1),s_1(y_1),s_0(y_2),\dots,s_1(y_n),b)$ by ordering the entries so that $f(e_{2i+1}) =
+Consider the sequence
+$(a,s_0(y_1),s_1(y_1),s_0(y_2),\dots,s_1(y_n),b)$. Because apriori we
+don't know the directionality of the arrows between the $t_i$, it may
+not be the case that $f(s_1(y_i)) = f(s_0(y_{i+1}))$. To deal
+with this, form a
+sequence $(e_i)_{1 \leq i \leq 2n+2} $ by reordering the entries of\\
+$(a,s_0(y_1),s_1(y_1),s_0(y_2),\dots,s_1(y_n),b)$ so that $f(e_{2i+1}) =
 f(e_{2i+2})$. In other words, switch the order of $s_0(y_i)$ and
 $s_1(y_i)$ if necessary. With notation in place, we'll proceed by
 induction on $n$ to show that $e_1 \sim e_{2n}$. Say $n =
@@ -2808,11 +2819,11 @@ is a weak equivalence of simplicial sets.
 Let $(R,\tau)$ be a regular Noetherian ring with involution with
 $\frac{1}{2} \in R$. Then
 \[
-\RGr_\bullet(\Delta R) \xrightarrow{\sim} B_{isoEt}O(\Delta R)
+\RGr_\bullet(\Delta R) \xrightarrow{\sim} \colim_n B_{isoEt}O(\mbb H^n)(\Delta R)
 \]
 is an equivalence.
 In particular there's an equivariant motivic equivalence $\RGr_\bullet
-\rightarrow B_{isoEt}O$.
+\rightarrow \colim_n B_{isoEt}O(\mbb H^n)$.
 \end{theorem}
 
 \begin{proof}
@@ -3331,16 +3342,16 @@ This follows immediately from Lemma \ref{lem:RGr_GW} and  Corollary \ref{cor:htp
 \section{Representability over Non-Regular Base Schemes}\label{sec:repr_nonreg}
 
 Note first that Proposition \ref{prop:Bet_GW}, which provides an 
-equivalence between $L_{\mbb A^1}B_{isoEt}(O)$ and $L_{\mbb A^1}GW$
+equivalence between $L_{\mbb A^1}\colim_n B_{isoEt}O(\mbb H^n)$ and $L_{\mbb A^1}GW$
 over connected or hyperbolic rings, doesn't require the base
 to be regular. Extending to non-connected rings just as in the proof
 of Lemma \ref{lem:RGr_GW} shows that $L_{\mbb A^1}GW \cong
-L_{\mbb A^1} B_{isoEt}O$ over Noetherian base rings of finite Krull dimension. In particular,
-there's a motivic equivalence $B_{isoEt}O \cong GW$ over Noetherian
+L_{\mbb A^1} \colim_n B_{isoEt}O(\mbb H^n)$ over Noetherian base rings of finite Krull dimension. In particular,
+there's a motivic equivalence $\colim_n B_{isoEt}O(\mbb H^n) \cong GW$ over Noetherian
 base rings which aren't necessarily regular.
 
 It remains to show that there's a motivic equivalence $\RGr_\bullet
-\rightarrow B_{isoEt}O$ over non-regular Noetherian base rings. 
+\rightarrow \colim_n B_{isoEt}O(\mbb H^n)$ over non-regular Noetherian base rings. 
 
 Let  $X \rightarrow S$ be an affine
 $C_2$-scheme over $S$, and let $W$ be a non-degenerate Hermitian
@@ -3399,7 +3410,8 @@ We've thus proved:
 Let $S$ be a Noetherian scheme of finite Krull dimension. There are
 equivalences of motivic spaces on $\Sm{S}^{C_2}$
 \[
-\Z \times \RGr_\bullet \xrightarrow{\sim} \Z \times B_{isoEt}O
+\Z \times \RGr_\bullet \xrightarrow{\sim} \Z \times \colim_n
+B_{isoEt}O(\mbb H^n)
 \xrightarrow{\sim} GW.
 \]
 \end{theorem}
