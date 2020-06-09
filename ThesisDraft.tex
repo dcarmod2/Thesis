@@ -122,8 +122,8 @@
 \frontmatter
 
 \begin{abstract}
-We provide a geometric model for the classifying space of the
-automorphism group of a Hermitian vector bundle over a ring with
+We provide a geometric model for the classifying space of 
+automorphism groups of Hermitian vector bundles over a ring with
 involution $R$ such that $\frac{1}{2} \in R$; this generalizes a
 result of Schlichting-Tripathi \cite{SchTri}. We then prove a
 periodicity theorem for
@@ -142,7 +142,7 @@ formally.
 
 Algebraic $K$-theory is an algebraic invariant introduced in the 1950s by Alexander
 Grothendieck where it served as the cornerstone of his reformulation
-of the Riemann-Roch theorem \cite{Gro57}.  Twenty years previously, Ernst Witt had
+of the Riemann-Roch theorem \cite{Gro57}.  Twenty years previously, Ernst Witt
 developed the notion of quadratic forms over arbitrary fields and
 introduced the Witt ring as an object to encapsulate the nature of
 all the quadratic forms over a given field \cite{Witt1937}. Combining
@@ -188,7 +188,7 @@ fundamental theorems of higher $K$-theory for these groups
 for schemes (rather than schemes with $C_2$ action), many of his
 proofs require only trivial modification to extend to Grothendieck-Witt
 groups of schemes with $C_2$ action. See also \cite{Xie2018ATM} for
-the proofs of the equivariant case of some of the theorems together with a new
+the proofs of the equivariant version of some of the theorems together with a new
 transfer morphism. Another approach is taken by Hesselholt-Madsen, who
 define real algebraic $K$-theory of a category with weak equivalences
 and duality as a symmetric spectrum object in the monoidal category of
@@ -203,8 +203,8 @@ functor formalism in motivic homotopy theory developed by Ayoub
 spectrum $\KGL$ is a cocartesian section of $\SH(-)$ yields a simple
 proof of $cdh$-descent for homotopy $K$-theory \cite{DenRep}. This in
 turn yields a short proof of Weibel's vanishing conjecture for homotopy
-$K$-theory, and inspired work of Kerz, Strunk, and Tamme which solved
-Weibel's conjecture by proving a version of pro-cdh descent for
+$K$-theory, and inspired work of Kerz, Strunk, and Tamme who solved
+Weibel's conjecture by proving pro-cdh descent for
 ordinary $K$-theory \cite{KerzStrunkTamme}. Hoyois in \cite{cdhdesc}
 uses Cisinski's approach to show cdh descent for equivariant homotopy $K$-theory.
 
@@ -216,15 +216,15 @@ $\SH^{C_2}(-)$, we need to show that the Hermitian $K$-theory space
 $\Omega^\infty GW$ can be represented by a certain Grassmannian, and
 we need a periodization theorem in order to pass from the Hermitian
 $K$-theory space $\Omega^\infty
-GW$ to homotopy Hermitian $K$-theory motivic spectrum $L_{\mbb
+GW$ to the homotopy Hermitian $K$-theory motivic spectrum $L_{\mbb
   A^1}\mbb GW$. Schlichting and Tripathi \cite{SchTri} show that
 $\Omega^\infty GW$ is representable by a Grassmannian over schemes
 with trivial action over a regular base scheme with 2 invertible. Their techniques extend to the equivariant
 setting, and with slight modification provide a proof of
 representability over non-regular bases. The periodization techniques
-in \cite{cdhdesc} can also be extended to Hermitian $K$-theory by
+in \cite{cdhdesc} extend to Hermitian $K$-theory by
 investigating the Hermitian $K$-theory of $T^\rho$, the Thom
-space of the regular representation.
+space of the regular representation $\mbb A^\rho$.
 
 \section{Outline}
 
@@ -292,7 +292,7 @@ non-regular base schemes in Theorem \ref{thm:RGr_GW_nonreg}.
 
 \begin{theorem}
 Let $S$ be a Noetherian scheme of finite Krull dimension. There are
-equivalences of $C_2$-motivic spaces on $\Sm{S}^{C_2}$
+equivalences of motivic spaces on $\Sm{S}^{C_2}$
 \[
 L_{\mathrm{mot}}\Z \times \RGr_\bullet \xrightarrow{\sim}
 L_{\mathrm{mot}}\Z \times \colim_n B_{isoEt}O(\mbb H^n)
@@ -305,7 +305,7 @@ presheaf of Grothendieck-Witt spectra to an
 $E_\infty$-motivic spectrum in $\SH^{C_2}(S)$. The crucial fact is that
 the localizing version of Hermitian $K$-theory of rings with involution, denoted $\mbb
 GW$, is the periodization of $GW$ with respect to a certain Bott map
-derived from some projective bundle formulas (see Corollary \ref{cor:GW_per}). Here
+derived from projective bundle formulas for $\mbb P^1$ and $\mbb P^\sigma$ (see Corollary \ref{cor:GW_per}). Here
 $\mbb P^\sigma$ is a copy of $\mbb P^1$ with action $[x:y] \mapsto
 [y:x]$. The fact that the periodization functor is monoidal together
 with Schlichting's results on monoidality of $GW$ immediately give
@@ -4313,11 +4313,11 @@ $\mbb P^1/(\mbb P^1 - [-1:1])$ and $\mbb P^\sigma/(\mbb P^\sigma -
 
 Taking smash products and using that $\mbb A^1 \oplus \mbb A^- \cong
 \mbb A^\rho$, we get a map
-\[
+\begin{equation}\label{eq:beta_beta_sigma_prime}
 \beta' \otimes (\beta^\sigma)' : \mbb
 A^\rho/(\mbb A^\rho - 0) \rightarrow GW^{[1]} \otimes GW^{[-1]}
 \rightarrow GW.
-\]
+\end{equation}
 
 For a vector bundle $E$, let $\mbb V_0(E)$ denote $E/(E-0)$, the
 quotient by the complement of the zero section.
@@ -4556,17 +4556,17 @@ a Noetherian scheme of finite Krull dimension $S$, and scheme $X$
 which is smooth over $S$.
 
 \begin{theorem}(Cisinski)
-Fix $X \in \Sm{S}$, and let $\KGL_X$ denote the restriction of $KGL$
+Fix $X \in \Sm{S}$, and let $\KGL_X$ denote the restriction of $\KGL$
 to $\Sm{X}$. To show that $\KGL$ satisfies cdh descent, it suffices to
 show that:
 \begin{itemize}
 \item given a smooth map $T \rightarrow X$, there's an isomorphism
   $Hom_{SH_{/X}}([T], KGL_{/X}) \cong KH(T)$
-\item given $f : X \rightarrow Y$, there's an equivalence $f^* KGL_{/Y} \cong KGL_{/X}$.
+\item given $f : X \rightarrow Y$, there's an equivalence $f^* \KGL_{/Y} \cong \KGL_{/X}$.
 \end{itemize}
 \end{theorem}
 
-\begin{proof}
+\begin{proof} (Sketch)
 
 Consider the stable $\infty$-category valued functor $\Sm{S}
 \rightarrow \mathrm{Stab}$, $X \mapsto SH_{/X}$. Given $T
@@ -4577,7 +4577,7 @@ we have the following
   $f^*([T]) = T \times_X Y$;
 \item for $f$ smooth, $f^*$ admits a left adjoint $f_{\#}$;
 \item (Cousin sequence) Given a cover of $X$ by a closed and open
-  immersion $Z \hookrightarrow X \hookleftarrow U$, 
+  immersion $Z \xhookrightarrow{i} X \xhookleftarrow{j} U$, 
 \[
 j_\# j^* \mc F \rightarrow \mc F \rightarrow i_* i^* \mc F
 \]
@@ -4610,10 +4610,10 @@ with composite $q : \widetilde Z \rightarrow X$, we get a square
 \xymatrix{q_*q^* E & \ar[l] f_*f^* E \\ i_*i^*E \ar[u] & E \ar[l]\ar[u]}
 \]
 One can show that the
-square is homotopy cartesian by pulling back to each set in the cover $\widetilde
-Z \cup X-\widetilde Z = X$ and using the Cousin sequence/base change
+square is homotopy cartesian by pulling back to each of the two sets in the cover $\widetilde
+Z \cup (X-\widetilde Z) = X$ and using the Cousin sequence/base change
 to show that the homotopy fibers are equivalent.
-Setting $E = KGL_{X}$ and using that $Hom_{SH_{/X}}([X],-)$ preserves
+Setting $E = \KGL_{X}$ and using that $Hom_{SH_{/X}}([X],-)$ preserves
 homotopy cartesian squares together with the assumptions in the theorem,  we see that
 homotopy $K$-theory $KH$ takes abstract blowup squares to homotopy cartesian squares.
 \end{proof}
@@ -4629,10 +4629,15 @@ $\Sm{S}^{C_2}$. By Corollary \ref{cor:MotLoc_GW}, we can write $\KR$ as the imag
 \[
 QL_{\mathrm{mot}} : \mathrm{Stab}^{\mathrm{lax}}_{T^\rho} \Sp(\mc
 P(\Sm{S}^{C_2})) \rightarrow \mathrm{Stab}_{T^\rho} \Sp(\underline
-H) \simeq \SH
+H) \simeq \SH^{C_2}
 \]
-of the ``constant'' $T^\rho$-spectrum $c_{\beta}GW$.
-
+of the ``constant'' $T^\rho$-spectrum $c_{\beta' \otimes (\beta^\sigma)'}GW$, where the maps
+$T^\rho \wedge GW \rightarrow GW$ are induced by adjunction after
+applying $\iHom_{GW-mod}(-,GW)$ to the map 
+\[
+\beta' \otimes (\beta^\sigma)' : T^\rho \rightarrow GW
+\]
+with $\beta' \otimes (\beta^\sigma)'$ the map \eqref{eq:beta_beta_sigma_prime}.
 \begin{definition}
 For $X \in \Sm{S}^{C_2}$, let $\KR_X$ denote the restriction of the
 motivic spectrum $\KR$ to $\Sm{X}^{C_2}$.
@@ -4641,14 +4646,14 @@ motivic spectrum $\KR$ to $\Sm{X}^{C_2}$.
 We want to show that $\KR$ is a cdh sheaf on $\Sm{S}^{C_2}$. By first
 checking that the formalism of six operations holds in equivariant
 motivic homotopy theory and following the same recipe as the
-$K$-theory case, Corollary 6.25 of \cite{HoyoisSixOp} proves that it suffices to show that for
+$K$-theory case, \cite[Corollary 6.25]{HoyoisSixOp} proves that it suffices to show that for
 each $f : D \rightarrow X \in \Sm{X}^{C_2}$, the restriction map
 \[
 f^*(\KR_X) \rightarrow \KR_D
 \]
-in $\SH(D)$ is an equivalence. 
+in $\SH^{C_2}(D)$ is an equivalence. 
 
-By Appendix A in \cite{Schder}, there's a map 
+By \cite[Appendix A]{Schder}, there's a map 
 \[
 \mathrm{Herm}(X)^+ \rightarrow \Omega^\infty GW(X)
 \]
@@ -4669,15 +4674,15 @@ Just as in \cite{cdhdesc} we note that
 exhibits $\mathrm{Herm}$ as the equivariant Zariski sheafification of
 the subgroupoid of non-degenerate Hermitian vector bundles of constant
 rank (in other words, it fixes the sections over non-connected or
-hyperbolic rings). By Lemma 5.5 in \cite{cdhdesc}, it remains an
+hyperbolic rings). By \cite[Lemma 5.5]{cdhdesc}, it remains an
 equivalence after group completion, yielding a motivic equivalence
 \[
 \left(\coprod_{n \geq 0} B_{isoEt}O(\langle 1 \rangle^{\perp
     n})\right)^+ \rightarrow \Omega^\infty GW|\Sm{X}^{C_2}.
 \]
 
-Fix a map $f : D \rightarrow X$ in $\Sm{S}^{C_2}$. Again by Lemma 5.5
-in \cite{cdhdesc}, since the pullback $f^* : \mc P(\Sm{X}^{C_2})
+Fix a map $f : D \rightarrow X$ in $\Sm{S}^{C_2}$. Again by 
+in \cite[Lemma 5.5]{cdhdesc}, since the pullback $f^* : \mc P(\Sm{X}^{C_2})
 \rightarrow \mc P(\Sm{X}^{C_2})$ preserves finite products, it
 commutes with group completion of $E_\infty$-monoids. The same is true
 for $L_{\mathrm{mot}}$. It follows that there are motivic equivalences
