@@ -2559,7 +2559,6 @@ It follows that there's an isomorphism of presheaves of sets
 O(\mbb H^\infty)\backslash O(V \perp \mbb  H^\infty) \cong
 \St(V,V\perp \mbb H^\infty) \qquad f \mapsto f \circ i_V.
 \]
-
 Now Lemma \ref{lem:incHE} shows that the map $O(\mbb H^\infty_{\Delta
   R}) \rightarrow O(V \perp \mbb H^\infty)(\Delta R)$ is an
 equivariant map which is a non-equivariant homotopy equivalence. The
@@ -2574,7 +2573,6 @@ O(\mbb H^\infty_{\Delta
   R})\backslash O(V \perp \mbb H^\infty)(\Delta R) \cong \St(V,V
 \perp \mbb H^\infty)(\Delta R)
 \]
-
 it follows that $\St(V,V\perp \mbb H^\infty)(\Delta R)$ is a
 contractible for a commutative ring $(R,\sigma)$ with involution and
 $\frac{1}{2} \in R$. Morever, this simplicial set is fibrant because
@@ -2612,7 +2610,6 @@ diagram
 \[
 \xymatrix{V \ar[r]^a\ar[dr]_b & \im(a) \ar[d]^c\\ & \im(b)}
 \]
-
 commute.
 
 There's a natural right action of $O(V)$ on $\mc E_V(U)$ which on
@@ -2640,7 +2637,6 @@ equivalence. The map of simplicial sets
 \St(V,V\perp \mbb H^\infty)(\Delta R) \rightarrow \mc E_V(V \perp \mbb
 H^\infty)(\Delta R)
 \]
-
 is $O(V)(\Delta R)$ equivariant and a weak equivalence after
 forgetting the action. Furthermore, $O(V)(\Delta R)$ acts freely on
 both sides, so that the induced map on quotients 
@@ -2649,9 +2645,7 @@ both sides, so that the induced map on quotients
 H^\infty)({\Delta R}) \rightarrow \mc S_V(V \perp \mbb
 H^\infty)(\Delta R)
 \end{equation}
- is also a weak equivalence. 
-
-As an aside, the inclusion $BO(V) \subset B\mc S_V(V \perp \mbb
+ is also a weak equivalence. As an aside, the inclusion $BO(V) \subset B\mc S_V(V \perp \mbb
 H^\infty)$ is a weak equivalence since $\mc S_V(V \perp \mbb
 H^\infty)$ is a connected groupoid. 
 
@@ -2774,7 +2768,6 @@ Now, the action of $\mathscr E$ on $\mc S_\bullet$ is defined by
 V_1^+) \times \cdots \times \mc S_{|V_k|}(V_k^- \perp V_k^+)
 \rightarrow \mc S_{|W|}(W^- \perp W^+)
 \]
-
 where for $g \in \St(V_1 \perp \cdots \perp V_k,W)$, the functor
 \[
 \mc S_{|V_1|}(V_1^- \perp V_1^+) \times \cdots \times \mc
@@ -3006,7 +2999,6 @@ Now, let
 \[
 \widetilde{\mathscr GW}(R) = \hocolim \mc I.
 \]
-
 To spell this out, the objects of $\widetilde{\mathscr GW}(R)$ are pairs $(V,W)$ with $V
 \subseteq \mbb H^\infty_R$ a finitely generated non-degenerate
 subspace and $W \subset V \perp \mbb H^\infty_R$ a finitely generated
@@ -4262,13 +4254,17 @@ colimits of groups.
  \end{proof}
 
 \begin{corollary}\label{cor:GW_per}
-Let $\gamma$ be the map \eqref{eq:gamma}. Then there's a weak
-equivalence of presheaves of spectra $\mbb GW \simeq Q_\gamma GW$.
+Let $\gamma$ be the map \eqref{eq:gamma}. Then there are weak
+equivalences of presheaves of spectra 
+\[
+ Q_\gamma GW \xrightarrow{\sim} Q_\gamma \mbb GW \simeq \mbb GW.
+\]
 \end{corollary}
 
 \begin{proof}
 Combining Lemma \ref{lem:pos_htpy} and Lemma \ref{lem:neg_htpy} we see
-that the map induces an isomorphism on stable homotopy groups. 
+that $Q_\gamma GW \rightarrow Q_\gamma \mbb GW$  the induces an
+isomorphism on stable homotopy groups. Lemma \ref{lem:GWb_eq} shows that $Q_\gamma \mbb GW \simeq \mbb GW$.
 \end{proof}
 
 
@@ -4326,8 +4322,9 @@ $\KR$, over $\Sm{S}^{C_2}$.
 \end{theorem}
 
 \begin{proof}
-$GW$ is an $E_\infty$ object in presheaves of spectra on
-$\Sm{S}^{C_2}$ by results of Schlichting \cite{Schder}. By
+$GW$ is an $E_\infty$ object in presheaves of spectra (it's a
+commutative monoid in the category of presheaves of symmetric spectra) on
+$\Sm{S}^{C_2}$ via the cup product defined in \cite[Remark 5.1]{Schder}. By
 \cite{cdhdesc} Lemma 3.3, together with corollary \ref{cor:GW_per}
 above, $\mbb GW$ is the periodization of $GW$ with respect to
 $\gamma$. Let $T^\rho$ denote the Thom space of the regular
