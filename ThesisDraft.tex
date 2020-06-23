@@ -68,8 +68,8 @@
 \DeclareMathOperator{\Cone}{Cone}
 \DeclareMathOperator{\sPerf}{sPerf}
 \DeclareMathOperator{\KGL}{KGL}
-\DeclareMathOperator{\SH}{\underline{SH}}
-\DeclareMathOperator{\HH}{\underline{H}}
+\DeclareMathOperator{\SH}{SH}
+\DeclareMathOperator{\HH}{H}
 
 %%%%%%%%%%%%%% Diagrams
 
@@ -95,6 +95,7 @@
 \newtheorem{question}[lemma]{Question}
 \newtheorem{conjecture}[lemma]{Conjecture}
 \newtheorem{construction}[lemma]{Construction}
+\newtheorem{porism}[lemma]{Porism}
 
 \phdthesis
 
@@ -229,7 +230,8 @@ space of the regular representation $\mbb A^\rho$.
 
 Chapter \ref{chap:Eq_Top} begins with a review of $G$-equivariant motivic
 homotopy theory where $G$ is a finite group scheme over a base $S$
-which is Noetherian of finite Krull dimension. First we review the definition of the equivariant
+which is Noetherian of finite Krull dimension which has an ample
+family of line bundles and $\frac{1}{2} \in \Gamma(S,\mc O_S)$. First we review the definition of the equivariant
 \'etale and Nisnevich topologies, then we introduce the isovariant
 \'etale topology and give some examples of covers. For the reader
 familiar with non-equivariant motivic homotopy theory, the assumptions
@@ -276,7 +278,8 @@ culminates with two theorems. First we have Theorem \ref{thm:RGr_GW} a represent
 can be shown by a straightforward generalization of
 Schlichting-Tripathi's techniques to the equivariant setting.
 \begin{theorem}
-Let $S$ be a regular Noetherian scheme of finite Krull dimension. Let $GW$ denote the Grothendieck-Witt space on $\Sm{S}^{C_2}$, and let
+Let $S$ be a regular Noetherian scheme of finite Krull dimension, an ample
+family of line bundles, and $\frac{1}{2} \in S$. Let $GW$ denote the Grothendieck-Witt space on $\Sm{S,qp}^{C_2}$, and let
 $\underline \Z$ denote the sheafification of the constant sheaf. There's an equivariant motivic equivalence 
 \[
 L_{\mathrm{mot}} \underline{\Z} \times\RGr_\bullet
@@ -290,8 +293,9 @@ in \cite{cdhdesc}, we strengthen this result to
 non-regular base schemes in Theorem \ref{thm:RGr_GW_nonreg}.
 
 \begin{theorem}
-Let $S$ be a Noetherian scheme of finite Krull dimension. There are
-equivalences of motivic spaces on $\Sm{S}^{C_2}$
+Let $S$ be a Noetherian scheme of finite Krull dimension, an ample
+family of line bundles, and $\frac{1}{2} \in S$. There are
+equivalences of motivic spaces on $\Sm{S,qp}^{C_2}$
 \[
 L_{\mathrm{mot}}\Z \times \RGr_\bullet \xrightarrow{\sim}
 L_{\mathrm{mot}}\Z \times \colim_n B_{isoEt}O(\mbb H^n)
@@ -312,8 +316,9 @@ that the motivic spectrum $L_{\mbb A^1}\mbb GW \in \SH^{C_2}(S)$ is an
 $E_\infty$ object \ref{thm:GW_Einfty}.
 
 \begin{theorem}
-Let $S$ be a Noetherian scheme of finite Krull dimension. Then $L_{\mbb A^1}\mbb GW$ lifts to an $E_\infty$ motivic spectrum, denoted
-$\KR$, over $\Sm{S}^{C_2}$.
+Let $S$ be a Noetherian scheme of finite Krull dimension, an ample
+family of line bundles, and $\frac{1}{2} \in S$. Then $L_{\mbb A^1}\mbb GW$ lifts to an $E_\infty$ motivic spectrum, denoted
+$\KR$, over $\Sm{S,qp}^{C_2}$.
 \end{theorem}
 
 The final chapter \ref{chap:cdh} follows the recipe given by Cisinski
@@ -322,9 +327,10 @@ homotopy Hermitian $K$-theory. After reviewing the $K$-theory case,
 the chapter culminates in theorem \ref{thm:cdh_desc}.
 
 \begin{theorem}
-Let $S$ be a Noetherian scheme of finite Krull dimension. Then the
+Let $S$ be a Noetherian scheme of finite Krull dimension, an ample
+family of line bundles, and $\frac{1}{2} \in S$. Then the
 homotopy Hermitian $K$-theory spectrum of rings with involution $L_{\mbb A^1}\mbb
-GW$ satisfies descent for the equivariant cdh topology on $\Sm{S}^{C_2}$.
+GW$ satisfies descent for the equivariant cdh topology on $\Sm{S,qp}^{C_2}$.
 \end{theorem}
 
 \chapter{Equivariant Topologies and the Equivariant Motivic Homotopy Category}\label{chap:Eq_Top}
@@ -333,14 +339,18 @@ This chapter reviews the foundations of equivariant motivic homotopy
 theory. The key definitions are those of the equivariant \'etale and
 Nisnevich topologies -- two topologies that play a crucial role in
 defining the equivariant motivic infinity category
-$\HH(S)$ over a Noetherian base scheme $S$ with finite Krull dimension.
+$\HH(S)$ over a Noetherian base scheme $S$ with finite Krull
+dimension, with an ample family of line bundles, and with $\frac{1}{2}
+\in \Gamma(S,\mc O_S)$. Throughout we'll work with the category of
+smooth, quasi-projective $C_2$-schemes over $S$,
+denoted $\Sm{S,qp}^{C_2}$.
 
 \begin{notation}
 Throughout this section, $G$ will be either a finite group or the
 group scheme over $S$ associated to a finite group. Recall that to pass between
 finite groups and group schemes over $S$, we form the scheme
 $\coprod_G S$ with multiplication (using that fiber products commute
-with coproducts in $\Sm{S}$):
+with coproducts in $\Sm{S,qp}$):
 \[
 \xymatrix{\coprod_G S \times_S \coprod_G S \ar[r]^-\sim &\coprod_{(g_1,g_2)\in G \times
   G} S \ar[r]^-{\mu}& \coprod_G S}
@@ -427,7 +437,7 @@ k$, whereas the pullback in spaces is just a single point.
 \section{The Equivariant and Isovariant \'Etale Topologies}
 
 \begin{notation}
-Let $S$ be a  $G$-scheme. The equivariant \'etale topology on $\Sm{S}^{G}$
+Let $S$ be a  $G$-scheme. The equivariant \'etale topology on $\Sm{S,qp}^{G}$
 will denote the site whose covers are \'etale covers whose component
 morphisms are equivariant.
 \end{notation}
@@ -658,7 +668,7 @@ definition from \cite{GrpSchHell}.
 
 \begin{definition}
 A distinguished equivariant Nisnevich square is a cartesian square in
-$\Sm{S}^G$
+$\Sm{S,qp}^G$
 \[
 \xymatrix{B \ar[r]\ar[d] & Y \ar[d]^p \\ A \ar@{^{(}->}[r]^i & X}
 \]
@@ -668,8 +678,8 @@ $(Y-B)_{\mathrm{red}} \rightarrow (X-A)_{\mathrm{red}}$.
 \end{definition}
 
 \begin{definition}
-The equivariant Nisnevich $cd$-structure on $\Sm{S}^G$ is the
-collection of distinguished equivariant Nisnevich squares in $\Sm{S}^G$.
+The equivariant Nisnevich $cd$-structure on $\Sm{S,qp}^G$ is the
+collection of distinguished equivariant Nisnevich squares in $\Sm{S,qp}^G$.
 \end{definition}
 
 The next remark has the important consequence that to prove a map is
@@ -691,12 +701,12 @@ which gives a convenient way to check whether or not a presheaf is a
 cdh sheaf. 
 
 \begin{definition}\label{def:cdh_top}
-An abstract blow-up square is a cartesian square in $\Sm{S}^G$
+An abstract blow-up square is a cartesian square in $\Sm{S,qp}^G$
 \[
 \xymatrix{\widetilde Z \ar[r]\ar[d] & \widetilde X \ar[d]^p \\ Z \ar@{^{(}->}[r]^i & X}
 \]
 where $i$ is a closed immersion and $p$ is a proper map which induces
-an isomorphism $(\widetilde X - \widetilde Z)_{red} \cong (X-Z)_{red}$.
+an isomorphism $(\widetilde X - \widetilde Z) \cong (X-Z)$.
 \end{definition}
 
 \begin{definition}
@@ -821,26 +831,26 @@ complicated (one must in general invert Thom spaces of all $G$-affine
 bundles).  
 
 \begin{definition}
-A presheaf $F$ on $\Sm{S}^G$ is called \emph{homotopy invariant} if
+A presheaf $F$ on $\Sm{S,qp}^G$ is called \emph{homotopy invariant} if
 the projection $\mbb A^1_S \rightarrow S$ induces an equivalence $F(X)
 \simeq F(X \times \mbb A^1)$. Denote by $\mc
-P_{\mathrm{htp}}(\Sm{S}^{G}) \subset \mc P(\Sm{S}^G)$ the full
+P_{\mathrm{htp}}(\Sm{S,qp}^{G}) \subset \mc P(\Sm{S,qp}^G)$ the full
 subcategory spanned by the homotopy invariant presheaves. Denote by
-$L_{\mathrm{htp}}$ the corresponding localization endofunctor of $\mc P(\Sm{S}^G)$.
+$L_{\mathrm{htp}}$ the corresponding localization endofunctor of $\mc P(\Sm{S,qp}^G)$.
 \end{definition}
 
 Now we give the usual definition of excision, the condition that
 guarantees that a presheaf is a Nisnevich sheaf.
 
 \begin{definition}
-A presheaf $F$ on $\Sm{S}^G$ is called \emph{Nisnevich excisive} if:
+A presheaf $F$ on $\Sm{S,qp}^G$ is called \emph{Nisnevich excisive} if:
 \begin{itemize}
 \item $F(\emptyset)$ is contractible;
-\item for every equivariant Nisnevich square $Q$ in $\Sm{S}^G$, $F(Q)$ is
+\item for every equivariant Nisnevich square $Q$ in $\Sm{S,qp}^G$, $F(Q)$ is
   cartesian. 
 \end{itemize}
 
-Denote by $\mc P_{\mathrm{Nis}}(\Sm{S}^G) \subset \mc P(\Sm{S}^G)$ the
+Denote by $\mc P_{\mathrm{Nis}}(\Sm{S,qp}^G) \subset \mc P(\Sm{S,qp}^G)$ the
 full subcategory of Nisnevich excisive presheaves. Denote by
 $L_{\mathrm{Nis}}$ the corresponding localization endofunctor. 
 \end{definition}
@@ -850,8 +860,8 @@ presheaf that is both Nisnevich excisive and homotopy invariant.
 
 \begin{definition}
 Let $S$ be a $G$-scheme. A \emph{motivic $G$-space} over $S$ is a
-presheaf on $\Sm{S}^G$ that is homotopy invariant and Nisnevich
-excisive. Denote by $\HH^G(S) \subset \mc P(\Sm{S}^G)$ the full
+presheaf on $\Sm{S,qp}^G$ that is homotopy invariant and Nisnevich
+excisive. Denote by $\HH^G(S) \subset \mc P(\Sm{S,qp}^G)$ the full
 subcategory of motivic $G$-spaces over $S$.
 
 Let 
@@ -1597,7 +1607,8 @@ GW$ via periodization in chapter \ref{chap:Einf}.
 \end{definition}
 
 \begin{definition}
-Let $X$ be a Noetherian scheme of finite Krull dimension, and let
+Let $X$ be a Noetherian scheme of finite Krull dimension with an ample
+family of line bundles, and let
 $\sigma : X \rightarrow X$ be an involution on $X$. Let $\sPerf(X)$
 denote the category of strictly perfect complexes on $X$ with the weak
 equivalences being the quasi-isomorphisms. Define a family of dualities on
@@ -1620,6 +1631,13 @@ defined as
 \[
 GW^{[i]}(X,\sigma) = GW (\sPerf(X),\text{q. iso}, \ast^i,\can).
 \]
+
+If $Z$ is an invariant closed subset of $X$, then the duality on
+$\sPerf(X)$ restricts to a duality on the subcategory of complexes
+supported on $Z$, $\sPerf_Z(X)$. We define 
+\[
+GW^{[i]}(X \text{ on } Z) = GW (\sPerf_Z(X),\text{q. iso}, \ast^i,\can).
+\]
 \end{definition}
 
 \chapter{Representability of Homotopy Hermitian $K$-Theory}\label{chap:herm_grass}
@@ -1634,17 +1652,17 @@ in motivic homotopy theory, one obtains rather formally cdh descent for algebrai
 $K$-theory, see \cite{DenRep}.
 
 The goal of
-this chapter is to define a sheaf on $\Sm{S}^{C_2}$, denoted $\RGr$, which represents
+this chapter is to define a sheaf on $\Sm{S,qp}^{C_2}$, denoted $\RGr$, which represents
 Hermitian $K$-theory in the motivic homotopy category $\mathcal
 \mothom_S^{C_2}$. We first check that over a regular base $S$ with 2 invertible
 (e.g. $\Z[\frac{1}{2}]$), Hermitian $K$-theory is representable in the
-category of $C_2$-schemes smooth over $S$, $\Sm{S}^{C_2}$. To
+category of $C_2$-schemes smooth over $S$, $\Sm{S,qp}^{C_2}$. To
 extend this result to non-regular bases $S$, we utilize the
 Morel-Voevodsky approach to classifying spaces and obtain
 representability of homotopy Hermitian $K$-theory in the motivic homotopy category $\HH^{C_2}(S)$.
 
 By analogy with the $K$ theory case, the equivariant scheme
-representing Hermitian $K$-theory on $\Sm{S}^{C_2}$ will be a colimit of schemes
+representing Hermitian $K$-theory on $\Sm{S,qp}^{C_2}$ will be a colimit of schemes
 which parametrize non-degenerate Hermitian sub-bundles of a given
 Hermitian vector bundle $V$. The new results here are mostly the
 definitions, as the proofs in this section are either
@@ -1679,9 +1697,9 @@ $\RGr$ over a scheme $X \rightarrow S$. We advise the hurried reader to
 skip to section \ref{subsec:representability}.
 
 \begin{lemma}\label{lem:action_presheaf}
-Let $\mc F$ be a presheaf on $\Sm{S}$ and let $a : \mc F \implies
+Let $\mc F$ be a presheaf on $\Sm{S,qp}$ and let $a : \mc F \implies
 \mc F$ be a natural transformation such that $a \circ a = id_{\mc F}$. Then
-there's an associated presheaf on $\Sm{S}^{C_2}$ defined by the formula
+there's an associated presheaf on $\Sm{S,qp}^{C_2}$ defined by the formula
 $(X,\sigma : X \rightarrow X) \mapsto \mc F(X)^{C_2}$ where the action
 of $C_2$ on $\mc F(X)$ is defined by $f \mapsto  a_X\mc F(\sigma)(f)$.
 \end{lemma}
@@ -1696,10 +1714,10 @@ Fix a (possibly degenerate) Hermitian vector bundle $(V,\phi)$ over a
 base scheme $S$ with 2 invertible and with trivial
 involution. The canonical example of such a base scheme is $S = \Spec \Z[\frac{1}{2}]$.
 
-We'll define a presheaf $\RGr : (\Sm{S}^{C_2})^{op} \rightarrow \Set$
-by first defining a presheaf on $\Sm{S}$, showing that it's
+We'll define a presheaf $\RGr : (\Sm{S,qp}^{C_2})^{op} \rightarrow \Set$
+by first defining a presheaf on $\Sm{S,qp}$, showing that it's
 representable, equipping with an action, then taking the corresponding
-representable functor on $\Sm{S}^{C_2}$. We can then extend to an
+representable functor on $\Sm{S,qp}^{C_2}$. We can then extend to an
 arbitrary equivariant base $T$ with 2 invertible by pulling back along the unique map $T
 \rightarrow \Z[\frac{1}{2}]$.
 
@@ -1735,7 +1753,7 @@ There's a natural action of $C_2$ on $\RGr_V$ whose non-trivial
 natural transformation will be denoted $\eta$. Define $\eta$ as
 follows: 
 
- Fix an object $X \in \Sm{S}$. Define
+ Fix an object $X \in \Sm{S,qp}$. Define
 \[
 \eta_X(\xymatrix{f^*V \ar@{>>}[r]_p & \ar@/_1.0pc/@{-->}[l]_sW}) =
 \xymatrix{f^*V \ar@{>>}[r]_q & \ar@/_1.0pc/@{-->}[l]_t(\ker p)^\perp}.
@@ -1812,7 +1830,7 @@ respectively. This concludes the check of naturality.
 
 
 Now by Lemma \ref{lem:action_presheaf}, there's a presheaf $\RGr :
-\Sm{S}^{C_2} \rightarrow \Set$. To determine its values on a
+\Sm{S,qp}^{C_2} \rightarrow \Set$. To determine its values on a
 $C_2$-scheme $(X,\sigma)$, we note that a fixed point of the action of Lemma
 \ref{lem:action_presheaf} is determined by an isomorphism of split
 surjections
@@ -1959,7 +1977,7 @@ a constant rank non-degenerate subbundle,
 let $|V|$ denote the rank of $V$. Order such subbundles of $\mbb
 H^\infty$ by inclusion, and denote the resulting poset by $P$. Given an inclusion $V \hookrightarrow V'$
 of non-degenerate subbundles, denote by $V'-V$ the complement of $V$
-in $V'$. Let $\mc H : P \rightarrow \mathrm{Fun}(\Sm{S}^{C_2,
+in $V'$. Let $\mc H : P \rightarrow \mathrm{Fun}(\Sm{S,qp}^{C_2,
   op},\mathrm{Set})$ be the functor which on objects sends a subbundle $V$ to $
 \RGr_{|V|} (V \perp \mbb H^\infty)$. Given an inclusion $V \hookrightarrow V'$, the induced map
 $\RGr_{|V|}(V \perp \mbb H^\infty) \rightarrow \RGr_{|V'|}(V' \perp
@@ -2023,7 +2041,7 @@ because $V$ is non-degenerate, $V \perp (V'-V) = V'$. Define
 
 
 % To give intuition for the idea, we
-% first define the pseudo-presheaf $\mc F_{(V,\phi)} : \Sm{S} \rightarrow \Set$ by 
+% first define the pseudo-presheaf $\mc F_{(V,\phi)} : \Sm{S,qp} \rightarrow \Set$ by 
 % \[
 % \mc F_{(V,\phi)}(f: X \rightarrow S) = \{(W,H) \mid W,H \subseteq V_X, \ W \oplus H = V\}.
 % \]
@@ -2038,7 +2056,7 @@ because $V$ is non-degenerate, $V \perp (V'-V) = V'$. Define
 % via a slight modification of Grayson's category of big vector bundles.
 
 % \begin{definition}
-% Fix $(V,\phi)$ as above. Let $\mc A$ be a small category equivalent to $(\Sm{S})_{/X}$. A big
+% Fix $(V,\phi)$ as above. Let $\mc A$ be a small category equivalent to $(\Sm{S,qp})_{/X}$. A big
 % Hermitian vector bundle over $X$ is a family 
 % \[
 % \{(W,H)_Y\}_{(f : Y \rightarrow X) \in \Ob(\mc A)}
@@ -2062,7 +2080,7 @@ because $V$ is non-degenerate, $V \perp (V'-V) = V'$. Define
 
 % \begin{lemma}
 % The assignment $X \mapsto \BigVB{X}$ defines a presheaf of groupoids
-% $\BigVB{-}$ on $\Sm{S}$. By applying $\pi_0$, we obtain a presheaf of sets.
+% $\BigVB{-}$ on $\Sm{S,qp}$. By applying $\pi_0$, we obtain a presheaf of sets.
 % \end{lemma}
 
 % \begin{proof}
@@ -2099,11 +2117,11 @@ because $V$ is non-degenerate, $V \perp (V'-V) = V'$. Define
 % \end{proof}
 
 % Now by lemma \ref{lem:action_presheaf}, we get a presheaf of groupoids $\BigVB{-}$
-% on $\Sm{S}^{C_2}$. We claim that this presheaf represents
+% on $\Sm{S,qp}^{C_2}$. We claim that this presheaf represents
 % non-degenerate Hermitian sub-bundles of $(V,\phi)$.
 
 % \begin{lemma}
-% Given $X \in \Sm{S}^{C_2}$
+% Given $X \in \Sm{S,qp}^{C_2}$
 % \[
 % \Hom(X,\BigVB{-}) \cong \{\text{Groupoid of non-degenerate Hermitian vector bundles
 %   over $X$}\}.
@@ -2140,7 +2158,7 @@ be the category of non-degenerate Hermitian sub-bundles of $f^*V$. A
 morphism in this category from $E_0$ to $E_1$ is an isometry not
 necessarily compatible with the embeddings $E_0,E_1 \subseteq
 f^*V$. Using pullbacks of quasi-coherent modules, we turn $\mc S$ into a presheaf of categories on
-$\Sm{S}^{C_2}$. For integer $d \geq 0$, define
+$\Sm{S,qp}^{C_2}$. For integer $d \geq 0$, define
 \[
 \mc S_d(V,\phi)  \subset \mc S(V,\phi)
 \]
@@ -2219,7 +2237,7 @@ Hermitian vector bundle is a summand of a hyperbolic module, it
 follows that $S_{|V|}(V\perp \mbb H^\infty)(R)$ is equivalent to the
 category of isovariant \'etale $\mc O(V)$ torsors. 
 
-Let $\mc F : \Sm{S}^{C_2} \rightarrow Gpd$ be the sheaf which assigns
+Let $\mc F : \Sm{S,qp}^{C_2} \rightarrow Gpd$ be the sheaf which assigns
 to $f : X \rightarrow S$ the groupoid of $ O(f^*V)$-torsors. The
 construction $W \mapsto Isom(f^*V,W)$ described above defines a
 functor $S_{|V|}(V\perp \mbb H^\infty) \rightarrow \mc F$ which is an
@@ -3353,19 +3371,19 @@ the twisted sheaf $(U \times T)/O(W)$.
 Our goal is to appy Lemma 2.1 from \cite{cdhdesc}, which we restate below:
 
 \begin{lemma}(Hoyois)
-Let $\Gamma$ be an isovariant \'etale sheaf of groups on $\Sm{S}^{C_2}$
+Let $\Gamma$ be an isovariant \'etale sheaf of groups on $\Sm{S,qp}^{C_2}$
 acting on an isovariant \'etale sheaf $U$. Suppose that, for every $X
-\in \Sm{S}^{C_2}$ and every isovariant \'etale torsor $\pi: T
+\in \Sm{S,qp}^{C_2}$ and every isovariant \'etale torsor $\pi: T
 \rightarrow X$ under $\Gamma$, $U_\pi \rightarrow X$ is a motivic
-equivalence on $\Sm{S}^{C_2}$. Then the map
+equivalence on $\Sm{S,qp}^{C_2}$. Then the map
 \[
 L_{isoEt}(U/\Gamma) \rightarrow B_{isoEt}\Gamma
 \]
-induced by $U \rightarrow \ast$ is a motivic equivalence on $\Sm{S}^{C_2}$.
+induced by $U \rightarrow \ast$ is a motivic equivalence on $\Sm{S,qp}^{C_2}$.
 \end{lemma}
 
 Given an $O(W)$-torsor $\pi : T \rightarrow X$, we want to check that $\St(W,\mbb H^\infty)_\pi  =(\St(W,\mbb H^\infty) \times T)/O(W) \rightarrow
-X$ is a motivic equivalence on $\Sm{S}^{C_2}$. Leting $V = W_\pi$,
+X$ is a motivic equivalence on $\Sm{S,qp}^{C_2}$. Leting $V = W_\pi$,
 this is equivalent to checking
 that $\St(V,\mbb H^\infty_X)$ is motivically contractible
 over $\Sm{X}^{C_2}$. To wit, because $X$ is affine there's an
@@ -3398,8 +3416,9 @@ which after taking colimits gives the desired result.
 We've thus proved:
 
 \begin{theorem}\label{thm:RGr_GW_nonreg}
-Let $S$ be a Noetherian scheme of finite Krull dimension. There are
-equivalences of motivic spaces on $\Sm{S}^{C_2}$
+Let $S$ be a Noetherian scheme of finite Krull dimension with
+$\frac{1}{2} \in S$. There are
+equivalences of motivic spaces on $\Sm{S,qp}^{C_2}$
 \[
 \Z \times \RGr_\bullet \xrightarrow{\sim} \Z \times \colim_n
 B_{isoEt}O(\mbb H^n)
@@ -3606,7 +3625,7 @@ Finally, using that $GW$ and $\mbb GW$ are invariant under derived
 equivalences \cite[Theorem 6.5]{Schder} \cite[Theorem 8.9]{Schder}, we conclude the theorem.
 \end{proof}
 
-Considering $GW$ as a presheaf of spectra on $\Sm{S}^{C_2}$ it follows from
+Considering $GW$ as a presheaf of spectra on $\Sm{S,qp}^{C_2}$ it follows from
 Theorem \ref{thm:proj_inv} that $GW^{[n]}(\mbb P^\sigma,[1:1]) \cong
 GW^{[n-1]}(X,-\can) \cong GW^{[n+1]}(X)$, recovering one of the results of
   \cite{Xie2018ATM}. Hence
@@ -3614,7 +3633,7 @@ GW^{[n-1]}(X,-\can) \cong GW^{[n+1]}(X)$, recovering one of the results of
 \iHom(\Sigma^\infty (\mbb P^\sigma,[1:1]),GW^{[n]}) \cong
 GW^{[n+1]}
 \]
-as presheaves of spectra on $\Sm{S}^{C_2}$. In particular, by the
+as presheaves of spectra on $\Sm{S,qp}^{C_2}$. In particular, by the
 projective bundle formula from \cite{Schder} and the usual cofiber
 sequence 
 \[
@@ -3809,12 +3828,13 @@ First, equivariant Nisnevich
 descent for $\mbb GW$ is a consequence of results from \cite{Schder}.
 
 \begin{lemma}
-$\mbb GW$ satisfies equivariant Nisnevich descent. 
+$\mbb GW$ is Nisnevich excisive on the category of smooth schemes with
+an ample family of line bundles over $S$. 
 \end{lemma}
 
 \begin{proof}
 Recall that the distinguished squares defining the equivariant
-Nisnevich cd-structure are cartesian squares in $\Sm{S}^G$ 
+Nisnevich cd-structure are cartesian squares in $\Sm{S,qp}^G$ 
 
 \[
 \xymatrix{B \ar[r]\ar[d] & Y \ar[d]^p \\ A \ar[r]^j & X}
@@ -3829,8 +3849,13 @@ induces a quasi-equivalence of dg categories
 \[
 p^* : \mathrm{sPerf}_Z(X) \rightarrow \mathrm{sPerf}_Z(Y).
 \]
-From here, the fact that $\mbb GW$ is invariant under derived
-equivalences \cite[Theorem 8.9]{Schder} allows us to conclude the result. 
+Because $\mbb GW$ is invariant under derived
+equivalences \cite[Theorem 8.9]{Schder}, it follows that $p^*$ induces
+an isomorphism on Grothendieck-Witt groups. Noting that $U$ and the closed
+subset $Z = X-A$ are $G$-invariant, the localization
+sequence \cite[Theorem
+9.5]{Schder} generalizes to our setting and identifies $\mbb GW(\mathrm{sPerf}_Z(X))$ and $\mbb
+GW(\mathrm{sPerf}_Z(Y))$ as the horizontal homotopy fibers. This allows us to conclude the result. 
 \end{proof}
 
  Next, we
@@ -3967,7 +3992,7 @@ can fail to be homotopic.
 
 \begin{lemma}\label{lem:GWb_eq}
 The canonical map $\mbb GW \rightarrow Q_\gamma \mbb GW$ is an
-equivalence of (pre)sheaves of spectra on $\Sm{S}^{C_2}$. 
+equivalence of (pre)sheaves of spectra on $\Sm{S,qp}^{C_2}$. 
 \end{lemma}
 
 \begin{proof}
@@ -4316,14 +4341,15 @@ For a vector bundle $E$, let $\mbb V_0(E)$ denote $E/(E-0)$, the
 quotient by the complement of the zero section.
 
 \begin{theorem}\label{thm:GW_Einfty}
-Let $S$ be a Noetherian scheme of finite Krull dimension. Then $L_{\mbb A^1}\mbb GW$ lifts to an $E_\infty$ motivic spectrum, denoted
-$\KR$, over $\Sm{S}^{C_2}$.
+Let $S$ be a Noetherian scheme of finite Krull dimension, an ample
+family of line bundles, and $\frac{1}{2} \in S$. Then $L_{\mbb A^1}\mbb GW$ lifts to an $E_\infty$ motivic spectrum, denoted
+$\KR$, over $\Sm{S,qp}^{C_2}$.
 \end{theorem}
 
 \begin{proof}
 $GW$ is an $E_\infty$ object in presheaves of spectra (it's a
 commutative monoid in the category of presheaves of symmetric spectra) on
-$\Sm{S}^{C_2}$ via the cup product defined in \cite[Remark 5.1]{Schder}. By
+$\Sm{S,qp}^{C_2}$ via the cup product defined in \cite[Remark 5.1]{Schder}. By
 \cite{cdhdesc} Lemma 3.3, together with corollary \ref{cor:GW_per}
 above, $\mbb GW$ is the periodization of $GW$ with respect to
 $\gamma$. Let $T^\rho$ denote the Thom space of the regular
@@ -4340,7 +4366,7 @@ $GW$-modules.
 The $\mbb A^1$-localization of the Bott element $L_{\mbb A^1}(\beta'
 \otimes (\beta^\sigma)' : L_{\mbb A^1} \mbb V_0(\mbb A^\rho)
 \rightarrow L_{\mbb A^1} GW$, viewed as an element of $\Sp(\mc P_{\mbb
-  A^1}(\Sm{S}^{C_2}))_{/L_{\mbb A^1}GW}$ is 3-symmetric.
+  A^1}(\Sm{S,qp}^{C_2}))_{/L_{\mbb A^1}GW}$ is 3-symmetric.
 \end{lemma}
 
 \begin{proof}
@@ -4415,7 +4441,19 @@ Given Lemma \ref{lem:bott_3symm}, the proof is identical to
 Proposition 4.9 in \cite{cdhdesc}.
 \end{proof}
 
-
+Replacing $GW$ with its connective cover $GW_{\geq 0}$, the same
+reasoning yields:
+\begin{porism}\label{por:GW_per}
+The canonical map $GW_{\geq 0} \rightarrow
+Q_{\beta}L_{\mathrm{mot}}GW_{\geq 0}$ is the universal
+map to a homotopy invariant, Nisnevich excisive, and Bott periodic
+$GW_{\geq 0}$-module. In particular
+\[
+L_{\mbb A^1}\mbb GW = Q_{\beta}L_{\mathrm{mot}}GW_{\geq 0}
+\]
+\end{porism}
+\begin{proof}
+\end{proof}
 
 
 
@@ -4550,7 +4588,7 @@ a Noetherian scheme of finite Krull dimension $S$, and scheme $X$
 which is smooth over $S$.
 
 \begin{theorem}(Cisinski)
-Fix $X \in \Sm{S}$, and let $\KGL_X$ denote the restriction of $\KGL$
+Fix $X \in \Sm{S,qp}$, and let $\KGL_X$ denote the restriction of $\KGL$
 to $\Sm{X}$. To show that $\KGL$ satisfies cdh descent, it suffices to
 show that:
 \begin{itemize}
@@ -4562,7 +4600,7 @@ show that:
 
 \begin{proof} (Sketch)
 
-Consider the stable $\infty$-category valued functor $\Sm{S}
+Consider the stable $\infty$-category valued functor $\Sm{S,qp}
 \rightarrow \mathrm{Stab}$, $X \mapsto SH_{/X}$. Given $T
 \rightarrow X$, we get a $[T] \in SH_{/X}$. Given $f : X \rightarrow Y$,
 we have the following
@@ -4615,14 +4653,14 @@ homotopy $K$-theory $KH$ takes abstract blowup squares to homotopy cartesian squ
 \section{Extending to Homotopy Hermitian $K$-Theory}
 
 Let $\KR$ be the motivic spectrum associated to homotopy
-Hermitian $K$-theory $L_{\mbb A^1}\mbb GW$ on $\Sm{S}^{C_2}$ for $S$ a
-Noetherian scheme of finite Krull dimension. 
+Hermitian $K$-theory $L_{\mbb A^1}\mbb GW$ on $\Sm{S,qp}^{C_2}$ for $S$ a Noetherian scheme of finite Krull dimension, an ample
+family of line bundles, and $\frac{1}{2} \in S$.
 
 Let $\HH(S)$ denote the motivic homotopy $\infty$-category on
-$\Sm{S}^{C_2}$. By Corollary \ref{cor:MotLoc_GW}, we can write $\KR$ as the image under the localization functor
+$\Sm{S,qp}^{C_2}$. By Corollary \ref{cor:MotLoc_GW}, we can write $\KR$ as the image under the localization functor
 \[
 QL_{\mathrm{mot}} : \mathrm{Stab}^{\mathrm{lax}}_{T^\rho} \Sp(\mc
-P(\Sm{S}^{C_2})) \rightarrow \mathrm{Stab}_{T^\rho} \Sp(\underline
+P(\Sm{S,qp}^{C_2})) \rightarrow \mathrm{Stab}_{T^\rho} \Sp(\underline
 H) \simeq \SH^{C_2}
 \]
 of the ``constant'' $T^\rho$-spectrum $c_{\beta' \otimes (\beta^\sigma)'}GW$, where the maps
@@ -4633,11 +4671,11 @@ applying $\iHom_{GW-mod}(-,GW)$ to the map
 \]
 with $\beta' \otimes (\beta^\sigma)'$ the map \eqref{eq:beta_beta_sigma_prime}.
 \begin{definition}
-For $X \in \Sm{S}^{C_2}$, let $\KR_X$ denote the restriction of the
+For $X \in \Sm{S,qp}^{C_2}$, let $\KR_X$ denote the restriction of the
 motivic spectrum $\KR$ to $\Sm{X}^{C_2}$.
 \end{definition}
 
-We want to show that $\KR$ is a cdh sheaf on $\Sm{S}^{C_2}$. By first
+We want to show that $\KR$ is a cdh sheaf on $\Sm{S,qp}^{C_2}$. By first
 checking that the formalism of six operations holds in equivariant
 motivic homotopy theory and following the same recipe as the
 $K$-theory case, \cite[Corollary 6.25]{HoyoisSixOp} proves that it suffices to show that for
@@ -4668,21 +4706,22 @@ Just as in \cite{cdhdesc} we note that
 exhibits $\mathrm{Herm}$ as the equivariant Zariski sheafification of
 the subgroupoid of non-degenerate Hermitian vector bundles of constant
 rank (in other words, it fixes the sections over non-connected or
-hyperbolic rings). By \cite[Lemma 5.5]{cdhdesc}, it remains an
-equivalence after group completion, yielding a motivic equivalence
+hyperbolic rings). Since $L_{\mathrm{Zar}}$ preserves finite products,
+by \cite[Lemma 5.5]{cdhdesc}, the map remains a Zariski
+equivalence after group completion yielding a motivic equivalence
 \[
 \left(\coprod_{n \geq 0} B_{isoEt}O(\langle 1 \rangle^{\perp
     n})\right)^+ \rightarrow \Omega^\infty GW|\Sm{X}^{C_2}.
 \]
 
-Fix a map $f : D \rightarrow X$ in $\Sm{S}^{C_2}$. Again by 
+Fix a map $f : D \rightarrow X$ in $\Sm{S,qp}^{C_2}$. Again by 
 in \cite[Lemma 5.5]{cdhdesc}, since the pullback $f^* : \mc P(\Sm{X}^{C_2})
 \rightarrow \mc P(\Sm{X}^{C_2})$ preserves finite products, it
 commutes with group completion of $E_\infty$-monoids. The same is true
 for $L_{\mathrm{mot}}$. It follows that there are motivic equivalences
 
 \[
-f^*\Omega^\infty GW|\Sm{X}^{C_2})\rightarrow  f^*\left(\coprod_{n \geq 0} B_{isoEt}O(\langle 1 \rangle^{\perp
+f^*(\Omega^\infty GW|\Sm{X}^{C_2})\rightarrow  f^*\left(\coprod_{n \geq 0} B_{isoEt}O(\langle 1 \rangle^{\perp
     n})\right)^+ \rightarrow \left(\coprod_{n \geq 0} f^*B_{isoEt}O(\langle 1 \rangle^{\perp
     n})\right)^+
 \]
@@ -4708,19 +4747,24 @@ and combining everything we get that the restriction map
 f^*(\Omega^\infty GW|\Sm{X}^{C_2}) \rightarrow \Omega^\infty GW|\Sm{D}^{C_2}
 \]
 is a motivic equivalence in the $\infty$-category of grouplike
-$E_\infty$-monoids in $\mc P(\Sm{D}^{C_2})$. Because the localization
+$E_\infty$-monoids in $\mc P(\Sm{D}^{C_2})$. Moving to the category of
+connective spectra, It follows that pullback agrees with restriction for $GW_{\geq
+  0}$. Because the localization
 functor $QL_{\mathrm{mot}}$ is also compatible with the base change
 $f^*$, it follows that each arrow 
 \[
-f^*(QL_{\mathrm{mot}}GW|\Sm{X}^{C_2}) \rightarrow
-QL_{\mathrm{mot}}(f^*GW|\Sm{X}^{C_2}) \rightarrow QL_{\mathrm{mot}}(GW|\Sm{D}^{C_2})
+f^*(QL_{\mathrm{mot}}GW_{\geq 0}|\Sm{X}^{C_2}) \rightarrow
+QL_{\mathrm{mot}}(f^*GW_{\geq 0}|\Sm{X}^{C_2}) \rightarrow
+QL_{\mathrm{mot}}(GW_{\geq 0}|\Sm{D}^{C_2})
 \]
-is a motivic equivalence, as was desired. Thus we've proved
+is a motivic equivalence. Finally, Porism \ref{por:GW_per} tells us
+that $QL_{\mathrm{mot}}GW_{\geq 0} \simeq QL_{\mathrm{mot}}GW$,  so we've proved
 
 \begin{theorem}\label{thm:cdh_desc}
-Let $S$ be a Noetherian scheme of finite Krull dimension. Then the
+Let $S$ be a Noetherian scheme of finite Krull dimension, an ample
+family of line bundles, and $\frac{1}{2} \in S$. Then the
 homotopy Hermitian $K$-theory spectrum of rings with involution $L_{\mbb A^1}\mbb
-GW$ satisfies descent for the equivariant cdh topology on $\Sm{S}^{C_2}$.
+GW$ satisfies descent for the equivariant cdh topology on $\Sm{S,qp}^{C_2}$.
 \end{theorem}
 
 \bibliographystyle{alpha}
@@ -4819,7 +4863,7 @@ GW$ satisfies descent for the equivariant cdh topology on $\Sm{S}^{C_2}$.
 % equivalences to spectra. 
 
 % Consider the presheaf of categories with weak equivalence and duality
-% on $\Sm{S}^{C_2}$ given by $f : X \rightarrow S \mapsto BigVB(S)$, or some
+% on $\Sm{S,qp}^{C_2}$ given by $f : X \rightarrow S \mapsto BigVB(S)$, or some
 % other strictly functorial version of the category of projective
 % modules. This is (strongly) symmetric monoidal via tensor product of
 % modules. 
@@ -4841,7 +4885,7 @@ GW$ satisfies descent for the equivariant cdh topology on $\Sm{S}^{C_2}$.
 % $E_\infty$-ring spectrum. It also follows from (loc. cit. )that $GW$ yields a presheaf
 % of symmetric monoids in symmetric spectra, and in particular an
 % $E_\infty$ object in the $\infty$-category of presheaves of spectra on
-% $\Sm{S}^{C_2}$. 
+% $\Sm{S,qp}^{C_2}$. 
 
 % For a scheme $X$ (possibly with involution), denote by $GW^{[n]}(X)$ the
 % Grothendieck-Witt spectrum of the dg-category with weak equivalences
